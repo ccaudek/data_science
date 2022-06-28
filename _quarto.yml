@@ -28,10 +28,10 @@ book:
         # - 017_bayes_theorem.qmd
         # - 018_joint_prob.qmd
         # - 019_density_func.qmd
-        - 020_expval_var.qmd
+        # - 020_expval_var.qmd
   #   - part: distr.qmd
   #     chapters:
-  #       - 022_discr_rv_distr.qmd
+        - 022_discr_rv_distr.qmd
   #       - 023_cont_rv_distr.qmd
   #       - 024_likelihood.qmd
   #   - part: bayes_inference.qmd
