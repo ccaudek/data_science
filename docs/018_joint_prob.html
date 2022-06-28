@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.624">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Data Science per psicologi - 4&nbsp; Probabilità congiunta</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./019_density_func.html" rel="next">
+<link href="./017_bayes_theorem.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Science per psicologi</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ccaudek/datascience/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Benvenuti</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">Prefazione</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./015_prob_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./016_conditional_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./017_bayes_theorem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./018_joint_prob.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./019_density_func.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+   
+  <ul>
+<li>
+<a href="#sec-fun-join-prob" id="toc-sec-fun-join-prob" class="nav-link active" data-scroll-target="#sec-fun-join-prob"> <span class="header-section-number">4.1</span> Funzione di probabilità congiunta</a>
+  <ul class="collapse">
+<li><a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"> <span class="header-section-number">4.1.1</span> Proprietà</a></li>
+  <li><a href="#eventi" id="toc-eventi" class="nav-link" data-scroll-target="#eventi"> <span class="header-section-number">4.1.2</span> Eventi</a></li>
+  <li><a href="#sec-marg-distr-discr" id="toc-sec-marg-distr-discr" class="nav-link" data-scroll-target="#sec-marg-distr-discr"> <span class="header-section-number">4.1.3</span> Funzioni di probabilità marginali</a></li>
+  <li><a href="#sec-margin-vc-cont" id="toc-sec-margin-vc-cont" class="nav-link" data-scroll-target="#sec-margin-vc-cont"> <span class="header-section-number">4.1.4</span> Marginalizzazione di variabili casuali continue</a></li>
+  </ul>
+</li>
+  <li><a href="#indipendenza" id="toc-indipendenza" class="nav-link" data-scroll-target="#indipendenza"> <span class="header-section-number">4.2</span> Indipendenza</a></li>
+  <li><a href="#valore-atteso-di-una-funzione-di-una-variabile-casuale" id="toc-valore-atteso-di-una-funzione-di-una-variabile-casuale" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-una-variabile-casuale"> <span class="header-section-number">4.3</span> Valore atteso di una funzione di una variabile casuale</a></li>
+  <li><a href="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" id="toc-valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali"> <span class="header-section-number">4.4</span> Valore atteso di una funzione di molteplici variabili casuali</a></li>
+  <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ccaudek/datascience/edit/master/018_joint_prob.qmd" class="toc-action">Modifica questa pagina</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-prob-congiunta" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header><p>La probabilità congiunta è la probabilità che due o più eventi si verifichino contemporaneamente. In questo Capitolo verrà esaminato il caso discreto.</p>
+<section id="sec-fun-join-prob" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-fun-join-prob">
+<span class="header-section-number">4.1</span> Funzione di probabilità congiunta</h2>
+<p>Dopo aver trattato della distribuzione di probabilità di una variabile casuale, la quale associa ad ogni evento elementare dello spazio campione uno ed un solo numero reale, è naturale estendere questo concetto al caso di due o più variabili casuali. Iniziamo a descrivere il caso discreto con un esempio. Consideriamo l’esperimento casuale corrispondente al lancio di tre monete equilibrate. Lo spazio campione è</p>
+<p><span class="math display">\[
+\Omega = \{TTT, TTC, TCT, CTT, CCT, CTC, TCC, CCC\}.
+\]</span></p>
+<p>Dato che i tre lanci sono tra loro indipendenti, non c’è ragione di aspettarsi che uno degli otto risultati possibili dell’esperimento sia più probabile degli altri, dunque possiamo associare a ciascuno degli otto eventi elementari dello spazio campione la stessa probabilità, ovvero 1/8.</p>
+<p>Definiamo sullo spazio campione <span class="math inline">\(\Omega\)</span> le seguenti variabili casuali:</p>
+<ul>
+<li>
+<span class="math inline">\(X \in \{0, 1, 2, 3\}\)</span> = “numero di realizzazioni con il risultato testa nei tre lanci”,</li>
+<li>
+<span class="math inline">\(Y \in \{0, 1\}\)</span> = “numero di realizzazioni con il risultato testa nel primo lancio”.</li>
+</ul>
+<p>Indicando con T = ‘testa’ e C = ‘croce’, si ottiene la situazione riportata nella <a href="#tbl-tre-monete-distr-cong-1">Tabella&nbsp;<span>4.1</span></a>.</p>
+<div id="tbl-tre-monete-distr-cong-1" class="anchored">
+<table class="table">
+<caption>Tabella 4.1: Spazio campione dell’esperimento consistente nel lancio di tre monete equilibrate su cui sono state definite le variabili aleatorie <span class="math inline">\(X\)</span> = ‘numero di realizzazioni con il risultato testa nei tre lanci’ e <span class="math inline">\(Y\)</span> = ‘numero di realizzazioni con il risultato testa nel primo lancio’.</caption>
+<thead><tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\omega\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(P(\omega)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_1\)</span> = TTT</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_2\)</span> = TTC</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_3\)</span> = TCT</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_4\)</span> = CTT</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_5\)</span> = CCT</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_6\)</span> = CTC</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_7\)</span> = TCC</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<span class="math inline">\(\omega_8\)</span> = CCC</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ci poniamo il problema di associare un valore di probabilità ad ogni coppia <span class="math inline">\((x, y)\)</span> definita su <span class="math inline">\(\Omega\)</span>. La coppia <span class="math inline">\((X = 0, Y = 0)\)</span> si realizza in corrispondenza di un solo evento elementare, ovvero CCC; avrà dunque una probabilità pari a</p>
+<p><span class="math display">\[
+P(X=0, Y=0) = P(CCC) = 1/8.
+\]</span></p>
+<p>Nel caso della coppia <span class="math inline">\((X = 1, Y = 0)\)</span> ci sono due eventi elementari che danno luogo al risultato considerato, ovvero, CCT e CTC. La probabilità dell’evento composto <span class="math inline">\(P(X=1, Y=0)\)</span> è dunque uguale alla somma delle probabilità dei due eventi elementari che lo costituiscono, cioé</p>
+<p><span class="math display">\[
+P(X=1, Y=0) = P(\mbox{CCT}) + P(\mbox{CTC}) = 1/8 + 1/8 = 1/4.
+\]</span></p>
+<p>Di seguito sono riportati i calcoli per tutte le possibili coppie <span class="math inline">\(X, Y\)</span>:</p>
+<span class="math display">\[\begin{align}
+P(X = 0, Y = 0) &amp;= P(\omega_8 = CCC) = 1/8; \notag\\
+P(X = 1, Y = 0) &amp;= P(\omega_5 = CCT) + P(\omega_6 = CTC) = 2/8; \notag\\
+P(X = 1, Y = 1) &amp;= P(\omega_7 = TCC) = 1/8; \notag\\
+P(X = 2, Y = 0) &amp;= P(\omega_4 = CTT) = 1/8; \notag\\
+P(X = 2, Y = 1) &amp;= P(\omega_3 = TCT) + P(\omega_2 = TTC) = 2/8; \notag\\
+P(X = 3, Y = 1) &amp;= P(\omega_1 = TTT) = 1/8; \notag
+\end{align}\]</span>
+<p>Le probabilità così trovate sono riportate nella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>4.2</span></a> che descrive la <em>distribuzione di probabilità congiunta</em> delle variabili casuali <span class="math inline">\(X\)</span> (“numero di realizzazioni con il risultato testa nei tre lanci”) e <span class="math inline">\(Y\)</span> (“numero di realizzazioni con il risultato testa nel primo lancio”) per l’esperimento casuale che consiste nel lancio di tre monete equilibrate.</p>
+<div id="tbl-distr-cong-biv-1" class="anchored">
+<table class="table">
+<caption>Tabella 4.2: Distribuzione di probabilità congiunta per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate.</caption>
+<thead><tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x / y\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2/8</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">2/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In generale, possiamo dire che, dato uno spazio campione discreto <span class="math inline">\(\Omega\)</span>, è possibile associare ad ogni evento elementare <span class="math inline">\(\omega_i\)</span> dello spazio campione una coppia di numeri reali <span class="math inline">\((x, y)\)</span>, essendo <span class="math inline">\(x = X(\omega)\)</span> e <span class="math inline">\(y = Y(\omega)\)</span>, il che ci conduce alla seguente definizione.</p>
+<div id="def-join-prob" class="theorem definition">
+<p><span class="theorem-title"><strong>Definizione 4.1 </strong></span>Siano <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> due variabili casuali. La funzione che associa ad ogni coppia <span class="math inline">\((x, y)\)</span> un valore di probabilità prende il nome di funzione di probabilità congiunta:</p>
+<p><span class="math display">\[
+P(x, y) = P(X = x, Y = y).
+\]</span></p>
+</div>
+<p>Il termine “congiunta” deriva dal fatto che questa probabilità è legata al verificarsi di una coppia di valori, il primo associato alla variabile casuale <span class="math inline">\(X\)</span> ed il secondo alla variabile casuale <span class="math inline">\(Y\)</span>. Nel caso di due sole variabili casuali si parla di <em>distribuzione bivariata</em>, mentre nel caso di più variabili casuali si parla di <em>distribuzione multivariata</em>.</p>
+<!-- ::: {.remark} -->
+<!-- La regola della catena, $P(A \cap B) = P(A)P(B \mid A)$, permette il calcolo di qualsiasi membro della distribuzione congiunta di un insieme di variabili casuali utilizzando solo le probabilità condizionate. Nel caso di 4 eventi, per esempio, la regola della catena diventa -->
+<!-- $$ -->
+<!-- P(A_1, A_2, A_3, A_4) = P(A_1) P(A_2 \mid A_1) P(A_3 \mid A_1, A_2) P(A_4 \mid A_1, A_2, A_3). -->
+<!-- $$ -->
+<!-- ::: -->
+<section id="proprietà" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="proprietà">
+<span class="header-section-number">4.1.1</span> Proprietà</h3>
+<p>Una distribuzione di massa di probabilità congiunta bivariata deve soddisfare due proprietà:</p>
+<ol type="1">
+<li>
+<span class="math inline">\(0 \leq P(x_i, y_j) \leq 1\)</span>;</li>
+<li>la probabilità totale deve essere uguale a 1: <span class="math inline">\(\sum_{i} \sum_{j} P(x_i, y_j) = 1.\)</span>
+</li>
+</ol></section><section id="eventi" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="eventi">
+<span class="header-section-number">4.1.2</span> Eventi</h3>
+<p>Si noti che dalla probabilità congiunta possiamo calcolare la probabilità di qualsiasi evento definito in base alle variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Per capire come questo possa essere fatto, consideriamo nuovamente l’esperimento casuale discusso in precedenza.</p>
+<div id="exr-join-prob-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.1 </strong></span></p>
+<p>Per la distribuzione di massa di probabilità congiunta riportata nella tabella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>4.2</span></a> si trovi la probabilità dell’evento <span class="math inline">\(X+Y \leq 1\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span>Per trovare la probabilità richiesta dobbiamo sommare le probabilità associate a tutte le coppie <span class="math inline">\((x,y)\)</span> che soddisfano la condizione <span class="math inline">\(X+Y \leq 1\)</span>, ovvero</p>
+<p><span class="math display">\[
+P_{XY}(X+Y \leq 1) = P_{XY}(0, 0)+ P_{XY}(0, 1) + P_{XY}(1, 0) = 3/8.
+\]</span></p>
+</div>
+</section><section id="sec-marg-distr-discr" class="level3" data-number="4.1.3"><h3 data-number="4.1.3" class="anchored" data-anchor-id="sec-marg-distr-discr">
+<span class="header-section-number">4.1.3</span> Funzioni di probabilità marginali</h3>
+<!-- La distribuzione marginale di un sottoinsieme di variabili casuali è la distribuzione di probabilità delle variabili contenute nel sottoinsieme. Come spiegato da [Wikipedia](https://it.wikipedia.org/wiki/Distribuzione_marginale): *il termine variabile marginale è usato per riferirsi a quelle variabili nel sottoinsieme delle variabili che vengono trattenute ovvero utilizzate. Questo termine, marginale, è attribuito ai valori ottenuti ad esempio sommando in una tabella di valori lungo le righe oppure lungo le colonne, trascrivendo il risultato appunto a margine rispettivamente della riga o colonna sommata. La distribuzione delle variabili marginali (la distribuzione marginale) è ottenuta mediante marginalizzazione sopra le variabili da "scartare", e le variabili scartate sono dette fuori marginalizzate.* -->
+<p>Nel caso di due variabili casuali discrete <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> di cui conosciamo la distribuzione congiunta, la distribuzione marginale di <span class="math inline">\(X\)</span> è calcolata sommando la distribuzione di probabilità congiunta sopra la variabile da “scartare”, in questo caso la <span class="math inline">\(Y\)</span>. La funzione di massa di probabilità marginale <span class="math inline">\(P(X=x)\)</span> è dunque</p>
+<span class="math display">\[\begin{equation}
+P(X = x) = \sum_y P(X, Y = y) = \sum_y P(X \mid Y = y) P(Y = y),
+\end{equation}\]</span>
+<p>dove <span class="math inline">\(P(X = x,Y = y)\)</span> è la distribuzione congiunta di <span class="math inline">\(X, Y\)</span>, mentre <span class="math inline">\(P(X = x \mid Y = y)\)</span> è la distribuzione condizionata di <span class="math inline">\(X\)</span> dato <span class="math inline">\(Y\)</span>. Nel caso di <span class="math inline">\(P(X=x)\)</span>, diciamo che la variabile <span class="math inline">\(Y\)</span> è stata marginalizzata.</p>
+<p>Le probabilità bivariate marginali e congiunte di variabili casuali discrete sono spesso rappresentate mediante tabelle di contingenza. Si noti che <span class="math inline">\(P(X = x)\)</span> e <span class="math inline">\(P(Y = y)\)</span> sono normalizzate:</p>
+<p><span class="math display">\[
+\sum_x P(X=x) = 1.0, \quad \sum_y P(Y=y) = 1.0.
+\]</span></p>
+<p>Nel caso continuo si sostituisce l’integrazione alla somma – si veda la <a href="#sec-margin-vc-cont"><span>Sezione&nbsp;4.1.4</span></a>.</p>
+<div id="exr-join-prob-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.2 </strong></span></p>
+<p>Per l’esperimento casuale descritto nella <a href="#sec-fun-join-prob"><span>Sezione&nbsp;4.1</span></a>, si calcolino le probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span>Come indicato nella <a href="#tbl-ditr-cong-biv">Tabella&nbsp;<span>4.3</span></a>, <span class="math inline">\(P_X\)</span> si ottiene sommando su ciascuna riga fissata la colonna <span class="math inline">\(j\)</span>, <span class="math inline">\(P_X(X = j) = \sum_y p_{xy}(x = j, y)\)</span> e <span class="math inline">\(P_Y\)</span> si trova sommando su ciascuna colonna fissata la riga <span class="math inline">\(i,\)</span> <span class="math inline">\(P_Y (Y = i) = \sum_x p_{xy}(x, y = i)\)</span>.</p>
+<div id="tbl-ditr-cong-biv" class="anchored">
+<table class="table">
+<caption>Tabella 4.3: Distribuzione di probabilità congiunta <span class="math inline">\(P(X,Y)\)</span> per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate e probabilità marginali <span class="math inline">\(P(X)\)</span> e <span class="math inline">\(P(Y)\)</span>.</caption>
+<thead><tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x / y\)</span></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;"><span class="math inline">\(P(x)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2/8</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">3/8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">2/8</td>
+<td style="text-align: center;">3/8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(y)\)</span></td>
+<td style="text-align: center;">4/8</td>
+<td style="text-align: center;">4/8</td>
+<td style="text-align: center;">1.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="sec-margin-vc-cont" class="level3" data-number="4.1.4"><h3 data-number="4.1.4" class="anchored" data-anchor-id="sec-margin-vc-cont">
+<span class="header-section-number">4.1.4</span> Marginalizzazione di variabili casuali continue</h3>
+<p>Nella trattazione della statistca bayesiana useremo spesso il concetto di “marginalizzazione” e vedremo equazioni come la seguente:</p>
+<p><span id="eq-ex-marg-cont"><span class="math display">\[
+p(y) = \int_{\theta} p(y, \theta) = \int_{\theta} p(y \mid \theta) p(\theta),
+\tag{4.1}\]</span></span></p>
+<p>laddove <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span> sono due variabili casuali continue – nello specifico, con <span class="math inline">\(y\)</span> denoteremo i dati e con <span class="math inline">\(\theta\)</span> i parametri di un modello statistico. Alla luce di quanto detto sopra, è possibiile pensare al caso continuo indicato nella <a href="#eq-ex-marg-cont">Equazione&nbsp;<span>4.1</span></a> come all’estensione dell’esempio discusso in questo capitolo ad un numero infinito di valori delle due variabili continue (qui <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span>).</p>
+</section></section><section id="indipendenza" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="indipendenza">
+<span class="header-section-number">4.2</span> Indipendenza</h2>
+<p>La nozione di indipendenza per le variabili casuali è molto simile alla nozione di indipendenza per gli eventi. Due variabili casuali sono indipendenti se la conoscenza relativa a una di esse non influisce sulle probabilità dell’altra. Nel caso di due variabili casuali discrete, presentiamo qui una definizione di indipendenza formulatanei termini della loro distribuzione di massa di probabilità congiunta.</p>
+<div id="def-indep-joint-prob-distr" class="theorem definition">
+<p><span class="theorem-title"><strong>Definizione 4.2 </strong></span>Due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> distribuite congiuntamente si dicono indipendenti se e solo se</p>
+<p><span class="math display">\[
+P_{X, Y}(x, y) = P_X(x) P_Y(y).
+\]</span></p>
+</div>
+<p>A parole, se due variabili discrete <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> non si influenzano, ovvero se sono statisticamente indipendenti, allora la distribuzione di massa di probabilità congiunta si ottiene come prodotto delle funzioni di probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Se <span class="math inline">\(P_{X, Y}(x, y) \neq P_X(x) P_Y(y)\)</span>, allora le due variabili si dicono associate.</p>
+<p>Vedremo in seguito come una misura del grado di associazione lineare tra due variabili casuali è fornita dalla covarianza (o dalla correlazione).</p>
+<!-- Per meglio comprendere la @ref(eq:ex-marg-cont) possiamo esaminare il corrispondente caso discreto nel quale sostituiamo semplicemente l'integrale con una somma, il che ci riporta alla situazione descritta nella Sezione @ref(sec:marg-distr-discr). Possiamo dunque scrivere: -->
+<!-- \begin{equation} -->
+<!-- p(y) = \sum_{\theta} p(y, \theta) = \sum_{\theta} p(y \mid \theta) p(\theta). -->
+<!-- (\#eq:ex-marginalization) -->
+<!-- \end{equation} -->
+<!-- Esaminiamo un semplice esempio numerico. Siano $y$ e $\theta$ due variabili discrete aventi la distribuzione di massa di probabilità congiunta riportata nella tabella @ref(tab:ex-marg). -->
+
+<!-- Table: (\#tab:ex-marg) Distribuzione di probabilità congiunta $p(y, \theta)$ per due variabili casuali discrete. -->
+<!--          $y / \theta$    0     1    $p(y)$ -->
+<!--   --------------------- ----- ----- -------- -->
+<!--             0            0.1  0.2    0.3 -->
+<!--             1            0.3  0.4    0.7 -->
+<!--     $p(\theta)$          0.4  0.6    1.0 -->
+<!--   --------------------- ----- ----- -------- -->
+<!-- Applicando la @ref(eq:ex-marginalization), la distribuzione marginale $p(y) = \{0.3, 0.7\}$ può essere trovata nel modo seguente: -->
+<!-- $$ -->
+<!-- \begin{pmatrix} -->
+<!--     0.1 / 0.4 \\ -->
+<!--     0.3 / 0.4 -->
+<!-- \end{pmatrix} \cdot 0.4 + -->
+<!-- \begin{pmatrix} -->
+<!--     0.2 / 0.6 \\ -->
+<!--     0.4 / 0.6 -->
+<!-- \end{pmatrix} \cdot 0.6 = -->
+<!-- \begin{pmatrix} -->
+<!--     0.3 \\ -->
+<!--    0.7 -->
+<!-- \end{pmatrix}. -->
+<!-- $$ -->
+<!-- È possibiile pensare al caso continuo indicato nella @ref(eq:ex-marg-cont) come all'estensione dell'esempio presente ad un numero infinito di valori $\theta$. -->
+</section><section id="valore-atteso-di-una-funzione-di-una-variabile-casuale" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="valore-atteso-di-una-funzione-di-una-variabile-casuale">
+<span class="header-section-number">4.3</span> Valore atteso di una funzione di una variabile casuale</h2>
+<p>A volte ci viene data una variabile casuale $ X$e dobbiamo lavorare con una funzione di <span class="math inline">\(X\)</span>. Se <span class="math inline">\(X\)</span> è una variabile casuale e <span class="math inline">\(h(X)\)</span> è una funzione di <span class="math inline">\(X\)</span>, allora anche <span class="math inline">\(h(X)\)</span> è una variabile casuale. Se si vuole calcolare il valore atteso di <span class="math inline">\(h(X)\)</span>, lo si può fare usando la funzione di massa di probabilità o la funzione di densità di probabilità di <span class="math inline">\(X\)</span>; non è necessario conoscere la funzione di massa di probabilità (o la funzione di densità di probabilità) di <span class="math inline">\(h(X)\)</span>.</p>
+<div id="exr-mean-fun-rv" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.3 </strong></span></p>
+<p>Sia <span class="math inline">\(X\)</span> una variabile casuale discreta. Si trovi <span class="math inline">\(\mathbb{E}(aX + b)\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span><span class="math inline">\(\mathbb{E}(aX + b) = a\mathbb{E}(X) + b = a \sum_{x \in \Omega} xP(x) + b.\)</span> Si noti che la soluzione ha richiesto l’uso <span class="math inline">\(P(x)\)</span>, e non di <span class="math inline">\(P(aX + b)\)</span>.</p>
+</div>
+<div class="remark proof">
+<p><span class="proof-title"><em>Nota</em>. </span>Il risultato precedente è valido per variabili casuali continua dove la somma viene sostituita da un integrale.</p>
+</div>
+</section><section id="valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="valore-atteso-di-una-funzione-di-molteplici-variabili-casuali">
+<span class="header-section-number">4.4</span> Valore atteso di una funzione di molteplici variabili casuali</h2>
+<p>A volte ci vengono fornite due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> e dobbiamo lavorare con una funzione di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono variabili casuali e <span class="math inline">\(h(X, Y)\)</span> è una funzione di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, allora anche <span class="math inline">\(h( X, Y)\)</span> è una variabile casuale. Se si desidera calcolare la media di <span class="math inline">\(h(X, Y)\)</span>, lo si può fare utilizzando la funzione di massa di probabilità congiunta (o la funzione di densità di probabilità congiunta di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>); non è necessario conoscere la funzione di massa di probabilità congiunta (o la funzione di massa congiunta funzione di densità di probabilità) di <span class="math inline">\(h(X, Y)\)</span>.</p>
+<div id="exr-mean-fun-rv-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.4 </strong></span>&nbsp;</p>
+<p>Siano <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> due variabili casuali discrete con distribuzione di massa di probabilità congiunta</p>
+<p><span class="math display">\[
+P_{XY} (1,1) = 1/3; \quad P_{XY}  (1,2) = 1/8; \quad P_{XY} (2,1) = 1/2; \quad P_{XY} (2,2) = 1/24.
+\]</span></p>
+<p>Si trovi il valore atteso di <span class="math inline">\(g(X, Y) = XY\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span><span class="math display">\[
+\begin{align}
+\mathbb{E}g(X, Y) &amp;= \mathbb{E}(XY) \notag\\
+&amp;= \sum_{x=1}^2 \sum_{y=1}^2 x y P_{XY}(x, y) \notag\\
+&amp;= 1 \cdot 1 \cdot \frac{1}{3} +  
+   1 \cdot 2 \cdot \frac{1}{8} +
+   2 \cdot 1 \cdot \frac{1}{2} +
+   2 \cdot 2 \cdot \frac{1}{24}\notag\\
+&amp;= \frac{7}{4}.\notag
+\end{align}
+\]</span></p>
+</div>
+<div id="exr-mean-fun-rv-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.5 </strong></span></p>
+<p>Sia <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> una sequenza di variabili casuali i.i.d., ciascuna con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>. Si trovi il valore atteso di <span class="math inline">\(X = X_1 + X_2 + \dots + X_n\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span><span class="math inline">\(\mathbb{E}(X) = \mathbb{E}(X_1) + \mathbb{E}(X_2) + \dots + \mathbb{E}(X_n) = \sum_{i=1}^n \mathbb{E}(X_i) = n \mu.\)</span></p>
+</div>
+<div id="exr-mean-fun-rv-4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.6 </strong></span><br></p>
+<p>Sia <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> una sequenza di variabili casuali i.i.d., ciascuna con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>. Si definisca una nuova variabile casuale</p>
+<p><span class="math display">\[
+\bar{X} = \frac{X_1 + X_2 + \dots + X_n}{n}
+\]</span></p>
+<p>detta media campionaria. Si trovi il valore atteso di <span class="math inline">\(\bar{X}\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span><span class="math inline">\(\mathbb{E}(\bar{X}) = \frac{1}{n} \sum_{i=1}^n \mathbb{E}(X_i) = \mu.\)</span></p>
+</div>
+</section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
+<p>In alcuni casi, diverse variabili casuali possono essere associate a ciascuna unità statistica della popolazione. Ad esempio, immaginiamo di scegliere uno studente a caso dall’elenco di tutti gli studenti iscritti a un’università e di misurare l’altezza e il peso di quello studente. A ogni individuo nella popolazione degli studenti corrispondono dunque due variabili casuali, altezza e peso. Quando due o più variabili casuali sono associate a ciascun elemento di una popolazione, si dice che le variabili casuali sono distribuite congiuntamente. In questo capitolo abbiamo visto come si possa rappresentare la distribuzione di massa di probabilità congiunta di due variabili casuali discrete e come si possano ottenere le distribuzioni marginali delle due variabili.</p>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./017_bayes_theorem.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./019_density_func.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

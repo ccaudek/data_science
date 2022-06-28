@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.624">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Data Science per psicologi - 2&nbsp; Probabilità condizionata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./017_bayes_theorem.html" rel="next">
+<link href="./015_prob_intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Science per psicologi</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/ccaudek/datascience/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Benvenuti</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface.html" class="sidebar-item-text sidebar-link">Prefazione</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./015_prob_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./016_conditional_prob.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./017_bayes_theorem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./018_joint_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./019_density_func.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+   
+  <ul>
+<li><a href="#sec-bayes-cancer" id="toc-sec-bayes-cancer" class="nav-link active" data-scroll-target="#sec-bayes-cancer"> <span class="header-section-number">2.1</span> Probabilità condizionata su altri eventi</a></li>
+  <li><a href="#la-regola-moltiplicativa" id="toc-la-regola-moltiplicativa" class="nav-link" data-scroll-target="#la-regola-moltiplicativa"> <span class="header-section-number">2.2</span> La regola moltiplicativa</a></li>
+  <li><a href="#lindipendendenza-stocastica" id="toc-lindipendendenza-stocastica" class="nav-link" data-scroll-target="#lindipendendenza-stocastica"> <span class="header-section-number">2.3</span> L’indipendendenza stocastica</a></li>
+  <li><a href="#il-teorema-della-probabilit%C3%A0-totale" id="toc-il-teorema-della-probabilità-totale" class="nav-link" data-scroll-target="#il-teorema-della-probabilit%C3%A0-totale"> <span class="header-section-number">2.4</span> Il teorema della probabilità totale</a></li>
+  <li><a href="#il-teorema-della-probabilit%C3%A0-assoluta" id="toc-il-teorema-della-probabilità-assoluta" class="nav-link" data-scroll-target="#il-teorema-della-probabilit%C3%A0-assoluta"> <span class="header-section-number">2.5</span> Il teorema della probabilità assoluta</a></li>
+  <li><a href="#indipendenza-condizionale" id="toc-indipendenza-condizionale" class="nav-link" data-scroll-target="#indipendenza-condizionale"> <span class="header-section-number">2.6</span> Indipendenza condizionale</a></li>
+  <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
+  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ccaudek/datascience/edit/master/016_conditional_prob.qmd" class="toc-action">Modifica questa pagina</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-prob-cond" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header><p>Il fondamento della statistica bayesiana è il teorema di Bayes e il teorema di Bayes è una semplice ridescrizione della probabilità condizionata. Esaminiamo dunque la nozione di probabilità condizionata.</p>
+<section id="sec-bayes-cancer" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="sec-bayes-cancer">
+<span class="header-section-number">2.1</span> Probabilità condizionata su altri eventi</h2>
+<p>L’attribuzione di una probabilità ad un evento è sempre condizionata dalle conoscenze che abbiamo a disposizione. Per un determinato stato di conoscenze, attribuiamo ad un dato evento una certa probabilità di verificarsi; ma se il nostro stato di conoscenze cambia, allora cambierà anche la probabilità che attribuiremo all’evento in questione. Infatti, si può pensare che tutte le probabilità siano probabilità condizionate, anche se l’evento condizionante non è sempre esplicitamente menzionato.</p>
+<p>Per introdurre la probabilità condizionata, <span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="999_refs.html#ref-albert2019probability" role="doc-biblioref">2019</a>)</span> utilizzando il famoso paradosso delle tre carte. “Ci sono tre carte, delle quali la prima (<span class="math inline">\(A\)</span>) è rossa su entrambi i lati, la seconda (<span class="math inline">\(B\)</span>) su un lato è rossa e sull’altro è bianca e la terza (<span class="math inline">\(C\)</span>) è bianca su entrambi i lati. Ponendo su un tavolo una delle tre carte, scelta a caso, ottengo che il lato visibile è di colore rosso. Qual è la probabilità che anche il lato non visibile sia di colore rosso? La risposta intuitiva porta solitamente a rispondere che la probabilità ricercata sia pari al 50%, in quanto solo due carte (la <span class="math inline">\(A\)</span> e la <span class="math inline">\(B\)</span>) possono mostrare il colore rosso e solo una di queste (la <span class="math inline">\(A\)</span>) può mostrare anche sull’altro lato il colore rosso; tuttavia si dimostra che la risposta giusta è 2/3.” (da Wikipedia)</p>
+<p><span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="999_refs.html#ref-albert2019probability" role="doc-biblioref">2019</a>)</span> propongono di risolvere il problema con una simulazione in <span class="math inline">\(\textsf{R}\)</span>: prima di tutto si sceglie una carta a caso, e poi si sceglie un lato della carta. Ci sono tre carte possibili, che chiamiamo “c_rossa”, “c_bianca”, e “c_entrambi”. Per la carta rossa, ci sono due lati rossi; per la carta bianca ci sono due lati bianchi e la carta “entrambi” ha un lato rosso e un lato bianco.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<span>  Carta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"c_rossa"</span>, <span class="st">"c_rossa"</span>, <span class="st">"c_bianca"</span>, <span class="st">"c_bianca"</span>, <span class="st">"c_entrambi"</span>, </span>
+<span>    <span class="st">"c_entrambi"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  Lato <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"rosso"</span>, <span class="st">"rosso"</span>, <span class="st">"bianco"</span>, <span class="st">"bianco"</span>, <span class="st">"rosso"</span>, <span class="st">"bianco"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
+<span><span class="co">#&gt;   Carta      Lato  </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt; </span></span>
+<span><span class="co">#&gt; 1 c_rossa    rosso </span></span>
+<span><span class="co">#&gt; 2 c_rossa    rosso </span></span>
+<span><span class="co">#&gt; 3 c_bianca   bianco</span></span>
+<span><span class="co">#&gt; 4 c_bianca   bianco</span></span>
+<span><span class="co">#&gt; 5 c_entrambi rosso </span></span>
+<span><span class="co">#&gt; 6 c_entrambi bianco</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Estraiamo una carta a caso e classifichiamo il risultato ottenuto in base al tipo di carta e lato osservato. Ripetiamo l’esperimento 1,000 volte:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">84735</span><span class="op">)</span></span>
+<span><span class="va">carte</span> <span class="op">&lt;-</span> <span class="fu">sample_n</span><span class="op">(</span><span class="va">df</span>, <span class="fl">1e3</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">carte</span><span class="op">$</span><span class="va">Carta</span>, <span class="va">carte</span><span class="op">$</span><span class="va">Lato</span><span class="op">)</span></span>
+<span><span class="co">#&gt;             </span></span>
+<span><span class="co">#&gt;              bianco rosso</span></span>
+<span><span class="co">#&gt;   c_bianca      353     0</span></span>
+<span><span class="co">#&gt;   c_entrambi    143   160</span></span>
+<span><span class="co">#&gt;   c_rossa         0   344</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Se si osserva il colore rosso (seconda colonna nella tabella precedente), questo risultato è dovuto ad una carta <span class="math inline">\(A\)</span> (“rossa”) in 344 casi e ad una carta <span class="math inline">\(B\)</span> (“entrambi”) in 160 casi. Quindi, nella simulazione il risultato per cui è stato osservato un colore rosso (344 + 160) è associato ad una carta <span class="math inline">\(A\)</span> (“rossa”) in circa 2/3 dei casi – se il lato visibile è di colore rosso, allora c’è una probabilità di 2/3 che anche il lato non visibile sia di colore rosso.</p>
+<p>Questo esempio dimostra come le nostre intuizioni a proposito della probabilità condizionata non sono sempre corrette. Consideriamo un altro problema più articolato.</p>
+<div id="exm-cancer" class="theorem example">
+<p><span class="theorem-title"><strong>Esempio 2.1 </strong></span></p>
+<p>Supponiamo che lo screening per la diagnosi precoce del tumore mammario si avvalga di un test che è accurato al 90%, nel senso che classifica correttamente il 90% delle donne colpite dal cancro e il 90% delle donne che non hanno il cancro al seno. Supponiamo che l’1% delle donne sottoposte allo screening abbia effettivamente il cancro al seno (e d’altra parte, il 99% non lo ha). Ci chiediamo: (1) qual è la probabilità che una donna scelta a caso ottenga una mammografia positiva, e (2) se la mammografia è positiva, qual è la probabilità che vi sia effettivamente un tumore al seno?</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span>Per risolvere questo problema, supponiamo che il test in questione venga somministrato ad un grande campione di donne, diciamo a 1000 donne. Di queste 1000 donne, 10 (ovvero, l’1%) hanno il cancro al seno. Per queste 10 donne, il test darà un risultato positivo in 9 casi (ovvero, nel 90% dei casi). Per le rimanenti 990 donne che non hanno il cancro al seno, il test darà un risultato positivo in 99 casi (se la probabilità di un vero positivo è del 90%, la probabilità di un falso positivo è del 10%). Questa situazione è rappresentata nella figura <a href="#fig-mammografia">Figura&nbsp;<span>2.1</span></a>.</p>
+<p>Combinando i due risultati precedenti, vediamo che il test dà un risultato positivo per 9 donne che hanno effettivamente il cancro al seno e per 99 donne che non ce l’hanno, per un totale di 108 risultati positivi. Dunque, la probabilità di ottenere un risultato positivo al test è <span class="math inline">\(\frac{108}{1000}\)</span> = 11%. Ma delle 108 donne che hanno ottenuto un risultato positivo al test, solo 9 hanno il cancro al seno. Dunque, la probabilità di essere una donna che ha veramente il cancro al seno, dato un risultato positivo al test (che ha le proprietà descritte sopra), è pari a <span class="math inline">\(\frac{9}{108}\)</span> = 8%.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-mammografia" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="images/mammografia.png" class="img-fluid figure-img" style="width:77.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 2.1: Rappresentazione ad albero che riporta le frequenze attese dei risultati di una mammografia in un campione di 1,000 donne.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Nell’esercizio precedente, la probabilità dell’evento “ottenere un risultato positivo al test” è una probabilità non condizionata, mentre la probabilità dell’evento “avere il cancro al seno, dato che il test ha prodotto un risultato positivo” è una probabilità condizionata.</p>
+<p>In termini generali, la probabilità condizionata <span class="math inline">\(P(A \mid B)\)</span> rappresenta la probabilità che si verifichi l’evento <span class="math inline">\(A\)</span> sapendo che si è verificato l’evento <span class="math inline">\(B\)</span>. Arriviamo dunque alla seguente definizione.</p>
+<div id="def-prob-cond" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.1 </strong></span>Dato un qualsiasi evento <span class="math inline">\(A\)</span>, si chiama <em>probabilità condizionata</em> di <span class="math inline">\(A\)</span> dato <span class="math inline">\(B\)</span> il numero</p>
+<p><span id="eq-probcond"><span class="math display">\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \quad \text{con}\, P(B) &gt; 0,
+\tag{2.1}\]</span></span></p>
+<p>dove <span class="math inline">\(P(A\cap B)\)</span> è la <em>probabilità congiunta</em> dei due eventi, ovvero la probabilità che si verifichino entrambi.</p>
+</div>
+<p>Concludiamo con un problema molto semplice per consolidare la nostra comprensione del concetto di probabilità condizionata.</p>
+<div id="exm-prob-cond-1" class="theorem example">
+<p><span class="theorem-title"><strong>Esempio 2.2 </strong></span></p>
+<p>Da un mazzo di 52 carte (13 carte per ciascuno dei 4 semi) ne viene estratta una in modo casuale. Qual è la probabilità che esca una figura di cuori? Sapendo che la carta estratta ha il seme di cuori, qual è la probabilità che il valore numerico della carta sia 7, 8 o 9?</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span>Ci sono 13 carte di cuori, dunque la risposta alla prima domanda è 1/4. Questa è una probabilità non condizionata, dunque il suo calcolo non presenta alcuna difficoltà. La seconda probabilità cercata è una probabilità condizionata. Anche in questo secondo caso dobbiamo solo contare, ma, in questo caso, considerando solo un sottoinsieme di carte, ovvero le 13 carte di cuori. In questo modo è facile arrivare al risultato cercato, ovvero 3/13. Applicando la formula <a href="#eq-probcond">Equazione&nbsp;<span>2.1</span></a>, con <span class="math inline">\(A\)</span> = 7, 8, o 9 e <span class="math inline">\(B\)</span> = cuori, arriviamo allo stesso risulato:</p>
+<p><span class="math display">\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{3/52}{13/52} = \frac{3}{13}.
+\]</span></p>
+</div>
+<!-- ### La fallacia del condizionale trasposto -->
+<!-- Un errore comune che si commette è quello di credere che $P(A \mid B)$ sia uguale a $P(B \mid A)$. Tale fallacia ha particolare risalto in ambito forense tanto che è conosciuta con il nome di "fallacia del procuratore". In essa, una piccola probabilità dell'evidenza, data l'innocenza, viene erroneamente interpretata come la probabilità dell'innocenza, data l'evidenza. -->
+<!-- Consideriamo il caso di un esame del DNA. Un esperto forense potrebbe affermare, ad esempio, che "se l'imputato è innocente, c'è solo una possibilità su un miliardo che vi sia una corrispondenza tra il suo DNA e il DNA trovato sulla scena del crimine". Ma talvolta questa probabilità è erroneamente interpretata come avesse il seguente significato: "date le prove del DNA, c'è solo una possibilità su un miliardo che l'imputato sia innocente". -->
+<!-- Le considerazioni precedenti risultano più chiare se facciamo nuovamente riferimento all'esercizio sul tumore mammario descritto sopra. In tale esercizio abbiamo visto come la probabilità di cancro dato un risultato positivo al test sia uguale a 0.08. Tale probabilità è molto diversa dalla probabilità di un risultato positivo al test data la presenza del cancro. Infatti, questa seconda probabilità è uguale a 0.90 ed è descritta nel problema come una delle caratteristiche del test in questione. -->
+</section><section id="la-regola-moltiplicativa" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="la-regola-moltiplicativa">
+<span class="header-section-number">2.2</span> La regola moltiplicativa</h2>
+<p>Dalla definizione di probabilità condizionata (<a href="#eq-probcond">Equazione&nbsp;<span>2.1</span></a>) è possibile esprimere la probabilità congiunta tramite le condizionate. La <em>regola moltiplicativa</em> (o <em>legge delle probabilità composte</em>, o <em>regola della catena</em>) afferma che la probabilità che si verifichino due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> è pari alla probabilità di uno dei due eventi moltiplicato con la probabilità dell’altro evento condizionato al verificarsi del primo:</p>
+<p><span id="eq-probcondinv"><span class="math display">\[
+P(A \cap B) = P(B)P(A \mid B) = P(A)P(B \mid A).
+\tag{2.2}\]</span></span></p>
+<p>La <a href="#eq-probcondinv">Equazione&nbsp;<span>2.2</span></a> si estende al caso di <span class="math inline">\(n\)</span> eventi <span class="math inline">\(A_1, \dots, A_n\)</span> nella forma seguente:</p>
+<p><span id="eq-probcomposte"><span class="math display">\[
+P\left( \bigcap_{k=1}^n A_k \right) = \prod_{k=1}^n P\left(  A_k  \ \Biggl\lvert \ \bigcap_{j=1}^{k-1} A_j \right)
+\tag{2.3}\]</span></span></p>
+<p>Per esempio, nel caso di quattro eventi abbiamo</p>
+<p><span class="math display">\[
+\begin{split}
+P(A_1 \cap A_2 \cap A_3 \cap A_4) = {}&amp; P(A_1) \cdot P(A_2 \mid A_1) \cdot  P(A_3 \mid A_1 \cap A_2) \cdot \\
+&amp; P(A_4 \mid A_1 \cap A_2 \cap A_{3}).\notag
+\end{split}
+\]</span></p>
+<div id="exm-prob-cond-2" class="theorem example">
+<p><span class="theorem-title"><strong>Esempio 2.3 </strong></span>Da un’urna contenente 6 palline bianche e 4 nere si estrae una pallina per volta, senza reintrodurla nell’urna. Indichiamo con <span class="math inline">\(B_i\)</span> l’evento: “esce una pallina bianca alla <span class="math inline">\(i\)</span>-esima estrazione” e con <span class="math inline">\(N_i\)</span> l’estrazione di una pallina nera. L’evento: “escono due palline bianche nelle prime due estrazioni” è rappresentato dalla intersezione <span class="math inline">\(\{B_1 \cap B_2\}\)</span> e, per l’<a href="#eq-probcondinv">Equazione&nbsp;<span>2.2</span></a>, la sua probabilità vale</p>
+<p><span class="math display">\[
+P(B_1 \cap B_2) = P(B_1)P(B_2 \mid B_1).
+\]</span></p>
+<p><span class="math inline">\(P(B_1)\)</span> vale 6/10, perché nella prima estrazione <span class="math inline">\(\Omega\)</span> è costituito da 10 elementi: 6 palline bianche e 4 nere. La probabilità condizionata <span class="math inline">\(P(B_2 \mid B_1)\)</span> vale 5/9, perché nella seconda estrazione, se è verificato l’evento <span class="math inline">\(B_1\)</span>, lo spazio campionario consiste di 5 palline bianche e 4 nere. Si ricava pertanto:</p>
+<p><span class="math display">\[
+P(B_1 \cap B_2) = \frac{6}{10} \cdot \frac{5}{9} = \frac{1}{3}.
+\]</span></p>
+<p>In modo analogo si ha che</p>
+<p><span class="math display">\[
+P(N_1 \cap N_2) = P(N_1)P(N_2 \mid N_1) = \frac{4}{10} \cdot \frac{3}{9} = \frac{4}{30}.
+\]</span></p>
+<p>Se l’esperimento consiste nell’estrazione successiva di 3 palline, la probabilità che queste siano tutte bianche, per la <a href="#eq-probcomposte">Equazione&nbsp;<span>2.3</span></a>, vale</p>
+<p><span class="math display">\[
+P(B_1 \cap B_2 \cap B_3)=P(B_1)P(B_2 \mid B_1)P(B_3 \mid B_1 \cap B_2),
+\]</span></p>
+<p>dove la probabilità <span class="math inline">\(P(B_3 \mid B_1 \cap B_2)\)</span> si calcola supponendo che si sia verificato l’evento condizionante <span class="math inline">\(\{B_1 \cap B_2\}\)</span>. Lo spazio campionario per questa probabilità condizionata è costituito da 4 palline bianche e 4 nere, per cui <span class="math inline">\(P(B_3 \mid B_1 \cap B_2) = 1/2\)</span> e quindi:</p>
+<p><span class="math display">\[
+P (B_1 \cap B_2 \cap B_3) = \frac{6}{10}\cdot\frac{5}{9} \cdot\frac{4}{8}  = \frac{1}{6}.
+\]</span></p>
+<p>La probabilità dell’estrazione di tre palline nere è invece:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P(N_1 \cap N_2 \cap N_3) &amp;= P(N_1)P(N_2 \mid N_1)P(N_3 \mid N_1 \cap N_2)\notag\\
+&amp;= \frac{4}{10} \cdot \frac{3}{9} \cdot \frac{2}{8} = \frac{1}{30}.\notag
+\end{aligned}
+\]</span></p>
+</div>
+</section><section id="lindipendendenza-stocastica" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="lindipendendenza-stocastica">
+<span class="header-section-number">2.3</span> L’indipendendenza stocastica</h2>
+<p>Un concetto molto importante per le applicazioni statistiche della probabilità è quello dell’indipendenza stocastica. L’<a href="#eq-probcond">Equazione&nbsp;<span>2.1</span></a> consente di esprimere il concetto di indipendenza di un evento da un altro in forma intuitiva: se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono eventi indipendenti, allora il verificarsi di <span class="math inline">\(A\)</span> non influisce sulla probabilità del verificarsi di <span class="math inline">\(B\)</span>, ovvero non la condiziona, e il verificarsi di <span class="math inline">\(B\)</span> non influisce sulla probabilità del verificarsi di <span class="math inline">\(A\)</span>. Infatti, per l’<a href="#eq-probcond">Equazione&nbsp;<span>2.1</span></a>, si ha che, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi indipendenti, risulta:</p>
+<p><span class="math display">\[
+P(A \mid B) = \frac{P(A)P(B)}{P(B)} = P(A),
+\]</span></p>
+<p><span class="math display">\[
+P(B \mid A) = \frac{P(A)P(B)}{P(A)} = P(B).
+\]</span></p>
+<p>Possiamo dunque dire che due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti se</p>
+<p><span class="math display">\[
+\begin{split}
+P(A \mid B) &amp;= P(A), \\
+P(B \mid A) &amp;= P(B).
+\end{split}
+\]</span></p>
+<div id="exm-indip-1" class="theorem example">
+<p><span class="theorem-title"><strong>Esempio 2.4 </strong></span>Nel lancio di due dadi non truccati, si considerino gli eventi: <span class="math inline">\(A\)</span> = {esce un 1 o un 2 nel primo lancio} e <span class="math inline">\(B\)</span> = {il punteggio totale è 8}. Gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti?</p>
+<p>Rappresentiamo qui sotto lo spazio campione dell’esperimento casuale.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/sampling-space-dice.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Rappresentazione dello spazio campionario dei risultati dell’esperimento casuale corrispondente al lancio di due dadi bilanciati. Sono evidenziati gli eventi elementari che costituiscono l’evento <span class="math inline">\(B\)</span>: ‘il punteggio totale è 8’.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Gli eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> non sono statisticamente indipendenti. Infatti, le loro probabilità valgono <span class="math inline">\(P(A) = 12/36\)</span> e <span class="math inline">\(P(B) = 5/36\)</span> e la probabilità della loro intersezione è</p>
+<p><span class="math display">\[
+P(A \cap B) = 1/36 = 3/108 \neq P(A)P(B) = 5/108.
+\]</span></p>
+</div>
+<div class="remark proof">
+<p><span class="proof-title"><em>Nota</em>. </span>Il concetto di indipendenza è del tutto differente da quello di incompatibilità. Si noti infatti che due eventi <em>A</em> e <em>B</em> incompatibili (per i quali si ha <span class="math inline">\(A \cap B = \emptyset\)</span>) sono statisticamente dipendenti, poiché il verificarsi dell’uno esclude il verificarsi dell’altro: <span class="math inline">\(P(A \cap B)=0 \neq P(A)P(B)\)</span>.</p>
+</div>
+</section><section id="il-teorema-della-probabilità-totale" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="il-teorema-della-probabilità-totale">
+<span class="header-section-number">2.4</span> Il teorema della probabilità totale</h2>
+<p>Dato un insieme finito <span class="math inline">\(A_i\)</span> di eventi, nel calcolo della probabilità dell’unione di tutti gli eventi, se gli eventi considerati non sono a due a due incompatibili, si deve tenere conto delle loro intersezioni. In particolare, la probabilità dell’unione di due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> è pari alla somma delle singole probabilità <span class="math inline">\(P(A)\)</span> e <span class="math inline">\(P(B)\)</span> diminuita della probabilità della loro intersezione:</p>
+<p><span id="eq-probunione"><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B).
+\tag{2.4}\]</span></span></p>
+<p>Nel caso di tre eventi, si ha</p>
+<p><span class="math display">\[
+\begin{split}
+P(A \cup B \cup C) &amp;= P(A)+P(B)+P(C)-P(A\cap B)-P(A\cap C) - \\
+&amp; \qquad P(B\cap C) + P(A\cap B\cap C).
+\end{split}
+\]</span></p>
+<p>La formula per il caso di <span class="math inline">\(n\)</span> eventi si ricava per induzione.</p>
+<p>Per il caso di due soli eventi, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti, l’<a href="#eq-probunione">Equazione&nbsp;<span>2.4</span></a> si modifica nella relazione seguente:</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A)P(B).
+\]</span></p>
+<p>Nel caso di due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> incompatibili, se cioè <span class="math inline">\(P(A \cap B) = \varnothing\)</span>, si ha che</p>
+<p><span class="math display">\[
+A\cap B=\varnothing \Rightarrow P(A\cup B)=P(A)+P(B).
+\]</span></p>
+<p>Si può dimostrare per induzione che ciò vale anche per un insieme finito di eventi <span class="math inline">\(A_{n}\)</span> a due a due incompatibili, ovvero che:</p>
+<p><span class="math display">\[
+A_i\cap A_j=\varnothing, i\neq j \Rightarrow P\left(\bigcup_{i=1}^n A_i\right)=\sum_{i=1}^nP(A_i).
+\]</span></p>
+</section><section id="il-teorema-della-probabilità-assoluta" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="il-teorema-della-probabilità-assoluta">
+<span class="header-section-number">2.5</span> Il teorema della probabilità assoluta</h2>
+<p>Il teorema della probabilità assoluta consente di calcolare la probabilità di un evento <span class="math inline">\(E\)</span> di cui sono note le probabilità condizionate rispetto ad altri eventi <span class="math inline">\((H_i)_{i\geq 1}\)</span>, a condizione che essi costituiscano una partizione dell’evento certo <span class="math inline">\(\Omega\)</span>, ovvero</p>
+<ol type="1">
+<li>
+<span class="math inline">\(\bigcup_{i=1}^\infty H_i = \Omega\)</span>;</li>
+<li>
+<span class="math inline">\(H_j \cap H_j = \emptyset, i\neq j\)</span>;</li>
+<li>
+<span class="math inline">\(P(H_i) &gt; 0, i = 1, \dots, \infty\)</span>.</li>
+</ol>
+<p>Nel caso di una partizione dello spazio campione in <span class="math inline">\(n\)</span> sottoinsiemi abbiamo</p>
+<p><span class="math display">\[
+P(E) = \sum_{i=1}^n P(H_i\cap E) = \sum_{i=1}^n P(E \mid H_i) P(H_i).
+\]</span></p>
+<p>Consideriamo, ad esempio, una partizione dell’evento certo in tre sottoinsiemi.</p>
+<div class="cell" data-layout-align="center" data-hash="016_conditional_prob_cache/html/tikz-prob-tot_7f1743a3a95b72e3671c6fdbcfedea5d">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="016_conditional_prob_files/figure-html/tikz-prob-tot-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Partizione dell’evento certo <span class="math inline">\(\Omega\)</span> in tre sottoinsiemi sui quali viene definito l’evento <span class="math inline">\(E\)</span>.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In tali circostanze si ha che</p>
+<p><span id="eq-prob-total-1a"><span class="math display">\[
+P(E) = P(E \cap H_1) + P(E \cap H_2) + P(E \cap H_3),
+\tag{2.5}\]</span></span></p>
+<p>ovvero</p>
+<p><span id="eq-prob-total-1b"><span class="math display">\[
+P(E) = P(E \mid H_1) P(H_1) + P(E \mid H_2) P(H_2) + P(E \mid H_3) P(H_3).
+\tag{2.6}\]</span></span></p>
+<p>In base al teorema della probabilità assoluta, dunque, se l’evento <span class="math inline">\(E\)</span> è costituito da tutti gli eventi elementari in <span class="math inline">\(E \cap H_1\)</span>, <span class="math inline">\(E \cap H_2\)</span> e <span class="math inline">\(E \cap H_3\)</span>, allora la sua probabilità è data dalla somma delle probabilità condizionate <span class="math inline">\(P(E \mid H_i)\)</span>, ciascuna delle quali pesata per la probabilità dell’evento condizionante <span class="math inline">\(H_i\)</span>.</p>
+<div id="exm-3urns" class="theorem example">
+<p><span class="theorem-title"><strong>Esempio 2.5 </strong></span>Si considerino tre urne, ciascuna delle quali contiene 100 palline:</p>
+<ul>
+<li>Urna 1: 75 palline rosse e 25 palline blu,</li>
+<li>Urna 2: 60 palline rosse e 40 palline blu,</li>
+<li>Urna 3: 45 palline rosse e 55 palline blu.</li>
+</ul>
+<p>Una pallina viene estratta a caso da un’urna anch’essa scelta a caso. Qual è la probabilità che la pallina estratta sia di colore rosso?</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span>Sia <span class="math inline">\(R\)</span> l’evento “la pallina estratta è rossa” e sia <span class="math inline">\(U_i\)</span> l’evento che corrisponde alla scelta dell’<span class="math inline">\(i\)</span>-esima urna. Sappiamo che</p>
+<p><span class="math display">\[
+P(R \mid U_1) = 0.75, \quad P(R \mid U_2) = 0.60, \quad P(R \mid U_3) = 0.45.
+\]</span></p>
+<p>Gli eventi <span class="math inline">\(U_1\)</span>, <span class="math inline">\(U_2\)</span> e <span class="math inline">\(U_3\)</span> costituiscono una partizione dello spazio campione in quanto <span class="math inline">\(U_1\)</span>, <span class="math inline">\(U_2\)</span> e <span class="math inline">\(U_3\)</span> sono eventi mutualmente esclusivi ed esaustivi, ovvero <span class="math inline">\(P(U_1 \cup U_2 \cup U_3) = 1.0\)</span>. In base al teorema della probabilità assoluta, la probabilità di estrarre una pallina rossa è dunque</p>
+<p><span class="math display">\[
+\begin{split}
+P(R) &amp;= P(R \mid U_1)P(U_1) + P(R \mid U_2)P(U_2) + P(R \mid U_3)P(U_3) \\
+&amp;= 0.75 \cdot \frac{1}{3}+0.60 \cdot \frac{1}{3}+0.45 \cdot \frac{1}{3} \\
+&amp;=0.60.
+\end{split}
+\]</span></p>
+</div>
+</section><section id="indipendenza-condizionale" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="indipendenza-condizionale">
+<span class="header-section-number">2.6</span> Indipendenza condizionale</h2>
+<p>Aggiungo qui delle considerazioni sul concetto di indipendenza condizionale a cui si farà riferimento nell’ultima parte della dispensa. L’indipendenza condizionale descrive situazioni in cui un’osservazione è irrilevante o ridondante quando si valuta la certezza di un’ipotesi. L’indipendenza condizionale è solitamente formulata nei termini della probabilità condizionata, come un caso speciale in cui la probabilità dell’ipotesi data un’osservazione non informativa è uguale alla probabilità senza tale osservazione non informativa.</p>
+<p>Se <span class="math inline">\(A\)</span> è l’ipotesi e <span class="math inline">\(B\)</span> e <span class="math inline">\(C\)</span> sono osservazioni, l’indipendenza condizionale può essere espressa come l’uguaglianza:</p>
+<p><span class="math display">\[
+P(A \mid B,C)=P(A \mid C).
+\]</span></p>
+<p>Dato che <span class="math inline">\(P(A \mid B,C)\)</span> è uguale a <span class="math inline">\(P(A \mid C)\)</span>, questa uguaglianza corrisponde all’affermazione che <span class="math inline">\(B\)</span> non fornisce alcun contributo alla certezza di <span class="math inline">\(A\)</span>. In questo caso si dice che <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> condizionalmente indipendenti dato <span class="math inline">\(C\)</span>, scritto simbolicamente come: <span class="math inline">\((A \perp\!\!\!\!\perp B \mid C)\)</span>.</p>
+<p>In maniera equivalente, l’indipendenza condizionale <span class="math inline">\((A \perp\!\!\!\!\perp B \mid C)\)</span> si verifica se:</p>
+<p><span class="math display">\[
+P(A, B \mid C) = P(A \mid C) P(B \mid C).
+\]</span></p>
+<p>Un esempio è il seguente (da Wikipedia). Siano due eventi le probabilità che le persone <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> tornino a casa in tempo per la cena, e il terzo evento è il fatto che una tempesta di neve ha colpito la città. Mentre sia <span class="math inline">\(A\)</span> che <span class="math inline">\(B\)</span> hanno una probabilità più piccola di tornare a casa in tempo per la cena di quando non c’è la neve, tali probabilità sono indipendenti l’una dall’altra. Cioè, sapere che <span class="math inline">\(A\)</span> è in ritardo non ci dice nulla sul fatto che <span class="math inline">\(B\)</span> sia in ritardo o meno – <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> potrebbero vivere in quartieri diversi, percorrere distanze diverse e utilizzare mezzi di trasporto diversi. Tuttavia, se sapessimo che <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> vivono nello stesso quartiere, usano lo stesso mezzo di trasporto e lavorano nello stesso luogo, allora i due eventi non sarebbero condizionatamente indipendenti.</p>
+</section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
+<p>La probabilità condizionata è importante perché ci fornisce uno strumento per precisare il concetto di indipendenza statistica. Una delle domande più importanti delle analisi statistiche è infatti quella che si chiede se due variabili siano associate tra loro oppure no. In questo Capitolo abbiamo discusso il concetto di indipendenza (come contrapposto al concetto di associazione). In seguito vedremo come sia possibile fare inferenza sull’associazione tra variabili.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="ref-albert2019probability" class="csl-entry" role="doc-biblioentry">
+Albert, J., &amp; Hu, J. (2019). <em>Probability and bayesian modeling</em>. Chapman; Hall/CRC.
+</div>
+</div>
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./015_prob_intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./017_bayes_theorem.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
