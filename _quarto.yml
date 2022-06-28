@@ -7,9 +7,9 @@ book:
   author: "Corrado Caudek"
   # cover-image: images/cover.png
   site-url: https://rstudio-education.github.io/hopr/
-  repo-url: https://github.com/ccaudek/datascience/
+  repo-url: https://github.com/ccaudek/data_science/
   repo-branch: master
-  repo-actions: [edit]
+  # repo-actions: [edit]
   language: _language.yml
   chapters:
     - index.qmd

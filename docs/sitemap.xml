@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rstudio-education.github.io/hopr/index.html</loc>
-    <lastmod>2022-06-27T22:49:35.067Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.471Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/preface.html</loc>
-    <lastmod>2022-06-27T22:49:35.068Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.471Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/prob.html</loc>
-    <lastmod>2022-06-27T22:49:35.068Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.472Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/015_prob_intro.html</loc>
-    <lastmod>2022-06-27T22:49:35.072Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.475Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/016_conditional_prob.html</loc>
-    <lastmod>2022-06-27T22:49:35.078Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.484Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/017_bayes_theorem.html</loc>
-    <lastmod>2022-06-27T22:49:35.079Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.485Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/018_joint_prob.html</loc>
-    <lastmod>2022-06-28T05:46:28.686Z</lastmod>
+    <lastmod>2022-06-28T07:10:26.990Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/019_density_func.html</loc>
-    <lastmod>2022-06-27T22:49:35.084Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.490Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio-education.github.io/hopr/999_refs.html</loc>
-    <lastmod>2022-06-27T22:49:35.084Z</lastmod>
+    <lastmod>2022-06-28T06:44:11.490Z</lastmod>
   </url>
 </urlset>

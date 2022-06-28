@@ -66,7 +66,7 @@ ul.task-list{list-style: none;}
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Data Science per psicologi</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/ccaudek/datascience/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ccaudek/data_science/" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -142,11 +142,13 @@ ul.task-list{list-style: none;}
   <li><a href="#sec-margin-vc-cont" id="toc-sec-margin-vc-cont" class="nav-link" data-scroll-target="#sec-margin-vc-cont"> <span class="header-section-number">4.1.4</span> Marginalizzazione di variabili casuali continue</a></li>
   </ul>
 </li>
-  <li><a href="#indipendenza" id="toc-indipendenza" class="nav-link" data-scroll-target="#indipendenza"> <span class="header-section-number">4.2</span> Indipendenza</a></li>
-  <li><a href="#valore-atteso-di-una-funzione-di-una-variabile-casuale" id="toc-valore-atteso-di-una-funzione-di-una-variabile-casuale" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-una-variabile-casuale"> <span class="header-section-number">4.3</span> Valore atteso di una funzione di una variabile casuale</a></li>
-  <li><a href="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" id="toc-valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali"> <span class="header-section-number">4.4</span> Valore atteso di una funzione di molteplici variabili casuali</a></li>
+  <li><a href="#valore-atteso-di-una-funzione-di-una-variabile-casuale" id="toc-valore-atteso-di-una-funzione-di-una-variabile-casuale" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-una-variabile-casuale"> <span class="header-section-number">4.2</span> Valore atteso di una funzione di una variabile casuale</a></li>
+  <li><a href="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" id="toc-valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali"> <span class="header-section-number">4.3</span> Valore atteso di una funzione di molteplici variabili casuali</a></li>
+  <li><a href="#distribuzioni-condizionali" id="toc-distribuzioni-condizionali" class="nav-link" data-scroll-target="#distribuzioni-condizionali"> <span class="header-section-number">4.4</span> Distribuzioni condizionali</a></li>
+  <li><a href="#valore-atteso-condizionato" id="toc-valore-atteso-condizionato" class="nav-link" data-scroll-target="#valore-atteso-condizionato"> <span class="header-section-number">4.5</span> Valore atteso condizionato</a></li>
+  <li><a href="#indipendenza" id="toc-indipendenza" class="nav-link" data-scroll-target="#indipendenza"> <span class="header-section-number">4.6</span> Indipendenza</a></li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
-  </ul><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ccaudek/datascience/edit/master/018_joint_prob.qmd" class="toc-action">Modifica questa pagina</a></p></div></div></nav>
+  </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -256,20 +258,22 @@ P(X=0, Y=0) = P(CCC) = 1/8.
 P(X=1, Y=0) = P(\mbox{CCT}) + P(\mbox{CTC}) = 1/8 + 1/8 = 1/4.
 \]</span></p>
 <p>Di seguito sono riportati i calcoli per tutte le possibili coppie <span class="math inline">\(X, Y\)</span>:</p>
-<span class="math display">\[\begin{align}
+<p><span class="math display">\[
+\begin{align}
 P(X = 0, Y = 0) &amp;= P(\omega_8 = CCC) = 1/8; \notag\\
 P(X = 1, Y = 0) &amp;= P(\omega_5 = CCT) + P(\omega_6 = CTC) = 2/8; \notag\\
 P(X = 1, Y = 1) &amp;= P(\omega_7 = TCC) = 1/8; \notag\\
 P(X = 2, Y = 0) &amp;= P(\omega_4 = CTT) = 1/8; \notag\\
 P(X = 2, Y = 1) &amp;= P(\omega_3 = TCT) + P(\omega_2 = TTC) = 2/8; \notag\\
 P(X = 3, Y = 1) &amp;= P(\omega_1 = TTT) = 1/8; \notag
-\end{align}\]</span>
+\end{align}
+\]</span></p>
 <p>Le probabilità così trovate sono riportate nella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>4.2</span></a> che descrive la <em>distribuzione di probabilità congiunta</em> delle variabili casuali <span class="math inline">\(X\)</span> (“numero di realizzazioni con il risultato testa nei tre lanci”) e <span class="math inline">\(Y\)</span> (“numero di realizzazioni con il risultato testa nel primo lancio”) per l’esperimento casuale che consiste nel lancio di tre monete equilibrate.</p>
 <div id="tbl-distr-cong-biv-1" class="anchored">
 <table class="table">
 <caption>Tabella 4.2: Distribuzione di probabilità congiunta per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate.</caption>
 <thead><tr class="header">
-<th style="text-align: center;"><span class="math inline">\(x / y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x \textbackslash y\)</span></th>
 <th style="text-align: center;">0</th>
 <th style="text-align: center;">1</th>
 </tr></thead>
@@ -305,12 +309,6 @@ P(x, y) = P(X = x, Y = y).
 \]</span></p>
 </div>
 <p>Il termine “congiunta” deriva dal fatto che questa probabilità è legata al verificarsi di una coppia di valori, il primo associato alla variabile casuale <span class="math inline">\(X\)</span> ed il secondo alla variabile casuale <span class="math inline">\(Y\)</span>. Nel caso di due sole variabili casuali si parla di <em>distribuzione bivariata</em>, mentre nel caso di più variabili casuali si parla di <em>distribuzione multivariata</em>.</p>
-<!-- ::: {.remark} -->
-<!-- La regola della catena, $P(A \cap B) = P(A)P(B \mid A)$, permette il calcolo di qualsiasi membro della distribuzione congiunta di un insieme di variabili casuali utilizzando solo le probabilità condizionate. Nel caso di 4 eventi, per esempio, la regola della catena diventa -->
-<!-- $$ -->
-<!-- P(A_1, A_2, A_3, A_4) = P(A_1) P(A_2 \mid A_1) P(A_3 \mid A_1, A_2) P(A_4 \mid A_1, A_2, A_3). -->
-<!-- $$ -->
-<!-- ::: -->
 <section id="proprietà" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="proprietà">
 <span class="header-section-number">4.1.1</span> Proprietà</h3>
 <p>Una distribuzione di massa di probabilità congiunta bivariata deve soddisfare due proprietà:</p>
@@ -334,12 +332,12 @@ P_{XY}(X+Y \leq 1) = P_{XY}(0, 0)+ P_{XY}(0, 1) + P_{XY}(1, 0) = 3/8.
 </div>
 </section><section id="sec-marg-distr-discr" class="level3" data-number="4.1.3"><h3 data-number="4.1.3" class="anchored" data-anchor-id="sec-marg-distr-discr">
 <span class="header-section-number">4.1.3</span> Funzioni di probabilità marginali</h3>
-<!-- La distribuzione marginale di un sottoinsieme di variabili casuali è la distribuzione di probabilità delle variabili contenute nel sottoinsieme. Come spiegato da [Wikipedia](https://it.wikipedia.org/wiki/Distribuzione_marginale): *il termine variabile marginale è usato per riferirsi a quelle variabili nel sottoinsieme delle variabili che vengono trattenute ovvero utilizzate. Questo termine, marginale, è attribuito ai valori ottenuti ad esempio sommando in una tabella di valori lungo le righe oppure lungo le colonne, trascrivendo il risultato appunto a margine rispettivamente della riga o colonna sommata. La distribuzione delle variabili marginali (la distribuzione marginale) è ottenuta mediante marginalizzazione sopra le variabili da "scartare", e le variabili scartate sono dette fuori marginalizzate.* -->
-<p>Nel caso di due variabili casuali discrete <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> di cui conosciamo la distribuzione congiunta, la distribuzione marginale di <span class="math inline">\(X\)</span> è calcolata sommando la distribuzione di probabilità congiunta sopra la variabile da “scartare”, in questo caso la <span class="math inline">\(Y\)</span>. La funzione di massa di probabilità marginale <span class="math inline">\(P(X=x)\)</span> è dunque</p>
-<span class="math display">\[\begin{equation}
+<p>La distribuzione marginale di un sottoinsieme di variabili casuali è la distribuzione di probabilità delle variabili contenute nel sottoinsieme. Come spiegato da <a href="https://it.wikipedia.org/wiki/Distribuzione_marginale">Wikipedia</a>: &gt; il termine variabile marginale è usato per riferirsi a quelle variabili nel sottoinsieme delle variabili che vengono trattenute ovvero utilizzate. Questo termine, marginale, è attribuito ai valori ottenuti ad esempio sommando in una tabella di valori lungo le righe oppure lungo le colonne, trascrivendo il risultato appunto a margine rispettivamente della riga o colonna sommata. La distribuzione delle variabili marginali (la distribuzione marginale) è ottenuta mediante marginalizzazione sopra le variabili da “scartare”, e le variabili scartate sono dette fuori marginalizzate.</p>
+<p>Nel caso di due variabili casuali discrete <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> di cui conosciamo la distribuzione congiunta, la distribuzione marginale di <span class="math inline">\(X\)</span>, <span class="math inline">\(P(X=x)\)</span>, è dunque</p>
+<p><span class="math display">\[
 P(X = x) = \sum_y P(X, Y = y) = \sum_y P(X \mid Y = y) P(Y = y),
-\end{equation}\]</span>
-<p>dove <span class="math inline">\(P(X = x,Y = y)\)</span> è la distribuzione congiunta di <span class="math inline">\(X, Y\)</span>, mentre <span class="math inline">\(P(X = x \mid Y = y)\)</span> è la distribuzione condizionata di <span class="math inline">\(X\)</span> dato <span class="math inline">\(Y\)</span>. Nel caso di <span class="math inline">\(P(X=x)\)</span>, diciamo che la variabile <span class="math inline">\(Y\)</span> è stata marginalizzata.</p>
+\]</span></p>
+<p>dove <span class="math inline">\(P(X = x,Y = y)\)</span> è la distribuzione congiunta di <span class="math inline">\(X, Y\)</span>, mentre <span class="math inline">\(P(X = x \mid Y = y)\)</span> è la distribuzione condizionata di <span class="math inline">\(X\)</span> dato <span class="math inline">\(Y\)</span>.</p>
 <p>Le probabilità bivariate marginali e congiunte di variabili casuali discrete sono spesso rappresentate mediante tabelle di contingenza. Si noti che <span class="math inline">\(P(X = x)\)</span> e <span class="math inline">\(P(Y = y)\)</span> sono normalizzate:</p>
 <p><span class="math display">\[
 \sum_x P(X=x) = 1.0, \quad \sum_y P(Y=y) = 1.0.
@@ -355,7 +353,7 @@ P(X = x) = \sum_y P(X, Y = y) = \sum_y P(X \mid Y = y) P(Y = y),
 <table class="table">
 <caption>Tabella 4.3: Distribuzione di probabilità congiunta <span class="math inline">\(P(X,Y)\)</span> per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate e probabilità marginali <span class="math inline">\(P(X)\)</span> e <span class="math inline">\(P(Y)\)</span>.</caption>
 <thead><tr class="header">
-<th style="text-align: center;"><span class="math inline">\(x / y\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x \textbackslash y\)</span></th>
 <th style="text-align: center;">0</th>
 <th style="text-align: center;">1</th>
 <th style="text-align: center;"><span class="math inline">\(P(x)\)</span></th>
@@ -402,49 +400,8 @@ P(X = x) = \sum_y P(X, Y = y) = \sum_y P(X \mid Y = y) P(Y = y),
 p(y) = \int_{\theta} p(y, \theta) = \int_{\theta} p(y \mid \theta) p(\theta),
 \tag{4.1}\]</span></span></p>
 <p>laddove <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span> sono due variabili casuali continue – nello specifico, con <span class="math inline">\(y\)</span> denoteremo i dati e con <span class="math inline">\(\theta\)</span> i parametri di un modello statistico. Alla luce di quanto detto sopra, è possibiile pensare al caso continuo indicato nella <a href="#eq-ex-marg-cont">Equazione&nbsp;<span>4.1</span></a> come all’estensione dell’esempio discusso in questo capitolo ad un numero infinito di valori delle due variabili continue (qui <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span>).</p>
-</section></section><section id="indipendenza" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="indipendenza">
-<span class="header-section-number">4.2</span> Indipendenza</h2>
-<p>La nozione di indipendenza per le variabili casuali è molto simile alla nozione di indipendenza per gli eventi. Due variabili casuali sono indipendenti se la conoscenza relativa a una di esse non influisce sulle probabilità dell’altra. Nel caso di due variabili casuali discrete, presentiamo qui una definizione di indipendenza formulatanei termini della loro distribuzione di massa di probabilità congiunta.</p>
-<div id="def-indep-joint-prob-distr" class="theorem definition">
-<p><span class="theorem-title"><strong>Definizione 4.2 </strong></span>Due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> distribuite congiuntamente si dicono indipendenti se e solo se</p>
-<p><span class="math display">\[
-P_{X, Y}(x, y) = P_X(x) P_Y(y).
-\]</span></p>
-</div>
-<p>A parole, se due variabili discrete <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> non si influenzano, ovvero se sono statisticamente indipendenti, allora la distribuzione di massa di probabilità congiunta si ottiene come prodotto delle funzioni di probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Se <span class="math inline">\(P_{X, Y}(x, y) \neq P_X(x) P_Y(y)\)</span>, allora le due variabili si dicono associate.</p>
-<p>Vedremo in seguito come una misura del grado di associazione lineare tra due variabili casuali è fornita dalla covarianza (o dalla correlazione).</p>
-<!-- Per meglio comprendere la @ref(eq:ex-marg-cont) possiamo esaminare il corrispondente caso discreto nel quale sostituiamo semplicemente l'integrale con una somma, il che ci riporta alla situazione descritta nella Sezione @ref(sec:marg-distr-discr). Possiamo dunque scrivere: -->
-<!-- \begin{equation} -->
-<!-- p(y) = \sum_{\theta} p(y, \theta) = \sum_{\theta} p(y \mid \theta) p(\theta). -->
-<!-- (\#eq:ex-marginalization) -->
-<!-- \end{equation} -->
-<!-- Esaminiamo un semplice esempio numerico. Siano $y$ e $\theta$ due variabili discrete aventi la distribuzione di massa di probabilità congiunta riportata nella tabella @ref(tab:ex-marg). -->
-
-<!-- Table: (\#tab:ex-marg) Distribuzione di probabilità congiunta $p(y, \theta)$ per due variabili casuali discrete. -->
-<!--          $y / \theta$    0     1    $p(y)$ -->
-<!--   --------------------- ----- ----- -------- -->
-<!--             0            0.1  0.2    0.3 -->
-<!--             1            0.3  0.4    0.7 -->
-<!--     $p(\theta)$          0.4  0.6    1.0 -->
-<!--   --------------------- ----- ----- -------- -->
-<!-- Applicando la @ref(eq:ex-marginalization), la distribuzione marginale $p(y) = \{0.3, 0.7\}$ può essere trovata nel modo seguente: -->
-<!-- $$ -->
-<!-- \begin{pmatrix} -->
-<!--     0.1 / 0.4 \\ -->
-<!--     0.3 / 0.4 -->
-<!-- \end{pmatrix} \cdot 0.4 + -->
-<!-- \begin{pmatrix} -->
-<!--     0.2 / 0.6 \\ -->
-<!--     0.4 / 0.6 -->
-<!-- \end{pmatrix} \cdot 0.6 = -->
-<!-- \begin{pmatrix} -->
-<!--     0.3 \\ -->
-<!--    0.7 -->
-<!-- \end{pmatrix}. -->
-<!-- $$ -->
-<!-- È possibiile pensare al caso continuo indicato nella @ref(eq:ex-marg-cont) come all'estensione dell'esempio presente ad un numero infinito di valori $\theta$. -->
-</section><section id="valore-atteso-di-una-funzione-di-una-variabile-casuale" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="valore-atteso-di-una-funzione-di-una-variabile-casuale">
-<span class="header-section-number">4.3</span> Valore atteso di una funzione di una variabile casuale</h2>
+</section></section><section id="valore-atteso-di-una-funzione-di-una-variabile-casuale" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="valore-atteso-di-una-funzione-di-una-variabile-casuale">
+<span class="header-section-number">4.2</span> Valore atteso di una funzione di una variabile casuale</h2>
 <p>A volte ci viene data una variabile casuale $ X$e dobbiamo lavorare con una funzione di <span class="math inline">\(X\)</span>. Se <span class="math inline">\(X\)</span> è una variabile casuale e <span class="math inline">\(h(X)\)</span> è una funzione di <span class="math inline">\(X\)</span>, allora anche <span class="math inline">\(h(X)\)</span> è una variabile casuale. Se si vuole calcolare il valore atteso di <span class="math inline">\(h(X)\)</span>, lo si può fare usando la funzione di massa di probabilità o la funzione di densità di probabilità di <span class="math inline">\(X\)</span>; non è necessario conoscere la funzione di massa di probabilità (o la funzione di densità di probabilità) di <span class="math inline">\(h(X)\)</span>.</p>
 <div id="exr-mean-fun-rv" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 4.3 </strong></span></p>
@@ -456,8 +413,8 @@ P_{X, Y}(x, y) = P_X(x) P_Y(y).
 <div class="remark proof">
 <p><span class="proof-title"><em>Nota</em>. </span>Il risultato precedente è valido per variabili casuali continua dove la somma viene sostituita da un integrale.</p>
 </div>
-</section><section id="valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="valore-atteso-di-una-funzione-di-molteplici-variabili-casuali">
-<span class="header-section-number">4.4</span> Valore atteso di una funzione di molteplici variabili casuali</h2>
+</section><section id="valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="valore-atteso-di-una-funzione-di-molteplici-variabili-casuali">
+<span class="header-section-number">4.3</span> Valore atteso di una funzione di molteplici variabili casuali</h2>
 <p>A volte ci vengono fornite due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> e dobbiamo lavorare con una funzione di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono variabili casuali e <span class="math inline">\(h(X, Y)\)</span> è una funzione di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, allora anche <span class="math inline">\(h( X, Y)\)</span> è una variabile casuale. Se si desidera calcolare la media di <span class="math inline">\(h(X, Y)\)</span>, lo si può fare utilizzando la funzione di massa di probabilità congiunta (o la funzione di densità di probabilità congiunta di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>); non è necessario conoscere la funzione di massa di probabilità congiunta (o la funzione di massa congiunta funzione di densità di probabilità) di <span class="math inline">\(h(X, Y)\)</span>.</p>
 <div id="exr-mean-fun-rv-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 4.4 </strong></span>&nbsp;</p>
@@ -498,8 +455,139 @@ P_{XY} (1,1) = 1/3; \quad P_{XY}  (1,2) = 1/8; \quad P_{XY} (2,1) = 1/2; \quad P
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span><span class="math inline">\(\mathbb{E}(\bar{X}) = \frac{1}{n} \sum_{i=1}^n \mathbb{E}(X_i) = \mu.\)</span></p>
 </div>
+</section><section id="distribuzioni-condizionali" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="distribuzioni-condizionali">
+<span class="header-section-number">4.4</span> Distribuzioni condizionali</h2>
+<p>Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono variabili casuali distribuite congiuntamente, conoscere il valore di <span class="math inline">\(X\)</span> può modificare le probabilità relative alla variabile casuale <span class="math inline">\(Y\)</span>. Per calcolare questa nuova probabilità, è necessaria l’idea di una <em>distribuzione condizionale</em>.</p>
+<div id="def-conditional-distribution" class="theorem definition">
+<p><span class="theorem-title"><strong>Definizione 4.2 </strong></span>Siano <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variabili casuali discrete distribuite congiuntamente. Definiamo la funzione di massa di probabilità condizionata di <span class="math inline">\(X\)</span> dato che <span class="math inline">\(Y = y\)</span> nei termini seguenti:</p>
+<p><span class="math display">\[
+P_{X \mid Y} (x \mid y) = P(X = x \mid Y = y) = \frac{P_{XY} (x, y)}{P_Y(y)}
+\]</span></p>
+</div>
+<div id="exr-conditional-distribution" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.7 </strong></span><br></p>
+<p>Supponiamo che <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> siano variabili casuali discrete con valori 1, 2, 3, 4 e che per <span class="math inline">\(x,y = 1, 2, 3, 4\)</span> la funzione di massa di probabilità congiunta sia data da</p>
+<p><span class="math display">\[
+\begin{equation}
+  P_{XY}(x,y) =
+    \begin{cases}
+      \frac{1}{16} &amp; \text{se $x = y$}\\
+      \frac{2}{16} &amp; \text{se $x &lt; y$}\\
+      0 &amp; \text{se $x &gt; y$}
+    \end{cases}       
+\end{equation}
+\]</span></p>
+<p>Si trovi la funzione di probabilità condizionata di <span class="math inline">\(Y\)</span> dato che <span class="math inline">\(X = 3\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span>La distribuzione congiunta di massa di probabilità è la seguente:</p>
+<table class="table">
+<thead><tr class="header">
+<th><span class="math inline">\(x \textbackslash y\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th><span class="math inline">\(P_X(x)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1/16</td>
+<td>2/16</td>
+<td>2/16</td>
+<td>2/16</td>
+<td>7/16</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>0</td>
+<td>1/16</td>
+<td>2/16</td>
+<td>2/16</td>
+<td>5/16</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>1/16</td>
+<td>2/16</td>
+<td>3/16</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1/16</td>
+<td>1/16</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(P_Y(y)\)</span></td>
+<td>1/16</td>
+<td>3/16</td>
+<td>5/16</td>
+<td>7/16</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p>Dunque otteniamo</p>
+<p><span class="math display">\[
+P_{Y\mid X}(1 \mid 3) =  \frac{P_{XY}(3,1)}{P_X(3)} = 0
+\]</span></p>
+<p><span class="math display">\[
+P_{Y\mid X}(2 \mid 3) =  \frac{P_{XY}(3,2)}{P_X(3)} = 0
+\]</span></p>
+<p><span class="math display">\[
+P_{Y\mid X}(3 \mid 3) =  \frac{P_{XY}(3,3)}{P_X(3)} = \frac{(1/16)}{(3/16)} = \frac{1}{3}
+\]</span></p>
+<p><span class="math display">\[
+P_{Y\mid X}(4 \mid 3) =  \frac{P_{XY}(3,4)}{P_X(3)} = \frac{(2/16)}{(3/16)} = \frac{2}{3}
+\]</span></p>
+</div>
+</section><section id="valore-atteso-condizionato" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="valore-atteso-condizionato">
+<span class="header-section-number">4.5</span> Valore atteso condizionato</h2>
+<p>Un valore atteso condizionato è un valore atteso, o media, calcolato utilizzando una funzione di massa di probabilità condizionale (o una funzione di densità di probabilità condizionale).</p>
+<div id="def-conditional-expectation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definizione 4.3 </strong></span>Siano <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variabili casuali discrete congiunte. Definiamo il valore atteso condizionato di <span class="math inline">\(X\)</span> dato che <span class="math inline">\(Y = y\)</span> come</p>
+<p><span class="math display">\[
+\begin{align}
+\mathbb{E} (X \mid Y = y) &amp;= \sum_x x P(X = x \mid Y = y)\notag\\
+&amp;= \sum_x x P_{X \mid Y}(x \mid y) \notag
+\end{align}
+\]</span></p>
+</div>
+<div id="exr-conditional-expectation" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 4.8 </strong></span></p>
+<p>Si trovi il valore atteso condizionato dell’<a href="#exr-conditional-distribution">Esercizio&nbsp;<span>4.7</span></a> dato che <span class="math inline">\(X = 3\)</span>.</p>
+</div>
+<div class="solution proof">
+<p><span class="proof-title"><em>Soluzione</em>. </span>Abbiamo che</p>
+<p><span class="math display">\[
+\begin{align}
+\mathbb{E} (X \mid Y = 3) &amp;= \sum_x x P(X = x \mid Y = 3)\notag\\
+&amp;= \frac{1 \cdot P_{XY}(3,1)}{P_X(3)} + \frac{2 \cdot P_{XY}(3,2)}{P_X(3)} +
+\frac{3 \cdot P_{XY}(3,3)}{P_X(3)} + \frac{4 \cdot P_{XY}(3,4)}{P_X(3)} \notag\\
+&amp;= 3 \cdot \frac{1}{3} + 4 \cdot \frac{2}{3} \notag\\
+&amp;= \frac{11}{3} \notag
+\end{align}
+\]</span></p>
+</div>
+</section><section id="indipendenza" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="indipendenza">
+<span class="header-section-number">4.6</span> Indipendenza</h2>
+<p>La nozione di indipendenza per le variabili casuali è molto simile alla nozione di indipendenza per gli eventi. Due variabili casuali sono indipendenti se la conoscenza relativa a una di esse non influisce sulle probabilità dell’altra. Nel caso di due variabili casuali discrete, presentiamo qui una definizione di indipendenza formulatanei termini della loro distribuzione di massa di probabilità congiunta.</p>
+<div id="def-indep-joint-prob-distr" class="theorem definition">
+<p><span class="theorem-title"><strong>Definizione 4.4 </strong></span>Due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> distribuite congiuntamente si dicono indipendenti se e solo se</p>
+<p><span class="math display">\[
+P_{X, Y}(x, y) = P_X(x) P_Y(y).
+\]</span></p>
+</div>
+<p>A parole, se due variabili discrete <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> non si influenzano, ovvero se sono statisticamente indipendenti, allora la distribuzione di massa di probabilità congiunta si ottiene come prodotto delle funzioni di probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Se <span class="math inline">\(P_{X, Y}(x, y) \neq P_X(x) P_Y(y)\)</span>, allora le due variabili si dicono associate.</p>
+<p>Vedremo in seguito come una misura del grado di associazione lineare tra due variabili casuali è fornita dalla covarianza (o dalla correlazione).</p>
 </section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
-<p>In alcuni casi, diverse variabili casuali possono essere associate a ciascuna unità statistica della popolazione. Ad esempio, immaginiamo di scegliere uno studente a caso dall’elenco di tutti gli studenti iscritti a un’università e di misurare l’altezza e il peso di quello studente. A ogni individuo nella popolazione degli studenti corrispondono dunque due variabili casuali, altezza e peso. Quando due o più variabili casuali sono associate a ciascun elemento di una popolazione, si dice che le variabili casuali sono distribuite congiuntamente. In questo capitolo abbiamo visto come si possa rappresentare la distribuzione di massa di probabilità congiunta di due variabili casuali discrete e come si possano ottenere le distribuzioni marginali delle due variabili.</p>
+<p>In alcuni casi, diverse variabili casuali possono essere associate a ciascuna unità statistica della popolazione. Ad esempio, immaginiamo di scegliere uno studente a caso dall’elenco di tutti gli studenti iscritti a un’università e di misurare l’altezza e il peso di quello studente. A ogni individuo nella popolazione degli studenti corrispondono dunque due variabili casuali, altezza e peso. Quando due o più variabili casuali sono associate a ciascun elemento di una popolazione, si dice che le variabili casuali sono distribuite congiuntamente. In questo capitolo abbiamo visto come si possa rappresentare la distribuzione di massa di probabilità congiunta di due variabili casuali discrete e come si possano ottenere le distribuzioni marginali delle due variabili. Abbiamo anche esaminato i concetti di distribuzione marginale, di distribuzione condizionata e di indipendenza.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
