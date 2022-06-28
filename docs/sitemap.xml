@@ -1,39 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rstudio-education.github.io/hopr/index.html</loc>
-    <lastmod>2022-06-28T06:44:11.471Z</lastmod>
+    <loc>https://ccaudek.github.io/data_science/index.html</loc>
+    <lastmod>2022-06-28T10:13:11.851Z</lastmod>
   </url>
   <url>
-    <loc>https://rstudio-education.github.io/hopr/preface.html</loc>
-    <lastmod>2022-06-28T06:44:11.471Z</lastmod>
+    <loc>https://ccaudek.github.io/data_science/preface.html</loc>
+    <lastmod>2022-06-28T10:13:11.851Z</lastmod>
   </url>
   <url>
-    <loc>https://rstudio-education.github.io/hopr/prob.html</loc>
-    <lastmod>2022-06-28T06:44:11.472Z</lastmod>
+    <loc>https://ccaudek.github.io/data_science/prob.html</loc>
+    <lastmod>2022-06-28T10:13:11.852Z</lastmod>
   </url>
   <url>
-    <loc>https://rstudio-education.github.io/hopr/015_prob_intro.html</loc>
-    <lastmod>2022-06-28T06:44:11.475Z</lastmod>
+    <loc>https://ccaudek.github.io/data_science/020_expval_var.html</loc>
+    <lastmod>2022-06-28T10:13:11.853Z</lastmod>
   </url>
   <url>
-    <loc>https://rstudio-education.github.io/hopr/016_conditional_prob.html</loc>
-    <lastmod>2022-06-28T06:44:11.484Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rstudio-education.github.io/hopr/017_bayes_theorem.html</loc>
-    <lastmod>2022-06-28T06:44:11.485Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rstudio-education.github.io/hopr/018_joint_prob.html</loc>
-    <lastmod>2022-06-28T07:10:26.990Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rstudio-education.github.io/hopr/019_density_func.html</loc>
-    <lastmod>2022-06-28T06:44:11.490Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rstudio-education.github.io/hopr/999_refs.html</loc>
-    <lastmod>2022-06-28T06:44:11.490Z</lastmod>
+    <loc>https://ccaudek.github.io/data_science/999_refs.html</loc>
+    <lastmod>2022-06-28T10:13:11.854Z</lastmod>
   </url>
 </urlset>

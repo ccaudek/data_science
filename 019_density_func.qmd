@@ -4,17 +4,17 @@
 source("_common.R")
 ```
 
-Finora abbiamo considerato solo variabili casuali discrete, cioè variabili che assumono solo valori interi. Ma cosa succede se vogliamo usare variabili casuali per rappresentare lunghezze, o volumi, o distanze, o una qualsiasi delle altre proprietà continue nel mondo fisico (o psicologico)? È necessario generalizzare l'approccio usato finora.
+Finora abbiamo considerato solo variabili casuali discrete, cioè variabili che assumono solo valori interi. Ma cosa succede se vogliamo usare variabili casuali per rappresentare lunghezze, o volumi, o distanze, o una qualsiasi delle altre proprietà continue nel mondo fisico o psicologico? È necessario generalizzare l'approccio usato finora.
 
-Le variabili casuali continue assumono valori reali. L'insieme dei numeri reali è *non numerabile* perché è più grande dell'insieme degli interi.[^density_func-1] Le leggi della probabilità sono le stessa per le variabili casuali discrete e quelle continue. La nozione di funzione di massa di probabilità, invece, deve essere sostituita dal suo equivalente continuo, ovvero dalla *funzione di densità di probabilità*. Lo scopo di questo Capitolo è quello di chiarire il significato di questa nozione, usando un approccio basato sulle simulazioni.
+Le variabili casuali continue assumono valori reali. L'insieme dei numeri reali è *non numerabile* perché è più grande dell'insieme degli interi.[^density_func-1] Le leggi della probabilità sono le stesse per le variabili casuali discrete e quelle continue. La nozione di funzione di massa di probabilità, invece, deve essere sostituita dal suo equivalente continuo, ovvero dalla *funzione di densità di probabilità*. Lo scopo di questo Capitolo è quello di chiarire il significato di questa nozione, usando un approccio basato sulle simulazioni.
 
 [^density_func-1]: Georg Cantor dimostrò che era impossibile mappare uno a uno i reali negli interi, dimostrando così che l'insieme dei reali è non numerabile.
 
 ## Spinner e variabili casuali continue uniformi
 
-Consideriamo il seguente esperimento casuale. Facciamo ruotare ad alta velocità uno spinner simmetrico imperniato su un goniometro e osserviamo la posizione in cui si ferma (individuata dall'angolo acuto con segno tra il suo asse e l'asse orizzontale del goniometro). Chiamiamo $\Theta$ la variabile casuale "pendenza dello spinner". Nella trattazione seguente useremo i gradi e, di conseguenza, $\Theta \in [0, 360]$.
+Consideriamo il seguente esperimento casuale. Facciamo ruotare ad alta velocità uno spinner simmetrico imperniato su un goniometro e osserviamo la posizione in cui si ferma (individuata dall'angolo acuto con segno tra il suo asse e l'asse orizzontale del goniometro). Chiamiamo $\Theta$ la variabile casuale "pendenza dello spinner" -- @fig-spinner. Nella trattazione seguente useremo i gradi e, di conseguenza, $\Theta \in [0, 360]$.
 
-```{r fig.cap = "Uno spinner che riposa a 36 gradi, o il dieci percento del percorso intorno al cerchio. La pendenza dello spinner può assumere qualunque valore tra 0 e 360 gradi.", echo=FALSE, out.width="100%"}
+```{r, fig-spinner, fig.cap = "Uno spinner che riposa a 36 gradi, o il dieci percento del percorso intorno al cerchio. La pendenza dello spinner può assumere qualunque valore tra 0 e 360 gradi.", echo=FALSE, out.width="100%"}
 df_spinner <- data.frame(value = c("0-360 degrees"), prob = c(0.3))
 plot_spinner <-
   ggplot(
@@ -79,9 +79,9 @@ $$
 F_{\Theta}(\theta) = \frac{\theta}{360}.
 $$
 
-Questa è una funzione lineare di $\theta$, cioè $\frac{1}{360} \cdot \theta$, come indicato dal grafico della figura \@ref(fig:spinner-cdf).
+Questa è una funzione lineare di $\theta$, cioè $\frac{1}{360} \cdot \theta$, come indicato dal grafico della @fig-spinner-cdf.
 
-```{r spinner-cdf, echo=FALSE, fig.cap="Funzione di distribuzione cumulativa per l'angolo $\\theta$ (in gradi) risultante da una rotazione di uno spinner simmetrico. La linea tratteggiata mostra il valore a 180 gradi, che corrisponde ad una probabilità di 0.5, e la linea tratteggiata a 270 gradi, che corrisponde ad una probabilità di 0.75."}
+```{r fig-spinner-cdf, echo=FALSE, fig.cap="Funzione di distribuzione cumulativa per l'angolo $\\theta$ (in gradi) risultante da una rotazione di uno spinner simmetrico. La linea tratteggiata mostra il valore a 180 gradi, che corrisponde ad una probabilità di 0.5, e la linea tratteggiata a 270 gradi, che corrisponde ad una probabilità di 0.75."}
 df_cdf_spinner <- data.frame(
   x = c(-90, 0, 360, 450),
   y = c(0, 0, 1, 1)
@@ -113,7 +113,7 @@ cdf_spinner_plot
 
 Possiamo verificare questo risultato mediante simulazione. Per stimare la funzione di ripartizione, simuliamo $M$ valori $\theta^{(m)}$ e poi li ordiniamo in ordine crescente.
 
-```{r fig.cap="Grafico della funzione di ripartizione di una variabile casuale $\\Theta$ che rappresenta il risultato di una rotazione di uno spinner simmetrico. Come previsto, tale funzione è una semplice funzione lineare perché la variabile sottostante $\\Theta$ ha una distribuzione uniforme."}
+```{r, fig-unif_cdf_plot, fig.cap="Grafico della funzione di ripartizione di una variabile casuale $\\Theta$ che rappresenta il risultato di una rotazione di uno spinner simmetrico. Come previsto, tale funzione è una semplice funzione lineare perché la variabile sottostante $\\Theta$ ha una distribuzione uniforme."}
 M <- 1000
 theta <- runif(M, 0, 360)
 theta_asc <- sort(theta)
@@ -142,7 +142,7 @@ Come nel caso delle variabili casuali discrete, la funzione di ripartizione può
 \mbox{P}(180 < \Theta \leq 270) &= \mbox{P}(\Theta \leq 270) \ - \ \mbox{P}(\Theta \leq 180) \notag\\
 &= F_{\Theta}(270) - F_{\Theta}(180)\notag\\
 &= \frac{3}{4} - \frac{1}{2} \notag\\
-&= \frac{1}{4}.\noindent
+&= \frac{1}{4}.
 \end{align}
 ```
 ## La distribuzione uniforme
@@ -166,7 +166,7 @@ theta[1:10]
 
 Creiamo ora un istogramma che descrive la distribuzione delle 10,000 realizzazioni $\Theta$ che abbiamo trovato:
 
-```{r fig.cap='Istogramma di $10\\,000$ realizzazioni $\\Theta \\sim \\mbox{Uniform}(0, 1)$. '}
+```{r fig-unif-distr, fig.cap='Istogramma di $10\\,000$ realizzazioni $\\Theta \\sim \\mbox{Uniform}(0, 1)$. '}
 df_prob_unif <- data.frame(theta = theta)
 unif_prob_plot <-
   ggplot(df_prob_unif, aes(theta)) +
@@ -182,7 +182,7 @@ unif_prob_plot
 
 È chiaro che, all'aumentare del numero delle realizzazioni $\Theta$, il profilo dell'istogramma tenderà a diventare una linea retta. Ciò significa che la funzione di densità di una variabile casuale uniforme continua è una costante. Cioè, se $\Theta \sim \mathcal{U} (a, b)$, allora $p_{\Theta}(\theta) = c$, dove $c$ è una costante.
 
-```{r}
+```{r, fig-unif-distr-2, fig.cap="Distribuzione uniforme"}
 uniform_pdf_df <- data.frame(y = c(0, 1), p_y = c(1, 1))
 uniform_pdf_plot <-
   ggplot(uniform_pdf_df, aes(x = y, y = p_y)) +
@@ -217,7 +217,7 @@ uniform_pdf_plot <-
 uniform_pdf_plot
 ```
 
-\noindent Dal grafico vediamo che l'area sottesa alla funzione di densità è $(b - a)\cdot c$. Dato che tale area deve essere unitaria, ovvero, $(b - a) \cdot c = 1$, possiamo trovare $c$ dividendo entrambi i termini per $b - a$,
+Dalla @fig-unif-distr-2 vediamo che l'area sottesa alla funzione di densità è $(b - a)\cdot c$. Dato che tale area deve essere unitaria, ovvero, $(b - a) \cdot c = 1$, possiamo trovare $c$ dividendo entrambi i termini per $b - a$,
 
 $$
 c  = \frac{\displaystyle{1}}{\displaystyle b - a}.
@@ -269,7 +269,7 @@ for (m in 1:10)
 
 Nei grafici seguenti, la numerosità cresce da $10$ a $1\,000\,000$.
 
-```{r out.width="100%", fig.cap="Istogramma di $M$ campioni casuali $\\Theta \\sim \\mbox{Uniform}(0, 1)$ trasformati in valori $\\Phi = \\mbox{logit}(\\Theta).$ Il profilo limite dell'istogramma è evidenziato nella figura in basso a destra che è stata costruita usando $1\\,000\\,000$ di osservazioni."}
+```{r fig-logit-unif, out.width="100%", fig.cap="Istogramma di $M$ campioni casuali $\\Theta \\sim \\mbox{Uniform}(0, 1)$ trasformati in valori $\\Phi = \\mbox{logit}(\\Theta).$ Il profilo limite dell'istogramma è evidenziato nella figura in basso a destra che è stata costruita usando $1\\,000\\,000$ di osservazioni."}
 df_log_odds_growth <- data.frame()
 for (log10M in 1:6) {
   M <- 10^log10M
@@ -305,7 +305,7 @@ In un istogramma, l'area di ciascuna barra è proporzionale alla frequenza relat
 
 Nella simulazione, possiamo pensare all'area di ciascuna barra dell'istogramma come alla stima della probabilità che la variabile casuale assuma un valore compreso nell'intervallo considerato. All'aumentare del numero $M$ di osservazioni, le probabilità stimate si avvicinano sempre di più ai veri valori della probabilità. All'aumentare del numero degli intervalli (quando l'ampiezza $\Delta$ dell'intervallo $\rightarrow$ 0), il profilo dell'istogramma tende a diventare una curva continua. Tale curva continua è la funzione di densità di probabilità della variabile casuale. Per l'esempio presente, con $M =1\,000\,000$, otteniamo il grafico riportato nella figura \@ref(fig:hist-dens-example).
 
-```{r hist-dens-example, out.width="100%", fig.cap="Istogramma di $M = 1\\,000\\,000$ campioni casuali $\\Theta \\sim \\mbox{Uniform}(0,1)$ trasformati in valori $\\Phi = \\mbox{logit}(\\Theta)$. La spezzata nera congiunge i punti centrali superiori delle barre dell'istogramma. Nel limite, quando il numero di osservazioni e di barre tende all'infinito, tale spezzata approssima la funzione di densità di probabilità della variabile casuale."}
+```{r fig-hist-dens-example, out.width="100%", fig.cap="Istogramma di $M = 1\\,000\\,000$ campioni casuali $\\Theta \\sim \\mbox{Uniform}(0,1)$ trasformati in valori $\\Phi = \\mbox{logit}(\\Theta)$. La spezzata nera congiunge i punti centrali superiori delle barre dell'istogramma. Nel limite, quando il numero di osservazioni e di barre tende all'infinito, tale spezzata approssima la funzione di densità di probabilità della variabile casuale."}
 M <- 1e6
 alpha <- logit(runif(M))
 density_limit_df <- data.frame(alpha = alpha)
@@ -343,9 +343,7 @@ Nella statistica descrittiva abbiamo già incontrato una rappresentazione che ha
 Per descrivere le probabilità che possono essere associate ad una variabile casuale continua $X$ è necessario definire una funzione $p(X)$ che deve soddisfare le seguenti due proprietà:
 
 -   $p(x) \geq 0, \forall x$, ovvero, l'ordinata della funzione di densità è 0 o positiva;
-
 -   $\int_{-\infty}^{\infty} p(x) \,\operatorname {d}\!x = 1$, ovvero, l'area sottesa dalla $p(x)$ è unitaria[^density_func-3];
-
 -   $p(a < x < b) = \int_a^b p(x) \,\operatorname {d}\!x$, se $a \leq b$, ovvero, l'area sottesa dalla $p(y)$ tra due punti $a$ e $b$ corrisponde alla probabilità che la v.c. $x$ assuma un valore compresto tra questi due estremi.
 
 [^density_func-3]: Per quel che riguarda la notazione dell'integrale, ovvero $\int_x \,\operatorname {d}\!x$, rimando alla discussione di S.P. Thompson: https://calculusmadeeasy.org/1.html
@@ -384,11 +382,11 @@ Per distribuzioni simmetriche, sappiamo che la media e la mediana sono uguali. C
 
 La mediana indica il punto in cui la "massa totale" della distribuzione è suddivisa in due porzioni uguali. Nel caso della densità di probabilità, ciascuna di queste porzioni rappresenta un'area uguale, $A_1 = A_2 = 1/2$ poiché l'area totale sottesa alla funzione di densità è 1 per definizione.
 
-```{r median-mean, echo=FALSE, fig.cap='Qual è la differenza tra mediana e media?', out.width = '85%'}
+```{r fig-median-mean, echo=FALSE, fig.cap='Qual è la differenza tra mediana e media in una funzione di densità?', out.width = '85%'}
 knitr::include_graphics("images/median_mean.png")
 ```
 
-La figura \@ref(fig:median-mean) mostra come differiscono i due concetti di mediana (indicata dalla linea verticale) e media (indicata dal "punto di equilibrio" triangolare). A sinistra, per una densità di probabilità simmetrica, la media e la mediana coincidono. A destra, una piccola porzione della distribuzione è stata spostata all'estremo destro. Questa modifica non ha influito sulla posizione della mediana, poiché le aree a destra e a sinistra della linea verticale sono ancora uguali. In altri termini, la mediana, $x_m$, divide l'area sottesa alla funzione di densità in due porzioni uguali:
+La @fig-median-mean mostra come differiscono i due concetti di mediana (indicata dalla linea verticale) e media (indicata dal "punto di equilibrio" triangolare). A sinistra, per una densità di probabilità simmetrica, la media e la mediana coincidono. A destra, una piccola porzione della distribuzione è stata spostata all'estremo destro. Questa modifica non ha influito sulla posizione della mediana, poiché le aree a destra e a sinistra della linea verticale sono ancora uguali. In altri termini, la mediana, $x_m$, divide l'area sottesa alla funzione di densità in due porzioni uguali:
 
 $$
 \int_{-\infty}^{x_m} p(x) dx = \int_{x_m}^{-\infty} p(x) dx = \frac{1}{2}.
@@ -400,4 +398,4 @@ $$
 F(x_m) = \frac{1}{2}.
 $$
 
-Tuttavia, il fatto che una parte della massa sia stata allontanata verso destra porta a uno spostamento della media della distribuzione, per compensare tale cambiamento. In altre parole, la media contiene più informazioni sulla distribuzione "spaziale" delle osservazioni, rispetto alla mediana. Ciò deriva dal fatto che la media della distribuzione (il valore atteso) è una "somma" - cioè è un integrale - di termini cha hanno la forma $x p(x) \Delta x$. Quindi la posizione lungo l'asse $x$, ovvero $x$, e non solo la "massa", $p(x) \Delta x$, influenza il contributo che le componenti della distribuzione hanno sulla media.
+Tuttavia, il fatto che una parte della massa sia stata allontanata verso destra porta a uno spostamento della media della distribuzione, per compensare tale cambiamento. In altre parole, la media contiene più informazioni sulla distribuzione "spaziale" delle osservazioni, rispetto alla mediana. Ciò deriva dal fatto che la media della distribuzione (il valore atteso) è una "somma" -- cioè è un integrale -- di termini cha hanno la forma $x p(x) \Delta x$. Quindi la posizione lungo l'asse $x$, ovvero $x$, e non solo la "massa", $p(x) \Delta x$, influenza il contributo che le componenti della distribuzione hanno sulla media.

@@ -6,7 +6,7 @@ book:
   title: "Data Science per psicologi"
   author: "Corrado Caudek"
   # cover-image: images/cover.png
-  site-url: https://rstudio-education.github.io/hopr/
+  site-url: https://ccaudek.github.io/data_science/
   repo-url: https://github.com/ccaudek/data_science/
   repo-branch: master
   # repo-actions: [edit]
@@ -23,12 +23,12 @@ book:
     #     - 012_correlation.qmd
     - part: prob.qmd
       chapters:
-        - 015_prob_intro.qmd
-        - 016_conditional_prob.qmd
-        - 017_bayes_theorem.qmd
-        - 018_joint_prob.qmd
-        - 019_density_func.qmd
-        # - 020_expval_var.qmd
+        # - 015_prob_intro.qmd
+        # - 016_conditional_prob.qmd
+        # - 017_bayes_theorem.qmd
+        # - 018_joint_prob.qmd
+        # - 019_density_func.qmd
+        - 020_expval_var.qmd
   #   - part: distr.qmd
   #     chapters:
   #       - 022_discr_rv_distr.qmd
