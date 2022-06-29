@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ccaudek.github.io/data_science/index.html</loc>
-    <lastmod>2022-06-28T10:49:53.310Z</lastmod>
+    <lastmod>2022-06-29T05:27:17.334Z</lastmod>
   </url>
   <url>
     <loc>https://ccaudek.github.io/data_science/preface.html</loc>
-    <lastmod>2022-06-28T10:49:53.311Z</lastmod>
+    <lastmod>2022-06-29T05:27:17.335Z</lastmod>
   </url>
   <url>
     <loc>https://ccaudek.github.io/data_science/prob.html</loc>
-    <lastmod>2022-06-28T10:49:53.312Z</lastmod>
+    <lastmod>2022-06-29T05:27:17.335Z</lastmod>
   </url>
   <url>
-    <loc>https://ccaudek.github.io/data_science/022_discr_rv_distr.html</loc>
-    <lastmod>2022-06-28T10:49:53.313Z</lastmod>
+    <loc>https://ccaudek.github.io/data_science/023_cont_rv_distr.html</loc>
+    <lastmod>2022-06-29T05:27:17.340Z</lastmod>
   </url>
   <url>
     <loc>https://ccaudek.github.io/data_science/999_refs.html</loc>
-    <lastmod>2022-06-28T10:49:53.314Z</lastmod>
+    <lastmod>2022-06-29T05:27:17.340Z</lastmod>
   </url>
 </urlset>

@@ -251,9 +251,9 @@ La distribuzione di Poisson può essere intesa come limite della distribuzione b
 ```
 :::
 
-Alcune distribuzioni di Poisson sono riportate nella figura \@ref(fig:examples-poisson-distrib).
+Alcune distribuzioni di Poisson sono riportate nella figura @fig-examples-poisson-distrib.
 
-```{r examples-poisson-distrib, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, fig.cap = "Alcune distribuzioni di Poisson."}
+```{r fig-examples-poisson-distrib, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE, fig.cap = "Alcune distribuzioni di Poisson."}
 library("scales")
 library("viridis")
 
@@ -319,9 +319,11 @@ poisson_plot <- function() {
 poisson_plot()
 ```
 
-::: exercise
-Supponiamo che un evento accada 300 volte all'ora e si vuole determinare la probabilità che in un minuto accadano esattamente 3 eventi.
+::: {#exr-poisson-1}
+Supponiamo che un evento accada 300 volte all'ora. Si vuole determinare la probabilità che in un minuto accadano esattamente 3 eventi.
+:::
 
+::: solution
 Il numero medio di eventi in un minuto è pari a
 
 ```{r}
@@ -329,7 +331,7 @@ lambda <- 300 / 60
 lambda
 ```
 
-\noindent Quindi la probabilità che in un minuto si abbiano 3 eventi è pari a
+Quindi la probabilità che in un minuto si abbiano 3 eventi è pari a
 
 ```{r}
 y <- 3
@@ -337,16 +339,20 @@ y <- 3
 ```
 :::
 
-::: exercise
-Per i dati dell'esempio precedente, si trovi la probabilità che un evento accada almeno 8 volte in un minuto.
+::: {#exr-poisson-2}
+Per i dati dell'@exr-poisson-1, si trovi la probabilità che un evento accada almeno 8 volte in un minuto.
+:::
 
+::: solution
 La probabilità cercata è
 
 $$
 p(y \geq 8) = 1 - p (y \leq 7) = 1- \sum_{i = 0}^7 \frac{\lambda^7}{7!}e^{-\lambda},
-$$ \noindent con $\lambda = 5$.
+$$
 
-Svolgendo i calcoli in \R otteniamo:
+con $\lambda = 5$.
+
+Svolgendo i calcoli in R otteniamo:
 
 ```{r}
 1 - ppois(q = 7, lambda = 5)
@@ -354,16 +360,18 @@ ppois(q = 7, lambda = 5, lower.tail = FALSE)
 ```
 :::
 
-::: exercise
+::: {#exr-poisson-3}
 Sapendo che un evento avviene in media 6 volte al minuto, si calcoli (a) la probabilità di osservare un numero di eventi uguale o inferiore a 3 in un minuto, e (b) la probabilità di osservare esattamente 2 eventi in 30 secondi.
+:::
 
-(a) In questo caso $\lambda = 6$ e la probabilità richiesta è
+::: solution
+Per la domanda (a), $\lambda = 6$ e la probabilità richiesta è
 
 ```{r}
 ppois(q = 3, lambda = 6, lower.tail = TRUE)
 ```
 
-(b) In questo caso $\lambda = 6 / 2$ e la probabilità richiesta è
+Nel caso di (b), $\lambda = 6 / 2$ e la probabilità richiesta è
 
 ```{r}
 dpois(x = 2, lambda = 3)
@@ -373,26 +381,26 @@ dpois(x = 2, lambda = 3)
 ### Alcune proprietà della variabile di Poisson
 
 -   Il valore atteso, la moda e la varianza della variabile di Poisson sono uguali a $\lambda$.
-
 -   La somma $Y_1 + \dots + Y_n$ di $n$ variabili casuali indipendenti con distribuzioni di Poisson di parametri $\lambda_{1},\dots,\lambda_{n}$ segue una distribuzione di Poisson di parametro $\lambda = \lambda_{1}+\dots+\lambda_{n}$.
-
 -   La differenze di due variabili di Poisson non è una variabile di Poisson. Basti infatti pensare che può assumere valori negativi.
 
 ## Distribuzione discreta uniforme
 
 Una distribuzione discreta uniforme è una distribuzione di probabilità discreta che è uniforme su un insieme, ovvero che attribuisce ad ogni elemento dell'insieme discreto e finito $S$ su cui è definita la stessa probabilità $p$ di verificarsi.
 
-Consideriamo la variabile casuale $X$ con supporto $1, 2, \dots, m$. Un esperimento casuale in cui si verifica questa distribuzione è la scelta casuale di un intero compreso tra 1 e $m$ inclusi. Sia $X$ il numero scelto. Allora
+Si consideri una variabile casuale $X$ con supporto $1, 2, \dots, m$. Un esperimento casuale in cui si verifica questa distribuzione è la scelta casuale di un intero compreso tra 1 e $m$ inclusi. Sia $X$ il numero scelto. Allora
 
 $$
 P(X = x) = \frac{1}{m}, \quad x = 1, \dots, m.
 $$
 
-Il valore atteso è
+Il valore atteso di $X$ è
 
 $$
 \mathbb{E}(X) = \sum_{x=1}^m x f_X(x) = \sum_{x=1}^m x \frac{1}{m} = \frac{1}{m} (1 + 2 + \dots + m) = \frac{m+1}{2},
-$$ dove abbiamo utilizzato l'identità $1+2+···+m = m(m+1)/2$.
+$$
+
+dove abbiamo utilizzato l'identità $1+2+···+m = m(m+1)/2$.
 
 Per trovare la varianza, prima calcoliamo
 
@@ -404,9 +412,9 @@ $$
 \mathbb{V}(X) = \mathbb{E}(X^2) - \left[\mathbb{E}(X)\right]^2.
 $$
 
-### Usiamo $\textsf{R}$
+### Distribuzione discreta uniforme con $\textsf{R}$
 
-La sintassi generale per simulare una variabile casuale uniforme discreta è `sample(x, size, replace = TRUE)`. L'argomento `x` identifica i numeri da cui campionare casualmente. Se `x` è un numero, il campionamento viene eseguito da 1 a `x`. L'argomento `size` indica quanto dovrebbe essere grande la dimensione del campione e `replace` indica se i numeri devono essere reintrodotti o meno nell'urna dopo essere stati estratti. L'opzione di default è `replace = FALSE` ma per le uniformi discrete i valori estratti devono essere sostituiti. Seguono alcuni esempi.
+La sintassi per simulare una variabile casuale uniforme discreta è `sample(x, size, replace = TRUE)`. L'argomento `x` identifica i numeri da cui campionare casualmente. Se `x` è un numero, il campionamento viene eseguito da 1 a `x`. L'argomento `size` indica quanto dovrebbe essere grande la dimensione del campione e `replace` indica se i numeri devono essere reintrodotti o meno nell'urna dopo essere stati estratti. L'opzione di default è `replace = FALSE` ma per le uniformi discrete i valori estratti devono essere sostituiti. Seguono alcuni esempi.
 
 -   Per lanciare un dado equilibrato 3000 volte: `sample(6, size = 3000, replace = TRUE)`;
 -   per scegliere 27 numeri casuali da 30 a 70: `sample(30:70, size = 27, replace = TRUE)`;
@@ -416,17 +424,16 @@ La sintassi generale per simulare una variabile casuale uniforme discreta è `sa
 
 La distribuzione beta-binomiale di parametri $N$, $\alpha$ e $\beta$ è una distribuzione discreta con una funzione di massa di probabilità uguale a
 
-```{=tex}
-\begin{equation}
+$$
 \mbox{BetaBinomial}(y \mid N, \alpha, \beta) = \binom{N}{y} \frac{B(y + \alpha, N-y+\beta)}{B(\alpha, \beta)},
-\end{equation}
-```
+$$ {#eq-beta-binom-formula}
+
 dove la funzione beta è $B(u, v) = \frac{\Gamma(u)\Gamma(v)}{\Gamma(u+v)}$.
 
 Senza entrare nei dettagli, ci accontentiamo di sapere che tale distribuzione è implementata nella funzione `dbbinom()` del pacchetto `extraDistr`.
 
 ## Commenti e considerazioni finali {.unnumbered}
 
-La distribuzione binomiale è una distribuzione di probabilità discreta che descrive il numero di successi in un processo di Bernoulli, ovvero la variabile aleatoria $Y = Y_1 + \dots + Y_n$ che somma $n$ variabili casuali indipendenti di uguale distribuzione di Bernoulli $\mathcal{B}(\theta)$, ognuna delle quali può fornire due soli risultati: il successo con probabilità $\theta$ e il fallimento con probabilità $1 - \theta$.
+La distribuzione binomiale è una distribuzione di probabilità discreta che descrive il numero di successi in un processo di Bernoulli, ovvero la variabile aleatoria $Y = Y_1 + \dots + Y_n$ che somma $n$ variabili casuali indipendenti di uguale distribuzione di Bernoulli $\mathcal{B}(\theta)$, ognuna delle quali può fornire due soli risultati: il successo con probabilità $\theta$ e l'insuccesso con probabilità $1 - \theta$.
 
-La distribuzione binomiale è molto importante per le sue molte applicazioni. Nelle presenti dispense, dedicate all'analisi bayesiana, è soprattutto importante perché costituisce il fondamento del caso più semplice del cosiddetto "aggiornamento bayesiano", ovvero il caso Beta-Binomiale. Il modello Beta-Binomiale ci fornirà infatti un esempio paradigmatico dell'approccio bayesiano all'inferenza e sarà trattato in maniera analitica. È dunque importante che le proprietà della distribuzione binomiale risultino ben chiare.
+La distribuzione binomiale è molto importante per le sue molte applicazioni. Nelle presenti dispense dedicate all'analisi bayesiana, è importante perché costituisce il fondamento del caso più semplice dell'*aggiornamento bayesiano*, ovvero il caso Beta-Binomiale. Il modello Beta-Binomiale fornisce un esempio paradigmatico dell'approccio bayesiano all'inferenza e sarà trattato in maniera analitica nei capitoli successivi. È dunque importante che le proprietà della distribuzione binomiale risultino ben chiare.
