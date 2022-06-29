@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-0.9.629">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Data Science per psicologi - 1&nbsp; Pensare ad una proporzione in termini soggettivi</title>
+<title>Data Science per psicologi - 16&nbsp; Pensare ad una proporzione in termini soggettivi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,8 +103,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./999_refs.html" rel="next">
-<link href="./bayes_inference.html" rel="prev">
+<link href="./029_conjugate_families.html" rel="next">
+<link href="./025_intro_bayes.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -137,7 +137,7 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -171,7 +171,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
+        <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -179,7 +179,232 @@ div.csl-indent {
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./026_subj_prop.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></a>
+  <a href="./001_key_notions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Concetti chiave</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./005_measurement.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">La misurazione in psicologia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./007_freq_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variabili e distribuzioni di frequenza</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./011_loc_scale.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Indici di posizione e di scala</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./012_correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Le relazioni tra variabili</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./015_prob_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./016_conditional_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./017_bayes_theorem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./018_joint_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./019_density_func.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./020_expval_var.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Valore atteso e varianza</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./022_discr_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. discrete</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./023_cont_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./024_likelihood.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./025_intro_bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Credibilità, modelli e parametri</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./026_subj_prop.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./029_conjugate_families.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Distribuzioni coniugate</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./030_balance_prior_post.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">L’influenza della distribuzione a priori</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./036_posterior_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Approssimazione della distribuzione a posteriori</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./040_beta_binomial_mod.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Il modello beta-binomiale in linguaggio Stan</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./041_mcmc_diagnostics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Diagnostica delle catene markoviane</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./045_summarize_posterior.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Sintesi a posteriori</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./046_bayesian_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">La predizione bayesiana</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./050_normal_normal_mod.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Inferenza sul parametro <span class="math inline">\(\mu\)</span> (media di una v.c. Normale)</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./regression.html" class="sidebar-item-text sidebar-link">Parte 5: Regressione lineare</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./051_reglin1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduzione</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare con un singolo predittore</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./053_reglin3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Modello di regressione in linguaggio Stan</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./054_reglin4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Inferenza sul modello lineare</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./055_reglin5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confronto tra due gruppi indipendenti</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./056_pred_check.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Predictive checks</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./060_anova.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Confronto tra le medie di tre o più gruppi</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./070_mod_hier.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Modello gerarchico</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./071_mod_hier_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Modello gerarchico: simulazioni</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./entropy.html" class="sidebar-item-text sidebar-link">Parte 6: Entropia</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./090_entropy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Entropia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./091_kl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">La divergenza di Kullback-Leibler</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
     </ul>
@@ -189,17 +414,47 @@ div.csl-indent {
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a01_math_symbols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Simbologia di base</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a02_number_sets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Numeri binari, interi, razionali, irrazionali e reali</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a03_set_theory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Insiemi</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a04_summation_notation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Simbolo di somma (sommatorie)</span></a>
+  </div>
+</li>
+    </ul>
+</li>
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
    
   <ul>
-<li><a href="#ch-prior-discr-binom" id="toc-ch-prior-discr-binom" class="nav-link active" data-scroll-target="#ch-prior-discr-binom"> <span class="header-section-number">1.1</span> Inferenza bayesiana con una distribuzione a priori discreta</a></li>
+<li><a href="#ch-prior-discr-binom" id="toc-ch-prior-discr-binom" class="nav-link active" data-scroll-target="#ch-prior-discr-binom"> <span class="header-section-number">16.1</span> Inferenza bayesiana con una distribuzione a priori discreta</a></li>
   <li>
-<a href="#ch-prior-cont-binom" id="toc-ch-prior-cont-binom" class="nav-link" data-scroll-target="#ch-prior-cont-binom"> <span class="header-section-number">1.2</span> Inferenza bayesiana con una distribuzione a priori continua</a>
+<a href="#ch-prior-cont-binom" id="toc-ch-prior-cont-binom" class="nav-link" data-scroll-target="#ch-prior-cont-binom"> <span class="header-section-number">16.2</span> Inferenza bayesiana con una distribuzione a priori continua</a>
   <ul class="collapse">
-<li><a href="#quali-parametri-per-la-distribuzione-beta" id="toc-quali-parametri-per-la-distribuzione-beta" class="nav-link" data-scroll-target="#quali-parametri-per-la-distribuzione-beta"> <span class="header-section-number">1.2.1</span> Quali parametri per la distribuzione Beta?</a></li>
+<li><a href="#quali-parametri-per-la-distribuzione-beta" id="toc-quali-parametri-per-la-distribuzione-beta" class="nav-link" data-scroll-target="#quali-parametri-per-la-distribuzione-beta"> <span class="header-section-number">16.2.1</span> Quali parametri per la distribuzione Beta?</a></li>
   </ul>
 </li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
@@ -207,7 +462,7 @@ div.csl-indent {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span id="sec-subj-think-prop" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Codice</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-subj-think-prop" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Codice</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -220,8 +475,8 @@ div.csl-indent {
   
 
 </header><p>Obiettivo di questo Capitolo è introdurre l’inferenza bayesiana considerando il modello binomiale. Esamineremo prima il caso di una distribuzione a priori discreta; esamineremo poi il caso di una distribuzione a priori continua. Il materiale qui presentato segue molto da vicino il capitolo 7 del testo di <span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="999_refs.html#ref-albert2019probability" role="doc-biblioref">2019</a>)</span>.</p>
-<section id="ch-prior-discr-binom" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="ch-prior-discr-binom">
-<span class="header-section-number">1.1</span> Inferenza bayesiana con una distribuzione a priori discreta</h2>
+<section id="ch-prior-discr-binom" class="level2" data-number="16.1"><h2 data-number="16.1" class="anchored" data-anchor-id="ch-prior-discr-binom">
+<span class="header-section-number">16.1</span> Inferenza bayesiana con una distribuzione a priori discreta</h2>
 <p>Nei problemi tradizionali di teoria delle probabilità ci sono molti esempi che riguardano l’estrazione di palline colorate da un’urna. In questi esempi ci viene fornito il numero di palline di vari colori presenti nell’urna e ci viene chiesto di calcolare le probabilità di vari eventi. Ad esempio, in un’urna ci sono 40 palline bianche e 20 rosse. Se estrai due palline a caso, qual è la probabilità che entrambe siano bianche?</p>
 <p>L’approccio bayesiano considera uno scenario diverso, ovvero quello in cui non conosciamo le proporzioni delle palline colorate presenti nell’urna. Cioè, nell’esempio precedente, sappiamo solo che nell’urna ci sono due tipi di palline colorate, ma non sappiamo che 40 sono bianche (proporzione di bianco = <span class="math inline">\(2/3\)</span>) e 20 sono rosse (proporzione di rosso = <span class="math inline">\(1/3\)</span>). Ci poniamo la seguente domanda: è possibile inferire le proporzioni di palline nell’urna estraendo un campione di palline dall’urna e osservando i colori delle palline estratte? Espresso in questo modo, questo diventa un problema di inferenza statistica, perché stiamo cercando di inferire la proporzione <span class="math inline">\(\theta\)</span> della popolazione sulla base di un campione casuale. Per continuare con l’esempio precedente, quello che vogliamo fare è inferire <span class="math inline">\(\theta\)</span>, ad esempio, la proporzione di palline rosse nell’urna, alla luce del numero di palline rosse e bianche nel campione.</p>
 <p>Le proporzioni assomigliano alle probabilità. Ricordiamo che sono state proposte tre diverse interpretazioni del concetto di probabilità.</p>
@@ -257,7 +512,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-prior-bino-12-20-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="026_subj_prop_files/figure-html/fig-prior-bino-12-20-1-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.1: Distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span> (versione 1).</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 16.1: Distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span> (versione 1).</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -280,7 +535,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-prior-bino-12-20-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="026_subj_prop_files/figure-html/fig-prior-bino-12-20-2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.2: Distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span> (versione 2).</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 16.2: Distribuzione a priori per il parametro <span class="math inline">\(\theta\)</span> (versione 2).</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -301,7 +556,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 <span><span class="co">#&gt;  [6] 1.797058e-01 1.143967e-01 2.216088e-02 3.557765e-04 0.000000e+00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Per i 10 valori <span class="math inline">\(\theta\)</span> considerati, la funzione di verosimiglianza assume la forma indicata dalla <a href="#fig-like-12-20">Figura&nbsp;<span>1.3</span></a> .</p>
+<p>Per i 10 valori <span class="math inline">\(\theta\)</span> considerati, la funzione di verosimiglianza assume la forma indicata dalla <a href="#fig-like-12-20">Figura&nbsp;<span>16.3</span></a> .</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tibble</span><span class="op">(</span><span class="va">theta</span>, <span class="va">like</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">theta</span>, <span class="va">like</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -311,7 +566,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 </details><div class="cell-output-display">
 <div id="fig-like-12-20" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="026_subj_prop_files/figure-html/fig-like-12-20-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.3: Verosimiglianza del modello binomiale nel caso di 12 successi in 20 prove.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 16.3: Verosimiglianza del modello binomiale nel caso di 12 successi in 20 prove.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -331,7 +586,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 <span><span class="co">#&gt;  [6] 3.929756e-01 2.501596e-01 1.384594e-02 2.222863e-04 0.000000e+00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Una rappresentazione grafica della distribuzione a posteriori di <span class="math inline">\(\theta\)</span> è fornita dalla <a href="#fig-post-bino-12-20-discr">Figura&nbsp;<span>1.4</span></a>.</p>
+<p>Una rappresentazione grafica della distribuzione a posteriori di <span class="math inline">\(\theta\)</span> è fornita dalla <a href="#fig-post-bino-12-20-discr">Figura&nbsp;<span>16.4</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tibble</span><span class="op">(</span><span class="va">theta</span>, <span class="va">post</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">theta</span>, <span class="va">post</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -341,7 +596,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 </details><div class="cell-output-display">
 <div id="fig-post-bino-12-20-discr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="026_subj_prop_files/figure-html/fig-post-bino-12-20-discr-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.4: Distribuzione a posteriori per il modello binomiale con 12 successi in 20 prove e la distribuzione a priori indicata in <a href="#fig-prior-bino-12-20-2">Figura&nbsp;<span>1.2</span></a>.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 16.4: Distribuzione a posteriori per il modello binomiale con 12 successi in 20 prove e la distribuzione a priori indicata in <a href="#fig-prior-bino-12-20-2">Figura&nbsp;<span>16.2</span></a>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -397,10 +652,10 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 </details>
 </div>
 <p>Usando questo metodo possiamo trovare la distribuzione a posteriori di <span class="math inline">\(\theta\)</span> nel caso di qualunque distribuzione a priori discreta.</p>
-</section><section id="ch-prior-cont-binom" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="ch-prior-cont-binom">
-<span class="header-section-number">1.2</span> Inferenza bayesiana con una distribuzione a priori continua</h2>
+</section><section id="ch-prior-cont-binom" class="level2" data-number="16.2"><h2 data-number="16.2" class="anchored" data-anchor-id="ch-prior-cont-binom">
+<span class="header-section-number">16.2</span> Inferenza bayesiana con una distribuzione a priori continua</h2>
 <p>Il caso di una distribuzione a priori discreta è stato discusso solo per scopi didattici. In generale, l’uso di una distribuzione a priori discreta non è una buona scelta per rappresentare le nostre credenze a priori sul parametro sconosciuto. Infatti, per definizione, una distribuzione a priori discreta può rappresentare solo alcuni dei possibili valori del parametro – nel caso discusso sopra, ad esempio, non abbiamo considerato il valore 0.55. Sembra dunque più sensato descrivere le nostre credenze a priori sul parametro utilizzando una distribuzione continua.</p>
-<p>Cerchiamo una funzione di densità con supporto in <span class="math inline">\([0, 1]\)</span>. Il candidato naturale è fornito dalla funzione Beta (si veda il <span class="quarto-unresolved-ref">?sec-distr-rv-cont</span>). Come per le altre funzioni di densità, abbiamo a disposizione quattro funzioni <span class="math inline">\(\textsf{R}\)</span> che ci consentono di manipolare facilmente questa densità.</p>
+<p>Cerchiamo una funzione di densità con supporto in <span class="math inline">\([0, 1]\)</span>. Il candidato naturale è fornito dalla funzione Beta (si veda il <a href="023_cont_rv_distr.html"><span>Capitolo&nbsp;13</span></a>). Come per le altre funzioni di densità, abbiamo a disposizione quattro funzioni <span class="math inline">\(\textsf{R}\)</span> che ci consentono di manipolare facilmente questa densità.</p>
 <p>Ad esempio, possiamo valutare la funzione di densità <span class="math inline">\(\mbox{Beta}(1, 1)\)</span> in corrispondenza dei valori <span class="math inline">\(p = 0.5\)</span> e <span class="math inline">\(p = 0.8\)</span>, che dovrebbe essere entrambi uguali a 1, e in corrispondenza di <span class="math inline">\(p = 1.2\)</span>, che dovrebbe essere ugualea 0 poiché questo valore è al di fuori dell’intervallo <span class="math inline">\([ 0, 1]\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.2</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
@@ -447,8 +702,8 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 </div>
 </div>
 </div>
-<section id="quali-parametri-per-la-distribuzione-beta" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="quali-parametri-per-la-distribuzione-beta">
-<span class="header-section-number">1.2.1</span> Quali parametri per la distribuzione Beta?</h3>
+<section id="quali-parametri-per-la-distribuzione-beta" class="level3" data-number="16.2.1"><h3 data-number="16.2.1" class="anchored" data-anchor-id="quali-parametri-per-la-distribuzione-beta">
+<span class="header-section-number">16.2.1</span> Quali parametri per la distribuzione Beta?</h3>
 <p>Se usiamo una distribuzione Beta per rappresentare le nostre credenze a priori sul parametro <span class="math inline">\(\theta\)</span> (probabilità di successo), allora dobbiamo porci il problema di scegliere i parametri che definiscono la distribuzione Beta che meglio rappresenta le nostre opinioni a priori. Il modo più ovvio per ottenere questo risultato è per prove ed errori. Oppure, possiamo individuare i parametri <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span> della distribuzione interpretando <span class="math inline">\(\alpha\)</span> come la nostra stima a priori del numero di “successi”, <span class="math inline">\(\beta\)</span> come a nostra stima a priori del numero di “insuccessi” e <span class="math inline">\(\alpha + \beta\)</span> come il numero di prove del campione. Ad esempio, se pensiamo che, su 30 prove, verranno osservati 10 successi, otteniamo una <span class="math inline">\(\mbox{Beta}(10, 20)\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bayesrules</span><span class="fu">::</span><span class="fu"><a href="https://bayes-rules.github.io/bayesrules/docs/reference/plot_beta.html">plot_beta</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, mean <span class="op">=</span> <span class="cn">TRUE</span>, mode <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -610,13 +865,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./bayes_inference.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Parte 4: Inferenza bayesiana</span>
+      <a href="./025_intro_bayes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Credibilità, modelli e parametri</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./999_refs.html" class="pagination-link">
-        <span class="nav-page-text">Riferimenti bibliografici</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./029_conjugate_families.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Distribuzioni coniugate</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
