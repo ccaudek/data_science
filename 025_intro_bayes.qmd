@@ -222,6 +222,10 @@ La selezione delle distribuzioni a priori è stata spesso vista come una delle s
 
 La funzione di verosimiglianza per due casi tipici, quello binomiale e quello Normale, è stata descritta nel Capitolo \@ref(ch:likelihood).
 
+::: remark
+Seguendo una pratica comune, all'interno di un framework bayesiano spesso useremo la notazione $p(\cdot)$ per rappresentare due quantità differenti, ovvero la funzione di verosimiglianza e la distribuzione a priori. Questo piccolo abuso di notazione riflette il seguente punto di vista: anche se la verosimiglianza non è una funzione di densità di probabilità, noi non vogliamo stressare questo aspetto, ma vogliamo piuttosto pensare alla verosimiglianza e alla distribuzione a priori come a due elementi che sono egualmente necessari per calcolare la distribuzione a posteriori. In altri termini, per così dire, questa notazione assegna lo stesso status epistemico alle due diverse quantità che si trovano al numeratore della regola di Bayes.
+:::
+
 ### La verosimiglianza marginale {#sec:const-normaliz-bino23}
 
 Per il calcolo di $p(\theta \mid y)$ è necessario dividere il prodotto tra la distribuzione a priori e la verosimiglianza per una costante di normalizzazione. Tale costante di normalizzazione, detta *verosimiglianza marginale*, ha lo scopo di fare in modo che $p(\theta \mid y)$ abbia area unitaria.

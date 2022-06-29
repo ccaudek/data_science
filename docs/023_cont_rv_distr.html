@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-0.9.629">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Data Science per psicologi - 1&nbsp; Distribuzioni di v.c. continue</title>
+<title>Data Science per psicologi - 13&nbsp; Distribuzioni di v.c. continue</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,7 +104,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./024_likelihood.html" rel="next">
-<link href="./prob.html" rel="prev">
+<link href="./022_discr_rv_distr.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -137,7 +137,7 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -171,7 +171,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+        <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -179,12 +179,107 @@ div.csl-indent {
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./023_cont_rv_distr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></a>
+  <a href="./001_key_notions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Concetti chiave</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./024_likelihood.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></a>
+  <a href="./005_measurement.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">La misurazione in psicologia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./007_freq_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variabili e distribuzioni di frequenza</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./011_loc_scale.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Indici di posizione e di scala</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./012_correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Le relazioni tra variabili</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./015_prob_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./016_conditional_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./017_bayes_theorem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./018_joint_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./019_density_func.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./020_expval_var.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Valore atteso e varianza</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./022_discr_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. discrete</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./023_cont_rv_distr.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./024_likelihood.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></a>
+  </div>
+</li>
+    </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./025_intro_bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Credibilità, modelli e parametri</span></a>
   </div>
 </li>
     </ul>
@@ -201,43 +296,43 @@ div.csl-indent {
    
   <ul>
 <li>
-<a href="#distribuzione-gaussiana" id="toc-distribuzione-gaussiana" class="nav-link active" data-scroll-target="#distribuzione-gaussiana"> <span class="header-section-number">1.1</span> Distribuzione Gaussiana</a>
+<a href="#distribuzione-gaussiana" id="toc-distribuzione-gaussiana" class="nav-link active" data-scroll-target="#distribuzione-gaussiana"> <span class="header-section-number">13.1</span> Distribuzione Gaussiana</a>
   <ul class="collapse">
-<li><a href="#limite-delle-distribuzioni-binomiali" id="toc-limite-delle-distribuzioni-binomiali" class="nav-link" data-scroll-target="#limite-delle-distribuzioni-binomiali"> <span class="header-section-number">1.1.1</span> Limite delle distribuzioni binomiali</a></li>
+<li><a href="#limite-delle-distribuzioni-binomiali" id="toc-limite-delle-distribuzioni-binomiali" class="nav-link" data-scroll-target="#limite-delle-distribuzioni-binomiali"> <span class="header-section-number">13.1.1</span> Limite delle distribuzioni binomiali</a></li>
   </ul>
 </li>
   <li>
-<a href="#normal-random-walk" id="toc-normal-random-walk" class="nav-link" data-scroll-target="#normal-random-walk"> <span class="header-section-number">1.2</span> La Normale prodotta con una simulazione</a>
+<a href="#normal-random-walk" id="toc-normal-random-walk" class="nav-link" data-scroll-target="#normal-random-walk"> <span class="header-section-number">13.2</span> La Normale prodotta con una simulazione</a>
   <ul class="collapse">
-<li><a href="#concentrazione" id="toc-concentrazione" class="nav-link" data-scroll-target="#concentrazione"> <span class="header-section-number">1.2.1</span> Concentrazione</a></li>
-  <li><a href="#funzione-di-ripartizione" id="toc-funzione-di-ripartizione" class="nav-link" data-scroll-target="#funzione-di-ripartizione"> <span class="header-section-number">1.2.2</span> Funzione di ripartizione</a></li>
-  <li><a href="#distribuzione-normale-standard" id="toc-distribuzione-normale-standard" class="nav-link" data-scroll-target="#distribuzione-normale-standard"> <span class="header-section-number">1.2.3</span> Distribuzione Normale standard</a></li>
+<li><a href="#concentrazione" id="toc-concentrazione" class="nav-link" data-scroll-target="#concentrazione"> <span class="header-section-number">13.2.1</span> Concentrazione</a></li>
+  <li><a href="#funzione-di-ripartizione" id="toc-funzione-di-ripartizione" class="nav-link" data-scroll-target="#funzione-di-ripartizione"> <span class="header-section-number">13.2.2</span> Funzione di ripartizione</a></li>
+  <li><a href="#distribuzione-normale-standard" id="toc-distribuzione-normale-standard" class="nav-link" data-scroll-target="#distribuzione-normale-standard"> <span class="header-section-number">13.2.3</span> Distribuzione Normale standard</a></li>
   </ul>
 </li>
-  <li><a href="#teorema-del-limite-centrale" id="toc-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#teorema-del-limite-centrale"> <span class="header-section-number">1.3</span> Teorema del limite centrale</a></li>
+  <li><a href="#teorema-del-limite-centrale" id="toc-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#teorema-del-limite-centrale"> <span class="header-section-number">13.3</span> Teorema del limite centrale</a></li>
   <li>
-<a href="#distribuzione-chi-quadrato" id="toc-distribuzione-chi-quadrato" class="nav-link" data-scroll-target="#distribuzione-chi-quadrato"> <span class="header-section-number">1.4</span> Distribuzione Chi-quadrato</a>
+<a href="#distribuzione-chi-quadrato" id="toc-distribuzione-chi-quadrato" class="nav-link" data-scroll-target="#distribuzione-chi-quadrato"> <span class="header-section-number">13.4</span> Distribuzione Chi-quadrato</a>
   <ul class="collapse">
-<li><a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"> <span class="header-section-number">1.4.1</span> Proprietà</a></li>
+<li><a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"> <span class="header-section-number">13.4.1</span> Proprietà</a></li>
   </ul>
 </li>
   <li>
-<a href="#distribuzione-t-di-student" id="toc-distribuzione-t-di-student" class="nav-link" data-scroll-target="#distribuzione-t-di-student"> <span class="header-section-number">1.5</span> Distribuzione <span class="math inline">\(t\)</span> di Student</a>
+<a href="#distribuzione-t-di-student" id="toc-distribuzione-t-di-student" class="nav-link" data-scroll-target="#distribuzione-t-di-student"> <span class="header-section-number">13.5</span> Distribuzione <span class="math inline">\(t\)</span> di Student</a>
   <ul class="collapse">
-<li><a href="#propriet%C3%A0-1" id="toc-proprietà-1" class="nav-link" data-scroll-target="#propriet%C3%A0-1"> <span class="header-section-number">1.5.1</span> Proprietà</a></li>
+<li><a href="#propriet%C3%A0-1" id="toc-proprietà-1" class="nav-link" data-scroll-target="#propriet%C3%A0-1"> <span class="header-section-number">13.5.1</span> Proprietà</a></li>
   </ul>
 </li>
-  <li><a href="#funzione-beta" id="toc-funzione-beta" class="nav-link" data-scroll-target="#funzione-beta"> <span class="header-section-number">1.6</span> Funzione beta</a></li>
-  <li><a href="#distribuzione-beta" id="toc-distribuzione-beta" class="nav-link" data-scroll-target="#distribuzione-beta"> <span class="header-section-number">1.7</span> Distribuzione Beta</a></li>
-  <li><a href="#distribuzione-di-cauchy" id="toc-distribuzione-di-cauchy" class="nav-link" data-scroll-target="#distribuzione-di-cauchy"> <span class="header-section-number">1.8</span> Distribuzione di Cauchy</a></li>
-  <li><a href="#distribuzione-log-normale" id="toc-distribuzione-log-normale" class="nav-link" data-scroll-target="#distribuzione-log-normale"> <span class="header-section-number">1.9</span> Distribuzione log-normale</a></li>
-  <li><a href="#distribuzione-di-pareto" id="toc-distribuzione-di-pareto" class="nav-link" data-scroll-target="#distribuzione-di-pareto"> <span class="header-section-number">1.10</span> Distribuzione di Pareto</a></li>
+  <li><a href="#funzione-beta" id="toc-funzione-beta" class="nav-link" data-scroll-target="#funzione-beta"> <span class="header-section-number">13.6</span> Funzione beta</a></li>
+  <li><a href="#distribuzione-beta" id="toc-distribuzione-beta" class="nav-link" data-scroll-target="#distribuzione-beta"> <span class="header-section-number">13.7</span> Distribuzione Beta</a></li>
+  <li><a href="#distribuzione-di-cauchy" id="toc-distribuzione-di-cauchy" class="nav-link" data-scroll-target="#distribuzione-di-cauchy"> <span class="header-section-number">13.8</span> Distribuzione di Cauchy</a></li>
+  <li><a href="#distribuzione-log-normale" id="toc-distribuzione-log-normale" class="nav-link" data-scroll-target="#distribuzione-log-normale"> <span class="header-section-number">13.9</span> Distribuzione log-normale</a></li>
+  <li><a href="#distribuzione-di-pareto" id="toc-distribuzione-di-pareto" class="nav-link" data-scroll-target="#distribuzione-di-pareto"> <span class="header-section-number">13.10</span> Distribuzione di Pareto</a></li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span id="sec-distr-rv-cont" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Codice</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-distr-rv-cont" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Codice</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -249,12 +344,12 @@ div.csl-indent {
   </div>
   
 
-</header><p>Dopo avere introdotto con una simulazione il concetto di funzione di densità nel Capitolo <span class="quarto-unresolved-ref">?sec-intro-density-function</span>, prendiamo ora in esame alcune delle densità di probabilità più note. La più importante di esse è sicuramente la distribuzione Normale.</p>
-<section id="distribuzione-gaussiana" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="distribuzione-gaussiana">
-<span class="header-section-number">1.1</span> Distribuzione Gaussiana</h2>
+</header><p>Dopo avere introdotto con una simulazione il concetto di funzione di densità nel Capitolo <a href="019_density_func.html"><span>Capitolo&nbsp;10</span></a>, prendiamo ora in esame alcune delle densità di probabilità più note. La più importante di esse è sicuramente la distribuzione Normale.</p>
+<section id="distribuzione-gaussiana" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="distribuzione-gaussiana">
+<span class="header-section-number">13.1</span> Distribuzione Gaussiana</h2>
 <p>Non c’è un’unica distribuzione gaussiana (o normale): la distribuzione gaussiana è una famiglia di distribuzioni. Tali distribuzioni sono dette “gaussiane” in onore di Carl Friedrich Gauss (uno dei più grandi matematici della storia il quale, tra le altre cose, scoprì l’utilità di tale funzione di densità per descrivere gli errori di misurazione). Adolphe Quetelet, il padre delle scienze sociali quantitative, fu il primo ad applicare tale funzione di densità alle misurazioni dell’uomo. Karl Pearson usò per primo il termine “distribuzione normale” anche se ammise che questa espressione “ha lo svantaggio di indurre le persone a credere che le altre distribuzioni, in un senso o nell’altro, non siano normali.”</p>
-<section id="limite-delle-distribuzioni-binomiali" class="level3" data-number="1.1.1"><h3 data-number="1.1.1" class="anchored" data-anchor-id="limite-delle-distribuzioni-binomiali">
-<span class="header-section-number">1.1.1</span> Limite delle distribuzioni binomiali</h3>
+<section id="limite-delle-distribuzioni-binomiali" class="level3" data-number="13.1.1"><h3 data-number="13.1.1" class="anchored" data-anchor-id="limite-delle-distribuzioni-binomiali">
+<span class="header-section-number">13.1.1</span> Limite delle distribuzioni binomiali</h3>
 <p>Iniziamo con un un breve excursus storico. Nel 1733, Abraham de Moivre notò che, aumentando il numero di prove di una distribuzione binomiale, la distribuzione risultante diventava quasi simmetrica e a forma campanulare. Con 10 prove e una probabilità di successo di 0.9 in ciascuna prova, la distribuzione è chiaramente asimmetrica.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">N</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
@@ -273,7 +368,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-demoivre-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-demoivre-1-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.1: Probabilità del numero di successi in <span class="math inline">\(N = 10\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 10, 0.9)\)</span>. Con solo dieci prove, la distribuzione è fortemente asimmetrica negativa.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 13.1: Probabilità del numero di successi in <span class="math inline">\(N = 10\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 10, 0.9)\)</span>. Con solo dieci prove, la distribuzione è fortemente asimmetrica negativa.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -294,17 +389,17 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-demoivre-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-demoivre-2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.2: Probabilità del numero di successi in <span class="math inline">\(N = 1000\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 1000, 0.9)\)</span>. Con mille prove, la distribuzione è quasi simmetrica a forma campanulare.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 13.2: Probabilità del numero di successi in <span class="math inline">\(N = 1000\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 1000, 0.9)\)</span>. Con mille prove, la distribuzione è quasi simmetrica a forma campanulare.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>La distribuzione Normale fu scoperta da Gauss nel 1809. Il Paragrafo successivo illustra come si possa giungere alla Normale mediante una simulazione.</p>
-</section></section><section id="normal-random-walk" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="normal-random-walk">
-<span class="header-section-number">1.2</span> La Normale prodotta con una simulazione</h2>
+</section></section><section id="normal-random-walk" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="normal-random-walk">
+<span class="header-section-number">13.2</span> La Normale prodotta con una simulazione</h2>
 <p><span class="citation" data-cites="McElreath_rethinking">McElreath (<a href="999_refs.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> illustra come sia possibile giungere alla distribuzione Normale mediante una simulazione. Supponiamo che vi siano mille persone tutte allineate su una linea di partenza. Quando viene dato un segnale, ciascuna persona lancia una moneta e fa un passo in avanti oppure all’indietro a seconda che sia uscita testa o croce. Supponiamo che la lunghezza di ciascun passo vari da 0 a 1 metro. Ciascuna persona lancia una moneta 16 volte e dunque compie 16 passi.</p>
 <p>Alla conclusione di queste passeggiate casuali (<em>random walk</em>) non possiamo sapere con esattezza dove si troverà ciascuna persona, ma possiamo conoscere con certezza le caratteristiche della distribuzione delle mille distanze dall’origine. Per esempio, possiamo predire in maniera accurata la proporzione di persone che si sono spostate in avanti oppure all’indietro. Oppure, possiamo predire accuratamente la proporzione di persone che si troveranno ad una certa distanza dalla linea di partenza (es., a 1.5 m dall’origine).</p>
-<p>Queste predizioni sono possibili perché tali distanze si distribuiscono secondo la legge Normale. È facile simulare questo processo usando . I risultati della simulazione sono riportati nella <a href="#fig-rw-normal-4816">Figura&nbsp;<span>1.3</span></a>.</p>
+<p>Queste predizioni sono possibili perché tali distanze si distribuiscono secondo la legge Normale. È facile simulare questo processo usando . I risultati della simulazione sono riportati nella <a href="#fig-rw-normal-4816">Figura&nbsp;<span>13.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pos</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">16</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -334,12 +429,12 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-rw-normal-4816" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-rw-normal-4816-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.3: Passeggiata casuale di 4, 8 e 16 passi. La spezzata nera indica la media delle distanze dall’origine come funzione del numero di passi.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 13.3: Passeggiata casuale di 4, 8 e 16 passi. La spezzata nera indica la media delle distanze dall’origine come funzione del numero di passi.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Un kernel density plot delle distanze ottenute dopo 4, 8 e 16 passi è riportato nella <a href="#fig-rw-normal-3panels">Figura&nbsp;<span>1.4</span></a>. Nel pannello di destra, al kernel density plot è stata sovrapposta una densità Normale di opportuni parametri (linea tratteggiata).</p>
+<p>Un kernel density plot delle distanze ottenute dopo 4, 8 e 16 passi è riportato nella <a href="#fig-rw-normal-3panels">Figura&nbsp;<span>13.4</span></a>. Nel pannello di destra, al kernel density plot è stata sovrapposta una densità Normale di opportuni parametri (linea tratteggiata).</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">pos</span> <span class="op">%&gt;%</span></span>
@@ -380,7 +475,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-rw-normal-3panels" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-rw-normal-3panels-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.4: Kernel density plot dei risultati della passeggiata casuale riportata nella figura precente, dopo 4, 8 e 16 passi. Nel pannello di destra, una densità Normale di opportuni parametri è sovrapposta all’istogramma lisciato.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 13.4: Kernel density plot dei risultati della passeggiata casuale riportata nella figura precente, dopo 4, 8 e 16 passi. Nel pannello di destra, una densità Normale di opportuni parametri è sovrapposta all’istogramma lisciato.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -389,25 +484,25 @@ div.csl-indent {
 <p>Da un punto di vista formale, diciamo che una variabile casuale continua <span class="math inline">\(Y\)</span> ha una distribuzione Normale se la sua densità è</p>
 <p><span id="eq-normal-formula"><span class="math display">\[
 f(y; \mu, \sigma) = {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(y -  \mu)^2}{2 \sigma^2} \right\},
-\tag{1.1}\]</span></span></p>
+\tag{13.1}\]</span></span></p>
 <p>dove <span class="math inline">\(\mu \in \mathbb{R}\)</span> e <span class="math inline">\(\sigma &gt; 0\)</span> sono i parametri della distribuzione.</p>
 <p>La densità normale è unimodale e simmetrica con una caratteristica forma a campana e con il punto di massima densità in corrispondenza di <span class="math inline">\(\mu\)</span>.</p>
-<p>Il significato dei parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> che appaiono nell’<a href="#eq-normal-formula">Equazione&nbsp;<span>1.1</span></a> viene chiarito dalla dimostrazione che</p>
+<p>Il significato dei parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> che appaiono nell’<a href="#eq-normal-formula">Equazione&nbsp;<span>13.1</span></a> viene chiarito dalla dimostrazione che</p>
 <p><span class="math display">\[
 \mathbb{E}(Y) = \mu, \qquad \mathbb{V}(Y) = \sigma^2.
 \]</span></p>
-<p>La rappresentazione grafica di quattro densità Normali tutte con media 0 e con deviazioni standard 0.25, 0.5, 1 e 2 è fornita nella <a href="#fig-gaussian-plot-demo">Figura&nbsp;<span>1.5</span></a>.</p>
+<p>La rappresentazione grafica di quattro densità Normali tutte con media 0 e con deviazioni standard 0.25, 0.5, 1 e 2 è fornita nella <a href="#fig-gaussian-plot-demo">Figura&nbsp;<span>13.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-gaussian-plot-demo" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-gaussian-plot-demo-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.5: Alcune distribuzioni Normali.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 13.5: Alcune distribuzioni Normali.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="concentrazione" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="concentrazione">
-<span class="header-section-number">1.2.1</span> Concentrazione</h3>
+<section id="concentrazione" class="level3" data-number="13.2.1"><h3 data-number="13.2.1" class="anchored" data-anchor-id="concentrazione">
+<span class="header-section-number">13.2.1</span> Concentrazione</h3>
 <p>È istruttivo osservare il grado di concentrazione della distribuzione Normale attorno alla media:</p>
 <p><span class="math display">\[
 \begin{align}
@@ -418,15 +513,15 @@ P(\mu - 3\sigma &lt; Y &lt; \mu + 3\sigma) &amp;= P (-3 &lt; Z &lt; 3) \simeq 0.
 \]</span></p>
 <p>Si noti come un dato la cui distanza dalla media è superiore a 3 volte la deviazione standard presenti un carattere di eccezionalità perché meno del 0.3% dei dati della distribuzione Normale presentano questa caratteristica.</p>
 <p>Per indicare la distribuzione Normale si usa la notazione <span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span>.</p>
-</section><section id="funzione-di-ripartizione" class="level3" data-number="1.2.2"><h3 data-number="1.2.2" class="anchored" data-anchor-id="funzione-di-ripartizione">
-<span class="header-section-number">1.2.2</span> Funzione di ripartizione</h3>
+</section><section id="funzione-di-ripartizione" class="level3" data-number="13.2.2"><h3 data-number="13.2.2" class="anchored" data-anchor-id="funzione-di-ripartizione">
+<span class="header-section-number">13.2.2</span> Funzione di ripartizione</h3>
 <p>Il valore della funzione di ripartizione di <span class="math inline">\(Y\)</span> nel punto <span class="math inline">\(y\)</span> è l’area sottesa alla curva di densità <span class="math inline">\(f(y)\)</span> nella semiretta <span class="math inline">\((-\infty, y]\)</span>. Non esiste alcuna funzione elementare per la funzione di ripartizione</p>
 <p><span id="eq-gaussian-rip-formula"><span class="math display">\[
 F(y) = \int_{-\infty}^y {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(y - \mu)^2}{2\sigma^2} \right\} dy,
-\tag{1.2}\]</span></span></p>
+\tag{13.2}\]</span></span></p>
 <p>pertanto le probabilità <span class="math inline">\(P(Y &lt; y)\)</span> vengono calcolate mediante integrazione numerica approssimata. I valori della funzione di ripartizione di una variabile casuale Normale sono dunque forniti da un software.</p>
 <div id="exr-gauss-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 1.1 </strong></span>Usiamo <span class="math inline">\(\mathsf{R}\)</span> per calcolare la funzione di ripartizione della Normale. La funzione <code>pnorm(q, mean, sd)</code> restituisce la funzione di ripartizione della Normale con media <code>mean</code> e deviazione standard <code>sd</code>, ovvero l’area sottesa alla funzione di densità di una Normale con media <code>mean</code> e deviazione standard <code>sd</code> nell’intervallo <span class="math inline">\([-\infty, q]\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 13.1 </strong></span>Usiamo <span class="math inline">\(\mathsf{R}\)</span> per calcolare la funzione di ripartizione della Normale. La funzione <code>pnorm(q, mean, sd)</code> restituisce la funzione di ripartizione della Normale con media <code>mean</code> e deviazione standard <code>sd</code>, ovvero l’area sottesa alla funzione di densità di una Normale con media <code>mean</code> e deviazione standard <code>sd</code> nell’intervallo <span class="math inline">\([-\infty, q]\)</span>.</p>
 <p>Per esempio, in precedenza abbiamo detto che il 68% circa dell’area sottesa ad una Normale è compresa nell’intervallo <span class="math inline">\(\mu \pm \sigma\)</span>. Verifichiamo per la distribuzione del QI <span class="math inline">\(\sim \mathcal{N}(\mu = 100, \sigma = 15)\)</span>:</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">+</span><span class="fl">15</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">-</span><span class="fl">15</span>, <span class="fl">100</span>, <span class="fl">15</span><span class="op">)</span></span>
@@ -446,8 +541,8 @@ F(y) = \int_{-\infty}^y {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(y - \
 </details>
 </div>
 </div>
-</section><section id="distribuzione-normale-standard" class="level3" data-number="1.2.3"><h3 data-number="1.2.3" class="anchored" data-anchor-id="distribuzione-normale-standard">
-<span class="header-section-number">1.2.3</span> Distribuzione Normale standard</h3>
+</section><section id="distribuzione-normale-standard" class="level3" data-number="13.2.3"><h3 data-number="13.2.3" class="anchored" data-anchor-id="distribuzione-normale-standard">
+<span class="header-section-number">13.2.3</span> Distribuzione Normale standard</h3>
 <p>La distribuzione Normale di parametri <span class="math inline">\(\mu = 0\)</span> e <span class="math inline">\(\sigma = 1\)</span> viene detta <em>distribuzione Normale standard</em>. La famiglia Normale è l’insieme avente come elementi tutte le distribuzioni Normali con parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> diversi. Tutte le distribuzioni Normali si ottengono dalla Normale standard mediante una trasformazione lineare: se <span class="math inline">\(Y \sim \mathcal{N}(\mu_Y, \sigma_Y)\)</span> allora</p>
 <p><span class="math display">\[
 X = a + b Y \sim \mathcal{N}(\mu_X = a+b \mu_Y, \sigma_X = \left|b\right|\sigma_Y).
@@ -455,7 +550,7 @@ X = a + b Y \sim \mathcal{N}(\mu_X = a+b \mu_Y, \sigma_X = \left|b\right|\sigma_
 <p>L’area sottesa alla curva di densità di <span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span> nella semiretta <span class="math inline">\((-\infty, y]\)</span> è uguale all’area sottesa alla densità Normale standard nella semiretta <span class="math inline">\((-\infty, z]\)</span>, in cui <span class="math inline">\(z = (y -\mu_Y )/\sigma_Y\)</span> è il punteggio standard di <span class="math inline">\(Y\)</span>. Per la simmetria della distribuzione, l’area sottesa nella semiretta <span class="math inline">\([1, \infty)\)</span> è uguale all’area sottesa nella semiretta <span class="math inline">\((-\infty, 1]\)</span> e quest’ultima coincide con <span class="math inline">\(F(-1)\)</span>. Analogamente, l’area sottesa nell’intervallo <span class="math inline">\([y_a, y_b]\)</span>, con <span class="math inline">\(y_a &lt; y_b\)</span>, è pari a <span class="math inline">\(F(z_b) - F(z_a)\)</span>, dove <span class="math inline">\(z_a\)</span> e <span class="math inline">\(z_b\)</span> sono i punteggi standard di <span class="math inline">\(y_a\)</span> e <span class="math inline">\(y_b\)</span>.</p>
 <p>Si ha anche il problema inverso rispetto a quello del calcolo delle aree: dato un numero <span class="math inline">\(0 \leq p \leq 1\)</span>, il problema è quello di determinare un numero <span class="math inline">\(z \in \mathbb{R}\)</span> tale che <span class="math inline">\(P(Z &lt; z) = p\)</span>. Il valore <span class="math inline">\(z\)</span> cercato è detto <em>quantile</em> di ordine <span class="math inline">\(p\)</span> della Normale standard e può essere trovato mediante un software.</p>
 <div id="exr-gauss-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 1.2 </strong></span></p>
+<p><span class="theorem-title"><strong>Esercizio 13.2 </strong></span></p>
 <p>Supponiamo che l’altezza degli individui adulti segua la distribuzione Normale di media <span class="math inline">\(\mu = 1.7\)</span> m e deviazione standard <span class="math inline">\(\sigma = 0.1\)</span> m. Vogliamo sapere la proporzione di individui adulti con un’altezza compresa tra <span class="math inline">\(1.7\)</span> e <span class="math inline">\(1.8\)</span> m.</p>
 </div>
 <div class="solution proof">
@@ -497,8 +592,8 @@ z_{\text{inf}} = \frac{1.7 - 1.7}{0.1} = 0, \quad z_{\text{sup}} = \frac{1.8 - 1
 </div>
 <p>Il modo più semplice per risolvere questo problema resta comunque quello di rendersi conto che la probabilità richiesta non è altro che la metà dell’area sottesa dalle distribuzioni Normali nell’intervallo <span class="math inline">\([\mu - \sigma, \mu + \sigma]\)</span>, ovvero <span class="math inline">\(0.683/2\)</span>.</p>
 </div>
-<section id="funzione-di-ripartizione-della-normale-standard-e-funzione-logistica" class="level4" data-number="1.2.3.1"><h4 data-number="1.2.3.1" class="anchored" data-anchor-id="funzione-di-ripartizione-della-normale-standard-e-funzione-logistica">
-<span class="header-section-number">1.2.3.1</span> Funzione di ripartizione della normale standard e funzione logistica</h4>
+<section id="funzione-di-ripartizione-della-normale-standard-e-funzione-logistica" class="level4" data-number="13.2.3.1"><h4 data-number="13.2.3.1" class="anchored" data-anchor-id="funzione-di-ripartizione-della-normale-standard-e-funzione-logistica">
+<span class="header-section-number">13.2.3.1</span> Funzione di ripartizione della normale standard e funzione logistica</h4>
 <p>Si noti che la funzione logistica (in blu), pur essendo del tutto diversa dalla Normale dal punto di vista formale, assomiglia molto alla Normale standard quando le due cdf hanno la stessa varianza.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tibble</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -515,11 +610,11 @@ z_{\text{inf}} = \frac{1.7 - 1.7}{0.1} = 0, \quad z_{\text{sup}} = \frac{1.8 - 1
 </div>
 </div>
 </div>
-</section></section></section><section id="teorema-del-limite-centrale" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="teorema-del-limite-centrale">
-<span class="header-section-number">1.3</span> Teorema del limite centrale</h2>
+</section></section></section><section id="teorema-del-limite-centrale" class="level2" data-number="13.3"><h2 data-number="13.3" class="anchored" data-anchor-id="teorema-del-limite-centrale">
+<span class="header-section-number">13.3</span> Teorema del limite centrale</h2>
 <p>Laplace dimostrò il teorema del limite centrale (TLC) nel 1812. Il TLC ci dice che se prendiamo una sequenza di variabili casuali indipendenti e le sommiamo, tale somma tende a distribuirsi come una Normale. Il TLC specifica inoltre, sulla base dei valori attesi e delle varianze delle v.c. che vengono sommate, quali sono i parametri della distribuzione Normale così ottenuta.</p>
 <div id="thm-tlc" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 1.1 </strong></span>Si supponga che <span class="math inline">\(Y = Y_1, \dots, Y_i, \ldots, Y_n\)</span> sia una sequenza di v.a. i.i.d. con <span class="math inline">\(\mathbb{E}(Y_i) = \mu\)</span> e <span class="math inline">\(\mbox{SD}(Y_i) = \sigma\)</span>. Si definisca una nuova v.c. come:</p>
+<p><span class="theorem-title"><strong>Teorema 13.1 </strong></span>Si supponga che <span class="math inline">\(Y = Y_1, \dots, Y_i, \ldots, Y_n\)</span> sia una sequenza di v.a. i.i.d. con <span class="math inline">\(\mathbb{E}(Y_i) = \mu\)</span> e <span class="math inline">\(\mbox{SD}(Y_i) = \sigma\)</span>. Si definisca una nuova v.c. come:</p>
 <p><span class="math display">\[
 Z = \frac{1}{n} \sum_{i=1}^n Y_i.
 \]</span></p>
@@ -529,8 +624,8 @@ p_Z(z) \rightarrow \mathcal{N}\left(z \ \Bigg| \ \mu, \, \frac{1}{\sqrt{n}} \cdo
 \]</span></p>
 </div>
 <p>Il TLC può essere generalizzato a variabili che non hanno la stessa distribuzione purché siano indipendenti e abbiano aspettative e varianze finite. Molti fenomeni naturali, come l’altezza dell’uomo adulto di entrambi i generi, sono il risultato di una serie di effetti additivi relativamente piccoli, la cui combinazione porta alla normalità, indipendentemente da come gli effetti additivi sono distribuiti. Questo è il motivo per cui la distribuzione normale forniscre una buona rappresentazione della distribuzione di molti fenomeni naturali.</p>
-</section><section id="distribuzione-chi-quadrato" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="distribuzione-chi-quadrato">
-<span class="header-section-number">1.4</span> Distribuzione Chi-quadrato</h2>
+</section><section id="distribuzione-chi-quadrato" class="level2" data-number="13.4"><h2 data-number="13.4" class="anchored" data-anchor-id="distribuzione-chi-quadrato">
+<span class="header-section-number">13.4</span> Distribuzione Chi-quadrato</h2>
 <p>Dalla Normale deriva la distribuzione <span class="math inline">\(\chi^2\)</span>. La distribuzione <span class="math inline">\(\chi^2_{~k}\)</span> con <span class="math inline">\(k\)</span> gradi di libertà descrive la variabile casuale</p>
 <p><span class="math display">\[
 Z_1^2 + Z_2^2 + \dots + Z_k^2,
@@ -540,18 +635,18 @@ Z_1^2 + Z_2^2 + \dots + Z_k^2,
 f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x &gt; 0,
 \]</span></p>
 <p>dove <span class="math inline">\(C_{\nu}\)</span> è una costante positiva.</p>
-<p>La <a href="#fig-alcune-chi-quadrato">Figura&nbsp;<span>1.6</span></a> mostra alcune distribuzioni Chi-quadrato variando il parametro <span class="math inline">\(\nu\)</span>.</p>
+<p>La <a href="#fig-alcune-chi-quadrato">Figura&nbsp;<span>13.6</span></a> mostra alcune distribuzioni Chi-quadrato variando il parametro <span class="math inline">\(\nu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-alcune-chi-quadrato" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-alcune-chi-quadrato-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.6: Alcune distribuzioni Chi-quadrato.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 13.6: Alcune distribuzioni Chi-quadrato.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="proprietà" class="level3" data-number="1.4.1"><h3 data-number="1.4.1" class="anchored" data-anchor-id="proprietà">
-<span class="header-section-number">1.4.1</span> Proprietà</h3>
+<section id="proprietà" class="level3" data-number="13.4.1"><h3 data-number="13.4.1" class="anchored" data-anchor-id="proprietà">
+<span class="header-section-number">13.4.1</span> Proprietà</h3>
 <ul>
 <li>La distribuzione di densità <span class="math inline">\(\chi^2_{~\nu}\)</span> è asimmetrica.</li>
 <li>Il valore atteso di una variabile <span class="math inline">\(\chi^2_{~\nu}\)</span> è uguale a <span class="math inline">\(\nu\)</span>.</li>
@@ -560,7 +655,7 @@ f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x &gt; 0,
 <li>Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono due variabili casuali chi-quadrato indipendenti con <span class="math inline">\(\nu_1\)</span> e <span class="math inline">\(\nu_2\)</span> gradi di libertà, ne segue che <span class="math inline">\(X + Y \sim \chi^2_m\)</span>, con <span class="math inline">\(m = \nu_1 + \nu_2\)</span>. Tale principio si estende a qualunque numero finito di variabili casuali chi-quadrato indipendenti.</li>
 </ul>
 <div id="exr-chisq-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 1.3 </strong></span>Usiamo <span class="math inline">\(\mathsf{R}\)</span> per disegnare la densità chi-quadrato con 3 gradi di libertà dividendo l’area sottesa alla curva di densità in due parti uguali.</p>
+<p><span class="theorem-title"><strong>Esercizio 13.3 </strong></span>Usiamo <span class="math inline">\(\mathsf{R}\)</span> per disegnare la densità chi-quadrato con 3 gradi di libertà dividendo l’area sottesa alla curva di densità in due parti uguali.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15.0</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">dchisq</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
@@ -580,42 +675,42 @@ f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x &gt; 0,
 </div>
 </div>
 </div>
-</section></section><section id="distribuzione-t-di-student" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="distribuzione-t-di-student">
-<span class="header-section-number">1.5</span> Distribuzione <span class="math inline">\(t\)</span> di Student</h2>
+</section></section><section id="distribuzione-t-di-student" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="distribuzione-t-di-student">
+<span class="header-section-number">13.5</span> Distribuzione <span class="math inline">\(t\)</span> di Student</h2>
 <p>Dalle distribuzioni Normale e Chi-quadrato deriva un’altra distribuzione molto nota, la <span class="math inline">\(t\)</span> di Student. Se <span class="math inline">\(Z \sim \mathcal{N}\)</span> e <span class="math inline">\(W \sim \chi^2_{~\nu}\)</span> sono due variabili casuali indipendenti, allora il rapporto</p>
 <p><span id="eq-student-t-distr"><span class="math display">\[
 T = \frac{Z}{\Big( \frac{W}{\nu}\Big)^{\frac{1}{2}}}
-\tag{1.3}\]</span></span></p>
+\tag{13.3}\]</span></span></p>
 <p>definisce la distribuzione <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(\nu\)</span> gradi di libertà. Si usa scrivere <span class="math inline">\(T \sim t_{\nu}\)</span>. L’andamento della distribuzione <span class="math inline">\(t\)</span> di Student è simile a quello della distribuzione Normale, ma ha una maggiore dispersione (ha le code più pesanti di una Normale, ovvero ha una varianza maggiore di 1).</p>
-<p>La <a href="#fig-alcune-t-student">Figura&nbsp;<span>1.7</span></a> mostra alcune distribuzioni <span class="math inline">\(t\)</span> di Student variando il parametro <span class="math inline">\(\nu\)</span>.</p>
+<p>La <a href="#fig-alcune-t-student">Figura&nbsp;<span>13.7</span></a> mostra alcune distribuzioni <span class="math inline">\(t\)</span> di Student variando il parametro <span class="math inline">\(\nu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-alcune-t-student" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-alcune-t-student-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 1.7: Alcune distribuzioni <span class="math inline">\(t\)</span> di Student.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 13.7: Alcune distribuzioni <span class="math inline">\(t\)</span> di Student.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="proprietà-1" class="level3" data-number="1.5.1"><h3 data-number="1.5.1" class="anchored" data-anchor-id="proprietà-1">
-<span class="header-section-number">1.5.1</span> Proprietà</h3>
+<section id="proprietà-1" class="level3" data-number="13.5.1"><h3 data-number="13.5.1" class="anchored" data-anchor-id="proprietà-1">
+<span class="header-section-number">13.5.1</span> Proprietà</h3>
 <p>La variabile casuale <span class="math inline">\(t\)</span> di Student soddisfa le seguenti proprietà:</p>
 <ol type="1">
 <li>Per <span class="math inline">\(\nu \rightarrow \infty\)</span>, <span class="math inline">\(t_{\nu}\)</span> tende alla normale standard <span class="math inline">\(\mathcal{N}(0, 1)\)</span>.</li>
 <li>La densità della <span class="math inline">\(t_{\nu}\)</span> è una funzione simmetrica con valore atteso nullo.</li>
 <li>Per <span class="math inline">\(\nu &gt; 2\)</span>, la varianza della <span class="math inline">\(t_{\nu}\)</span> vale <span class="math inline">\(\nu/(\nu - 2)\)</span>; pertanto è sempre maggiore di 1 e tende a 1 per <span class="math inline">\(\nu \rightarrow \infty\)</span>.</li>
-</ol></section></section><section id="funzione-beta" class="level2" data-number="1.6"><h2 data-number="1.6" class="anchored" data-anchor-id="funzione-beta">
-<span class="header-section-number">1.6</span> Funzione beta</h2>
+</ol></section></section><section id="funzione-beta" class="level2" data-number="13.6"><h2 data-number="13.6" class="anchored" data-anchor-id="funzione-beta">
+<span class="header-section-number">13.6</span> Funzione beta</h2>
 <p>La funzione beta di Eulero è una funzione matematica, <em>non</em> una densità di probabilità. La menzioniamo qui perché viene utilizzata nella distribuzione Beta. La funzione beta si può scrivere in molti modi diversi; per i nostri scopi la scriveremo così:</p>
 <p><span id="eq-eulero-function"><span class="math display">\[
 B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
-\tag{1.4}\]</span></span></p>
+\tag{13.4}\]</span></span></p>
 <p>dove <span class="math inline">\(\Gamma(x)\)</span> è la funzione Gamma, ovvero il fattoriale discendente, cioè</p>
 <p><span class="math display">\[
 (x-1)(x-2)\ldots (x-n+1)\notag\,.
 \]</span></p>
 <div id="exr-beta-function-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 1.4 </strong></span><br></p>
+<p><span class="theorem-title"><strong>Esercizio 13.4 </strong></span><br></p>
 <p>Per esempio, posti <span class="math inline">\(\alpha = 3\)</span> e <span class="math inline">\(\beta = 9\)</span>, la funzione beta assume il valore</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
@@ -638,17 +733,17 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 </details>
 </div>
 </div>
-</section><section id="distribuzione-beta" class="level2" data-number="1.7"><h2 data-number="1.7" class="anchored" data-anchor-id="distribuzione-beta">
-<span class="header-section-number">1.7</span> Distribuzione Beta</h2>
+</section><section id="distribuzione-beta" class="level2" data-number="13.7"><h2 data-number="13.7" class="anchored" data-anchor-id="distribuzione-beta">
+<span class="header-section-number">13.7</span> Distribuzione Beta</h2>
 <p>La distribuzione Beta è una distribuzione usata per modellare percentuali e proporzioni in quanto è definita sull’intervallo <span class="math inline">\((0; 1)\)</span> – ma non include i valori 0 o 1.</p>
 <div id="def-beta-distribution" class="theorem definition">
-<p><span class="theorem-title"><strong>Definizione 1.1 </strong></span>Sia <span class="math inline">\(\pi\)</span> una variabile casuale che può assumere qualsiasi valore compreso tra 0 e 1, cioè <span class="math inline">\(\pi \in [0, 1]\)</span>. Diremo che <span class="math inline">\(\pi\)</span> segue la distribuzione Beta di parametri <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\pi \sim \text{Beta}(\alpha, \beta)\)</span>, se la sua densità è</p>
+<p><span class="theorem-title"><strong>Definizione 13.1 </strong></span>Sia <span class="math inline">\(\pi\)</span> una variabile casuale che può assumere qualsiasi valore compreso tra 0 e 1, cioè <span class="math inline">\(\pi \in [0, 1]\)</span>. Diremo che <span class="math inline">\(\pi\)</span> segue la distribuzione Beta di parametri <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\pi \sim \text{Beta}(\alpha, \beta)\)</span>, se la sua densità è</p>
 <p><span id="eq-beta-distr-formula"><span class="math display">\[
 \begin{align}
 \text{Beta}(\pi \mid \alpha, \beta) &amp;= \frac{1}{B(\alpha, \beta)}\pi^{\alpha-1} (1-\pi)^{\beta-1}\notag\\
 &amp;=  \frac{\Gamma(\alpha+ \beta)}{\Gamma(\alpha)\Gamma(\beta)}\pi^{\alpha-1} (1-\pi)^{\beta-1} \quad \text{per } \pi \in [0, 1]\,,
 \end{align}
-\tag{1.5}\]</span></span></p>
+\tag{13.5}\]</span></span></p>
 <p>laddove <span class="math inline">\(B(\alpha, \beta)\)</span> è la funzione beta.</p>
 </div>
 <p>I termini <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span> sono i parametri della distribuzione Beta e devono essere entrambi positivi. Tali parametri possono essere interpretati come l’espressione delle nostre credenze a priori relative ad una sequenza di prove Bernoulliane. Il parametro <span class="math inline">\(\alpha\)</span> rappresenta il numero di “successi” e il parametro <span class="math inline">\(\beta\)</span> il numero di “insuccessi”:</p>
@@ -683,13 +778,13 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 <p>Il valore atteso, la moda e la varianza di una distribuzione Beta sono dati dalle seguenti equazioni:</p>
 <p><span id="eq-beta-mean"><span class="math display">\[
 \mathbb{E}(\pi) = \frac{\alpha}{\alpha+\beta}\,,
-\tag{1.6}\]</span></span></p>
+\tag{13.6}\]</span></span></p>
 <p><span id="eq-beta-mode"><span class="math display">\[
 \mbox{Mo}(\pi) = \frac{\alpha-1}{\alpha+\beta-2}\,,
-\tag{1.7}\]</span></span></p>
+\tag{13.7}\]</span></span></p>
 <p><span id="eq-beta-var"><span class="math display">\[
 \mathbb{V}(\pi) = \frac{\alpha \beta}{(\alpha+\beta)^2 (\alpha+\beta+1)}\,.
-\tag{1.8}\]</span></span></p>
+\tag{13.8}\]</span></span></p>
 <p>Al variare di <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span> si ottengono molte distribuzioni di forma diversa; un’illustrazione è fornita dalla seguente <a href="https://en.wikipedia.org/wiki/File:PDF_of_the_Beta_distribution.gif">GIF animata</a>.</p>
 <p>Si può ottenere una rappresentazione grafica della distribuzione <span class="math inline">\(\mbox{Beta}(\pi \mid \alpha, \beta)\)</span> con la funzione <code>plot_beta()</code> del pacchetto <code>bayesrules</code>. Per esempio:</p>
 <div class="cell" data-layout-align="center">
@@ -717,7 +812,7 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 </ul>
 </div>
 <div id="exr-beta-binom-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 1.5 </strong></span></p>
+<p><span class="theorem-title"><strong>Esercizio 13.5 </strong></span></p>
 <p>Nel disturbo depressivo la recidiva è definita come la comparsa di un nuovo episodio depressivo che si manifesta dopo un prolungato periodo di recupero (6-12 mesi) con stato di eutimia (umore relativamente normale). Supponiamo che una serie di studi mostri una comparsa di recidiva in una proporzione che va dal 20% al 60% dei casi, con una media del 40% <span class="citation" data-cites="nuggerud2020analysis">(per una recente discussione, si veda <a href="999_refs.html#ref-nuggerud2020analysis" role="doc-biblioref">Nuggerud-Galeas et al., 2020</a>)</span>. Sulla base di queste informazioni, si usi la distribuzione Beta per rappresentare le credenze a priori relativamente alla probabilità di recidiva.</p>
 </div>
 <div class="solution proof">
@@ -769,8 +864,8 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 <p>Possiamo concludere dicendo che, se utilizziamo la distribuzione <span class="math inline">\(\mbox{Beta}(16, 24)\)</span> per rappresentare le nostre credenze (a priori) rispetto la possibilità di recidiva, ciò significa che pensiamo che la nostra incertezza sia quantificabile nei termini di una deviazione standard di circa 8 punti percentuali rispetto a tutti i valori possibili di recidiva, per i quali il valore più verosimile (ovvero, la media della distribuzione) è 0.40.</p>
 </div>
 <div id="exr-beta-binom-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 1.6 </strong></span></p>
-<p>Poniamoci ora il problema di verificare la nostra comprensione delle funzioni <span class="math inline">\(\mathsf{R}\)</span> che possono essere usate per la funzione Beta. Si risolva l’<a href="#exr-beta-binom-1">Esercizio&nbsp;<span>1.5</span></a> usando <span class="math inline">\(\mathsf{R}\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 13.6 </strong></span></p>
+<p>Poniamoci ora il problema di verificare la nostra comprensione delle funzioni <span class="math inline">\(\mathsf{R}\)</span> che possono essere usate per la funzione Beta. Si risolva l’<a href="#exr-beta-binom-1">Esercizio&nbsp;<span>13.5</span></a> usando <span class="math inline">\(\mathsf{R}\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Utilizziamo i seguenti parametri per la distribuzione Beta:</p>
@@ -816,22 +911,22 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 </div>
 </div>
 </div>
-</section><section id="distribuzione-di-cauchy" class="level2" data-number="1.8"><h2 data-number="1.8" class="anchored" data-anchor-id="distribuzione-di-cauchy">
-<span class="header-section-number">1.8</span> Distribuzione di Cauchy</h2>
+</section><section id="distribuzione-di-cauchy" class="level2" data-number="13.8"><h2 data-number="13.8" class="anchored" data-anchor-id="distribuzione-di-cauchy">
+<span class="header-section-number">13.8</span> Distribuzione di Cauchy</h2>
 <p>La distribuzione di Cauchy è un caso speciale della distribuzione di <span class="math inline">\(t\)</span> di Student con 1 grado di libertà. È definita da una densità di probabilità che corrisponde alla seguente funzione, dipendente da due parametri <span class="math inline">\(\theta\)</span> e <span class="math inline">\(d\)</span> (con la condizione <span class="math inline">\(d &gt; 0\)</span>),</p>
 <p><span id="eq-cauchy-formula"><span class="math display">\[
 f(x; \theta, d) = \frac{1}{\pi d} \frac{1}{1 + \left(\frac{x - \theta}{d} \right)^2},
-\tag{1.9}\]</span></span></p>
+\tag{13.9}\]</span></span></p>
 <p>dove <span class="math inline">\(\theta\)</span> è la mediana della distribuzione e <span class="math inline">\(d\)</span> ne misura la larghezza a metà altezza.</p>
-</section><section id="distribuzione-log-normale" class="level2" data-number="1.9"><h2 data-number="1.9" class="anchored" data-anchor-id="distribuzione-log-normale">
-<span class="header-section-number">1.9</span> Distribuzione log-normale</h2>
+</section><section id="distribuzione-log-normale" class="level2" data-number="13.9"><h2 data-number="13.9" class="anchored" data-anchor-id="distribuzione-log-normale">
+<span class="header-section-number">13.9</span> Distribuzione log-normale</h2>
 <p>Sia <span class="math inline">\(y\)</span> una variabile casuale avente distribuzione normale con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>. Definiamo poi una nuova variabile casuale <span class="math inline">\(x\)</span> attraverso la relazione</p>
 <p><span class="math display">\[
 x = e^y \quad \Longleftrightarrow \quad y = \log x.
 \]</span> Il dominio di definizione della <span class="math inline">\(x\)</span> è il semiasse <span class="math inline">\(x &gt; 0\)</span> e la densità di probabilità <span class="math inline">\(f(x)\)</span> è data da</p>
 <p><span id="eq-lognormal-formula"><span class="math display">\[
 f(x) = \frac{1}{\sigma \sqrt{2 \pi}} \frac{1}{x} \exp \left\{-\frac{(\log x -  \mu)^2}{2 \sigma^2} \right\}.
-\tag{1.10}\]</span></span></p>
+\tag{13.10}\]</span></span></p>
 <p>Questa funzione di densità è chiamata log-normale.</p>
 <p>Il valore atteso e la varianza di una distribuzione log-normale sono dati dalle seguenti equazioni:</p>
 <p><span class="math display">\[
@@ -841,13 +936,13 @@ f(x) = \frac{1}{\sigma \sqrt{2 \pi}} \frac{1}{x} \exp \left\{-\frac{(\log x -  \
 \mathbb{V}(x) = \exp \left\{2 \mu + \sigma^2 \right\} \left(\exp \left\{\sigma^2 \right\}  -1\right).
 \]</span></p>
 <p>Si può dimostrare che il prodotto di variabili casuali log-normali ed indipendenti segue una distribuzione log-normale.</p>
-</section><section id="distribuzione-di-pareto" class="level2" data-number="1.10"><h2 data-number="1.10" class="anchored" data-anchor-id="distribuzione-di-pareto">
-<span class="header-section-number">1.10</span> Distribuzione di Pareto</h2>
+</section><section id="distribuzione-di-pareto" class="level2" data-number="13.10"><h2 data-number="13.10" class="anchored" data-anchor-id="distribuzione-di-pareto">
+<span class="header-section-number">13.10</span> Distribuzione di Pareto</h2>
 <p>La distribuzione paretiana (o distribuzione di Pareto) è una distribuzione di probabilità continua e così chiamata in onore di Vilfredo Pareto. La distribuzione di Pareto è una distribuzione di probabilità con legge di potenza utilizzata nella descrizione di fenomeni sociali e molti altri tipi di fenomeni osservabili. Originariamente applicata per descrivere la distribuzione del reddito in una società, adattandosi alla tendenza che una grande porzione di ricchezza è detenuta da una piccola frazione della popolazione, la distribuzione di Pareto è diventata colloquialmente nota e indicata come il principio di Pareto, o “regola 80-20”. Questa regola afferma che, ad esempio, l’80% della ricchezza di una società è detenuto dal 20% della sua popolazione. Viene spesso applicata nello studio della distribuzione del reddito, della dimensione dell’impresa, della dimensione di una popolazione e nelle fluttuazioni del prezzo delle azioni.</p>
 <p>La densità di una distribuzione di Pareto è</p>
 <p><span id="eq-pareto-formula"><span class="math display">\[
 f(x)=(x_m/x)^\alpha,
-\tag{1.11}\]</span></span></p>
+\tag{13.11}\]</span></span></p>
 <p>dove <span class="math inline">\(x_m\)</span> (parametro di scala) è il minimo (necessariamente positivo) valore possibile di <span class="math inline">\(X\)</span> e <span class="math inline">\(\alpha\)</span> è un parametro di forma.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -1002,13 +1097,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./prob.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Parte 2: Il calcolo delle probabilità</span>
+      <a href="./022_discr_rv_distr.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. discrete</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./024_likelihood.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">

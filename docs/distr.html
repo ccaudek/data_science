@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science per psicologi - Riferimenti bibliografici</title>
+<title>Data Science per psicologi - Parte 3: Distribuzioni di v.c. discrete e continue</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,25 +78,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 
@@ -107,7 +88,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./025_intro_bayes.html" rel="prev">
+<link href="./022_discr_rv_distr.html" rel="next">
+<link href="./020_expval_var.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -146,7 +128,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Riferimenti bibliografici</h1>
+      <h1 class="quarto-secondary-nav-title">Parte 3: Distribuzioni di v.c. discrete e continue</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -259,7 +241,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
+        <a href="./distr.html" class="sidebar-item-text sidebar-link active">Parte 3: Distribuzioni di v.c. discrete e continue</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -299,7 +281,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./999_refs.html" class="sidebar-item-text sidebar-link active">Riferimenti bibliografici</a>
+  <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
     </ul>
@@ -314,7 +296,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Riferimenti bibliografici</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Codice</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-distr" class="quarto-section-identifier d-none d-lg-block">Parte 3: Distribuzioni di v.c. discrete e continue</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Codice</button></div></div>
 </div>
 
 
@@ -328,62 +310,8 @@ div.csl-indent {
 
 </header>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-albert2019probability" class="csl-entry" role="doc-biblioentry">
-Albert, J., &amp; Hu, J. (2019). <em>Probability and bayesian
-modeling</em>. Chapman; Hall/CRC.
-</div>
-<div id="ref-definetti1931prob" class="csl-entry" role="doc-biblioentry">
-Finetti, B. de. (1931). Probabilismo. <em>Logos</em>, 163–219.
-</div>
-<div id="ref-doing_bayesian_data_an" class="csl-entry" role="doc-biblioentry">
-Kruschke, J. (2014). <em>Doing bayesian data analysis: <span>A</span>
-tutorial with <span>R</span>, JAGS, and <span>Stan</span></em>. Academic
-Press.
-</div>
-<div id="ref-lazic2020determining" class="csl-entry" role="doc-biblioentry">
-Lazic, S. E., Semenova, E., &amp; Williams, D. P. (2020). Determining
-organ weight toxicity with bayesian causal models: Improving on the
-analysis of relative organ weights. <em>Scientific Reports</em>,
-<em>10</em>(1), 1–12.
-</div>
-<div id="ref-martin2022bayesian" class="csl-entry" role="doc-biblioentry">
-Martin, O. A., Kumar, R., &amp; Lao, J. (2022). <em>Bayesian modeling
-and computation in python</em>. CRC Press.
-</div>
-<div id="ref-McElreath_rethinking" class="csl-entry" role="doc-biblioentry">
-McElreath, R. (2020). <em>Statistical rethinking: <span>A</span>
-<span>Bayesian</span> course with examples in <span>R</span> and
-<span>Stan</span></em> (2nd Edition). CRC Press.
-</div>
-<div id="ref-nuggerud2020analysis" class="csl-entry" role="doc-biblioentry">
-Nuggerud-Galeas, S., Sáez-Benito Suescun, L., Berenguer Torrijo, N.,
-Sáez-Benito Suescun, A., Aguilar-Latorre, A., Magallón Botaya, R., &amp;
-Oliván Blázquez, B. (2020). Analysis of depressive episodes, their
-recurrence and pharmacologic treatment in primary care patients: A
-retrospective descriptive study. <em>Plos One</em>, <em>15</em>(5),
-e0233454.
-</div>
-<div id="ref-vandeSchoot2021modelling" class="csl-entry" role="doc-biblioentry">
-Schoot, R. van de, Depaoli, S., King, R., Kramer, B., Märtens, K.,
-Tadesse, M. G., Vannucci, M., Gelman, A., Veen, D., Willemsen, J., &amp;
-Yau, C. (2021). Bayesian statistics and modelling. <em>Nature Reviews
-Methods Primer</em>, <em>1</em>(1), 1–26.
-</div>
-<div id="ref-stevens46" class="csl-entry" role="doc-biblioentry">
-Stevens, S. S. (1946). On the theory of scales of measurement.
-<em>Science</em>, <em>103</em>(2684), 677–680.
-</div>
-<div id="ref-tufte_visual_display" class="csl-entry" role="doc-biblioentry">
-Tufte, E. R. (2001). <em>The visual display of quantitative
-information</em>. Graphics press Cheshire, CT.
-</div>
-<div id="ref-zetschefuture2019" class="csl-entry" role="doc-biblioentry">
-Zetsche, U., Bürkner, P.-C., &amp; Renneberg, B. (2019). Future
-expectations in clinical depression: <span>Biased</span> or realistic?
-<em>Journal of Abnormal Psychology</em>, <em>128</em>(7), 678–688.
-</div>
-</div>
+<p>In questa parte della dispensa verranno presentate le più importanti distribuzioni di massa di probabilità e di densità di probabilità.</p>
+<!-- e, nell'ultima parte della dispensa verrà discusso l'argomento più difficile, quello dell'inferenza. Prima di affrontare il secondo tema, l'analisi descrittiva dei dati, sarà necessario introdurre il linguaggio di programmazione statistica R (un'introduzione a R è fornita in Appendice). Inoltre, prima di potere discutere l'inferenza, dovranno essere introdotti i concetti di base della teoria delle probabilità, in quanto l'inferenza non è che l'applicazione della teoria delle probabilità all'analisi dei dati. -->
 
 
 <!-- -->
@@ -522,17 +450,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./025_intro_bayes.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Credibilità, modelli e parametri</span></span>
+      <a href="./020_expval_var.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Valore atteso e varianza</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./022_discr_rv_distr.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. discrete</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### Riferimenti bibliografici {.unnumbered}</span></span>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Parte 3: Distribuzioni di v.c. discrete e continue {#sec-distr}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>In questa parte della dispensa verranno presentate le più importanti distribuzioni di massa di probabilità e di densità di probabilità.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- e, nell'ultima parte della dispensa verrà discusso l'argomento più difficile, quello dell'inferenza. Prima di affrontare il secondo tema, l'analisi descrittiva dei dati, sarà necessario introdurre il linguaggio di programmazione statistica R (un'introduzione a R è fornita in Appendice). Inoltre, prima di potere discutere l'inferenza, dovranno essere introdotti i concetti di base della teoria delle probabilità, in quanto l'inferenza non è che l'applicazione della teoria delle probabilità all'analisi dei dati. --&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

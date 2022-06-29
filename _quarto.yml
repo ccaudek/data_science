@@ -14,29 +14,29 @@ book:
   chapters:
     - index.qmd
     - preface.qmd
-    # - part: basics.qmd
-    #   chapters: 
-    #     - 001_key_notions.qmd
-    #     - 005_measurement.qmd
-    #     - 007_freq_distr.qmd
-    #     - 011_loc_scale.qmd
-    #     - 012_correlation.qmd
+    - part: basics.qmd
+      chapters:
+      - 001_key_notions.qmd
+      - 005_measurement.qmd
+      - 007_freq_distr.qmd
+      - 011_loc_scale.qmd
+      - 012_correlation.qmd
     - part: prob.qmd
       chapters:
-        # - 015_prob_intro.qmd
-        # - 016_conditional_prob.qmd
-        # - 017_bayes_theorem.qmd
-        # - 018_joint_prob.qmd
-        # - 019_density_func.qmd
-        # - 020_expval_var.qmd
-  #   - part: distr.qmd
-  #     chapters:
-        # - 022_discr_rv_distr.qmd
-        - 023_cont_rv_distr.qmd
-        - 024_likelihood.qmd
-  #   - part: bayes_inference.qmd
-  #     chapters:
-  #       - 025_intro_bayes.qmd
+      - 015_prob_intro.qmd
+      - 016_conditional_prob.qmd
+      - 017_bayes_theorem.qmd
+      - 018_joint_prob.qmd
+      - 019_density_func.qmd
+      - 020_expval_var.qmd
+    - part: distr.qmd
+      chapters:
+      - 022_discr_rv_distr.qmd
+      - 023_cont_rv_distr.qmd
+      - 024_likelihood.qmd
+    - part: bayes_inference.qmd
+      chapters:
+      - 025_intro_bayes.qmd
   #       - 026_subj_prop.qmd
   #       - 029_conjugate_families.qmd
   #       - 030_balance_prior_post.qmd
