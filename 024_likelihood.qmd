@@ -377,7 +377,7 @@ In altri termini, la s.m.v. del parametro $\mu$ è la media del campione e la s.
 Dalla @fig-loglike-bdi2 notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero `r round(mean(d$y), 2)`, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.
 :::
 
-## Considerazioni conclusive
+## Commenti e considerazioni finali {.unnumbered}
 
 Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.
 

@@ -218,7 +218,7 @@ div.csl-indent {
   <li><a href="#massima-verosimiglianza" id="toc-massima-verosimiglianza" class="nav-link" data-scroll-target="#massima-verosimiglianza"> <span class="header-section-number">2.4.3</span> Massima verosimiglianza</a></li>
   </ul>
 </li>
-  <li><a href="#considerazioni-conclusive" id="toc-considerazioni-conclusive" class="nav-link" data-scroll-target="#considerazioni-conclusive"> <span class="header-section-number">2.5</span> Considerazioni conclusive</a></li>
+  <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -578,8 +578,7 @@ f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
 <p><span class="theorem-title"><strong>Esercizio 2.1 </strong></span></p>
 <p>Dalla <a href="#fig-loglike-bdi2">Figura&nbsp;<span>2.3</span></a> notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero 30.93, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</p>
 </div>
-</section></section><section id="considerazioni-conclusive" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="considerazioni-conclusive">
-<span class="header-section-number">2.5</span> Considerazioni conclusive</h2>
+</section></section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
 <p>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) <span class="math inline">\(\theta\)</span> vengono variati: la verosimiglianza è una funzione di <span class="math inline">\(\theta\)</span> per il dato fisso <span class="math inline">\(y\)</span>. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per <span class="math inline">\(\theta\)</span> e i dati osservati <span class="math inline">\(y\)</span>.</p>
 <p>Nella statistica frequentista l’inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l’inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Le basi dell’inferenza frequentista, dunque, sono state riassunte in questo Capitolo. Nella statistica bayesiana, invece, l’inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti <span class="math inline">\(\theta\)</span>. Ciò verrà discusso nei Capitoli successivi.</p>
 <p>La differenza fondamentale tra inferenza bayesiana e frequentista è dunque che i frequentisti non ritengono utile descrivere i parametri in termini probabilistici: i parametri dei modelli statistici vengono concepiti come fissi ma sconosciuti. Nell’inferenza bayesiana, invece, i parametri sconosciuti sono intesi come delle variabili casuali e ciò consente di quantificare in termini probabilistici il nostro grado di intertezza relativamente al loro valore.</p>
@@ -1111,7 +1110,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-411"><a href="#cb21-411" aria-hidden="true" tabindex="-1"></a>Dalla @fig-loglike-bdi2 notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero <span class="in">`r round(mean(d$y), 2)`</span>, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</span>
 <span id="cb21-412"><a href="#cb21-412" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb21-413"><a href="#cb21-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-414"><a href="#cb21-414" aria-hidden="true" tabindex="-1"></a><span class="fu">## Considerazioni conclusive</span></span>
+<span id="cb21-414"><a href="#cb21-414" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commenti e considerazioni finali {.unnumbered}</span></span>
 <span id="cb21-415"><a href="#cb21-415" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-416"><a href="#cb21-416" aria-hidden="true" tabindex="-1"></a>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.</span>
 <span id="cb21-417"><a href="#cb21-417" aria-hidden="true" tabindex="-1"></a></span>
