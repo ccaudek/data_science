@@ -200,22 +200,20 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
    
   <ul>
-<li><a href="#definizione" id="toc-definizione" class="nav-link active" data-scroll-target="#definizione"> <span class="header-section-number">2.1</span> Definizione</a></li>
-  <li><a href="#notazione" id="toc-notazione" class="nav-link" data-scroll-target="#notazione"> <span class="header-section-number">2.2</span> Notazione</a></li>
+<li><a href="#notazione" id="toc-notazione" class="nav-link active" data-scroll-target="#notazione"> <span class="header-section-number">2.1</span> Notazione</a></li>
   <li>
-<a href="#caso-binomiale" id="toc-caso-binomiale" class="nav-link" data-scroll-target="#caso-binomiale"> <span class="header-section-number">2.3</span> Caso binomiale</a>
+<a href="#modello-binomiale" id="toc-modello-binomiale" class="nav-link" data-scroll-target="#modello-binomiale"> <span class="header-section-number">2.2</span> Modello binomiale</a>
   <ul class="collapse">
-<li><a href="#funzione-di-verosimiglianza" id="toc-funzione-di-verosimiglianza" class="nav-link" data-scroll-target="#funzione-di-verosimiglianza"> <span class="header-section-number">2.3.1</span> Funzione di verosimiglianza</a></li>
-  <li><a href="#interpretazione" id="toc-interpretazione" class="nav-link" data-scroll-target="#interpretazione"> <span class="header-section-number">2.3.2</span> Interpretazione</a></li>
-  <li><a href="#la-log-verosimiglianza" id="toc-la-log-verosimiglianza" class="nav-link" data-scroll-target="#la-log-verosimiglianza"> <span class="header-section-number">2.3.3</span> La log-verosimiglianza</a></li>
+<li><a href="#interpretazione" id="toc-interpretazione" class="nav-link" data-scroll-target="#interpretazione"> <span class="header-section-number">2.2.1</span> Interpretazione</a></li>
+  <li><a href="#la-log-verosimiglianza" id="toc-la-log-verosimiglianza" class="nav-link" data-scroll-target="#la-log-verosimiglianza"> <span class="header-section-number">2.2.2</span> La log-verosimiglianza</a></li>
   </ul>
 </li>
   <li>
-<a href="#funzione-di-verosimiglianza-gaussiana" id="toc-funzione-di-verosimiglianza-gaussiana" class="nav-link" data-scroll-target="#funzione-di-verosimiglianza-gaussiana"> <span class="header-section-number">2.4</span> Funzione di verosimiglianza Gaussiana</a>
+<a href="#modello-gaussiano" id="toc-modello-gaussiano" class="nav-link" data-scroll-target="#modello-gaussiano"> <span class="header-section-number">2.3</span> Modello gaussiano</a>
   <ul class="collapse">
-<li><a href="#una-singola-osservazione" id="toc-una-singola-osservazione" class="nav-link" data-scroll-target="#una-singola-osservazione"> <span class="header-section-number">2.4.1</span> Una singola osservazione</a></li>
-  <li><a href="#un-campione-di-osservazioni" id="toc-un-campione-di-osservazioni" class="nav-link" data-scroll-target="#un-campione-di-osservazioni"> <span class="header-section-number">2.4.2</span> Un campione di osservazioni</a></li>
-  <li><a href="#massima-verosimiglianza" id="toc-massima-verosimiglianza" class="nav-link" data-scroll-target="#massima-verosimiglianza"> <span class="header-section-number">2.4.3</span> Massima verosimiglianza</a></li>
+<li><a href="#una-singola-osservazione" id="toc-una-singola-osservazione" class="nav-link" data-scroll-target="#una-singola-osservazione"> <span class="header-section-number">2.3.1</span> Una singola osservazione</a></li>
+  <li><a href="#un-campione-di-osservazioni" id="toc-un-campione-di-osservazioni" class="nav-link" data-scroll-target="#un-campione-di-osservazioni"> <span class="header-section-number">2.3.2</span> Un campione di osservazioni</a></li>
+  <li><a href="#massima-verosimiglianza" id="toc-massima-verosimiglianza" class="nav-link" data-scroll-target="#massima-verosimiglianza"> <span class="header-section-number">2.3.3</span> Massima verosimiglianza</a></li>
   </ul>
 </li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
@@ -236,8 +234,6 @@ div.csl-indent {
   
 
 </header><p>La verosimiglianza viene utilizzata sia nell’inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti di un modello statistico.</p>
-<section id="definizione" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="definizione">
-<span class="header-section-number">2.1</span> Definizione</h2>
 <div id="def-likelihood" class="theorem definition">
 <p><span class="theorem-title"><strong>Definizione 2.1 </strong></span></p>
 <p>La <em>funzione di verosimiglianza</em> <span class="math inline">\(\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,\)</span> è la funzione di massa o di densità di probabilità dei dati <span class="math inline">\(y\)</span> vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) <span class="math inline">\(\theta\)</span>.</p>
@@ -249,14 +245,12 @@ div.csl-indent {
 </ul>
 <p>La funzione di verosimiglianza descrive in termini relativi il sostegno empirico che <span class="math inline">\(\theta \in \Theta\)</span> riceve da <span class="math inline">\(y\)</span>. Infatti, la funzione di verosimiglianza assume forme diverse al variare di <span class="math inline">\(y\)</span>. Possiamo dunque pensare alla funzione di verosimiglianza come alla risposta alla seguente domanda: avendo osservato i dati <span class="math inline">\(y\)</span>, quanto risultano (relativamente) credibili i diversi valori del parametro <span class="math inline">\(\theta\)</span>? In termini più formali possiamo dire: sulla base dei dati, <span class="math inline">\(\theta_1 \in \Theta\)</span> risulta più credibile di <span class="math inline">\(\theta_2 \in \Theta\)</span> quale indice del modello probabilistico generatore dei dati se <span class="math inline">\(\mathcal{L}(\theta_1) &gt; \mathcal{L}(\theta_1)\)</span>.</p>
 <p>Si noti un punto importante: la funzione <span class="math inline">\(\mathcal{L}(\theta \mid y)\)</span> non è una funzione di densità. Infatti, essa non racchiude un’area unitaria.</p>
-</section><section id="notazione" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="notazione">
-<span class="header-section-number">2.2</span> Notazione</h2>
+<section id="notazione" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="notazione">
+<span class="header-section-number">2.1</span> Notazione</h2>
 <p>Seguendo una pratica comune, in questa dispensa all’interno di un framework bayesiano spesso useremo la notazione <span class="math inline">\(p(\cdot)\)</span> per rappresentare due quantità differenti, ovvero la funzione di verosimiglianza e la distribuzione a priori. Questo piccolo abuso di notazione riflette il seguente punto di vista: anche se la verosimiglianza non è una funzione di densità di probabilità, noi non vogliamo stressare questo aspetto, ma vogliamo piuttosto pensare alla verosimiglianza e alla distribuzione a priori come a due elementi che sono egualmente necessari per calcolare la distribuzione a posteriori. In altri termini, per così dire, questa notazione assegna lo stesso status epistemico alle due diverse quantità che si trovano al numeratore della regola di Bayes.</p>
-</section><section id="caso-binomiale" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="caso-binomiale">
-<span class="header-section-number">2.3</span> Caso binomiale</h2>
+</section><section id="modello-binomiale" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="modello-binomiale">
+<span class="header-section-number">2.2</span> Modello binomiale</h2>
 <p>Iniziamo a discutere la funzione di verosimiglianza considerando il caso più semplice, ovvero quello Binomiale.</p>
-<section id="funzione-di-verosimiglianza" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="funzione-di-verosimiglianza">
-<span class="header-section-number">2.3.1</span> Funzione di verosimiglianza</h3>
 <p>Per <span class="math inline">\(n\)</span> prove Bernoulliane indipendenti, le quali producono <span class="math inline">\(y\)</span> successi e (<span class="math inline">\(n-y\)</span>) insuccessi, la funzione nucleo di verosimiglianza (ovvero, la funzione di verosimiglianza da cui sono state escluse tutte le costanti moltiplicative che non hanno alcun effetto su <span class="math inline">\(\hat{\theta}\)</span>) è</p>
 <p><span id="eq-like-binomial-kernel"><span class="math display">\[
 \mathcal{L}(p \mid y) = \theta^y (1-\theta)^{n - y}.\notag
@@ -346,8 +340,8 @@ p(y \mid \theta)
 </div>
 </div>
 </div>
-</section><section id="interpretazione" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="interpretazione">
-<span class="header-section-number">2.3.2</span> Interpretazione</h3>
+<section id="interpretazione" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="interpretazione">
+<span class="header-section-number">2.2.1</span> Interpretazione</h3>
 <p>Come possiamo interpretare la curva che abbiamo ottenuto? Per alcuni valori <span class="math inline">\(\theta\)</span> la funzione di verosimiglianza assume valori piccoli; per altri valori <span class="math inline">\(\theta\)</span> la funzione di verosimiglianza assume valori più grandi. Questi ultimi sono i valori di <span class="math inline">\(\theta\)</span> più credibili e il valore 23/30 = 0.767 (la moda della funzione di verosimiglianza) è il valore più credibile di tutti.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span><span class="va">theta</span>, <span class="va">like</span><span class="op">)</span></span>
@@ -355,8 +349,8 @@ p(y \mid \theta)
 <span><span class="co">#&gt; [1] 0.7676768</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="la-log-verosimiglianza" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="la-log-verosimiglianza">
-<span class="header-section-number">2.3.3</span> La log-verosimiglianza</h3>
+</section><section id="la-log-verosimiglianza" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="la-log-verosimiglianza">
+<span class="header-section-number">2.2.2</span> La log-verosimiglianza</h3>
 <p>Dal punto di vista pratico risulta più conveniente utilizzare, al posto della funzione di verosimiglianza, il suo logaritmo naturale, ovvero la funzione di log-verosimiglianza:</p>
 <p><span id="eq-loglike-definition"><span class="math display">\[
 \ell(\theta) = \log \mathcal{L}(\theta).
@@ -405,15 +399,15 @@ p(y \mid \theta)
 <span><span class="co">#&gt; [1] 0.7676768</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section></section><section id="funzione-di-verosimiglianza-gaussiana" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="funzione-di-verosimiglianza-gaussiana">
-<span class="header-section-number">2.4</span> Funzione di verosimiglianza Gaussiana</h2>
+</section></section><section id="modello-gaussiano" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="modello-gaussiano">
+<span class="header-section-number">2.3</span> Modello gaussiano</h2>
 <p>Ora che abbiamo capito come costruire la funzione verosimiglianza di una binomiale è relativamente semplice fare un passo ulteriore e considerare la verosimiglianza del caso di una funzione di densità, ovvero nel caso di una variabile casuale continua. Consideriamo qui il caso della Normale. La densità di una distribuzione Normale di parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> è</p>
 <p><span id="eq-gaussian-sim-like"><span class="math display">\[
 f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigma^2}(y-\mu)^2\right\}.
 \tag{2.5}\]</span></span></p>
 <p>Ci poniamo ora il problema di costruire la funzione di verosimiglianza per la densità dell’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>2.5</span></a>.</p>
-<section id="una-singola-osservazione" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="una-singola-osservazione">
-<span class="header-section-number">2.4.1</span> Una singola osservazione</h3>
+<section id="una-singola-osservazione" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="una-singola-osservazione">
+<span class="header-section-number">2.3.1</span> Una singola osservazione</h3>
 <p>Esaminiamo prima il caso in cui i dati corrispondono ad una singola osservazione <span class="math inline">\(y\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">114</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -467,8 +461,8 @@ f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigm
 </details>
 </div>
 <p>La moda della funzione di verosimiglianza è 114.</p>
-</section><section id="un-campione-di-osservazioni" class="level3" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="un-campione-di-osservazioni">
-<span class="header-section-number">2.4.2</span> Un campione di osservazioni</h3>
+</section><section id="un-campione-di-osservazioni" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="un-campione-di-osservazioni">
+<span class="header-section-number">2.3.2</span> Un campione di osservazioni</h3>
 <p>Consideriamo ora il caso più generale, ovvero quello di un campione di <span class="math inline">\(n\)</span> osservazioni. Possiamo immaginare un campione casuale <span class="math inline">\(y_1, y_2, \dots, y_n\)</span> estratto da una popolazione <span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span> come una sequenza di realizzazioni indipendenti ed identicamente distribuite (di seguito, i.i.d.) della medesima variabile casuale <span class="math inline">\(Y \sim \mathcal{N}(\mu, \sigma)\)</span>. I parametri sconosciuti sono <span class="math inline">\(\theta = \{\mu, \sigma\}\)</span>.</p>
 <p>Se le variabili casuali <span class="math inline">\(y_1, y_2, \dots, y_n\)</span> sono i.i.d., la loro densità congiunta è data da: <span class="math display">\[\begin{align}
 f(y \mid \theta) &amp;= f(y_1 \mid \theta) \cdot f(y_2 \mid \theta) \cdot \; \dots \; \cdot f(y_n \mid \theta)\notag\\
@@ -557,8 +551,8 @@ f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
 </div>
 </div>
 <p>Tale funzione descrive la credibilità relativa che può essere attribuita ai valori del parametro <span class="math inline">\(\mu\)</span> alla luce dei dati osservati.</p>
-</section><section id="massima-verosimiglianza" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="massima-verosimiglianza">
-<span class="header-section-number">2.4.3</span> Massima verosimiglianza</h3>
+</section><section id="massima-verosimiglianza" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="massima-verosimiglianza">
+<span class="header-section-number">2.3.3</span> Massima verosimiglianza</h3>
 <p>Il valore <span class="math inline">\(\mu\)</span> più credibile corrisponde al massimo della funzione di log-verosimiglinza e viene detto <em>stima di massima verosimiglianza</em>.</p>
 <p>Il massimo della funzione di log-verosimiglianza, ovvero 30.93 nel caso dell’esempio presente, è identico alla media dei dati campionari. Tale risultato, ottenuto per via numerica, può essere dimostrato formalmente nel modo seguente.</p>
 <p>Usando la notazione matematica possiamo dire che cerchiamo l’argmax dell’equazione precedente rispetto a <span class="math inline">\(\theta\)</span>, ovvero</p>
@@ -740,383 +734,379 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>La verosimiglianza viene utilizzata sia nell'inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti di un modello statistico.</span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Definizione</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>::: {#def-likelihood}</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>La *funzione di verosimiglianza* $\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,$ è la funzione di massa o di densità di probabilità dei dati $y$ vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) $\theta$.</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>::: {#def-likelihood}</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>La *funzione di verosimiglianza* $\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,$ è la funzione di massa o di densità di probabilità dei dati $y$ vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) $\theta$.</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>Detto in altre parole, la funzione di verosimiglianza e la funzione di (massa o densità di) probabilità sono formalmente identiche, ma è completamente diversa la loro interpretazione:</span>
 <span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>Detto in altre parole, la funzione di verosimiglianza e la funzione di (massa o densità di) probabilità sono formalmente identiche, ma è completamente diversa la loro interpretazione:</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>nel caso della funzione di massa o di densità di probabilità, la distribuzione del vettore casuale delle osservazioni campionarie $y$ dipende dai valori assunti dal parametro (o dai parametri) $\theta$;</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>nel caso della la funzione di verosimiglianza la credibilità assegnata a ciascun possibile valore $\theta$ viene determinata avendo acquisita l'informazione campionaria $y$ che rappresenta l'elemento condizionante.</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>nel caso della funzione di massa o di densità di probabilità, la distribuzione del vettore casuale delle osservazioni campionarie $y$ dipende dai valori assunti dal parametro (o dai parametri) $\theta$;</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>nel caso della la funzione di verosimiglianza la credibilità assegnata a ciascun possibile valore $\theta$ viene determinata avendo acquisita l'informazione campionaria $y$ che rappresenta l'elemento condizionante.</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>La funzione di verosimiglianza descrive in termini relativi il sostegno empirico che $\theta \in \Theta$ riceve da $y$. Infatti, la funzione di verosimiglianza assume forme diverse al variare di $y$. Possiamo dunque pensare alla funzione di verosimiglianza come alla risposta alla seguente domanda: avendo osservato i dati $y$, quanto risultano (relativamente) credibili i diversi valori del parametro $\theta$? In termini più formali possiamo dire: sulla base dei dati, $\theta_1 \in \Theta$ risulta più credibile di $\theta_2 \in \Theta$ quale indice del modello probabilistico generatore dei dati se $\mathcal{L}(\theta_1) &gt; \mathcal{L}(\theta_1)$.</span>
 <span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>La funzione di verosimiglianza descrive in termini relativi il sostegno empirico che $\theta \in \Theta$ riceve da $y$. Infatti, la funzione di verosimiglianza assume forme diverse al variare di $y$. Possiamo dunque pensare alla funzione di verosimiglianza come alla risposta alla seguente domanda: avendo osservato i dati $y$, quanto risultano (relativamente) credibili i diversi valori del parametro $\theta$? In termini più formali possiamo dire: sulla base dei dati, $\theta_1 \in \Theta$ risulta più credibile di $\theta_2 \in \Theta$ quale indice del modello probabilistico generatore dei dati se $\mathcal{L}(\theta_1) &gt; \mathcal{L}(\theta_1)$.</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>Si noti un punto importante: la funzione $\mathcal{L}(\theta \mid y)$ non è una funzione di densità. Infatti, essa non racchiude un'area unitaria.</span>
 <span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>Si noti un punto importante: la funzione $\mathcal{L}(\theta \mid y)$ non è una funzione di densità. Infatti, essa non racchiude un'area unitaria.</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Notazione</span></span>
 <span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Notazione</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>Seguendo una pratica comune, in questa dispensa all'interno di un framework bayesiano spesso useremo la notazione $p(\cdot)$ per rappresentare due quantità differenti, ovvero la funzione di verosimiglianza e la distribuzione a priori. Questo piccolo abuso di notazione riflette il seguente punto di vista: anche se la verosimiglianza non è una funzione di densità di probabilità, noi non vogliamo stressare questo aspetto, ma vogliamo piuttosto pensare alla verosimiglianza e alla distribuzione a priori come a due elementi che sono egualmente necessari per calcolare la distribuzione a posteriori. In altri termini, per così dire, questa notazione assegna lo stesso status epistemico alle due diverse quantità che si trovano al numeratore della regola di Bayes.</span>
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>Seguendo una pratica comune, in questa dispensa all'interno di un framework bayesiano spesso useremo la notazione $p(\cdot)$ per rappresentare due quantità differenti, ovvero la funzione di verosimiglianza e la distribuzione a priori. Questo piccolo abuso di notazione riflette il seguente punto di vista: anche se la verosimiglianza non è una funzione di densità di probabilità, noi non vogliamo stressare questo aspetto, ma vogliamo piuttosto pensare alla verosimiglianza e alla distribuzione a priori come a due elementi che sono egualmente necessari per calcolare la distribuzione a posteriori. In altri termini, per così dire, questa notazione assegna lo stesso status epistemico alle due diverse quantità che si trovano al numeratore della regola di Bayes.</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modello binomiale</span></span>
 <span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Caso binomiale</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>Iniziamo a discutere la funzione di verosimiglianza considerando il caso più semplice, ovvero quello Binomiale.</span>
 <span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>Iniziamo a discutere la funzione di verosimiglianza considerando il caso più semplice, ovvero quello Binomiale.</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>Per $n$ prove Bernoulliane indipendenti, le quali producono $y$ successi e ($n-y$) insuccessi, la funzione nucleo di verosimiglianza (ovvero, la funzione di verosimiglianza da cui sono state escluse tutte le costanti moltiplicative che non hanno alcun effetto su $\hat{\theta}$) è</span>
 <span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Funzione di verosimiglianza</span></span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>Per $n$ prove Bernoulliane indipendenti, le quali producono $y$ successi e ($n-y$) insuccessi, la funzione nucleo di verosimiglianza (ovvero, la funzione di verosimiglianza da cui sono state escluse tutte le costanti moltiplicative che non hanno alcun effetto su $\hat{\theta}$) è</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(p \mid y) = \theta^y (1-\theta)^{n - y}.\notag</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>$$ {#eq-like-binomial-kernel}</span>
 <span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(p \mid y) = \theta^y (1-\theta)^{n - y}.\notag</span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>$$ {#eq-like-binomial-kernel}</span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>Per fare un esempio pratico, consideriamo la ricerca di @zetschefuture2019. Questi ricercatori hanno trovato che, su 30 pazienti clinicamente depressi, 23 manifestavano delle aspettative relative al loro umore futuro distorsione negativamente. Se i dati di @zetschefuture2019 vengono riassunti da una proporzione (ovvero, 23/30), allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>Per fare un esempio pratico, consideriamo la ricerca di @zetschefuture2019. Questi ricercatori hanno trovato che, su 30 pazienti clinicamente depressi, 23 manifestavano delle aspettative relative al loro umore futuro distorsione negativamente. Se i dati di @zetschefuture2019 vengono riassunti da una proporzione (ovvero, 23/30), allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>y  \sim \mbox{Bin}(n, \theta),</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>$$ {#eq-binomialmodel}</span>
 <span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>y  \sim \mbox{Bin}(n, \theta),</span>
-<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>$$ {#eq-binomialmodel}</span>
-<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>laddove $\theta$ è la probabiltà che una prova Bernoulliana assuma il valore 1 e $n$ corrisponde al numero di prove Bernoulliane. Questo modello assume che le prove Bernoulliane $y_i$ che costituiscono il campione $y$ siano tra loro indipendenti e che ciascuna abbia la stessa probabilità $\theta \in <span class="co">[</span><span class="ot">0, 1</span><span class="co">]</span>$ di essere un "successo" (valore 1). In altre parole, il modello generatore dei dati avrà una funzione di massa di probabilità</span>
-<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>laddove $\theta$ è la probabiltà che una prova Bernoulliana assuma il valore 1 e $n$ corrisponde al numero di prove Bernoulliane. Questo modello assume che le prove Bernoulliane $y_i$ che costituiscono il campione $y$ siano tra loro indipendenti e che ciascuna abbia la stessa probabilità $\theta \in <span class="co">[</span><span class="ot">0, 1</span><span class="co">]</span>$ di essere un "successo" (valore 1). In altre parole, il modello generatore dei dati avrà una funzione di massa di probabilità</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>p(y \mid \theta)</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>\ = \</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>\mbox{Bin}(y \mid n, \theta).</span>
 <span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>p(y \mid \theta)</span>
-<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>\ = \</span>
-<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>\mbox{Bin}(y \mid n, \theta).</span>
-<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>Nei capitoli precedenti è stato mostrato come, sulla base del modello binomiale, sia possibile assegnare una probabilità a ciascun possibile valore $y \in <span class="sc">\{</span>0, 1, \dots, n<span class="sc">\}</span>$ *assumendo noto il valore del parametro* $\theta$. Ma ora abbiamo il problema inverso, ovvero quello di fare inferenza su $\theta$ alla luce dei dati campionari $y$. In altre parole, riteniamo di conoscere il modello probabilistico che ha generato i dati, ma di tale modello non conosciamo i parametri: vogliamo dunque ottenere informazioni su $\theta$ avendo osservato i dati $y$. Per fare questo, in un ottica bayesiana, è innanzitutto necessario definire la funzione di verosimiglianza.</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>Per i dati di @zetschefuture2019 la funzione di verosimiglianza corrisponde alla funzione binomiale di parametro $\theta \in <span class="co">[</span><span class="ot">0, 1</span><span class="co">]</span>$ sconosciuto. Abbiamo osservato 23 successi, $y = 23$, in 30 prove, $n = 30$.</span>
 <span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>Nei capitoli precedenti è stato mostrato come, sulla base del modello binomiale, sia possibile assegnare una probabilità a ciascun possibile valore $y \in <span class="sc">\{</span>0, 1, \dots, n<span class="sc">\}</span>$ *assumendo noto il valore del parametro* $\theta$. Ma ora abbiamo il problema inverso, ovvero quello di fare inferenza su $\theta$ alla luce dei dati campionari $y$. In altre parole, riteniamo di conoscere il modello probabilistico che ha generato i dati, ma di tale modello non conosciamo i parametri: vogliamo dunque ottenere informazioni su $\theta$ avendo osservato i dati $y$. Per fare questo, in un ottica bayesiana, è innanzitutto necessario definire la funzione di verosimiglianza.</span>
-<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>Per i dati di @zetschefuture2019 la funzione di verosimiglianza corrisponde alla funzione binomiale di parametro $\theta \in <span class="co">[</span><span class="ot">0, 1</span><span class="co">]</span>$ sconosciuto. Abbiamo osservato 23 successi, $y = 23$, in 30 prove, $n = 30$.</span>
-<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">23</span></span>
-<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>La funzione di verosimiglianza dunque diventa</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">23</span></span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>La funzione di verosimiglianza dunque diventa</span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} \theta^{23} + (1-\theta)^7.</span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>$$ {#eq-likebino23}</span>
 <span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} \theta^{23} + (1-\theta)^7.</span>
-<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>$$ {#eq-likebino23}</span>
-<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>Per costruire la funzione di verosimiglianza dobbiamo applicare l'@eq-likebino23 tante volte, cambiando ogni volta il valore $\theta$, ma tenendo sempre costante il valore dei dati. Nella simulazione considereremo 100 possibili valori $\theta \in <span class="co">[</span><span class="ot">0, 1</span><span class="co">]</span>$.</span>
-<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
-<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>theta</span>
-<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>Per esempio, ponendo $\theta = 0.1$ otteniamo un valore dell'ordinata della funzione di verosimiglianza</span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>Per costruire la funzione di verosimiglianza dobbiamo applicare l'@eq-likebino23 tante volte, cambiando ogni volta il valore $\theta$, ma tenendo sempre costante il valore dei dati. Nella simulazione considereremo 100 possibili valori $\theta \in <span class="co">[</span><span class="ot">0, 1</span><span class="co">]</span>$.</span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>theta</span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>Per esempio, ponendo $\theta = 0.1$ otteniamo un valore dell'ordinata della funzione di verosimiglianza</span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} 0.1^{23} + (1-0.1)^7.</span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} 0.1^{23} + (1-0.1)^7.</span>
-<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="dv">30</span>, <span class="fl">0.1</span>)</span>
-<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a>Ponendo $\theta = 0.2$ otteniamo un altro valore dell'ordinata della funzione di verosimiglianza</span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="dv">30</span>, <span class="fl">0.1</span>)</span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a>Ponendo $\theta = 0.2$ otteniamo un altro valore dell'ordinata della funzione di verosimiglianza</span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} 0.2^{23} + (1-0.2)^7.</span>
+<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} 0.2^{23} + (1-0.2)^7.</span>
-<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="dv">30</span>, <span class="fl">0.2</span>)</span>
-<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-104"><a href="#cb21-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a>Se ripetiamo questo processo 100 volte, una volta per ciascuno dei valori $\theta$ considerati, otteniamo 100 coppie di punti $\theta$ e $f(\theta)$.</span>
-<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a>like <span class="ot">&lt;-</span> <span class="fu">choose</span>(n, y) <span class="sc">*</span> theta<span class="sc">^</span>y <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> theta)<span class="sc">^</span>(n <span class="sc">-</span> y)</span>
-<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-113"><a href="#cb21-113" aria-hidden="true" tabindex="-1"></a>La curva che interpola tali punti è la funzione di verosimiglianza. La @fig-likefutexpect fornisce una rappresentazione grafica di tale funzione.</span>
-<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-115"><a href="#cb21-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig-likefutexpect, fig.cap="Funzione di verosimiglianza nel caso di 23 successi in 30 prove."}</span></span>
-<span id="cb21-116"><a href="#cb21-116" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(theta, like) <span class="sc">%&gt;%</span></span>
-<span id="cb21-117"><a href="#cb21-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">y =</span> like)) <span class="sc">+</span></span>
-<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fl">0.7676768</span>, <span class="at">color =</span> <span class="st">"lightgray"</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">L</span>(theta)),</span>
-<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Valori possibili di"</span> <span class="sc">~</span> theta)</span>
-<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">23</span>, <span class="dv">30</span>, <span class="fl">0.2</span>)</span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>Se ripetiamo questo processo 100 volte, una volta per ciascuno dei valori $\theta$ considerati, otteniamo 100 coppie di punti $\theta$ e $f(\theta)$.</span>
+<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a>like <span class="ot">&lt;-</span> <span class="fu">choose</span>(n, y) <span class="sc">*</span> theta<span class="sc">^</span>y <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> theta)<span class="sc">^</span>(n <span class="sc">-</span> y)</span>
+<span id="cb21-107"><a href="#cb21-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-108"><a href="#cb21-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a>La curva che interpola tali punti è la funzione di verosimiglianza. La @fig-likefutexpect fornisce una rappresentazione grafica di tale funzione.</span>
+<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig-likefutexpect, fig.cap="Funzione di verosimiglianza nel caso di 23 successi in 30 prove."}</span></span>
+<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(theta, like) <span class="sc">%&gt;%</span></span>
+<span id="cb21-113"><a href="#cb21-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">y =</span> like)) <span class="sc">+</span></span>
+<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-115"><a href="#cb21-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fl">0.7676768</span>, <span class="at">color =</span> <span class="st">"lightgray"</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb21-116"><a href="#cb21-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-117"><a href="#cb21-117" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">L</span>(theta)),</span>
+<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Valori possibili di"</span> <span class="sc">~</span> theta)</span>
+<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interpretazione</span></span>
+<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a>Come possiamo interpretare la curva che abbiamo ottenuto? Per alcuni valori $\theta$ la funzione di verosimiglianza assume valori piccoli; per altri valori $\theta$ la funzione di verosimiglianza assume valori più grandi. Questi ultimi sono i valori di $\theta$ più credibili e il valore 23/30 = 0.767 (la moda della funzione di verosimiglianza) è il valore più credibile di tutti.</span>
 <span id="cb21-125"><a href="#cb21-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interpretazione</span></span>
-<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a>Come possiamo interpretare la curva che abbiamo ottenuto? Per alcuni valori $\theta$ la funzione di verosimiglianza assume valori piccoli; per altri valori $\theta$ la funzione di verosimiglianza assume valori più grandi. Questi ultimi sono i valori di $\theta$ più credibili e il valore 23/30 = 0.767 (la moda della funzione di verosimiglianza) è il valore più credibile di tutti.</span>
-<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-132"><a href="#cb21-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-133"><a href="#cb21-133" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(theta, like)</span>
-<span id="cb21-134"><a href="#cb21-134" aria-hidden="true" tabindex="-1"></a>d[<span class="fu">which.max</span>(like), ]<span class="sc">$</span>theta</span>
-<span id="cb21-135"><a href="#cb21-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(theta, like)</span>
+<span id="cb21-130"><a href="#cb21-130" aria-hidden="true" tabindex="-1"></a>d[<span class="fu">which.max</span>(like), ]<span class="sc">$</span>theta</span>
+<span id="cb21-131"><a href="#cb21-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-132"><a href="#cb21-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-133"><a href="#cb21-133" aria-hidden="true" tabindex="-1"></a><span class="fu">### La log-verosimiglianza</span></span>
+<span id="cb21-134"><a href="#cb21-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-135"><a href="#cb21-135" aria-hidden="true" tabindex="-1"></a>Dal punto di vista pratico risulta più conveniente utilizzare, al posto della funzione di verosimiglianza, il suo logaritmo naturale, ovvero la funzione di log-verosimiglianza:</span>
 <span id="cb21-136"><a href="#cb21-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-137"><a href="#cb21-137" aria-hidden="true" tabindex="-1"></a><span class="fu">### La log-verosimiglianza</span></span>
-<span id="cb21-138"><a href="#cb21-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-139"><a href="#cb21-139" aria-hidden="true" tabindex="-1"></a>Dal punto di vista pratico risulta più conveniente utilizzare, al posto della funzione di verosimiglianza, il suo logaritmo naturale, ovvero la funzione di log-verosimiglianza:</span>
+<span id="cb21-137"><a href="#cb21-137" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-138"><a href="#cb21-138" aria-hidden="true" tabindex="-1"></a>\ell(\theta) = \log \mathcal{L}(\theta).</span>
+<span id="cb21-139"><a href="#cb21-139" aria-hidden="true" tabindex="-1"></a>$$ {#eq-loglike-definition}</span>
 <span id="cb21-140"><a href="#cb21-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-141"><a href="#cb21-141" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-142"><a href="#cb21-142" aria-hidden="true" tabindex="-1"></a>\ell(\theta) = \log \mathcal{L}(\theta).</span>
-<span id="cb21-143"><a href="#cb21-143" aria-hidden="true" tabindex="-1"></a>$$ {#eq-loglike-definition}</span>
-<span id="cb21-144"><a href="#cb21-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-145"><a href="#cb21-145" aria-hidden="true" tabindex="-1"></a>Poiché il logaritmo è una funzione strettamente crescente (usualmente si considera il logaritmo naturale), allora $\mathcal{L}(\theta)$ e $\ell(\theta)$ assumono il massimo (o i punti di massimo) in corrispondenza degli stessi valori di $\theta$:</span>
+<span id="cb21-141"><a href="#cb21-141" aria-hidden="true" tabindex="-1"></a>Poiché il logaritmo è una funzione strettamente crescente (usualmente si considera il logaritmo naturale), allora $\mathcal{L}(\theta)$ e $\ell(\theta)$ assumono il massimo (o i punti di massimo) in corrispondenza degli stessi valori di $\theta$:</span>
+<span id="cb21-142"><a href="#cb21-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-143"><a href="#cb21-143" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-144"><a href="#cb21-144" aria-hidden="true" tabindex="-1"></a>\hat{\theta} = \mbox{argmax}_{\theta \in \Theta} \ell(\theta) = \mbox{argmax}_{\theta \in \Theta} \mathcal{L}(\theta).</span>
+<span id="cb21-145"><a href="#cb21-145" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-146"><a href="#cb21-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-147"><a href="#cb21-147" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-148"><a href="#cb21-148" aria-hidden="true" tabindex="-1"></a>\hat{\theta} = \mbox{argmax}_{\theta \in \Theta} \ell(\theta) = \mbox{argmax}_{\theta \in \Theta} \mathcal{L}(\theta).</span>
+<span id="cb21-147"><a href="#cb21-147" aria-hidden="true" tabindex="-1"></a>Per le proprietà del logaritmo, la funzione nucleo di log-verosimiglianza è</span>
+<span id="cb21-148"><a href="#cb21-148" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-149"><a href="#cb21-149" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a>Per le proprietà del logaritmo, la funzione nucleo di log-verosimiglianza è</span>
-<span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a>\ell(\theta \mid y) &amp;= \log \mathcal{L}(\theta \mid y) \notag<span class="sc">\\</span></span>
-<span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a>          &amp;= \log \left(\theta^y (1-\theta)^{n - y} \right) \notag<span class="sc">\\</span></span>
-<span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a>          &amp;= \log \theta^y + \log \left( (1-\theta)^{n - y} \right) \notag<span class="sc">\\</span></span>
-<span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a>          &amp;= y \log \theta + (n - y) \log (1-\theta).\notag</span>
-<span id="cb21-159"><a href="#cb21-159" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb21-160"><a href="#cb21-160" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a>\ell(\theta \mid y) &amp;= \log \mathcal{L}(\theta \mid y) \notag<span class="sc">\\</span></span>
+<span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a>          &amp;= \log \left(\theta^y (1-\theta)^{n - y} \right) \notag<span class="sc">\\</span></span>
+<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a>          &amp;= \log \theta^y + \log \left( (1-\theta)^{n - y} \right) \notag<span class="sc">\\</span></span>
+<span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a>          &amp;= y \log \theta + (n - y) \log (1-\theta).\notag</span>
+<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a>Si noti che non è necessario lavorare con i logaritmi, ma è fortemente consigliato. Il motivo è che i valori della verosimiglianza, in cui si moltiplicano valori di probabilità molto piccoli, possono diventare estremamente piccoli -- qualcosa come $10^{-34}$. In tali circostanze, non è sorprendente che i programmi dei computer mostrino problemi di arrotondamento numerico. Le trasformazioni logaritmiche risolvono questo problema.</span>
+<span id="cb21-159"><a href="#cb21-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-160"><a href="#cb21-160" aria-hidden="true" tabindex="-1"></a>Svolgiamo nuovamente il problema precedente usando la log-verosimiglianza per trovare il massimo della funzione di log-verosimiglianza. Nella funzione <span class="in">`dbinom()`</span> ora utilizziamo l'argomento <span class="in">`log = TRUE`</span>.</span>
 <span id="cb21-161"><a href="#cb21-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-162"><a href="#cb21-162" aria-hidden="true" tabindex="-1"></a>Si noti che non è necessario lavorare con i logaritmi, ma è fortemente consigliato. Il motivo è che i valori della verosimiglianza, in cui si moltiplicano valori di probabilità molto piccoli, possono diventare estremamente piccoli -- qualcosa come $10^{-34}$. In tali circostanze, non è sorprendente che i programmi dei computer mostrino problemi di arrotondamento numerico. Le trasformazioni logaritmiche risolvono questo problema.</span>
-<span id="cb21-163"><a href="#cb21-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-164"><a href="#cb21-164" aria-hidden="true" tabindex="-1"></a>Svolgiamo nuovamente il problema precedente usando la log-verosimiglianza per trovare il massimo della funzione di log-verosimiglianza. Nella funzione <span class="in">`dbinom()`</span> ora utilizziamo l'argomento <span class="in">`log = TRUE`</span>.</span>
-<span id="cb21-165"><a href="#cb21-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-168"><a href="#cb21-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-169"><a href="#cb21-169" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(y, n, theta, <span class="at">log =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb21-170"><a href="#cb21-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-171"><a href="#cb21-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-172"><a href="#cb21-172" aria-hidden="true" tabindex="-1"></a>La funzione di log-verosimiglianza è rappresentata nella @fig-loglike-futureexp.</span>
-<span id="cb21-173"><a href="#cb21-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-174"><a href="#cb21-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-loglike-futureexp, fig.cap="Funzione di log-verosimiglianza nel caso di 23 successi in 30 prove."}</span></span>
-<span id="cb21-175"><a href="#cb21-175" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(theta, ll) <span class="sc">%&gt;%</span></span>
-<span id="cb21-176"><a href="#cb21-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">y =</span> ll)) <span class="sc">+</span></span>
-<span id="cb21-177"><a href="#cb21-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-178"><a href="#cb21-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fl">0.7676768</span>, <span class="at">color =</span> <span class="st">"lightgray"</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb21-179"><a href="#cb21-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-180"><a href="#cb21-180" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">"log-likelihood"</span> <span class="sc">~</span> (theta)),</span>
-<span id="cb21-181"><a href="#cb21-181" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Valori possibili di"</span> <span class="sc">~</span> theta)</span>
-<span id="cb21-182"><a href="#cb21-182" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-183"><a href="#cb21-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-184"><a href="#cb21-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-185"><a href="#cb21-185" aria-hidden="true" tabindex="-1"></a>Il risultato replica quello trovato in precedenza con la funzione di verosimiglianza.</span>
-<span id="cb21-186"><a href="#cb21-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-189"><a href="#cb21-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-190"><a href="#cb21-190" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(theta, ll)</span>
-<span id="cb21-191"><a href="#cb21-191" aria-hidden="true" tabindex="-1"></a>d[<span class="fu">which.max</span>(ll), ]<span class="sc">$</span>theta</span>
-<span id="cb21-192"><a href="#cb21-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-164"><a href="#cb21-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-165"><a href="#cb21-165" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(y, n, theta, <span class="at">log =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb21-166"><a href="#cb21-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-167"><a href="#cb21-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-168"><a href="#cb21-168" aria-hidden="true" tabindex="-1"></a>La funzione di log-verosimiglianza è rappresentata nella @fig-loglike-futureexp.</span>
+<span id="cb21-169"><a href="#cb21-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-170"><a href="#cb21-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-loglike-futureexp, fig.cap="Funzione di log-verosimiglianza nel caso di 23 successi in 30 prove."}</span></span>
+<span id="cb21-171"><a href="#cb21-171" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(theta, ll) <span class="sc">%&gt;%</span></span>
+<span id="cb21-172"><a href="#cb21-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">y =</span> ll)) <span class="sc">+</span></span>
+<span id="cb21-173"><a href="#cb21-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-174"><a href="#cb21-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fl">0.7676768</span>, <span class="at">color =</span> <span class="st">"lightgray"</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb21-175"><a href="#cb21-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-176"><a href="#cb21-176" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">"log-likelihood"</span> <span class="sc">~</span> (theta)),</span>
+<span id="cb21-177"><a href="#cb21-177" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Valori possibili di"</span> <span class="sc">~</span> theta)</span>
+<span id="cb21-178"><a href="#cb21-178" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-179"><a href="#cb21-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-180"><a href="#cb21-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-181"><a href="#cb21-181" aria-hidden="true" tabindex="-1"></a>Il risultato replica quello trovato in precedenza con la funzione di verosimiglianza.</span>
+<span id="cb21-182"><a href="#cb21-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-185"><a href="#cb21-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-186"><a href="#cb21-186" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(theta, ll)</span>
+<span id="cb21-187"><a href="#cb21-187" aria-hidden="true" tabindex="-1"></a>d[<span class="fu">which.max</span>(ll), ]<span class="sc">$</span>theta</span>
+<span id="cb21-188"><a href="#cb21-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-189"><a href="#cb21-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-190"><a href="#cb21-190" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modello gaussiano</span></span>
+<span id="cb21-191"><a href="#cb21-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-192"><a href="#cb21-192" aria-hidden="true" tabindex="-1"></a>Ora che abbiamo capito come costruire la funzione verosimiglianza di una binomiale è relativamente semplice fare un passo ulteriore e considerare la verosimiglianza del caso di una funzione di densità, ovvero nel caso di una variabile casuale continua. Consideriamo qui il caso della Normale. La densità di una distribuzione Normale di parametri $\mu$ e $\sigma$ è</span>
 <span id="cb21-193"><a href="#cb21-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-194"><a href="#cb21-194" aria-hidden="true" tabindex="-1"></a><span class="fu">## Funzione di verosimiglianza Gaussiana</span></span>
-<span id="cb21-195"><a href="#cb21-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-196"><a href="#cb21-196" aria-hidden="true" tabindex="-1"></a>Ora che abbiamo capito come costruire la funzione verosimiglianza di una binomiale è relativamente semplice fare un passo ulteriore e considerare la verosimiglianza del caso di una funzione di densità, ovvero nel caso di una variabile casuale continua. Consideriamo qui il caso della Normale. La densità di una distribuzione Normale di parametri $\mu$ e $\sigma$ è</span>
+<span id="cb21-194"><a href="#cb21-194" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-195"><a href="#cb21-195" aria-hidden="true" tabindex="-1"></a>f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left<span class="sc">\{</span>-\frac{1}{2\sigma^2}(y-\mu)^2\right<span class="sc">\}</span>.</span>
+<span id="cb21-196"><a href="#cb21-196" aria-hidden="true" tabindex="-1"></a>$$ {#eq-gaussian-sim-like}</span>
 <span id="cb21-197"><a href="#cb21-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-198"><a href="#cb21-198" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-199"><a href="#cb21-199" aria-hidden="true" tabindex="-1"></a>f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left<span class="sc">\{</span>-\frac{1}{2\sigma^2}(y-\mu)^2\right<span class="sc">\}</span>.</span>
-<span id="cb21-200"><a href="#cb21-200" aria-hidden="true" tabindex="-1"></a>$$ {#eq-gaussian-sim-like}</span>
+<span id="cb21-198"><a href="#cb21-198" aria-hidden="true" tabindex="-1"></a>Ci poniamo ora il problema di costruire la funzione di verosimiglianza per la densità dell'@eq-gaussian-sim-like.</span>
+<span id="cb21-199"><a href="#cb21-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-200"><a href="#cb21-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### Una singola osservazione</span></span>
 <span id="cb21-201"><a href="#cb21-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-202"><a href="#cb21-202" aria-hidden="true" tabindex="-1"></a>Ci poniamo ora il problema di costruire la funzione di verosimiglianza per la densità dell'@eq-gaussian-sim-like.</span>
+<span id="cb21-202"><a href="#cb21-202" aria-hidden="true" tabindex="-1"></a>Esaminiamo prima il caso in cui i dati corrispondono ad una singola osservazione $y$.</span>
 <span id="cb21-203"><a href="#cb21-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-204"><a href="#cb21-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Una singola osservazione</span></span>
-<span id="cb21-205"><a href="#cb21-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a>Esaminiamo prima il caso in cui i dati corrispondono ad una singola osservazione $y$.</span>
-<span id="cb21-207"><a href="#cb21-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-210"><a href="#cb21-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-211"><a href="#cb21-211" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">114</span></span>
-<span id="cb21-212"><a href="#cb21-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-213"><a href="#cb21-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a>L'@eq-gaussian-sim-like dipende dai parametri $\mu$ e $\sigma$ e dai dati $y$. Per semplicità, ipotizzeremo $\sigma$ noto e uguale a 15. Nella simulazione considereremo 1000 valori $\mu$ compresi tra 70 e 160.</span>
-<span id="cb21-215"><a href="#cb21-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">70</span>, <span class="dv">160</span>, <span class="at">length.out =</span> <span class="fl">1e3</span>)</span>
-<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-221"><a href="#cb21-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-222"><a href="#cb21-222" aria-hidden="true" tabindex="-1"></a>Dato che consideriamo 1000 possibili valori $\mu$, per costruire la funzione di verosimiglianza applicheremo l'@eq-gaussian-sim-like 1000 volte. In ciascun passo della simulazione inseriremo nell'@eq-gaussian-sim-like</span>
+<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-207"><a href="#cb21-207" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">114</span></span>
+<span id="cb21-208"><a href="#cb21-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-209"><a href="#cb21-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-210"><a href="#cb21-210" aria-hidden="true" tabindex="-1"></a>L'@eq-gaussian-sim-like dipende dai parametri $\mu$ e $\sigma$ e dai dati $y$. Per semplicità, ipotizzeremo $\sigma$ noto e uguale a 15. Nella simulazione considereremo 1000 valori $\mu$ compresi tra 70 e 160.</span>
+<span id="cb21-211"><a href="#cb21-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-215"><a href="#cb21-215" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">70</span>, <span class="dv">160</span>, <span class="at">length.out =</span> <span class="fl">1e3</span>)</span>
+<span id="cb21-216"><a href="#cb21-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-217"><a href="#cb21-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a>Dato che consideriamo 1000 possibili valori $\mu$, per costruire la funzione di verosimiglianza applicheremo l'@eq-gaussian-sim-like 1000 volte. In ciascun passo della simulazione inseriremo nell'@eq-gaussian-sim-like</span>
+<span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il singolo valore $y$ considerato,</span>
+<span id="cb21-221"><a href="#cb21-221" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il valore $\sigma$ assunto noto,</span>
+<span id="cb21-222"><a href="#cb21-222" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ciascuno dei valori $\mu$ che abbiamo considerato.</span>
 <span id="cb21-223"><a href="#cb21-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-224"><a href="#cb21-224" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il singolo valore $y$ considerato,</span>
-<span id="cb21-225"><a href="#cb21-225" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il valore $\sigma$ assunto noto,</span>
-<span id="cb21-226"><a href="#cb21-226" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ciascuno dei valori $\mu$ che abbiamo considerato.</span>
+<span id="cb21-224"><a href="#cb21-224" aria-hidden="true" tabindex="-1"></a>La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione <span class="in">`dnorm()`</span>. La funzione <span class="in">`dnorm()`</span> ha tre argomenti: il valore $y$ (o il vettore $y$), la media, ovvero il parametro $\mu$ e la deviazione standard, ovvero il parametro $\sigma$.</span>
+<span id="cb21-225"><a href="#cb21-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-226"><a href="#cb21-226" aria-hidden="true" tabindex="-1"></a>Usando la funzione <span class="in">`dnorm()`</span> 1000 volte, una volta per ciascuno dei valori $\mu$ che abbiamo considerato (e tenendo fissi $y = 114$ e $\sigma = 15$) otteniamo 1000 valori $f(\mu)$.</span>
 <span id="cb21-227"><a href="#cb21-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-228"><a href="#cb21-228" aria-hidden="true" tabindex="-1"></a>La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione <span class="in">`dnorm()`</span>. La funzione <span class="in">`dnorm()`</span> ha tre argomenti: il valore $y$ (o il vettore $y$), la media, ovvero il parametro $\mu$ e la deviazione standard, ovvero il parametro $\sigma$.</span>
-<span id="cb21-229"><a href="#cb21-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-230"><a href="#cb21-230" aria-hidden="true" tabindex="-1"></a>Usando la funzione <span class="in">`dnorm()`</span> 1000 volte, una volta per ciascuno dei valori $\mu$ che abbiamo considerato (e tenendo fissi $y = 114$ e $\sigma = 15$) otteniamo 1000 valori $f(\mu)$.</span>
-<span id="cb21-231"><a href="#cb21-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-234"><a href="#cb21-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-235"><a href="#cb21-235" aria-hidden="true" tabindex="-1"></a>f_mu <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="dv">15</span>)</span>
-<span id="cb21-236"><a href="#cb21-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-237"><a href="#cb21-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-238"><a href="#cb21-238" aria-hidden="true" tabindex="-1"></a>La funzione di verosimiglianza è la curva che interpola i punti $\big(\mu, f(\mu)\big)$.</span>
-<span id="cb21-239"><a href="#cb21-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-242"><a href="#cb21-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-243"><a href="#cb21-243" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(mu, f_mu) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-244"><a href="#cb21-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb21-245"><a href="#cb21-245" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> f_mu)</span>
-<span id="cb21-246"><a href="#cb21-246" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-247"><a href="#cb21-247" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-248"><a href="#cb21-248" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vline_at</span>(<span class="dv">114</span>, <span class="at">color =</span> <span class="st">"lightgray"</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb21-249"><a href="#cb21-249" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(</span>
-<span id="cb21-250"><a href="#cb21-250" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Verosimiglianza"</span>,</span>
-<span id="cb21-251"><a href="#cb21-251" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"Parametro \u03BC"</span>)</span>
-<span id="cb21-252"><a href="#cb21-252" aria-hidden="true" tabindex="-1"></a>    ) </span>
-<span id="cb21-253"><a href="#cb21-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-254"><a href="#cb21-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-255"><a href="#cb21-255" aria-hidden="true" tabindex="-1"></a>Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione (ma solo in questo caso) ha un'area unitaria.</span>
-<span id="cb21-256"><a href="#cb21-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-259"><a href="#cb21-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-260"><a href="#cb21-260" aria-hidden="true" tabindex="-1"></a>integrand <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {</span>
-<span id="cb21-261"><a href="#cb21-261" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">=</span> <span class="dv">114</span></span>
-<span id="cb21-262"><a href="#cb21-262" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">=</span> <span class="dv">15</span></span>
-<span id="cb21-263"><a href="#cb21-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(y, mu, sigma)</span>
-<span id="cb21-264"><a href="#cb21-264" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-265"><a href="#cb21-265" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(integrand, <span class="at">lower =</span> <span class="sc">-</span><span class="dv">10000</span>, <span class="at">upper =</span> <span class="dv">10000</span>)</span>
-<span id="cb21-266"><a href="#cb21-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-230"><a href="#cb21-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-231"><a href="#cb21-231" aria-hidden="true" tabindex="-1"></a>f_mu <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="dv">15</span>)</span>
+<span id="cb21-232"><a href="#cb21-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-233"><a href="#cb21-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-234"><a href="#cb21-234" aria-hidden="true" tabindex="-1"></a>La funzione di verosimiglianza è la curva che interpola i punti $\big(\mu, f(\mu)\big)$.</span>
+<span id="cb21-235"><a href="#cb21-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-238"><a href="#cb21-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-239"><a href="#cb21-239" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(mu, f_mu) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-240"><a href="#cb21-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb21-241"><a href="#cb21-241" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> f_mu)</span>
+<span id="cb21-242"><a href="#cb21-242" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-243"><a href="#cb21-243" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-244"><a href="#cb21-244" aria-hidden="true" tabindex="-1"></a>    <span class="fu">vline_at</span>(<span class="dv">114</span>, <span class="at">color =</span> <span class="st">"lightgray"</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb21-245"><a href="#cb21-245" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(</span>
+<span id="cb21-246"><a href="#cb21-246" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">"Verosimiglianza"</span>,</span>
+<span id="cb21-247"><a href="#cb21-247" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">c</span>(<span class="st">"Parametro \u03BC"</span>)</span>
+<span id="cb21-248"><a href="#cb21-248" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb21-249"><a href="#cb21-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-250"><a href="#cb21-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-251"><a href="#cb21-251" aria-hidden="true" tabindex="-1"></a>Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione (ma solo in questo caso) ha un'area unitaria.</span>
+<span id="cb21-252"><a href="#cb21-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-255"><a href="#cb21-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-256"><a href="#cb21-256" aria-hidden="true" tabindex="-1"></a>integrand <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {</span>
+<span id="cb21-257"><a href="#cb21-257" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">=</span> <span class="dv">114</span></span>
+<span id="cb21-258"><a href="#cb21-258" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">=</span> <span class="dv">15</span></span>
+<span id="cb21-259"><a href="#cb21-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(y, mu, sigma)</span>
+<span id="cb21-260"><a href="#cb21-260" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-261"><a href="#cb21-261" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(integrand, <span class="at">lower =</span> <span class="sc">-</span><span class="dv">10000</span>, <span class="at">upper =</span> <span class="dv">10000</span>)</span>
+<span id="cb21-262"><a href="#cb21-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-263"><a href="#cb21-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-264"><a href="#cb21-264" aria-hidden="true" tabindex="-1"></a>La moda della funzione di verosimiglianza è 114.</span>
+<span id="cb21-265"><a href="#cb21-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-266"><a href="#cb21-266" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un campione di osservazioni</span></span>
 <span id="cb21-267"><a href="#cb21-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-268"><a href="#cb21-268" aria-hidden="true" tabindex="-1"></a>La moda della funzione di verosimiglianza è 114.</span>
+<span id="cb21-268"><a href="#cb21-268" aria-hidden="true" tabindex="-1"></a>Consideriamo ora il caso più generale, ovvero quello di un campione di $n$ osservazioni. Possiamo immaginare un campione casuale $y_1, y_2, \dots, y_n$ estratto da una popolazione $\mathcal{N}(\mu, \sigma)$ come una sequenza di realizzazioni indipendenti ed identicamente distribuite (di seguito, i.i.d.) della medesima variabile casuale $Y \sim \mathcal{N}(\mu, \sigma)$. I parametri sconosciuti sono $\theta = <span class="sc">\{</span>\mu, \sigma<span class="sc">\}</span>$.</span>
 <span id="cb21-269"><a href="#cb21-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-270"><a href="#cb21-270" aria-hidden="true" tabindex="-1"></a><span class="fu">### Un campione di osservazioni</span></span>
-<span id="cb21-271"><a href="#cb21-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-272"><a href="#cb21-272" aria-hidden="true" tabindex="-1"></a>Consideriamo ora il caso più generale, ovvero quello di un campione di $n$ osservazioni. Possiamo immaginare un campione casuale $y_1, y_2, \dots, y_n$ estratto da una popolazione $\mathcal{N}(\mu, \sigma)$ come una sequenza di realizzazioni indipendenti ed identicamente distribuite (di seguito, i.i.d.) della medesima variabile casuale $Y \sim \mathcal{N}(\mu, \sigma)$. I parametri sconosciuti sono $\theta = <span class="sc">\{</span>\mu, \sigma<span class="sc">\}</span>$.</span>
-<span id="cb21-273"><a href="#cb21-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-274"><a href="#cb21-274" aria-hidden="true" tabindex="-1"></a>Se le variabili casuali $y_1, y_2, \dots, y_n$ sono i.i.d., la loro densità congiunta è data da: \begin{align}</span>
-<span id="cb21-275"><a href="#cb21-275" aria-hidden="true" tabindex="-1"></a>f(y \mid \theta) &amp;= f(y_1 \mid \theta) \cdot f(y_2 \mid \theta) \cdot \; \dots \; \cdot f(y_n \mid \theta)\notag<span class="sc">\\</span></span>
-<span id="cb21-276"><a href="#cb21-276" aria-hidden="true" tabindex="-1"></a>                 &amp;= \prod_{i=1}^n f(y_i \mid \theta),</span>
-<span id="cb21-277"><a href="#cb21-277" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
-<span id="cb21-278"><a href="#cb21-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-279"><a href="#cb21-279" aria-hidden="true" tabindex="-1"></a>laddove $f(\cdot)$ è la densità Gaussiana di parametri $\mu, \sigma$. Tenendo costanti i dati $y$, la funzione di verosimiglianza diventa:</span>
-<span id="cb21-280"><a href="#cb21-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-281"><a href="#cb21-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb21-282"><a href="#cb21-282" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb21-283"><a href="#cb21-283" aria-hidden="true" tabindex="-1"></a><span class="in">\mathcal{L}(\theta \mid y) = \prod_{i=1}^n f(y_i \mid \theta).</span></span>
-<span id="cb21-284"><a href="#cb21-284" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb21-285"><a href="#cb21-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-286"><a href="#cb21-286" aria-hidden="true" tabindex="-1"></a>Per chiarire la formula precedente, consideriamo un esempio che utilizza come dati i valori BDI-II dei trenta soggetti del campione clinico di Zetsche et al. (2020).</span>
-<span id="cb21-287"><a href="#cb21-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-290"><a href="#cb21-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-291"><a href="#cb21-291" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb21-292"><a href="#cb21-292" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(</span>
-<span id="cb21-293"><a href="#cb21-293" aria-hidden="true" tabindex="-1"></a>    <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">44</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">43</span>, <span class="dv">22</span>, <span class="dv">43</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">39</span>, <span class="dv">31</span>, <span class="dv">25</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">26</span>, </span>
-<span id="cb21-294"><a href="#cb21-294" aria-hidden="true" tabindex="-1"></a>    <span class="dv">31</span>, <span class="dv">41</span>, <span class="dv">36</span>, <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">28</span>, <span class="dv">27</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">22</span></span>
-<span id="cb21-295"><a href="#cb21-295" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb21-296"><a href="#cb21-296" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-297"><a href="#cb21-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-298"><a href="#cb21-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a>Ci poniamo l'obiettivo di creare la funzione di verosimiglianza per questi dati, supponendo di sapere (in base ai risultati di ricerche precedenti) che i punteggi BDI-II si distribuiscono secondo la legge Normale e supponendo $\sigma$ noto e uguale alla deviazione standard del campione.</span>
-<span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-303"><a href="#cb21-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a>true_sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(d<span class="sc">$</span>y)</span>
-<span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a>true_sigma </span>
-<span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-270"><a href="#cb21-270" aria-hidden="true" tabindex="-1"></a>Se le variabili casuali $y_1, y_2, \dots, y_n$ sono i.i.d., la loro densità congiunta è data da: \begin{align}</span>
+<span id="cb21-271"><a href="#cb21-271" aria-hidden="true" tabindex="-1"></a>f(y \mid \theta) &amp;= f(y_1 \mid \theta) \cdot f(y_2 \mid \theta) \cdot \; \dots \; \cdot f(y_n \mid \theta)\notag<span class="sc">\\</span></span>
+<span id="cb21-272"><a href="#cb21-272" aria-hidden="true" tabindex="-1"></a>                 &amp;= \prod_{i=1}^n f(y_i \mid \theta),</span>
+<span id="cb21-273"><a href="#cb21-273" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb21-274"><a href="#cb21-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-275"><a href="#cb21-275" aria-hidden="true" tabindex="-1"></a>laddove $f(\cdot)$ è la densità Gaussiana di parametri $\mu, \sigma$. Tenendo costanti i dati $y$, la funzione di verosimiglianza diventa:</span>
+<span id="cb21-276"><a href="#cb21-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-277"><a href="#cb21-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
+<span id="cb21-278"><a href="#cb21-278" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
+<span id="cb21-279"><a href="#cb21-279" aria-hidden="true" tabindex="-1"></a><span class="in">\mathcal{L}(\theta \mid y) = \prod_{i=1}^n f(y_i \mid \theta).</span></span>
+<span id="cb21-280"><a href="#cb21-280" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
+<span id="cb21-281"><a href="#cb21-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-282"><a href="#cb21-282" aria-hidden="true" tabindex="-1"></a>Per chiarire la formula precedente, consideriamo un esempio che utilizza come dati i valori BDI-II dei trenta soggetti del campione clinico di Zetsche et al. (2020).</span>
+<span id="cb21-283"><a href="#cb21-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-286"><a href="#cb21-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-287"><a href="#cb21-287" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb21-288"><a href="#cb21-288" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(</span>
+<span id="cb21-289"><a href="#cb21-289" aria-hidden="true" tabindex="-1"></a>    <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">44</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">43</span>, <span class="dv">22</span>, <span class="dv">43</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">39</span>, <span class="dv">31</span>, <span class="dv">25</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">26</span>, </span>
+<span id="cb21-290"><a href="#cb21-290" aria-hidden="true" tabindex="-1"></a>    <span class="dv">31</span>, <span class="dv">41</span>, <span class="dv">36</span>, <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">28</span>, <span class="dv">27</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">22</span></span>
+<span id="cb21-291"><a href="#cb21-291" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-292"><a href="#cb21-292" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-293"><a href="#cb21-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-294"><a href="#cb21-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-295"><a href="#cb21-295" aria-hidden="true" tabindex="-1"></a>Ci poniamo l'obiettivo di creare la funzione di verosimiglianza per questi dati, supponendo di sapere (in base ai risultati di ricerche precedenti) che i punteggi BDI-II si distribuiscono secondo la legge Normale e supponendo $\sigma$ noto e uguale alla deviazione standard del campione.</span>
+<span id="cb21-296"><a href="#cb21-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a>true_sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(d<span class="sc">$</span>y)</span>
+<span id="cb21-301"><a href="#cb21-301" aria-hidden="true" tabindex="-1"></a>true_sigma </span>
+<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-303"><a href="#cb21-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a>Abbiamo visto in precedenza che, per una singola osservazione, la funzione di verosimiglianza è la densità Gaussiana espressa in funzione dei parametri (in questo caso, solo $\mu$). Per un campione di osservazioni i.i.d., ovvero $y = (y_1, y_2, \dots, y_n)$, la verosimiglianza è la funzione di densità congiunta $f(y \mid \mu, \sigma)$ espressa in funzione dei parametri. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni.</span>
+<span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a>Per l'osservazione $y_i$ abbiamo</span>
 <span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a>Abbiamo visto in precedenza che, per una singola osservazione, la funzione di verosimiglianza è la densità Gaussiana espressa in funzione dei parametri (in questo caso, solo $\mu$). Per un campione di osservazioni i.i.d., ovvero $y = (y_1, y_2, \dots, y_n)$, la verosimiglianza è la funzione di densità congiunta $f(y \mid \mu, \sigma)$ espressa in funzione dei parametri. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni.</span>
-<span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-310"><a href="#cb21-310" aria-hidden="true" tabindex="-1"></a>Per l'osservazione $y_i$ abbiamo</span>
+<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a>f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span>.</span>
+<span id="cb21-310"><a href="#cb21-310" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-311"><a href="#cb21-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a>f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span>.</span>
+<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a>La densità congiunta è dunque</span>
+<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-314"><a href="#cb21-314" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a>La densità congiunta è dunque</span>
+<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a>f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)</span>
+<span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-317"><a href="#cb21-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-318"><a href="#cb21-318" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a>f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)</span>
+<span id="cb21-318"><a href="#cb21-318" aria-hidden="true" tabindex="-1"></a>Alla luce dei dati osservati (e assumendo $\sigma = 6.61$), la verosimiglianza diventa</span>
+<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a>Alla luce dei dati osservati (e assumendo $\sigma = 6.61$), la verosimiglianza diventa</span>
-<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\mu, \sigma \mid y) =&amp; \, \prod_{i=1}^n f(y_i \mid \mu, \sigma) = \notag<span class="sc">\\</span></span>
-<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a>&amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(26 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times \notag<span class="sc">\\</span></span>
-<span id="cb21-328"><a href="#cb21-328" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(35 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times  \notag<span class="sc">\\</span></span>
-<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a>&amp; \vdots \notag<span class="sc">\\</span></span>
-<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(22 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span>.</span>
-<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a>È più conveniente svolgere l'esercizio usando il logaritmo della verosimiglianza. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza, <span class="in">`log_likelihood()`</span>, che prende come argomenti <span class="in">`y`</span>, <span class="in">`mu`</span> e <span class="in">`sigma = 6.61`</span>.</span>
-<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a>log_likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, <span class="at">sigma =</span> true_sigma) {</span>
-<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">dnorm</span>(y, mu, sigma, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\mu, \sigma \mid y) =&amp; \, \prod_{i=1}^n f(y_i \mid \mu, \sigma) = \notag<span class="sc">\\</span></span>
+<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a>&amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(26 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times \notag<span class="sc">\\</span></span>
+<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(35 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times  \notag<span class="sc">\\</span></span>
+<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a>&amp; \vdots \notag<span class="sc">\\</span></span>
+<span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(22 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span>.</span>
+<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb21-328"><a href="#cb21-328" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a>È più conveniente svolgere l'esercizio usando il logaritmo della verosimiglianza. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza, <span class="in">`log_likelihood()`</span>, che prende come argomenti <span class="in">`y`</span>, <span class="in">`mu`</span> e <span class="in">`sigma = 6.61`</span>.</span>
+<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb21-336"><a href="#cb21-336" aria-hidden="true" tabindex="-1"></a>log_likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, <span class="at">sigma =</span> true_sigma) {</span>
+<span id="cb21-337"><a href="#cb21-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">dnorm</span>(y, mu, sigma, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a>L'argomento <span class="in">`y`</span> è un vettore di 30 elementi; gli argomenti <span class="in">`mu`</span> e <span class="in">`sigma`</span> sono scalari.</span>
+<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a>Per ciascuno valore <span class="in">`y`</span>, la funzione <span class="in">`dnorm()`</span> trova la densità Normale utilizzando il valore <span class="in">`mu`</span> in input e <span class="in">`sigma = 6.61`</span>. L'argomento <span class="in">`log = TRUE`</span> specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione <span class="in">`sum()`</span>.</span>
 <span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a>L'argomento <span class="in">`y`</span> è un vettore di 30 elementi; gli argomenti <span class="in">`mu`</span> e <span class="in">`sigma`</span> sono scalari.</span>
+<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a>Utilizzando un singolo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ utilizzato. Vogliamo però trovare l'ordinata della log-verosimiglianza per tutti i possibili valori che $\mu$ può assumere. Nella simulazione, usiamo 100,000 valori possibili del parametro $\mu \in <span class="co">[</span><span class="ot">\bar{y} - \mbox{SD}, \bar{y} + \mbox{SD}</span><span class="co">]</span>$. Mediante un ciclo <span class="in">`for()`</span>, ripetiamo dunque i calcoli descritti sopra 100,000 volte, una volta per ciascuno dei valori $\mu$ considerati. I 100,000 risultati vengono salvati nel vettore <span class="in">`ll`</span>.</span>
 <span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-347"><a href="#cb21-347" aria-hidden="true" tabindex="-1"></a>Per ciascuno valore <span class="in">`y`</span>, la funzione <span class="in">`dnorm()`</span> trova la densità Normale utilizzando il valore <span class="in">`mu`</span> in input e <span class="in">`sigma = 6.61`</span>. L'argomento <span class="in">`log = TRUE`</span> specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione <span class="in">`sum()`</span>.</span>
-<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a>Utilizzando un singolo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ utilizzato. Vogliamo però trovare l'ordinata della log-verosimiglianza per tutti i possibili valori che $\mu$ può assumere. Nella simulazione, usiamo 100,000 valori possibili del parametro $\mu \in <span class="co">[</span><span class="ot">\bar{y} - \mbox{SD}, \bar{y} + \mbox{SD}</span><span class="co">]</span>$. Mediante un ciclo <span class="in">`for()`</span>, ripetiamo dunque i calcoli descritti sopra 100,000 volte, una volta per ciascuno dei valori $\mu$ considerati. I 100,000 risultati vengono salvati nel vettore <span class="in">`ll`</span>.</span>
-<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
-<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">-</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
-<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">+</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
-<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a>  <span class="at">length.out =</span> nrep</span>
-<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, nrep)</span>
-<span id="cb21-362"><a href="#cb21-362" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nrep) {</span>
-<span id="cb21-363"><a href="#cb21-363" aria-hidden="true" tabindex="-1"></a>  ll[i] <span class="ot">&lt;-</span> <span class="fu">log_likelihood</span>(d<span class="sc">$</span>y, mu[i], true_sigma)</span>
-<span id="cb21-364"><a href="#cb21-364" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-365"><a href="#cb21-365" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-366"><a href="#cb21-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-367"><a href="#cb21-367" aria-hidden="true" tabindex="-1"></a>Nel caso di un solo parametro sconosciuto (nel caso presente, $\mu$) è possibile rappresentare la log-verosimiglianza con una curva che interpola i punti (<span class="in">`mu`</span>, <span class="in">`ll`</span>).</span>
-<span id="cb21-368"><a href="#cb21-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-369"><a href="#cb21-369" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-loglike-bdi2, fig.cap="Log-verosimiglianza del parametro $\\mu$ per i dati di @zetschefuture2019."}</span></span>
-<span id="cb21-370"><a href="#cb21-370" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(mu, ll) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-371"><a href="#cb21-371" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> ll)) <span class="sc">+</span></span>
-<span id="cb21-372"><a href="#cb21-372" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-373"><a href="#cb21-373" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fu">mean</span>(d<span class="sc">$</span>y), <span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb21-374"><a href="#cb21-374" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-375"><a href="#cb21-375" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Log-verosimiglianza"</span>,</span>
-<span id="cb21-376"><a href="#cb21-376" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Parametro"</span><span class="sc">~</span>mu)</span>
-<span id="cb21-377"><a href="#cb21-377" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb21-378"><a href="#cb21-378" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
+<span id="cb21-352"><a href="#cb21-352" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">-</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
+<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">+</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
+<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a>  <span class="at">length.out =</span> nrep</span>
+<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, nrep)</span>
+<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nrep) {</span>
+<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a>  ll[i] <span class="ot">&lt;-</span> <span class="fu">log_likelihood</span>(d<span class="sc">$</span>y, mu[i], true_sigma)</span>
+<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-362"><a href="#cb21-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-363"><a href="#cb21-363" aria-hidden="true" tabindex="-1"></a>Nel caso di un solo parametro sconosciuto (nel caso presente, $\mu$) è possibile rappresentare la log-verosimiglianza con una curva che interpola i punti (<span class="in">`mu`</span>, <span class="in">`ll`</span>).</span>
+<span id="cb21-364"><a href="#cb21-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-365"><a href="#cb21-365" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-loglike-bdi2, fig.cap="Log-verosimiglianza del parametro $\\mu$ per i dati di @zetschefuture2019."}</span></span>
+<span id="cb21-366"><a href="#cb21-366" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(mu, ll) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-367"><a href="#cb21-367" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> ll)) <span class="sc">+</span></span>
+<span id="cb21-368"><a href="#cb21-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-369"><a href="#cb21-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fu">mean</span>(d<span class="sc">$</span>y), <span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb21-370"><a href="#cb21-370" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-371"><a href="#cb21-371" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Log-verosimiglianza"</span>,</span>
+<span id="cb21-372"><a href="#cb21-372" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Parametro"</span><span class="sc">~</span>mu)</span>
+<span id="cb21-373"><a href="#cb21-373" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb21-374"><a href="#cb21-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-375"><a href="#cb21-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-376"><a href="#cb21-376" aria-hidden="true" tabindex="-1"></a>Tale funzione descrive la credibilità relativa che può essere attribuita ai valori del parametro $\mu$ alla luce dei dati osservati.</span>
+<span id="cb21-377"><a href="#cb21-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-378"><a href="#cb21-378" aria-hidden="true" tabindex="-1"></a><span class="fu">### Massima verosimiglianza</span></span>
 <span id="cb21-379"><a href="#cb21-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-380"><a href="#cb21-380" aria-hidden="true" tabindex="-1"></a>Tale funzione descrive la credibilità relativa che può essere attribuita ai valori del parametro $\mu$ alla luce dei dati osservati.</span>
+<span id="cb21-380"><a href="#cb21-380" aria-hidden="true" tabindex="-1"></a>Il valore $\mu$ più credibile corrisponde al massimo della funzione di log-verosimiglinza e viene detto *stima di massima verosimiglianza*.</span>
 <span id="cb21-381"><a href="#cb21-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-382"><a href="#cb21-382" aria-hidden="true" tabindex="-1"></a><span class="fu">### Massima verosimiglianza</span></span>
+<span id="cb21-382"><a href="#cb21-382" aria-hidden="true" tabindex="-1"></a>Il massimo della funzione di log-verosimiglianza, ovvero <span class="in">`r round(mean(d$y), 2)`</span> nel caso dell'esempio presente, è identico alla media dei dati campionari. Tale risultato, ottenuto per via numerica, può essere dimostrato formalmente nel modo seguente.</span>
 <span id="cb21-383"><a href="#cb21-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-384"><a href="#cb21-384" aria-hidden="true" tabindex="-1"></a>Il valore $\mu$ più credibile corrisponde al massimo della funzione di log-verosimiglinza e viene detto *stima di massima verosimiglianza*.</span>
+<span id="cb21-384"><a href="#cb21-384" aria-hidden="true" tabindex="-1"></a>Usando la notazione matematica possiamo dire che cerchiamo l'argmax dell'equazione precedente rispetto a $\theta$, ovvero</span>
 <span id="cb21-385"><a href="#cb21-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-386"><a href="#cb21-386" aria-hidden="true" tabindex="-1"></a>Il massimo della funzione di log-verosimiglianza, ovvero <span class="in">`r round(mean(d$y), 2)`</span> nel caso dell'esempio presente, è identico alla media dei dati campionari. Tale risultato, ottenuto per via numerica, può essere dimostrato formalmente nel modo seguente.</span>
-<span id="cb21-387"><a href="#cb21-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-388"><a href="#cb21-388" aria-hidden="true" tabindex="-1"></a>Usando la notazione matematica possiamo dire che cerchiamo l'argmax dell'equazione precedente rispetto a $\theta$, ovvero</span>
+<span id="cb21-386"><a href="#cb21-386" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-387"><a href="#cb21-387" aria-hidden="true" tabindex="-1"></a>\hat{\theta} = \text{argmax}_{\theta} \prod_{i=1}^n f(y_i \mid \theta).</span>
+<span id="cb21-388"><a href="#cb21-388" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-389"><a href="#cb21-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-390"><a href="#cb21-390" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-391"><a href="#cb21-391" aria-hidden="true" tabindex="-1"></a>\hat{\theta} = \text{argmax}_{\theta} \prod_{i=1}^n f(y_i \mid \theta).</span>
-<span id="cb21-392"><a href="#cb21-392" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-393"><a href="#cb21-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-394"><a href="#cb21-394" aria-hidden="true" tabindex="-1"></a>Questo problema si risolve calcolando le derivate della funzione rispetto a $\theta$, ponendo le derivate uguali a zero e risolvendo. Saltando tutti i passaggi algebrici di questo procedimento, per $\mu$ troviamo</span>
-<span id="cb21-395"><a href="#cb21-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-396"><a href="#cb21-396" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb21-397"><a href="#cb21-397" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb21-398"><a href="#cb21-398" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\mu} = \frac{1}{n} \sum_{i=1}^n y_i</span></span>
-<span id="cb21-399"><a href="#cb21-399" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb21-400"><a href="#cb21-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-401"><a href="#cb21-401" aria-hidden="true" tabindex="-1"></a>e per $\sigma$ abbiamo</span>
-<span id="cb21-402"><a href="#cb21-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-403"><a href="#cb21-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb21-404"><a href="#cb21-404" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb21-405"><a href="#cb21-405" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\sigma} = \sqrt{\sum_{i=1}^n\frac{1}{n}(y_i- \mu)^2}.</span></span>
-<span id="cb21-406"><a href="#cb21-406" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb21-407"><a href="#cb21-407" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-408"><a href="#cb21-408" aria-hidden="true" tabindex="-1"></a>In altri termini, la s.m.v. del parametro $\mu$ è la media del campione e la s.m.v. del parametro $\sigma$ è la deviazione standard del campione.</span>
+<span id="cb21-390"><a href="#cb21-390" aria-hidden="true" tabindex="-1"></a>Questo problema si risolve calcolando le derivate della funzione rispetto a $\theta$, ponendo le derivate uguali a zero e risolvendo. Saltando tutti i passaggi algebrici di questo procedimento, per $\mu$ troviamo</span>
+<span id="cb21-391"><a href="#cb21-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-392"><a href="#cb21-392" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
+<span id="cb21-393"><a href="#cb21-393" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
+<span id="cb21-394"><a href="#cb21-394" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\mu} = \frac{1}{n} \sum_{i=1}^n y_i</span></span>
+<span id="cb21-395"><a href="#cb21-395" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
+<span id="cb21-396"><a href="#cb21-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-397"><a href="#cb21-397" aria-hidden="true" tabindex="-1"></a>e per $\sigma$ abbiamo</span>
+<span id="cb21-398"><a href="#cb21-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-399"><a href="#cb21-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
+<span id="cb21-400"><a href="#cb21-400" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
+<span id="cb21-401"><a href="#cb21-401" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\sigma} = \sqrt{\sum_{i=1}^n\frac{1}{n}(y_i- \mu)^2}.</span></span>
+<span id="cb21-402"><a href="#cb21-402" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
+<span id="cb21-403"><a href="#cb21-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-404"><a href="#cb21-404" aria-hidden="true" tabindex="-1"></a>In altri termini, la s.m.v. del parametro $\mu$ è la media del campione e la s.m.v. del parametro $\sigma$ è la deviazione standard del campione.</span>
+<span id="cb21-405"><a href="#cb21-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-406"><a href="#cb21-406" aria-hidden="true" tabindex="-1"></a>::: {#exr-loglike-bdi2-1}</span>
+<span id="cb21-407"><a href="#cb21-407" aria-hidden="true" tabindex="-1"></a>Dalla @fig-loglike-bdi2 notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero <span class="in">`r round(mean(d$y), 2)`</span>, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</span>
+<span id="cb21-408"><a href="#cb21-408" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb21-409"><a href="#cb21-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-410"><a href="#cb21-410" aria-hidden="true" tabindex="-1"></a>::: {#exr-loglike-bdi2-1}</span>
-<span id="cb21-411"><a href="#cb21-411" aria-hidden="true" tabindex="-1"></a>Dalla @fig-loglike-bdi2 notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero <span class="in">`r round(mean(d$y), 2)`</span>, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</span>
-<span id="cb21-412"><a href="#cb21-412" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-410"><a href="#cb21-410" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commenti e considerazioni finali {.unnumbered}</span></span>
+<span id="cb21-411"><a href="#cb21-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-412"><a href="#cb21-412" aria-hidden="true" tabindex="-1"></a>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.</span>
 <span id="cb21-413"><a href="#cb21-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-414"><a href="#cb21-414" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commenti e considerazioni finali {.unnumbered}</span></span>
+<span id="cb21-414"><a href="#cb21-414" aria-hidden="true" tabindex="-1"></a>Nella statistica frequentista l'inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l'inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Le basi dell'inferenza frequentista, dunque, sono state riassunte in questo Capitolo. Nella statistica bayesiana, invece, l'inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti $\theta$. Ciò verrà discusso nei Capitoli successivi.</span>
 <span id="cb21-415"><a href="#cb21-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-416"><a href="#cb21-416" aria-hidden="true" tabindex="-1"></a>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.</span>
-<span id="cb21-417"><a href="#cb21-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-418"><a href="#cb21-418" aria-hidden="true" tabindex="-1"></a>Nella statistica frequentista l'inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l'inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Le basi dell'inferenza frequentista, dunque, sono state riassunte in questo Capitolo. Nella statistica bayesiana, invece, l'inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti $\theta$. Ciò verrà discusso nei Capitoli successivi.</span>
-<span id="cb21-419"><a href="#cb21-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-420"><a href="#cb21-420" aria-hidden="true" tabindex="-1"></a>La differenza fondamentale tra inferenza bayesiana e frequentista è dunque che i frequentisti non ritengono utile descrivere i parametri in termini probabilistici: i parametri dei modelli statistici vengono concepiti come fissi ma sconosciuti. Nell'inferenza bayesiana, invece, i parametri sconosciuti sono intesi come delle variabili casuali e ciò consente di quantificare in termini probabilistici il nostro grado di intertezza relativamente al loro valore.</span>
+<span id="cb21-416"><a href="#cb21-416" aria-hidden="true" tabindex="-1"></a>La differenza fondamentale tra inferenza bayesiana e frequentista è dunque che i frequentisti non ritengono utile descrivere i parametri in termini probabilistici: i parametri dei modelli statistici vengono concepiti come fissi ma sconosciuti. Nell'inferenza bayesiana, invece, i parametri sconosciuti sono intesi come delle variabili casuali e ciò consente di quantificare in termini probabilistici il nostro grado di intertezza relativamente al loro valore.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

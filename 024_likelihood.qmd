@@ -7,8 +7,6 @@ library("scales")
 
 La verosimiglianza viene utilizzata sia nell'inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti di un modello statistico.
 
-## Definizione
-
 ::: {#def-likelihood}
 La *funzione di verosimiglianza* $\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,$ è la funzione di massa o di densità di probabilità dei dati $y$ vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) $\theta$.
 :::
@@ -26,11 +24,9 @@ Si noti un punto importante: la funzione $\mathcal{L}(\theta \mid y)$ non è una
 
 Seguendo una pratica comune, in questa dispensa all'interno di un framework bayesiano spesso useremo la notazione $p(\cdot)$ per rappresentare due quantità differenti, ovvero la funzione di verosimiglianza e la distribuzione a priori. Questo piccolo abuso di notazione riflette il seguente punto di vista: anche se la verosimiglianza non è una funzione di densità di probabilità, noi non vogliamo stressare questo aspetto, ma vogliamo piuttosto pensare alla verosimiglianza e alla distribuzione a priori come a due elementi che sono egualmente necessari per calcolare la distribuzione a posteriori. In altri termini, per così dire, questa notazione assegna lo stesso status epistemico alle due diverse quantità che si trovano al numeratore della regola di Bayes.
 
-## Caso binomiale
+## Modello binomiale
 
 Iniziamo a discutere la funzione di verosimiglianza considerando il caso più semplice, ovvero quello Binomiale.
-
-### Funzione di verosimiglianza
 
 Per $n$ prove Bernoulliane indipendenti, le quali producono $y$ successi e ($n-y$) insuccessi, la funzione nucleo di verosimiglianza (ovvero, la funzione di verosimiglianza da cui sono state escluse tutte le costanti moltiplicative che non hanno alcun effetto su $\hat{\theta}$) è
 
@@ -175,7 +171,7 @@ d <- tibble(theta, ll)
 d[which.max(ll), ]$theta
 ```
 
-## Funzione di verosimiglianza Gaussiana
+## Modello gaussiano
 
 Ora che abbiamo capito come costruire la funzione verosimiglianza di una binomiale è relativamente semplice fare un passo ulteriore e considerare la verosimiglianza del caso di una funzione di densità, ovvero nel caso di una variabile casuale continua. Consideriamo qui il caso della Normale. La densità di una distribuzione Normale di parametri $\mu$ e $\sigma$ è
 
