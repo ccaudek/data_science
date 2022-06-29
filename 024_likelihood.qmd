@@ -5,23 +5,30 @@ source("_common.R")
 library("scales")
 ```
 
+La verosimiglianza viene utilizzata sia nell'inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti di un modello statistico.
+
 ## Definizione
 
-Iniziamo con una definizione.
-
-::: definition
+::: {#def-likelihood}
 La *funzione di verosimiglianza* $\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,$ è la funzione di massa o di densità di probabilità dei dati $y$ vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) $\theta$.
 :::
 
-Detto in altre parole, le funzioni di verosimiglianza e di (massa o densità di) probabilità sono formalmente identiche, ma è completamente diversa la loro interpretazione. Nel caso della funzione di massa o di densità di probabilità la distribuzione del vettore casuale delle osservazioni campionarie $y$ dipende dai valori assunti dal parametro (o dai parametri) $\theta$; nel caso della la funzione di verosimiglianza la credibilità assegnata a ciascun possibile valore $\theta$ viene determinata avendo acquisita l'informazione campionaria $y$ che rappresenta l'elemento condizionante. In altri termini, la funzione di verosimiglianza descrive in termini relativi il sostegno empirico che $\theta \in \Theta$ riceve da $y$. Infatti, la funzione di verosimiglianza assume forme diverse al variare di $y$. Possiamo dunque pensare alla funzione di verosimiglianza come alla risposta alla seguente domanda: avendo osservato i dati $y$, quanto risultano (relativamente) credibili i diversi valori del parametro $\theta$? In termini più formali possiamo dire: sulla base dei dati, $\theta_1 \in \Theta$ risulta più credibile di $\theta_2 \in \Theta$ quale indice del modello probabilistico generatore dei dati se $\mathcal{L}(\theta_1) > \mathcal{L}(\theta_1)$.
+Detto in altre parole, la funzione di verosimiglianza e la funzione di (massa o densità di) probabilità sono formalmente identiche, ma è completamente diversa la loro interpretazione:
 
-Notiamo un punto importante: la funzione $\mathcal{L}(\theta \mid y)$ non è una funzione di densità. Infatti, essa non racchiude un'area unitaria.
+-   nel caso della funzione di massa o di densità di probabilità, la distribuzione del vettore casuale delle osservazioni campionarie $y$ dipende dai valori assunti dal parametro (o dai parametri) $\theta$;
+-   nel caso della la funzione di verosimiglianza la credibilità assegnata a ciascun possibile valore $\theta$ viene determinata avendo acquisita l'informazione campionaria $y$ che rappresenta l'elemento condizionante.
+
+La funzione di verosimiglianza descrive in termini relativi il sostegno empirico che $\theta \in \Theta$ riceve da $y$. Infatti, la funzione di verosimiglianza assume forme diverse al variare di $y$. Possiamo dunque pensare alla funzione di verosimiglianza come alla risposta alla seguente domanda: avendo osservato i dati $y$, quanto risultano (relativamente) credibili i diversi valori del parametro $\theta$? In termini più formali possiamo dire: sulla base dei dati, $\theta_1 \in \Theta$ risulta più credibile di $\theta_2 \in \Theta$ quale indice del modello probabilistico generatore dei dati se $\mathcal{L}(\theta_1) > \mathcal{L}(\theta_1)$.
+
+Si noti un punto importante: la funzione $\mathcal{L}(\theta \mid y)$ non è una funzione di densità. Infatti, essa non racchiude un'area unitaria.
 
 ## Notazione
 
-Seguendo una pratica comune, in questa dispensa spesso useremo la notazione $p(\cdot)$ per rappresentare due quantità differenti, ovvero la funzione di verosimiglianza e la distribuzione a priori. Questo piccolo abuso di notazione riflette il seguente punto di vista: anche se la verosimiglianza non è una funzione di densità di probabilità, noi non vogliamo stressare questo aspetto, ma vogliamo piuttosto pensare alla verosimiglianza e alla distribuzione a priori come a due elementi che sono egualmente necessari per calcolare la distribuzione a posteriori. In altri termini, per così dire, questa notazione assegna lo stesso status epistemologico alle due diverse quantità che si trovano al numeratore della regola di Bayes.
+Seguendo una pratica comune, in questa dispensa all'interno di un framework bayesiano spesso useremo la notazione $p(\cdot)$ per rappresentare due quantità differenti, ovvero la funzione di verosimiglianza e la distribuzione a priori. Questo piccolo abuso di notazione riflette il seguente punto di vista: anche se la verosimiglianza non è una funzione di densità di probabilità, noi non vogliamo stressare questo aspetto, ma vogliamo piuttosto pensare alla verosimiglianza e alla distribuzione a priori come a due elementi che sono egualmente necessari per calcolare la distribuzione a posteriori. In altri termini, per così dire, questa notazione assegna lo stesso status epistemico alle due diverse quantità che si trovano al numeratore della regola di Bayes.
 
 ## Caso binomiale
+
+Iniziamo a discutere la funzione di verosimiglianza considerando il caso più semplice, ovvero quello Binomiale.
 
 ### Funzione di verosimiglianza
 
@@ -29,18 +36,14 @@ Per $n$ prove Bernoulliane indipendenti, le quali producono $y$ successi e ($n-y
 
 $$
 \mathcal{L}(p \mid y) = \theta^y (1-\theta)^{n - y}.\notag
+$$ {#eq-like-binomial-kernel}
+
+Per fare un esempio pratico, consideriamo la ricerca di @zetschefuture2019. Questi ricercatori hanno trovato che, su 30 pazienti clinicamente depressi, 23 manifestavano delle aspettative relative al loro umore futuro distorsione negativamente. Se i dati di @zetschefuture2019 vengono riassunti da una proporzione (ovvero, 23/30), allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:
+
 $$
-
-#### Un'applicazione empirica
-
-Se i dati di @zetschefuture2019 vengono riassunti da una proporzione allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:
-
-```{=tex}
-\begin{equation}
 y  \sim \mbox{Bin}(n, \theta),
-(\#eq:binomialmodel)
-\end{equation}
-```
+$$ {#eq-binomialmodel}
+
 laddove $\theta$ è la probabiltà che una prova Bernoulliana assuma il valore 1 e $n$ corrisponde al numero di prove Bernoulliane. Questo modello assume che le prove Bernoulliane $y_i$ che costituiscono il campione $y$ siano tra loro indipendenti e che ciascuna abbia la stessa probabilità $\theta \in [0, 1]$ di essere un "successo" (valore 1). In altre parole, il modello generatore dei dati avrà una funzione di massa di probabilità
 
 $$
@@ -53,13 +56,11 @@ Nei capitoli precedenti è stato mostrato come, sulla base del modello binomiale
 
 Per i dati di @zetschefuture2019 la funzione di verosimiglianza corrisponde alla funzione binomiale di parametro $\theta \in [0, 1]$ sconosciuto. Abbiamo osservato un "successo" 23 volte in 30 "prove", $y = 23$ e $n = 30$. La funzione di verosimiglianza dunque diventa
 
-```{=tex}
-\begin{equation}
+$$
 \mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} \theta^{23} + (1-\theta)^7.
-(\#eq:likebino23)
-\end{equation}
-```
-Per costruire la funzione di verosimiglianza dobbiamo applicare la \@ref(eq:likebino23) tante volte, cambiando ogni volta il valore $\theta$ ma *tenendo sempre costante il valore dei dati*. Per esempio, se poniamo $\theta = 0.1$
+$$
+
+Per costruire la funzione di verosimiglianza dobbiamo applicare l'@eq-likebino23 tante volte, cambiando ogni volta il valore $\theta$ ma *tenendo sempre costante il valore dei dati*. Per esempio, se poniamo $\theta = 0.1$
 
 $$
 \mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} 0.1^{23} + (1-0.1)^7
@@ -83,9 +84,9 @@ otteniamo
 dbinom(23, 30, 0.2)
 ```
 
-e così via. La figura \@ref(fig:likefutexpect) --- costruita utilizzando 100 valori equispaziati $\theta \in [0, 1]$ --- fornisce una rappresentazione grafica della funzione di verosimiglianza.
+e così via. La @fig-likefutexpect -- costruita utilizzando 100 valori equispaziati $\theta \in [0, 1]$ -- fornisce una rappresentazione grafica della funzione di verosimiglianza.
 
-```{r, fig.cap="Funzione di verosimiglianza nel caso di 23 successi in 30 prove."}
+```{r, fig-likefutexpect, fig.cap="Funzione di verosimiglianza nel caso di 23 successi in 30 prove."}
 n <- 30
 y <- 23
 theta <- seq(0, 1, length.out = 100)
@@ -110,11 +111,10 @@ d[which.max(like), ]$theta
 
 Dal punto di vista pratico risulta più conveniente utilizzare, al posto della funzione di verosimiglianza, il suo logaritmo naturale, ovvero la funzione di log-verosimiglianza:
 
-```{=tex}
-\begin{equation}
+$$
 \ell(\theta) = \log \mathcal{L}(\theta).
-\end{equation}
-```
+$$ {#eq-loglike-definition}
+
 Poiché il logaritmo è una funzione strettamente crescente (usualmente si considera il logaritmo naturale), allora $\mathcal{L}(\theta)$ e $\ell(\theta)$ assumono il massimo (o i punti di massimo) in corrispondenza degli stessi valori di $\theta$:
 
 $$
@@ -132,19 +132,13 @@ $$
 \end{aligned}
 $$
 
-<!-- \begin{equation} -->
-
-<!-- \ell(\theta) = \log \left( \prod_{i = 1}^n f(y \mid \theta) \right) = \sum_{i = 1}^n \log f(y \mid \theta). -->
-
-<!-- \end{equation} -->
-
 Si noti che non è necessario lavorare con i logaritmi, ma è fortemente consigliato. Il motivo è che i valori della verosimiglianza, in cui si moltiplicano valori di probabilità molto piccoli, possono diventare estremamente piccoli -- qualcosa come $10^{-34}$. In tali circostanze, non è sorprendente che i programmi dei computer mostrino problemi di arrotondamento numerico. Le trasformazioni logaritmiche risolvono questo problema.
 
 #### Un'applicazione empirica
 
 Svolgiamo nuovamente il problema precedente usando la log-verosimiglianza per trovare la stima di massima verosimiglianza. Si noti che abbiamo utilizzato l'argomento `log = TRUE` nella funzione `dbinom()`.
 
-```{r, fig.cap="Funzione di log-verosimiglianza nel caso di 23 successi in 30 prove."}
+```{r fig-loglike-futureexp, fig.cap="Funzione di log-verosimiglianza nel caso di 23 successi in 30 prove."}
 n <- 30
 y <- 23
 theta <- seq(0, 1, length.out = 100)
@@ -522,9 +516,11 @@ Dalla figura notiamo che, per i dati osservati, il massimo della funzione di log
 
 ## Considerazioni conclusive
 
-La verosimiglianza viene utilizzata sia nell'inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti.
+Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi:
 
-Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.
+-   un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale),
+-   un intervallo di valori possibili per $\theta$,
+-   i dati osservati $y$.
 
 Nella statistica frequentista l'inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l'inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Nella statistica bayesiana, invece, l'inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti $\theta$.
 
