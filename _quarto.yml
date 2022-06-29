@@ -78,5 +78,7 @@ format:
     # cover-image: cover.png
     code-link: true
     link-citations: yes
+    code-fold: true
+    code-tools: true
 
 
