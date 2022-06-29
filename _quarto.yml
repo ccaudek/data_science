@@ -33,7 +33,7 @@ book:
   #     chapters:
         # - 022_discr_rv_distr.qmd
         - 023_cont_rv_distr.qmd
-  #       - 024_likelihood.qmd
+        - 024_likelihood.qmd
   #   - part: bayes_inference.qmd
   #     chapters:
   #       - 025_intro_bayes.qmd
