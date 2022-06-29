@@ -67,9 +67,7 @@ $$
 \mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} \theta^{23} + (1-\theta)^7.
 $$ {#eq-likebino23}
 
-Per costruire la funzione di verosimiglianza dobbiamo applicare l'@eq-likebino23 tante volte, cambiando ogni volta il valore $\theta$, ma tenendo sempre costante il valore dei dati.
-
-Nella simulazione considereremo 100 possibili valori $\theta \in [0, 1]$.
+Per costruire la funzione di verosimiglianza dobbiamo applicare l'@eq-likebino23 tante volte, cambiando ogni volta il valore $\theta$, ma tenendo sempre costante il valore dei dati. Nella simulazione considereremo 100 possibili valori $\theta \in [0, 1]$.
 
 ```{r}
 theta <- seq(0, 1, length.out = 100)
@@ -207,30 +205,15 @@ Dato che consideriamo 1000 possibili valori $\mu$, per costruire la funzione di 
 -   il valore $\sigma$ assunto noto,
 -   ciascuno dei valori $\mu$ che abbiamo considerato.
 
-La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione `dnorm()`. La funzione `dnorm()` ha tre argomenti:
+La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione `dnorm()`. La funzione `dnorm()` ha tre argomenti: il valore $y$ (o il vettore $y$), la media, ovvero il parametro $\mu$ e la deviazione standard, ovvero il parametro $\sigma$.
 
--   il valore $y$ (o il vettore $y$),
--   la media, ovvero il parametro $\mu$,
--   la deviazione standard, ovvero il parametro $\sigma$.
-
-Usando la funzione `dnorm()` 1000 volte, una volta per ciascuno dei valori $\mu$ che abbiamo considerato, otteniamo 1000 coppie di valori $\mu$ e $f(\mu)$. La curva che interpola tali punti è la funzione di verosimiglianza.
+Usando la funzione `dnorm()` 1000 volte, una volta per ciascuno dei valori $\mu$ che abbiamo considerato (e tenendo fissi $y = 114$ e $\sigma = 15$) otteniamo 1000 valori $f(\mu)$.
 
 ```{r}
 f_mu <- dnorm(y, mean = mu, sd = 15)
 ```
 
-Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione (ma solo in questo caso), ha anche un'area unitaria.
-
-```{r}
-integrand <- function(mu) {
-  y = 114
-  sigma = 15
-  dnorm(y, mu, sigma)
-}
-integrate(integrand, lower = -10000, upper = 10000)
-```
-
-La moda di questa funzione di verosimiglianza è 114.
+La funzione di verosimiglianza è la curva che interpola i punti $\big(\mu, f(\mu)\big)$.
 
 ```{r}
 tibble(mu, f_mu) %>% 
@@ -244,6 +227,19 @@ tibble(mu, f_mu) %>%
       x = c("Parametro \u03BC")
     ) 
 ```
+
+Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione (ma solo in questo caso) ha un'area unitaria.
+
+```{r}
+integrand <- function(mu) {
+  y = 114
+  sigma = 15
+  dnorm(y, mu, sigma)
+}
+integrate(integrand, lower = -10000, upper = 10000)
+```
+
+La moda della funzione di verosimiglianza è 114.
 
 ### Un campione di osservazioni
 
@@ -261,7 +257,7 @@ laddove $f(\cdot)$ è la densità Gaussiana di parametri $\mu, \sigma$. Tenendo 
 \mathcal{L}(\theta \mid y) = \prod_{i=1}^n f(y_i \mid \theta).
 \end{equation}
 ```
-Per chiarire la formula precedente, consideriamo un esempio che utilizza i dati che corrispondono ai valori BDI-II dei trenta soggetti del campione clinico di Zetsche et al. (2020).
+Per chiarire la formula precedente, consideriamo un esempio che utilizza come dati i valori BDI-II dei trenta soggetti del campione clinico di Zetsche et al. (2020).
 
 ```{r}
 d <- tibble(
@@ -279,23 +275,23 @@ true_sigma <- sd(d$y)
 true_sigma 
 ```
 
-Abbiamo visto in precedenza che, per una singola osservazione, la funzione di verosimiglianza è la densità Gaussiana espressa in funzione dei parametri. Per un campione di osservazioni i.i.d., ovvero $y = (y_1, y_2, \dots, y_n)$, la verosimiglianza è la funzione di densità congiunta $f(y \mid \mu, \sigma)$ espressa in funzione dei parametri. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni.
+Abbiamo visto in precedenza che, per una singola osservazione, la funzione di verosimiglianza è la densità Gaussiana espressa in funzione dei parametri (in questo caso, solo $\mu$). Per un campione di osservazioni i.i.d., ovvero $y = (y_1, y_2, \dots, y_n)$, la verosimiglianza è la funzione di densità congiunta $f(y \mid \mu, \sigma)$ espressa in funzione dei parametri. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni.
 
 Per l'osservazione $y_i$ abbiamo
 
 $$
-f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right\}.\notag
+f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right\}.
 $$
 
 La densità congiunta è dunque
 
 $$
-f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)\notag
+f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
 $$
 
-e, alla luce dei dati osservati, la verosimiglianza diventa
+Alla luce dei dati osservati (e assumendo $\sigma = 6.61$), la verosimiglianza diventa
 
-```{=tex}
+$$
 \begin{aligned}
 \mathcal{L}(\mu, \sigma \mid y) =& \, \prod_{i=1}^n f(y_i \mid \mu, \sigma) = \notag\\
 & \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(26 - \mu)^2}{2\cdot 6.61^2}}\right\} \times \notag\\
@@ -303,24 +299,22 @@ e, alla luce dei dati osservati, la verosimiglianza diventa
 & \vdots \notag\\
  & \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(22 - \mu)^2}{2\cdot 6.61^2}}\right\}.
 \end{aligned}
-```
-Avendo un solo parametro sconosciuto, possiamo rappresentare la verosimiglianza con una curva. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza nel modo seguente:
+$$
+
+È più conveniente svolgere l'esercizio usando il logaritmo della verosimiglianza. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza, `log_likelihood()`, che prende come argomenti `y`, `mu` e `sigma = 6.61`.
 
 ```{r}
+#| echo: true
 log_likelihood <- function(y, mu, sigma = true_sigma) {
   sum(dnorm(y, mu, sigma, log = TRUE))
 }
 ```
 
-Nella funzione `log_likelihood()`, `y` è un vettore che, nel caso presente contiene $n = 30$ valori. Per ciascuno di questi valori, la funzione `dnorm()` trova la densità Normale utilizzando il valore $\mu$ che passato a `log_likelihood()` e il valore $\sigma$ uguale a 6.61 --- nell'esempio, questo parametro viene assunto come noto. L'argomento `log = TRUE` specifica che deve essere preso il logaritmo. La funzione `dnorm()` è un argomento della funzione `sum()`. Ciò significa che i 30 valori così trovati, espressi su scala logaritmica, verranno sommati --- sommare logaritmi è equivalente a fare il prodotto dei valori sulla scala originaria.
+L'argomento `y` è un vettore di 30 elementi; gli argomenti `mu` e `sigma` sono scalari.
 
-Se applichiamo questa funzione ad un solo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ (si veda la figura \@ref(eq:lldepression)). Si noti che, per trovare un tale valore, abbiamo utilizzato le seguenti informazioni:
+Per ciascuno valore `y`, la funzione `dnorm()` trova la densità Normale utilizzando il valore `mu` in input e `sigma = 6.61`. L'argomento `log = TRUE` specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione `sum()`.
 
--   i 30 dati del campione,
--   il valore $\sigma = s$ fissato a 6.61,
--   il singolo valore $\mu$ passato alla funzione `log_likelihood()`.
-
-Avendo trovato un singolo punto della funzione di log-verosimiglianza, dobbiamo ripetere i calcoli precedenti per tutti i possibili valori che $\mu$ può assumere. Nel seguente ciclo `for()` viene calcolata la log-verosimiglianza di 100,000 valori possibili del parametro $\mu$:
+Utilizzando un singolo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ utilizzato. Vogliamo però trovare l'ordinata della log-verosimiglianza per tutti i possibili valori che $\mu$ può assumere. Nella simulazione, usiamo 100,000 valori possibili del parametro $\mu \in [\bar{y} - \mbox{SD}, \bar{y} + \mbox{SD}]$. Mediante un ciclo `for()`, ripetiamo dunque i calcoli descritti sopra 100,000 volte, una volta per ciascuno dei valori $\mu$ considerati. I 100,000 risultati vengono salvati nel vettore `ll`.
 
 ```{r}
 nrep <- 1e5
@@ -336,11 +330,9 @@ for (i in 1:nrep) {
 }
 ```
 
-Il vettore `mu` contiene 100,000 possibili valori del parametro $\mu$; tali valori sono stati scelti nell'intervallo $\bar{y} \pm s$. Per ciascuno di questi valori la funzione `log_likelihood()` calcola il valore di log-verosimiglianza. I 100,000 risultati vengono salvati nel vettore `ll`.
+Nel caso di un solo parametro sconosciuto (nel caso presente, $\mu$) è possibile rappresentare la log-verosimiglianza con una curva che interpola i punti (`mu`, `ll`).
 
-I vettori `mu` e `ll` possono dunque essere usati per disegnare il grafico della funzione di log-verosimiglianza per il parametro $\mu$:
-
-```{r}
+```{r fig-loglike-bdi2, fig.cap="Log-verosimiglianza del parametro $\\mu$ per i dati di @zetschefuture2019."}
 tibble(mu, ll) %>% 
 ggplot(aes(x = mu, y = ll)) +
   geom_line() +
@@ -351,13 +343,13 @@ ggplot(aes(x = mu, y = ll)) +
   ) 
 ```
 
-La funzione di log-verosimiglianza descrive la verosimiglianza relativa dei valori del parametro $\mu$ alla luce dei dati osservati.
+Tale funzione descrive la credibilità relativa che può essere attribuita ai valori del parametro $\mu$ alla luce dei dati osservati.
 
 ### Massima verosimiglianza
 
-Il valore $\mu$ più verosimile è quello che corrisponde al massimo della funzione di log-verosimiglinza -- e viene detto *stima di massima verosimiglianza*.
+Il valore $\mu$ più credibile corrisponde al massimo della funzione di log-verosimiglinza e viene detto *stima di massima verosimiglianza*.
 
-Il massimo della funzione di log-verosimiglianza, ovvero `r round(mean(d$y), 2)`, è identico alla media dei dati campionari. Tale risultato, ottenuto per via numerica, può essere dimostrato formalmente nel modo seguente.
+Il massimo della funzione di log-verosimiglianza, ovvero `r round(mean(d$y), 2)` nel caso dell'esempio presente, è identico alla media dei dati campionari. Tale risultato, ottenuto per via numerica, può essere dimostrato formalmente nel modo seguente.
 
 Usando la notazione matematica possiamo dire che cerchiamo l'argmax dell'equazione precedente rispetto a $\theta$, ovvero
 
@@ -381,169 +373,14 @@ e per $\sigma$ abbiamo
 ```
 In altri termini, la s.m.v. del parametro $\mu$ è la media del campione e la s.m.v. del parametro $\sigma$ è la deviazione standard del campione.
 
-## Considerazioni conclusive
+::: {#exr-loglike-bdi2-1}
+Dalla @fig-loglike-bdi2 notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero `r round(mean(d$y), 2)`, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.
+:::
 
-La verosimiglianza viene utilizzata sia nell'inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti.
+## Considerazioni conclusive
 
 Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.
 
 Nella statistica frequentista l'inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l'inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Le basi dell'inferenza frequentista, dunque, sono state riassunte in questo Capitolo. Nella statistica bayesiana, invece, l'inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti $\theta$. Ciò verrà discusso nei Capitoli successivi.
 
 La differenza fondamentale tra inferenza bayesiana e frequentista è dunque che i frequentisti non ritengono utile descrivere i parametri in termini probabilistici: i parametri dei modelli statistici vengono concepiti come fissi ma sconosciuti. Nell'inferenza bayesiana, invece, i parametri sconosciuti sono intesi come delle variabili casuali e ciò consente di quantificare in termini probabilistici il nostro grado di intertezza relativamente al loro valore.
-
-## La verosimiglianza del modello Normale
-
-Ora che abbiamo capito come costruire la funzione verosimiglianza di una binomiale è relativamente semplice fare un passo ulteriore e considerare la verosimiglianza del caso di una funzione di densità, ovvero nel caso di una variabile casuale continua. Consideriamo qui il caso della Normale.
-
-La densità di una distribuzione Normale di parametri $\mu$ e $\sigma$ è
-
-$$
-f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigma^2}(y-\mu)^2\right\}.
-$$
-
-Poniamoci il problema di trovare la s.m.v. dei parametri sconosciuti $\mu$ e $\sigma$ nel caso in cui le $n$ osservazioni $y = (y_1, \dots, y_n)$ sono realizzazioni indipendenti ed identicamente distribuite (di seguito, i.i.d.) della medesima variabile casuale $Y \sim \mathcal{N}(\mu, \sigma)$. Per semplicità, scriveremo $\theta = \{\mu, \sigma\}.$
-
-Il campione osservato è un insieme di eventi, ciascuno dei quali corrisponde alla realizzazione di una variabile casuale --- possiamo pensare ad uno di tali eventi come all'estrazione casuale di un valore dalla "popolazione" $\mathcal{N}(\mu, \sigma)$. Se le variabili casuali sono i.i.d., la loro densità congiunta è data da:
-
-```{=tex}
-\begin{align}
-f(y \mid \theta) &= f(y_1 \mid \theta) \cdot f(y_2 \mid \theta) \cdot \; \dots \; \cdot f(y_n \mid \theta)\notag\\
-                 &= \prod_{i=1}^n f(y_i \mid \theta),
-\end{align}
-```
-Tenendo costanti i dati $y$, la funzione di verosimiglianza è:
-
-```{=tex}
-\begin{equation}
-\mathcal{L}(\theta \mid y) = \prod_{i=1}^n f(y_i \mid \theta).
-\end{equation}
-```
-L'obiettivo è quello di massimizzare la funzione di verosimiglianza per trovare i valori $\theta$ ottimali. Usando la notazione matematica questo si esprime dicendo che cerchiamo l'argmax dell'equazione precedente rispetto a $\theta$, ovvero
-
-$$
-\hat{\theta} = \text{argmax}_{\theta} \prod_{i=1}^n f(y_i \mid \theta).
-$$
-
-Questo problema si risolve calcolando le derivate della funzione rispetto a $\theta$, ponendo le derivate uguali a zero e risolvendo. Saltando tutti i passaggi algebrici di questo procedimento, per $\mu$ troviamo
-
-```{=tex}
-\begin{equation}
-\hat{\mu} = \frac{1}{n} \sum_{i=1}^n y_i
-\end{equation}
-```
-e per $\sigma$ abbiamo
-
-```{=tex}
-\begin{equation}
-\hat{\sigma} = \sqrt{\sum_{i=1}^n\frac{1}{n}(y_i- \mu)^2}.
-\end{equation}
-```
-In altri termini, la s.m.v. del parametro $\mu$ è la media del campione e la s.m.v. del parametro $\sigma$ è la deviazione standard del campione.
-
-## Calcolo numerico {.unnumbered}
-
-Consideriamo ora un esempio che utilizza dei dati reali. I dati corrispondono ai valori BDI-II dei trenta soggetti del campione clinico di Zetsche et al. (2020).
-
-```{r}
-d <- tibble(
-  y = c(
-    26, 35, 30, 25, 44, 30, 33, 43, 22, 43, 24, 19, 39, 31, 25, 28, 35, 30, 26, 31, 41, 36, 26, 35, 
-    33, 28, 27, 34, 27, 22
-    )
-)
-```
-
-Ci poniamo l'obiettivo di creare la funzione di verosimiglianza per questi dati, supponendo, in base ai risultati di ricerche precedenti, di sapere che i punteggi BDI-II si distribuiscono secondo una legge Normale.
-
-Per semplificare il problema, assumeremo di conoscere $\sigma$ (lo porremo uguale alla deviazione standard del campione) in modo da avere un solo parametro sconosciuto, cioè $\mu$. Il problema è dunque quello di trovare la funzione di verosimiglianza per il parametro $\mu$, date le 30 osservazioni del campione e dato $\sigma = s = 6.61$.
-
-Per una singola osservazione, la funzione di verosimiglianza è la densità Normale espressa in funzione dei parametri. Per un campione di osservazioni i.i.d., ovvero $y = (y_1, y_2, \dots, y_n)$, la verosimiglianza è la funzione di densità congiunta $f(y \mid \mu, \sigma)$ espressa in funzione dei parametri, ovvero $\mathcal{L}(\mu, \sigma \mid y)$. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni. Per semplicità, assumiamo $\sigma$ noto e uguale alla deviazione standard del campione:
-
-```{r}
-true_sigma <- sd(d$y)
-true_sigma 
-```
-
-Avendo posto $\sigma = 6.61$, per una singola osservazione $y_i$ abbiamo
-
-$$
-f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right\},\notag
-$$
-
-dove il pedice $i$ specifica l'osservazione $y_i$ tra le molteplici osservazioni $y$, e $\mu$ è il parametro sconosciuto che deve essere determinato (nell'esempio, $\sigma = s$). La densità congiunta è dunque
-
-$$
-f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)\notag
-$$
-
-e, alla luce dei dati osservati, la verosimiglianza diventa
-
-```{=tex}
-\begin{aligned}
-\mathcal{L}(\mu, \sigma \mid y) =& \, \prod_{i=1}^n f(y_i \mid \mu, \sigma) = \notag\\
-& \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(26 - \mu)^2}{2\cdot 6.61^2}}\right\} \times \notag\\
- & \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(35 - \mu)^2}{2\cdot 6.61^2}}\right\} \times  \notag\\
-& \vdots \notag\\
- & \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(22 - \mu)^2}{2\cdot 6.61^2}}\right\}.
-\end{aligned}
-```
-Poniamoci ora il problema di rappresentare graficamente la funzione di verosimiglianza per il parametro $\mu$. Avendo un solo parametro sconosciuto, possiamo rappresentare la verosimiglianza con una curva. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza nel modo seguente:
-
-```{r}
-log_likelihood <- function(y, mu, sigma = true_sigma) {
-  sum(dnorm(y, mu, sigma, log = TRUE))
-}
-```
-
-Nella funzione `log_likelihood()`, `y` è un vettore che, nel caso presente contiene $n = 30$ valori. Per ciascuno di questi valori, la funzione `dnorm()` trova la densità Normale utilizzando il valore $\mu$ che passato a `log_likelihood()` e il valore $\sigma$ uguale a 6.61 --- nell'esempio, questo parametro viene assunto come noto. L'argomento `log = TRUE` specifica che deve essere preso il logaritmo. La funzione `dnorm()` è un argomento della funzione `sum()`. Ciò significa che i 30 valori così trovati, espressi su scala logaritmica, verranno sommati --- sommare logaritmi è equivalente a fare il prodotto dei valori sulla scala originaria.
-
-Se applichiamo questa funzione ad un solo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ (si veda la figura \@ref(eq:lldepression)). Si noti che, per trovare un tale valore, abbiamo utilizzato le seguenti informazioni:
-
--   i 30 dati del campione,
--   il valore $\sigma = s$ fissato a 6.61,
--   il singolo valore $\mu$ passato alla funzione `log_likelihood()`.
-
-Avendo trovato un singolo punto della funzione di log-verosimiglianza, dobbiamo ripetere i calcoli precedenti per tutti i possibili valori che $\mu$ può assumere. Nel seguente ciclo `for()` viene calcolata la log-verosimiglianza di 100,000 valori possibili del parametro $\mu$:
-
-```{r}
-nrep <- 1e5
-mu <- seq(
-  mean(d$y) - sd(d$y), 
-  mean(d$y) + sd(d$y), 
-  length.out = nrep
-)
-
-ll <- rep(NA, nrep)
-for (i in 1:nrep) {
-  ll[i] <- log_likelihood(d$y, mu[i], true_sigma)
-}
-```
-
-Il vettore `mu` contiene 100,000 possibili valori del parametro $\mu$; tali valori sono stati scelti nell'intervallo $\bar{y} \pm s$. Per ciascuno di questi valori la funzione `log_likelihood()` calcola il valore di log-verosimiglianza. I 100,000 risultati vengono salvati nel vettore `ll`.
-
-I vettori `mu` e `ll` possono dunque essere usati per disegnare il grafico della funzione di log-verosimiglianza per il parametro $\mu$:
-
-```{r}
-tibble(mu, ll) %>% 
-ggplot(aes(x = mu, y = ll)) +
-  geom_line() +
-  vline_at(mean(d$y), color = "gray", linetype = "dashed") +
-  labs(
-    y = "Log-verosimiglianza",
-    x = expression("Parametro"~mu)
-  ) 
-```
-
-Dalla figura notiamo che, per i dati osservati, il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero `r round(mean(d$y), 2)`, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.
-
-## Considerazioni conclusive
-
-Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi:
-
--   un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale),
--   un intervallo di valori possibili per $\theta$,
--   i dati osservati $y$.
-
-Nella statistica frequentista l'inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l'inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Nella statistica bayesiana, invece, l'inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti $\theta$.
-
-La differenza fondamentale tra inferenza bayesiana e frequentista è dunque che i frequentisti non ritengono utile descrivere in termini probabilistici i parametri: i parametri dei modelli statistici vengono concepiti come fissi ma sconosciuti. Nell'inferenza bayesiana, invece, i parametri sconosciuti sono intesi come delle variabili casuali e ciò consente di quantificare in termini probabilistici il nostro grado di intertezza relativamente al loro valore.
