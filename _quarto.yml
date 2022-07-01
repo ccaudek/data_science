@@ -62,7 +62,7 @@ book:
       - 090_entropy.qmd
       - 091_kl.qmd
       - 092_info_criterion.qmd
-    - 999_refs.qmd
+      - 999_refs.qmd
   appendices:
     - a01_math_symbols.qmd
     - a02_number_sets.qmd

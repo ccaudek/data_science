@@ -6,7 +6,7 @@ source("_common.R")
 
 L'obiettivo di questo Capitolo è di introdurre il quadro concettuale dell'analisi dei dati bayesiana.
 
-## Analisi dei dati bayesiana
+## Fondamenti dell'analisi dei dati bayesiana
 
 L'analisi dei dati bayesiana si basa su due idee fondamentali.
 

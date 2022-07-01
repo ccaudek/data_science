@@ -407,12 +407,12 @@ div.csl-indent {
   <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
-    </ul>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
+</li>
+    </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
@@ -605,14 +605,14 @@ div.csl-indent {
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Running MCMC with 4 sequential chains...</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Chain 1 finished in 0.2 seconds.</span></span>
-<span><span class="co">#&gt; Chain 2 finished in 0.2 seconds.</span></span>
-<span><span class="co">#&gt; Chain 3 finished in 0.2 seconds.</span></span>
-<span><span class="co">#&gt; Chain 4 finished in 0.2 seconds.</span></span>
+<span><span class="co">#&gt; Chain 1 finished in 0.3 seconds.</span></span>
+<span><span class="co">#&gt; Chain 2 finished in 0.4 seconds.</span></span>
+<span><span class="co">#&gt; Chain 3 finished in 0.3 seconds.</span></span>
+<span><span class="co">#&gt; Chain 4 finished in 0.3 seconds.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; All 4 chains finished successfully.</span></span>
-<span><span class="co">#&gt; Mean chain execution time: 0.2 seconds.</span></span>
-<span><span class="co">#&gt; Total execution time: 1.4 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Mean chain execution time: 0.3 seconds.</span></span>
+<span><span class="co">#&gt; Total execution time: 1.8 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Nel caso di un’analisi per dati aggregati, la nostra incertezza sulla misura dell’effetto comune è di circa 20 punti, se utilizziamo un livello di certezza soggettiva del 95%. Visualizziamo la stima a posteriori con l’istruzione seguente, dove</p>
@@ -705,7 +705,7 @@ div.csl-indent {
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; All 4 chains finished successfully.</span></span>
 <span><span class="co">#&gt; Mean chain execution time: 0.5 seconds.</span></span>
-<span><span class="co">#&gt; Total execution time: 2.3 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Total execution time: 2.2 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>I risultati sono i seguenti.</p>
@@ -794,7 +794,7 @@ div.csl-indent {
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Running MCMC with 4 sequential chains...</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Chain 1 finished in 0.5 seconds.</span></span>
+<span><span class="co">#&gt; Chain 1 finished in 0.6 seconds.</span></span>
 <span><span class="co">#&gt; Chain 2 finished in 0.6 seconds.</span></span>
 <span><span class="co">#&gt; Chain 3 finished in 0.6 seconds.</span></span>
 <span><span class="co">#&gt; Chain 4 finished in 0.6 seconds.</span></span>
@@ -866,20 +866,20 @@ y_j &amp;\sim \mathcal{N}(\theta_j, \sigma_j), \quad j = 1, \dots, 8\notag\\
 <span><span class="co">#&gt; Running MCMC with 4 sequential chains...</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Chain 1 finished in 1.0 seconds.</span></span>
-<span><span class="co">#&gt; Chain 2 finished in 1.1 seconds.</span></span>
+<span><span class="co">#&gt; Chain 2 finished in 1.3 seconds.</span></span>
 <span><span class="co">#&gt; Chain 3 finished in 1.0 seconds.</span></span>
 <span><span class="co">#&gt; Chain 4 finished in 1.0 seconds.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; All 4 chains finished successfully.</span></span>
-<span><span class="co">#&gt; Mean chain execution time: 1.0 seconds.</span></span>
-<span><span class="co">#&gt; Total execution time: 4.3 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Mean chain execution time: 1.1 seconds.</span></span>
+<span><span class="co">#&gt; Total execution time: 4.6 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Le stime dei parametri sono le seguenti.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">output4_stanfit</span> <span class="op">&lt;-</span> <span class="fu">rstan</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/rstan/reference/stan_csv.html">read_stan_csv</a></span><span class="op">(</span><span class="va">fit4</span><span class="op">$</span><span class="fu">output_files</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">output4_stanfit</span>, pars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"theta"</span>, <span class="st">"mu"</span>, <span class="st">"tau"</span><span class="op">)</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.025</span>, <span class="fl">.5</span>, <span class="fl">.975</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Inference for Stan model: hmod_4-202206291228-1-394730.</span></span>
+<span><span class="co">#&gt; Inference for Stan model: hmod_4-202207010746-1-3850de.</span></span>
 <span><span class="co">#&gt; 4 chains, each with iter=30000; warmup=10000; thin=1; </span></span>
 <span><span class="co">#&gt; post-warmup draws per chain=20000, total post-warmup draws=80000.</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -895,7 +895,7 @@ y_j &amp;\sim \mathcal{N}(\theta_j, \sigma_j), \quad j = 1, \dots, 8\notag\\
 <span><span class="co">#&gt; mu        6.94    0.29 4.71  -2.09 6.92 16.43   272 1.02</span></span>
 <span><span class="co">#&gt; tau       5.93    0.39 4.85   0.64 4.74 18.11   154 1.03</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Mer Giu 29 12:28:57 2022.</span></span>
+<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Ven Lug 01 07:46:15 2022.</span></span>
 <span><span class="co">#&gt; For each parameter, n_eff is a crude measure of effective sample size,</span></span>
 <span><span class="co">#&gt; and Rhat is the potential scale reduction factor on split chains (at </span></span>
 <span><span class="co">#&gt; convergence, Rhat=1).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

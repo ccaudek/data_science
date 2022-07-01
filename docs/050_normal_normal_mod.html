@@ -407,12 +407,12 @@ div.csl-indent {
   <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
-    </ul>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
+</li>
+    </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
@@ -479,7 +479,7 @@ div.csl-indent {
 </header><div class="cell">
 
 </div>
-<p>Estendiamo ora la discussione precedente considerano un altro caso comune: quello in cui disponiamo di un campione di dati a livello di scala a intervalli o rapporti e vogliamo fare inferenza sulla media della popolazione da cui il campione è stato estratto.</p>
+<p>Esaminiamo ora in maggiore dettaglio un caso che abbiamo anticipato in precedenza, ovvero quello in cui disponiamo di un campione di dati a livello di scala a intervalli o rapporti e vogliamo fare inferenza sulla media della popolazione da cui il campione è stato estratto.</p>
 <section id="caso-normale-normale-con-varianza-nota" class="level2" data-number="24.1"><h2 data-number="24.1" class="anchored" data-anchor-id="caso-normale-normale-con-varianza-nota">
 <span class="header-section-number">24.1</span> Caso Normale-Normale con varianza nota</h2>
 <p>Supponiamo che i dati <span class="math inline">\(y\)</span> siano un campione casuale estratto da una popolazione che segue la legge Normale. Ciò significa che le osservazioni possono essere considerate come una sequenza di variabili casuali indipendenti e identicamente distribuite. Supponiamo che ciascuna v.c. segua la distribuzione Normale. Abbiamo dunque</p>
@@ -501,42 +501,40 @@ p(y_i \mid \mu, \sigma) = \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i
 p(y \mid \mu) = \, \prod_{i=1}^n p(y_i \mid \mu).
 \]</span></p>
 <p>Una volta osservati i dati <span class="math inline">\(y\)</span>, la verosimiglianza diventa</p>
-<span class="math display">\[\begin{align}
+<p><span class="math display">\[
+\begin{align}
 p(y \mid \mu) =&amp; \, \prod_{i=1}^n p(y_i \mid \mu) = \notag\\
 &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_1 - \mu)^2}{2\sigma^2}}\right\} \times \notag\\
 &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_2 - \mu)^2}{2\sigma^2}}\right\} \times  \notag\\
 &amp; \vdots \notag\\
 &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_n - \mu)^2}{2\sigma^2}}\right\}.
-\end{align}\]</span>
+\end{align}
+\]</span></p>
 <p>Se la densità a priori <span class="math inline">\(p(\mu)\)</span> è gaussiana, allora anche la densità a posteriori <span class="math inline">\(p(\mu \mid y)\)</span> sarà gaussiana. Poniamo</p>
-<span class="math display">\[\begin{equation}
+<p><span class="math display">\[
 p(\mu) = \frac{1}{{\tau_0 \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_0)^2}{2\tau_0^2}}\right\},
-(\#eq:prior-mu-norm-norm)
-\end{equation}\]</span>
+\]</span> {#eq:prior-mu-norm-norm}</p>
 <p>ovvero imponiamo a <span class="math inline">\(\mu\)</span> una distribuzione a priori gaussiana con media <span class="math inline">\(\mu_0\)</span> e varianza <span class="math inline">\(\tau_0^2\)</span>. Ciò significa dire che, a priori, <span class="math inline">\(\mu_0\)</span> rappresenta il valore più verosimile per <span class="math inline">\(\mu\)</span>, mentre <span class="math inline">\(\tau_0^2\)</span> quantifica il grado della nostra incertezza rispetto a tale valore.</p>
 <p>Svolgendo una serie di passaggi algebrici, si arriva alla distribuzione a posteriori</p>
-<span class="math display">\[\begin{equation}
+<p><span id="eq-post-norm-norm"><span class="math display">\[
 p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_p)^2}{2\tau_p^2}}\right\},
-(\#eq:post-norm-norm)
-\end{equation}\]</span>
+\tag{24.1}\]</span></span></p>
 <p>dove</p>
-<span class="math display">\[\begin{equation}
+<p><span id="eq-post-norm-mup"><span class="math display">\[
 \mu_p = \frac{\frac{1}{\tau_0^2}\mu_0+ \frac{n}{\sigma^2}\bar{y}}{\frac {1}{\tau_0^2} + \frac{n}{\sigma^2}}
-(\#eq:post-norm-mup)
-\end{equation}\]</span>
+\tag{24.2}\]</span></span></p>
 <p>e</p>
-<span class="math display">\[\begin{equation}
+<p><span id="eq-post-norm-taup2"><span class="math display">\[
 \tau_p^2 = \frac{1}{\frac {1}{\tau_0^2}+ \frac{n}{\sigma^2}}.
-(\#eq:post-norm-taup2)
-\end{equation}\]</span>
+\tag{24.3}\]</span></span></p>
 <p>Ciò significa che, se la distribuzione a priori <span class="math inline">\(p(\mu)\)</span> è gaussiana, allora anche la distribuzione a posteriori <span class="math inline">\(p(\mu \mid y)\)</span> sarà gaussiana con valore atteso <span class="math inline">\(\mu_p\)</span> e varianza <span class="math inline">\(\tau_p^2\)</span> date dalle espressioni precedenti.</p>
 <p>In conclusione, il risultato trovato indica che:</p>
 <ul>
 <li>il valore atteso a posteriori è una media pesata fra il valore atteso a priori <span class="math inline">\(\mu_0\)</span> e la media campionaria <span class="math inline">\(\bar{y}\)</span>; il peso della media campionaria è tanto maggiore tanto più è grande <span class="math inline">\(n\)</span> (il numero di osservazioni) e <span class="math inline">\(\tau_0^2\)</span> (l’incertezza iniziale);</li>
 <li>l’incertezza (varianza) a posteriori <span class="math inline">\(\tau_p^2\)</span> è sempre più piccola dell’incertezza a priori <span class="math inline">\(\tau_0^2\)</span> e diminuisce al crescere di <span class="math inline">\(n\)</span>.</li>
 </ul>
-<div class="exercise">
-<p>Per esaminare un esempio pratico, consideriamo i 30 valori BDI-II dei soggetti clinici di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>:</p>
+<div id="exr-mod-norm-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Esercizio 24.1 </strong></span>Per esaminare un esempio pratico, consideriamo i 30 valori BDI-II dei soggetti clinici di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
@@ -584,13 +582,14 @@ p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_p)^
 <span><span class="co">#&gt; 2 posterior 29.35073 29.35073 1.066921 1.032919</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Verifichiamo i risultati forniti da <code><a href="https://bayes-rules.github.io/bayesrules/docs/reference/summarize_normal_normal.html">bayesrules::summarize_normal_normal()</a></code> applicando le formule @ref(eq:post-norm-mup) e @ref(eq:post-norm-taup2). La media della distribuzione a posteriori di <span class="math inline">\(\mu\)</span> è</p>
+<p>Verifichiamo i risultati forniti da <code><a href="https://bayes-rules.github.io/bayesrules/docs/reference/summarize_normal_normal.html">bayesrules::summarize_normal_normal()</a></code> applicando le formule @ref(eq:post-norm-mup) e @ref(eq:post-norm-taup2). Definiamo la funzione della media della distribuzione a posteriori di <span class="math inline">\(\mu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mu_post</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tau_0</span>, <span class="va">mu_0</span>, <span class="va">sigma</span>, <span class="va">ybar</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">tau_0</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">mu_0</span> <span class="op">+</span> <span class="va">n</span><span class="op">/</span><span class="va">sigma</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="va">ybar</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">tau_0</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">n</span><span class="op">/</span><span class="va">sigma</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Troviamo la media a posteriori.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mu_0</span> <span class="op">&lt;-</span> <span class="fl">25</span>  <span class="co"># media della distribuzione a priori per mu</span></span>
 <span><span class="va">tau_0</span> <span class="op">&lt;-</span> <span class="fl">2</span>  <span class="co"># sd della distribuzione a priori per mu</span></span>
@@ -602,13 +601,14 @@ p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_p)^
 <span><span class="co">#&gt; [1] 29.35073</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>La deviazione standard della distribuzione a posteriori di <span class="math inline">\(\mu\)</span> è</p>
+<p>Definiamo una funzione per la deviazione standard della distribuzione a posteriori di <span class="math inline">\(\mu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tau_post</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tau_0</span>, <span class="va">sigma</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">tau_0</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="va">n</span><span class="op">/</span><span class="va">sigma</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>Troviamo la deviazione standard a posteriori.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tau_0</span> <span class="op">&lt;-</span> <span class="fl">2</span>  <span class="co"># sd della distribuzione a priori per mu</span></span>
 <span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">y</span><span class="op">)</span> <span class="co"># sd del campione (assunta essere sigma)</span></span>
@@ -618,7 +618,7 @@ p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_p)^
 <span><span class="co">#&gt; [1] 1.032919</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>I risultati trovati riproducono quelli forniti da <code><a href="https://bayes-rules.github.io/bayesrules/docs/reference/summarize_normal_normal.html">bayesrules::summarize_normal_normal()</a></code>.</p>
+<p>I risultati così trovati riproducono quelli forniti da <code><a href="https://bayes-rules.github.io/bayesrules/docs/reference/summarize_normal_normal.html">bayesrules::summarize_normal_normal()</a></code>.</p>
 </div>
 </section><section id="il-modello-normale-con-stan" class="level2" data-number="24.3"><h2 data-number="24.3" class="anchored" data-anchor-id="il-modello-normale-con-stan">
 <span class="header-section-number">24.3</span> Il modello Normale con Stan</h2>
@@ -626,11 +626,13 @@ p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_p)^
 <section id="versione-1-sigma-nota" class="level3" data-number="24.3.1"><h3 data-number="24.3.1" class="anchored" data-anchor-id="versione-1-sigma-nota">
 <span class="header-section-number">24.3.1</span> Versione 1 (<span class="math inline">\(\sigma\)</span> nota)</h3>
 <p>Come in precedenza, impongo su <span class="math inline">\(\mu\)</span> una distribuzione a priori <span class="math inline">\(\mathcal{N}(25, 2)\)</span> e considero noto il parametro <span class="math inline">\(\sigma = 6.606858\)</span>. Il modello dunque diventa il seguente.</p>
-<span class="math display">\[\begin{align}
+<p><span class="math display">\[
+\begin{align}
 Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag\\
 \mu &amp;\sim \mathcal{N}(25, 2) \notag\\
 \sigma &amp;= 6.606858 \notag
-\end{align}\]</span>
+\end{align}
+\]</span></p>
 <p>In base al modello definito sopra, la variabile casuale <span class="math inline">\(Y\)</span> segue la distribuzione Normale di parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>. Il parametro <span class="math inline">\(\mu\)</span> è sconosciuto e abbiamo deciso di descrivere la nostra incertezza relativa ad esso mediante una distribuzione a priori Normale di media 25 e deviazione standard 2. Il parametro <span class="math inline">\(\sigma\)</span> è invece assunto essere noto e uguale a 6.606858. Usando il linguaggio Stan specifico il modello come segue.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">modelString</span> <span class="op">=</span> <span class="st">"</span></span>
@@ -716,7 +718,7 @@ Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag\\
 <span><span class="co">#&gt; 1 mu         27.3    31.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Le stime così trovate sono molto simili ai quantili di ordine 0.025 e 0.975 della vera distribuzione a posteriori di <span class="math inline">\(\mu\)</span>:</p>
+<p>Le stime così trovate sono molto simili ai quantili di ordine 0.025 e 0.975 della vera distribuzione a posteriori di <span class="math inline">\(\mu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.975</span><span class="op">)</span>, <span class="fl">29.35073</span>, <span class="fl">1.032919</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 27.32625 31.37521</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -741,11 +743,13 @@ Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag\\
 </div>
 </div>
 <p>In questo secondo caso, più realistico, il modello diventa il seguente.</p>
-<span class="math display">\[\begin{align}
+<p><span class="math display">\[
+\begin{align}
 Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag\\
 \mu &amp;\sim \mathcal{N}(25, 2) \notag\\
 \sigma &amp;\sim \mbox{Cauchy}(0, 15) \notag
-\end{align}\]</span>
+\end{align}
+\]</span></p>
 <p>Il modello precedente è simile a quello esaminato in precedenza, eccetto che abbiamo quantificato la nostra incertezza relativa a <span class="math inline">\(\sigma\)</span> (che è ignota) mediante una distribuzione a priori <span class="math inline">\(\mbox{Cauchy}(0, 15)\)</span>.</p>
 <p>La procedura MCMC utilizzata da Stan è basata su un campionamento Monte Carlo Hamiltoniano che non richiede l’uso di distribuzioni a priori coniugate. Pertanto è possibile scegliere per i parametri una qualunque distribuzione a priori. Nel caso presente, appunto, per <span class="math inline">\(\sigma\)</span> ho scelto una <span class="math inline">\(\mbox{Cauchy}(0, 15)\)</span>. Per un tale caso non è possibile ottenere la derivazione analitica della distribuzione a posteriori di <span class="math inline">\(\mu\)</span>. È dunque necessario procedere con il campionamento MCMC.</p>
 <p>Scrivo il modello in linguaggio in Stan.</p>
@@ -1017,7 +1021,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_stan_options.R"</span>)</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>Estendiamo ora la discussione precedente considerano un altro caso comune: quello in cui disponiamo di un campione di dati a livello di scala a intervalli o rapporti e vogliamo fare inferenza sulla media della popolazione da cui il campione è stato estratto.</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>Esaminiamo ora in maggiore dettaglio un caso che abbiamo anticipato in precedenza, ovvero quello in cui disponiamo di un campione di dati a livello di scala a intervalli o rapporti e vogliamo fare inferenza sulla media della popolazione da cui il campione è stato estratto.</span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Caso Normale-Normale con varianza nota</span></span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
@@ -1049,402 +1053,401 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>Una volta osservati i dati $y$, la verosimiglianza diventa</span>
 <span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{align}</span></span>
-<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="in">p(y \mid \mu) =&amp; \, \prod_{i=1}^n p(y_i \mid \mu) = \notag\\</span></span>
-<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a><span class="in">&amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_1 - \mu)^2}{2\sigma^2}}\right\} \times \notag\\</span></span>
-<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a><span class="in"> &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_2 - \mu)^2}{2\sigma^2}}\right\} \times  \notag\\</span></span>
-<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a><span class="in">&amp; \vdots \notag\\</span></span>
-<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a><span class="in"> &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_n - \mu)^2}{2\sigma^2}}\right\}.</span></span>
-<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a><span class="in">\end{align}</span></span>
-<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a>Se la densità a priori $p(\mu)$ è gaussiana, allora anche la densità a posteriori $p(\mu \mid y)$ sarà gaussiana. Poniamo</span>
-<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a><span class="in">p(\mu) = \frac{1}{{\tau_0 \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_0)^2}{2\tau_0^2}}\right\},</span></span>
-<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a><span class="in">(\#eq:prior-mu-norm-norm)</span></span>
-<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a>ovvero imponiamo a $\mu$ una distribuzione a priori gaussiana con media $\mu_0$ e varianza $\tau_0^2$. Ciò significa dire che, a priori, $\mu_0$ rappresenta il valore più verosimile per $\mu$, mentre $\tau_0^2$ quantifica il grado della nostra incertezza rispetto a tale valore.</span>
-<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a>Svolgendo una serie di passaggi algebrici, si arriva alla distribuzione a posteriori</span>
-<span id="cb27-60"><a href="#cb27-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-61"><a href="#cb27-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb27-62"><a href="#cb27-62" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb27-63"><a href="#cb27-63" aria-hidden="true" tabindex="-1"></a><span class="in">p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_p)^2}{2\tau_p^2}}\right\},</span></span>
-<span id="cb27-64"><a href="#cb27-64" aria-hidden="true" tabindex="-1"></a><span class="in">(\#eq:post-norm-norm)</span></span>
-<span id="cb27-65"><a href="#cb27-65" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb27-66"><a href="#cb27-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-67"><a href="#cb27-67" aria-hidden="true" tabindex="-1"></a>dove</span>
-<span id="cb27-68"><a href="#cb27-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-69"><a href="#cb27-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb27-70"><a href="#cb27-70" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb27-71"><a href="#cb27-71" aria-hidden="true" tabindex="-1"></a><span class="in">\mu_p = \frac{\frac{1}{\tau_0^2}\mu_0+ \frac{n}{\sigma^2}\bar{y}}{\frac {1}{\tau_0^2} + \frac{n}{\sigma^2}} </span></span>
-<span id="cb27-72"><a href="#cb27-72" aria-hidden="true" tabindex="-1"></a><span class="in">(\#eq:post-norm-mup)</span></span>
-<span id="cb27-73"><a href="#cb27-73" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb27-74"><a href="#cb27-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-75"><a href="#cb27-75" aria-hidden="true" tabindex="-1"></a>e</span>
-<span id="cb27-76"><a href="#cb27-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-77"><a href="#cb27-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb27-78"><a href="#cb27-78" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb27-79"><a href="#cb27-79" aria-hidden="true" tabindex="-1"></a><span class="in">\tau_p^2 = \frac{1}{\frac {1}{\tau_0^2}+ \frac{n}{\sigma^2}}.</span></span>
-<span id="cb27-80"><a href="#cb27-80" aria-hidden="true" tabindex="-1"></a><span class="in">(\#eq:post-norm-taup2)</span></span>
-<span id="cb27-81"><a href="#cb27-81" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb27-82"><a href="#cb27-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-83"><a href="#cb27-83" aria-hidden="true" tabindex="-1"></a>Ciò significa che, se la distribuzione a priori $p(\mu)$ è gaussiana, allora anche la distribuzione a posteriori $p(\mu \mid y)$ sarà gaussiana con valore atteso $\mu_p$ e varianza $\tau_p^2$ date dalle espressioni precedenti.</span>
-<span id="cb27-84"><a href="#cb27-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-85"><a href="#cb27-85" aria-hidden="true" tabindex="-1"></a>In conclusione, il risultato trovato indica che:</span>
-<span id="cb27-86"><a href="#cb27-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-87"><a href="#cb27-87" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il valore atteso a posteriori è una media pesata fra il valore atteso a priori $\mu_0$ e la media campionaria $\bar{y}$; il peso della media campionaria è tanto maggiore tanto più è grande $n$ (il numero di osservazioni) e $\tau_0^2$ (l'incertezza iniziale);</span>
-<span id="cb27-88"><a href="#cb27-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>l'incertezza (varianza) a posteriori $\tau_p^2$ è sempre più piccola dell'incertezza a priori $\tau_0^2$ e diminuisce al crescere di $n$.</span>
-<span id="cb27-89"><a href="#cb27-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-90"><a href="#cb27-90" aria-hidden="true" tabindex="-1"></a>::: exercise</span>
-<span id="cb27-91"><a href="#cb27-91" aria-hidden="true" tabindex="-1"></a>Per esaminare un esempio pratico, consideriamo i 30 valori BDI-II dei soggetti clinici di @zetschefuture2019:</span>
-<span id="cb27-92"><a href="#cb27-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-95"><a href="#cb27-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-96"><a href="#cb27-96" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb27-97"><a href="#cb27-97" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(</span>
-<span id="cb27-98"><a href="#cb27-98" aria-hidden="true" tabindex="-1"></a>    <span class="fl">26.0</span>, <span class="fl">35.0</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">44</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">43</span>, <span class="dv">22</span>, <span class="dv">43</span>,</span>
-<span id="cb27-99"><a href="#cb27-99" aria-hidden="true" tabindex="-1"></a>    <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">39</span>, <span class="dv">31</span>, <span class="dv">25</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">26</span>, <span class="dv">31</span>, <span class="dv">41</span>,</span>
-<span id="cb27-100"><a href="#cb27-100" aria-hidden="true" tabindex="-1"></a>    <span class="dv">36</span>, <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">28</span>, <span class="dv">27</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">22</span></span>
-<span id="cb27-101"><a href="#cb27-101" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb27-102"><a href="#cb27-102" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-103"><a href="#cb27-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-104"><a href="#cb27-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-105"><a href="#cb27-105" aria-hidden="true" tabindex="-1"></a>Supponiamo che la varianza $\sigma^2$ della popolazione sia identica alla varianza del campione:</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>p(y \mid \mu) =&amp; \, \prod_{i=1}^n p(y_i \mid \mu) = \notag<span class="sc">\\</span></span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>&amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(y_1 - \mu)^2}{2\sigma^2}}\right<span class="sc">\}</span> \times \notag<span class="sc">\\</span></span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(y_2 - \mu)^2}{2\sigma^2}}\right<span class="sc">\}</span> \times  \notag<span class="sc">\\</span></span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>&amp; \vdots \notag<span class="sc">\\</span></span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(y_n - \mu)^2}{2\sigma^2}}\right<span class="sc">\}</span>.</span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>Se la densità a priori $p(\mu)$ è gaussiana, allora anche la densità a posteriori $p(\mu \mid y)$ sarà gaussiana. Poniamo</span>
+<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>p(\mu) = \frac{1}{{\tau_0 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(\mu - \mu_0)^2}{2\tau_0^2}}\right<span class="sc">\}</span>,</span>
+<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>$$ {#eq:prior-mu-norm-norm}</span>
+<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a>ovvero imponiamo a $\mu$ una distribuzione a priori gaussiana con media $\mu_0$ e varianza $\tau_0^2$. Ciò significa dire che, a priori, $\mu_0$ rappresenta il valore più verosimile per $\mu$, mentre $\tau_0^2$ quantifica il grado della nostra incertezza rispetto a tale valore.</span>
+<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a>Svolgendo una serie di passaggi algebrici, si arriva alla distribuzione a posteriori</span>
+<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-60"><a href="#cb27-60" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-61"><a href="#cb27-61" aria-hidden="true" tabindex="-1"></a>p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(\mu - \mu_p)^2}{2\tau_p^2}}\right<span class="sc">\}</span>,</span>
+<span id="cb27-62"><a href="#cb27-62" aria-hidden="true" tabindex="-1"></a>$$ {#eq-post-norm-norm}</span>
+<span id="cb27-63"><a href="#cb27-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-64"><a href="#cb27-64" aria-hidden="true" tabindex="-1"></a>dove</span>
+<span id="cb27-65"><a href="#cb27-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-66"><a href="#cb27-66" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-67"><a href="#cb27-67" aria-hidden="true" tabindex="-1"></a>\mu_p = \frac{\frac{1}{\tau_0^2}\mu_0+ \frac{n}{\sigma^2}\bar{y}}{\frac {1}{\tau_0^2} + \frac{n}{\sigma^2}} </span>
+<span id="cb27-68"><a href="#cb27-68" aria-hidden="true" tabindex="-1"></a>$$ {#eq-post-norm-mup}</span>
+<span id="cb27-69"><a href="#cb27-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-70"><a href="#cb27-70" aria-hidden="true" tabindex="-1"></a>e</span>
+<span id="cb27-71"><a href="#cb27-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-72"><a href="#cb27-72" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-73"><a href="#cb27-73" aria-hidden="true" tabindex="-1"></a>\tau_p^2 = \frac{1}{\frac {1}{\tau_0^2}+ \frac{n}{\sigma^2}}.</span>
+<span id="cb27-74"><a href="#cb27-74" aria-hidden="true" tabindex="-1"></a>$$ {#eq-post-norm-taup2}</span>
+<span id="cb27-75"><a href="#cb27-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-76"><a href="#cb27-76" aria-hidden="true" tabindex="-1"></a>Ciò significa che, se la distribuzione a priori $p(\mu)$ è gaussiana, allora anche la distribuzione a posteriori $p(\mu \mid y)$ sarà gaussiana con valore atteso $\mu_p$ e varianza $\tau_p^2$ date dalle espressioni precedenti.</span>
+<span id="cb27-77"><a href="#cb27-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-78"><a href="#cb27-78" aria-hidden="true" tabindex="-1"></a>In conclusione, il risultato trovato indica che:</span>
+<span id="cb27-79"><a href="#cb27-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-80"><a href="#cb27-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il valore atteso a posteriori è una media pesata fra il valore atteso a priori $\mu_0$ e la media campionaria $\bar{y}$; il peso della media campionaria è tanto maggiore tanto più è grande $n$ (il numero di osservazioni) e $\tau_0^2$ (l'incertezza iniziale);</span>
+<span id="cb27-81"><a href="#cb27-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>l'incertezza (varianza) a posteriori $\tau_p^2$ è sempre più piccola dell'incertezza a priori $\tau_0^2$ e diminuisce al crescere di $n$.</span>
+<span id="cb27-82"><a href="#cb27-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-83"><a href="#cb27-83" aria-hidden="true" tabindex="-1"></a>::: {#exr-mod-norm-1}</span>
+<span id="cb27-84"><a href="#cb27-84" aria-hidden="true" tabindex="-1"></a>Per esaminare un esempio pratico, consideriamo i 30 valori BDI-II dei soggetti clinici di @zetschefuture2019.</span>
+<span id="cb27-85"><a href="#cb27-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-88"><a href="#cb27-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-89"><a href="#cb27-89" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb27-90"><a href="#cb27-90" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(</span>
+<span id="cb27-91"><a href="#cb27-91" aria-hidden="true" tabindex="-1"></a>    <span class="fl">26.0</span>, <span class="fl">35.0</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">44</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">43</span>, <span class="dv">22</span>, <span class="dv">43</span>,</span>
+<span id="cb27-92"><a href="#cb27-92" aria-hidden="true" tabindex="-1"></a>    <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">39</span>, <span class="dv">31</span>, <span class="dv">25</span>, <span class="dv">28</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">26</span>, <span class="dv">31</span>, <span class="dv">41</span>,</span>
+<span id="cb27-93"><a href="#cb27-93" aria-hidden="true" tabindex="-1"></a>    <span class="dv">36</span>, <span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">33</span>, <span class="dv">28</span>, <span class="dv">27</span>, <span class="dv">34</span>, <span class="dv">27</span>, <span class="dv">22</span></span>
+<span id="cb27-94"><a href="#cb27-94" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb27-95"><a href="#cb27-95" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-96"><a href="#cb27-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-97"><a href="#cb27-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-98"><a href="#cb27-98" aria-hidden="true" tabindex="-1"></a>Supponiamo che la varianza $\sigma^2$ della popolazione sia identica alla varianza del campione:</span>
+<span id="cb27-99"><a href="#cb27-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-102"><a href="#cb27-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-103"><a href="#cb27-103" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>y)</span>
+<span id="cb27-104"><a href="#cb27-104" aria-hidden="true" tabindex="-1"></a>sigma</span>
+<span id="cb27-105"><a href="#cb27-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb27-106"><a href="#cb27-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-109"><a href="#cb27-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-110"><a href="#cb27-110" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>y)</span>
-<span id="cb27-111"><a href="#cb27-111" aria-hidden="true" tabindex="-1"></a>sigma</span>
-<span id="cb27-112"><a href="#cb27-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-113"><a href="#cb27-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-114"><a href="#cb27-114" aria-hidden="true" tabindex="-1"></a>Per fare un esempio, imponiamo su $\mu$ una distribuzione a priori $\mathcal{N}(25, 2)$. In tali circostanze, la distribuzione a posteriori del parametro $\mu$ può essere determinata per via analitica e corrisponde ad una Normale di media e varianza definite dalle equazioni \@ref(eq:post-norm-mup) e \@ref(eq:post-norm-taup2). È possibile visualizzare tale distribuzione a posteriori usando la funzione <span class="in">`plot_normal_normal()`</span> del pacchetto <span class="in">`bayesrules`</span>.</span>
-<span id="cb27-115"><a href="#cb27-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-118"><a href="#cb27-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-119"><a href="#cb27-119" aria-hidden="true" tabindex="-1"></a>bayesrules<span class="sc">::</span><span class="fu">plot_normal_normal</span>(</span>
-<span id="cb27-120"><a href="#cb27-120" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean =</span> <span class="dv">25</span>, <span class="co"># media della distribuzione a priori per mu</span></span>
-<span id="cb27-121"><a href="#cb27-121" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">2</span>, <span class="co"># sd della distribuzione a priori per mu</span></span>
-<span id="cb27-122"><a href="#cb27-122" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma =</span> <span class="fu">sd</span>(df<span class="sc">$</span>y), <span class="co"># sd del campione</span></span>
-<span id="cb27-123"><a href="#cb27-123" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_bar =</span> <span class="fu">mean</span>(df<span class="sc">$</span>y), <span class="co"># media del campione</span></span>
-<span id="cb27-124"><a href="#cb27-124" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">length</span>(df<span class="sc">$</span>y) <span class="co"># ampiezza campionaria</span></span>
-<span id="cb27-125"><a href="#cb27-125" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-126"><a href="#cb27-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-127"><a href="#cb27-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-128"><a href="#cb27-128" aria-hidden="true" tabindex="-1"></a>La funzione <span class="in">`bayesrules::summarize_normal_normal()`</span> fornisce una sintesi numerica della distribuzione a posteriori $p(\mu \mid y, \sigma)$.</span>
-<span id="cb27-129"><a href="#cb27-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-132"><a href="#cb27-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-133"><a href="#cb27-133" aria-hidden="true" tabindex="-1"></a>bayesrules<span class="sc">::</span><span class="fu">summarize_normal_normal</span>(</span>
-<span id="cb27-134"><a href="#cb27-134" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean =</span> <span class="dv">25</span>, <span class="co"># media della distribuzione a priori per mu</span></span>
-<span id="cb27-135"><a href="#cb27-135" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">2</span>, <span class="co"># sd della distribuzione a priori per mu</span></span>
-<span id="cb27-136"><a href="#cb27-136" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma=</span> <span class="fu">sd</span>(df<span class="sc">$</span>y), <span class="co"># sd del campione</span></span>
-<span id="cb27-137"><a href="#cb27-137" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_bar =</span> <span class="fu">mean</span>(df<span class="sc">$</span>y), <span class="co"># media del campione</span></span>
-<span id="cb27-138"><a href="#cb27-138" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">length</span>(df<span class="sc">$</span>y) <span class="co"># ampiezza campionaria</span></span>
-<span id="cb27-139"><a href="#cb27-139" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-140"><a href="#cb27-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-141"><a href="#cb27-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-142"><a href="#cb27-142" aria-hidden="true" tabindex="-1"></a>Verifichiamo i risultati forniti da <span class="in">`bayesrules::summarize_normal_normal()`</span> applicando le formule \@ref(eq:post-norm-mup) e \@ref(eq:post-norm-taup2). La media della distribuzione a posteriori di $\mu$ è</span>
-<span id="cb27-143"><a href="#cb27-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-146"><a href="#cb27-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-147"><a href="#cb27-147" aria-hidden="true" tabindex="-1"></a>mu_post <span class="ot">&lt;-</span> <span class="cf">function</span>(tau_0, mu_0, sigma, ybar, n) {</span>
-<span id="cb27-148"><a href="#cb27-148" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span><span class="sc">/</span>tau_0<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> mu_0 <span class="sc">+</span> n<span class="sc">/</span>sigma<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> ybar) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">/</span>tau_0<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> n<span class="sc">/</span>sigma<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb27-149"><a href="#cb27-149" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb27-150"><a href="#cb27-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-151"><a href="#cb27-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-154"><a href="#cb27-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-155"><a href="#cb27-155" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="dv">25</span>  <span class="co"># media della distribuzione a priori per mu</span></span>
-<span id="cb27-156"><a href="#cb27-156" aria-hidden="true" tabindex="-1"></a>tau_0 <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># sd della distribuzione a priori per mu</span></span>
-<span id="cb27-157"><a href="#cb27-157" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>y) <span class="co"># sd del campione (assunta essere sigma)</span></span>
-<span id="cb27-158"><a href="#cb27-158" aria-hidden="true" tabindex="-1"></a>ybar <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>y) <span class="co"># media del campione</span></span>
-<span id="cb27-159"><a href="#cb27-159" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(df<span class="sc">$</span>y)</span>
+<span id="cb27-107"><a href="#cb27-107" aria-hidden="true" tabindex="-1"></a>Per fare un esempio, imponiamo su $\mu$ una distribuzione a priori $\mathcal{N}(25, 2)$. In tali circostanze, la distribuzione a posteriori del parametro $\mu$ può essere determinata per via analitica e corrisponde ad una Normale di media e varianza definite dalle equazioni \@ref(eq:post-norm-mup) e \@ref(eq:post-norm-taup2). È possibile visualizzare tale distribuzione a posteriori usando la funzione <span class="in">`plot_normal_normal()`</span> del pacchetto <span class="in">`bayesrules`</span>.</span>
+<span id="cb27-108"><a href="#cb27-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-111"><a href="#cb27-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-112"><a href="#cb27-112" aria-hidden="true" tabindex="-1"></a>bayesrules<span class="sc">::</span><span class="fu">plot_normal_normal</span>(</span>
+<span id="cb27-113"><a href="#cb27-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean =</span> <span class="dv">25</span>, <span class="co"># media della distribuzione a priori per mu</span></span>
+<span id="cb27-114"><a href="#cb27-114" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">2</span>, <span class="co"># sd della distribuzione a priori per mu</span></span>
+<span id="cb27-115"><a href="#cb27-115" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma =</span> <span class="fu">sd</span>(df<span class="sc">$</span>y), <span class="co"># sd del campione</span></span>
+<span id="cb27-116"><a href="#cb27-116" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_bar =</span> <span class="fu">mean</span>(df<span class="sc">$</span>y), <span class="co"># media del campione</span></span>
+<span id="cb27-117"><a href="#cb27-117" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">length</span>(df<span class="sc">$</span>y) <span class="co"># ampiezza campionaria</span></span>
+<span id="cb27-118"><a href="#cb27-118" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-119"><a href="#cb27-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-120"><a href="#cb27-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-121"><a href="#cb27-121" aria-hidden="true" tabindex="-1"></a>La funzione <span class="in">`bayesrules::summarize_normal_normal()`</span> fornisce una sintesi numerica della distribuzione a posteriori $p(\mu \mid y, \sigma)$.</span>
+<span id="cb27-122"><a href="#cb27-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-125"><a href="#cb27-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-126"><a href="#cb27-126" aria-hidden="true" tabindex="-1"></a>bayesrules<span class="sc">::</span><span class="fu">summarize_normal_normal</span>(</span>
+<span id="cb27-127"><a href="#cb27-127" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean =</span> <span class="dv">25</span>, <span class="co"># media della distribuzione a priori per mu</span></span>
+<span id="cb27-128"><a href="#cb27-128" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="dv">2</span>, <span class="co"># sd della distribuzione a priori per mu</span></span>
+<span id="cb27-129"><a href="#cb27-129" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma=</span> <span class="fu">sd</span>(df<span class="sc">$</span>y), <span class="co"># sd del campione</span></span>
+<span id="cb27-130"><a href="#cb27-130" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_bar =</span> <span class="fu">mean</span>(df<span class="sc">$</span>y), <span class="co"># media del campione</span></span>
+<span id="cb27-131"><a href="#cb27-131" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">length</span>(df<span class="sc">$</span>y) <span class="co"># ampiezza campionaria</span></span>
+<span id="cb27-132"><a href="#cb27-132" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-133"><a href="#cb27-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-134"><a href="#cb27-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-135"><a href="#cb27-135" aria-hidden="true" tabindex="-1"></a>Verifichiamo i risultati forniti da <span class="in">`bayesrules::summarize_normal_normal()`</span> applicando le formule \@ref(eq:post-norm-mup) e \@ref(eq:post-norm-taup2). Definiamo la funzione della media della distribuzione a posteriori di $\mu$.</span>
+<span id="cb27-136"><a href="#cb27-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-139"><a href="#cb27-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-140"><a href="#cb27-140" aria-hidden="true" tabindex="-1"></a>mu_post <span class="ot">&lt;-</span> <span class="cf">function</span>(tau_0, mu_0, sigma, ybar, n) {</span>
+<span id="cb27-141"><a href="#cb27-141" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span><span class="sc">/</span>tau_0<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> mu_0 <span class="sc">+</span> n<span class="sc">/</span>sigma<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> ybar) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">/</span>tau_0<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> n<span class="sc">/</span>sigma<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb27-142"><a href="#cb27-142" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-143"><a href="#cb27-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-144"><a href="#cb27-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-145"><a href="#cb27-145" aria-hidden="true" tabindex="-1"></a>Troviamo la media a posteriori.</span>
+<span id="cb27-146"><a href="#cb27-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-149"><a href="#cb27-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-150"><a href="#cb27-150" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="dv">25</span>  <span class="co"># media della distribuzione a priori per mu</span></span>
+<span id="cb27-151"><a href="#cb27-151" aria-hidden="true" tabindex="-1"></a>tau_0 <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># sd della distribuzione a priori per mu</span></span>
+<span id="cb27-152"><a href="#cb27-152" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>y) <span class="co"># sd del campione (assunta essere sigma)</span></span>
+<span id="cb27-153"><a href="#cb27-153" aria-hidden="true" tabindex="-1"></a>ybar <span class="ot">&lt;-</span> <span class="fu">mean</span>(df<span class="sc">$</span>y) <span class="co"># media del campione</span></span>
+<span id="cb27-154"><a href="#cb27-154" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(df<span class="sc">$</span>y)</span>
+<span id="cb27-155"><a href="#cb27-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-156"><a href="#cb27-156" aria-hidden="true" tabindex="-1"></a><span class="fu">mu_post</span>(tau_0, mu_0, sigma, ybar, n) </span>
+<span id="cb27-157"><a href="#cb27-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-158"><a href="#cb27-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-159"><a href="#cb27-159" aria-hidden="true" tabindex="-1"></a>Definiamo una funzione per la deviazione standard della distribuzione a posteriori di $\mu$.</span>
 <span id="cb27-160"><a href="#cb27-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-161"><a href="#cb27-161" aria-hidden="true" tabindex="-1"></a><span class="fu">mu_post</span>(tau_0, mu_0, sigma, ybar, n) </span>
-<span id="cb27-162"><a href="#cb27-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-163"><a href="#cb27-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-164"><a href="#cb27-164" aria-hidden="true" tabindex="-1"></a>La deviazione standard della distribuzione a posteriori di $\mu$ è</span>
-<span id="cb27-165"><a href="#cb27-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-168"><a href="#cb27-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-169"><a href="#cb27-169" aria-hidden="true" tabindex="-1"></a>tau_post <span class="ot">&lt;-</span> <span class="cf">function</span>(tau_0, sigma, n) {</span>
-<span id="cb27-170"><a href="#cb27-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">/</span>tau_0<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> n<span class="sc">/</span>sigma<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb27-171"><a href="#cb27-171" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb27-172"><a href="#cb27-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-173"><a href="#cb27-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-176"><a href="#cb27-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-177"><a href="#cb27-177" aria-hidden="true" tabindex="-1"></a>tau_0 <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># sd della distribuzione a priori per mu</span></span>
-<span id="cb27-178"><a href="#cb27-178" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>y) <span class="co"># sd del campione (assunta essere sigma)</span></span>
-<span id="cb27-179"><a href="#cb27-179" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(df<span class="sc">$</span>y)</span>
+<span id="cb27-163"><a href="#cb27-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-164"><a href="#cb27-164" aria-hidden="true" tabindex="-1"></a>tau_post <span class="ot">&lt;-</span> <span class="cf">function</span>(tau_0, sigma, n) {</span>
+<span id="cb27-165"><a href="#cb27-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">/</span>tau_0<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> n<span class="sc">/</span>sigma<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb27-166"><a href="#cb27-166" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-167"><a href="#cb27-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-168"><a href="#cb27-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-169"><a href="#cb27-169" aria-hidden="true" tabindex="-1"></a>Troviamo la deviazione standard a posteriori.</span>
+<span id="cb27-170"><a href="#cb27-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-173"><a href="#cb27-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-174"><a href="#cb27-174" aria-hidden="true" tabindex="-1"></a>tau_0 <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># sd della distribuzione a priori per mu</span></span>
+<span id="cb27-175"><a href="#cb27-175" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fu">sd</span>(df<span class="sc">$</span>y) <span class="co"># sd del campione (assunta essere sigma)</span></span>
+<span id="cb27-176"><a href="#cb27-176" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(df<span class="sc">$</span>y)</span>
+<span id="cb27-177"><a href="#cb27-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-178"><a href="#cb27-178" aria-hidden="true" tabindex="-1"></a><span class="fu">tau_post</span>(tau_0, sigma, n) </span>
+<span id="cb27-179"><a href="#cb27-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb27-180"><a href="#cb27-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-181"><a href="#cb27-181" aria-hidden="true" tabindex="-1"></a><span class="fu">tau_post</span>(tau_0, sigma, n) </span>
-<span id="cb27-182"><a href="#cb27-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-181"><a href="#cb27-181" aria-hidden="true" tabindex="-1"></a>I risultati così trovati riproducono quelli forniti da <span class="in">`bayesrules::summarize_normal_normal()`</span>.</span>
+<span id="cb27-182"><a href="#cb27-182" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb27-183"><a href="#cb27-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-184"><a href="#cb27-184" aria-hidden="true" tabindex="-1"></a>I risultati trovati riproducono quelli forniti da <span class="in">`bayesrules::summarize_normal_normal()`</span>.</span>
-<span id="cb27-185"><a href="#cb27-185" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb27-186"><a href="#cb27-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-187"><a href="#cb27-187" aria-hidden="true" tabindex="-1"></a><span class="fu">## Il modello Normale con Stan</span></span>
-<span id="cb27-188"><a href="#cb27-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-189"><a href="#cb27-189" aria-hidden="true" tabindex="-1"></a>I priori coniugati Normali di una Normale non richiedono una approssimazione numerica ottenuta mediante metodi MCMC. Tuttavia, per fare un esercizio e per verificare che i risultati ottenuti mediante MCMC siano simili a quelli trovati per via analitica, ripetiamo l'esercizio precedente usando Stan.</span>
-<span id="cb27-190"><a href="#cb27-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-191"><a href="#cb27-191" aria-hidden="true" tabindex="-1"></a><span class="fu">### Versione 1 ($\sigma$ nota)</span></span>
-<span id="cb27-192"><a href="#cb27-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-193"><a href="#cb27-193" aria-hidden="true" tabindex="-1"></a>Come in precedenza, impongo su $\mu$ una distribuzione a priori $\mathcal{N}(25, 2)$ e considero noto il parametro $\sigma = 6.606858$. Il modello dunque diventa il seguente.</span>
-<span id="cb27-194"><a href="#cb27-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-195"><a href="#cb27-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb27-196"><a href="#cb27-196" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{align}</span></span>
-<span id="cb27-197"><a href="#cb27-197" aria-hidden="true" tabindex="-1"></a><span class="in">Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag\\</span></span>
-<span id="cb27-198"><a href="#cb27-198" aria-hidden="true" tabindex="-1"></a><span class="in">\mu &amp;\sim \mathcal{N}(25, 2) \notag\\</span></span>
-<span id="cb27-199"><a href="#cb27-199" aria-hidden="true" tabindex="-1"></a><span class="in">\sigma &amp;= 6.606858 \notag</span></span>
-<span id="cb27-200"><a href="#cb27-200" aria-hidden="true" tabindex="-1"></a><span class="in">\end{align}</span></span>
-<span id="cb27-201"><a href="#cb27-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-202"><a href="#cb27-202" aria-hidden="true" tabindex="-1"></a>In base al modello definito sopra, la variabile casuale $Y$ segue la distribuzione Normale di parametri $\mu$ e $\sigma$. Il parametro $\mu$ è sconosciuto e abbiamo deciso di descrivere la nostra incertezza relativa ad esso mediante una distribuzione a priori Normale di media 25 e deviazione standard 2. Il parametro $\sigma$ è invece assunto essere noto e uguale a 6.606858. Usando il linguaggio Stan specifico il modello come segue.</span>
-<span id="cb27-203"><a href="#cb27-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-206"><a href="#cb27-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-207"><a href="#cb27-207" aria-hidden="true" tabindex="-1"></a>modelString <span class="ot">=</span> <span class="st">"</span></span>
-<span id="cb27-208"><a href="#cb27-208" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
-<span id="cb27-209"><a href="#cb27-209" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; N;</span></span>
-<span id="cb27-210"><a href="#cb27-210" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; sigma;</span></span>
-<span id="cb27-211"><a href="#cb27-211" aria-hidden="true" tabindex="-1"></a><span class="st">  vector[N] y;</span></span>
-<span id="cb27-212"><a href="#cb27-212" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb27-213"><a href="#cb27-213" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
-<span id="cb27-214"><a href="#cb27-214" aria-hidden="true" tabindex="-1"></a><span class="st">  real mu;</span></span>
-<span id="cb27-215"><a href="#cb27-215" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb27-216"><a href="#cb27-216" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
-<span id="cb27-217"><a href="#cb27-217" aria-hidden="true" tabindex="-1"></a><span class="st">  mu ~ normal(25, 2);</span></span>
-<span id="cb27-218"><a href="#cb27-218" aria-hidden="true" tabindex="-1"></a><span class="st">  y ~ normal(mu, sigma);</span></span>
-<span id="cb27-219"><a href="#cb27-219" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb27-220"><a href="#cb27-220" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb27-221"><a href="#cb27-221" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(modelString, <span class="at">con =</span> <span class="st">"code/normal_normal_1.stan"</span>)</span>
-<span id="cb27-222"><a href="#cb27-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-184"><a href="#cb27-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## Il modello Normale con Stan</span></span>
+<span id="cb27-185"><a href="#cb27-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-186"><a href="#cb27-186" aria-hidden="true" tabindex="-1"></a>I priori coniugati Normali di una Normale non richiedono una approssimazione numerica ottenuta mediante metodi MCMC. Tuttavia, per fare un esercizio e per verificare che i risultati ottenuti mediante MCMC siano simili a quelli trovati per via analitica, ripetiamo l'esercizio precedente usando Stan.</span>
+<span id="cb27-187"><a href="#cb27-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-188"><a href="#cb27-188" aria-hidden="true" tabindex="-1"></a><span class="fu">### Versione 1 ($\sigma$ nota)</span></span>
+<span id="cb27-189"><a href="#cb27-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-190"><a href="#cb27-190" aria-hidden="true" tabindex="-1"></a>Come in precedenza, impongo su $\mu$ una distribuzione a priori $\mathcal{N}(25, 2)$ e considero noto il parametro $\sigma = 6.606858$. Il modello dunque diventa il seguente.</span>
+<span id="cb27-191"><a href="#cb27-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-192"><a href="#cb27-192" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-193"><a href="#cb27-193" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb27-194"><a href="#cb27-194" aria-hidden="true" tabindex="-1"></a>Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag<span class="sc">\\</span></span>
+<span id="cb27-195"><a href="#cb27-195" aria-hidden="true" tabindex="-1"></a>\mu &amp;\sim \mathcal{N}(25, 2) \notag<span class="sc">\\</span></span>
+<span id="cb27-196"><a href="#cb27-196" aria-hidden="true" tabindex="-1"></a>\sigma &amp;= 6.606858 \notag</span>
+<span id="cb27-197"><a href="#cb27-197" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb27-198"><a href="#cb27-198" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-199"><a href="#cb27-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-200"><a href="#cb27-200" aria-hidden="true" tabindex="-1"></a>In base al modello definito sopra, la variabile casuale $Y$ segue la distribuzione Normale di parametri $\mu$ e $\sigma$. Il parametro $\mu$ è sconosciuto e abbiamo deciso di descrivere la nostra incertezza relativa ad esso mediante una distribuzione a priori Normale di media 25 e deviazione standard 2. Il parametro $\sigma$ è invece assunto essere noto e uguale a 6.606858. Usando il linguaggio Stan specifico il modello come segue.</span>
+<span id="cb27-201"><a href="#cb27-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-204"><a href="#cb27-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-205"><a href="#cb27-205" aria-hidden="true" tabindex="-1"></a>modelString <span class="ot">=</span> <span class="st">"</span></span>
+<span id="cb27-206"><a href="#cb27-206" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb27-207"><a href="#cb27-207" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; N;</span></span>
+<span id="cb27-208"><a href="#cb27-208" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; sigma;</span></span>
+<span id="cb27-209"><a href="#cb27-209" aria-hidden="true" tabindex="-1"></a><span class="st">  vector[N] y;</span></span>
+<span id="cb27-210"><a href="#cb27-210" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb27-211"><a href="#cb27-211" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb27-212"><a href="#cb27-212" aria-hidden="true" tabindex="-1"></a><span class="st">  real mu;</span></span>
+<span id="cb27-213"><a href="#cb27-213" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb27-214"><a href="#cb27-214" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb27-215"><a href="#cb27-215" aria-hidden="true" tabindex="-1"></a><span class="st">  mu ~ normal(25, 2);</span></span>
+<span id="cb27-216"><a href="#cb27-216" aria-hidden="true" tabindex="-1"></a><span class="st">  y ~ normal(mu, sigma);</span></span>
+<span id="cb27-217"><a href="#cb27-217" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb27-218"><a href="#cb27-218" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb27-219"><a href="#cb27-219" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(modelString, <span class="at">con =</span> <span class="st">"code/normal_normal_1.stan"</span>)</span>
+<span id="cb27-220"><a href="#cb27-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-221"><a href="#cb27-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-222"><a href="#cb27-222" aria-hidden="true" tabindex="-1"></a>Sistemo i dati nel formato appropriato per Stan.</span>
 <span id="cb27-223"><a href="#cb27-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-224"><a href="#cb27-224" aria-hidden="true" tabindex="-1"></a>Sistemo i dati nel formato appropriato per Stan.</span>
-<span id="cb27-225"><a href="#cb27-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-228"><a href="#cb27-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-229"><a href="#cb27-229" aria-hidden="true" tabindex="-1"></a>dlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb27-230"><a href="#cb27-230" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">length</span>(df<span class="sc">$</span>y),</span>
-<span id="cb27-231"><a href="#cb27-231" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma =</span> <span class="fu">sd</span>(df<span class="sc">$</span>y),</span>
-<span id="cb27-232"><a href="#cb27-232" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df<span class="sc">$</span>y</span>
-<span id="cb27-233"><a href="#cb27-233" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-234"><a href="#cb27-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-226"><a href="#cb27-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-227"><a href="#cb27-227" aria-hidden="true" tabindex="-1"></a>dlist <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb27-228"><a href="#cb27-228" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">length</span>(df<span class="sc">$</span>y),</span>
+<span id="cb27-229"><a href="#cb27-229" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma =</span> <span class="fu">sd</span>(df<span class="sc">$</span>y),</span>
+<span id="cb27-230"><a href="#cb27-230" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df<span class="sc">$</span>y</span>
+<span id="cb27-231"><a href="#cb27-231" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-232"><a href="#cb27-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-233"><a href="#cb27-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-234"><a href="#cb27-234" aria-hidden="true" tabindex="-1"></a>Leggo il file in cui ho salvato il codice Stan.</span>
 <span id="cb27-235"><a href="#cb27-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-236"><a href="#cb27-236" aria-hidden="true" tabindex="-1"></a>Leggo il file in cui ho salvato il codice Stan.</span>
-<span id="cb27-237"><a href="#cb27-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-240"><a href="#cb27-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-241"><a href="#cb27-241" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"code"</span>, <span class="st">"normal_normal_1.stan"</span>)</span>
-<span id="cb27-242"><a href="#cb27-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-238"><a href="#cb27-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-239"><a href="#cb27-239" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"code"</span>, <span class="st">"normal_normal_1.stan"</span>)</span>
+<span id="cb27-240"><a href="#cb27-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-241"><a href="#cb27-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-242"><a href="#cb27-242" aria-hidden="true" tabindex="-1"></a>Compilo il modello.</span>
 <span id="cb27-243"><a href="#cb27-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-244"><a href="#cb27-244" aria-hidden="true" tabindex="-1"></a>Compilo il modello.</span>
-<span id="cb27-245"><a href="#cb27-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-248"><a href="#cb27-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-249"><a href="#cb27-249" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(file)</span>
-<span id="cb27-250"><a href="#cb27-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-246"><a href="#cb27-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-247"><a href="#cb27-247" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(file)</span>
+<span id="cb27-248"><a href="#cb27-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-249"><a href="#cb27-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-250"><a href="#cb27-250" aria-hidden="true" tabindex="-1"></a>Eseguo il campionamento MCMC.</span>
 <span id="cb27-251"><a href="#cb27-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-252"><a href="#cb27-252" aria-hidden="true" tabindex="-1"></a>Eseguo il campionamento MCMC.</span>
-<span id="cb27-253"><a href="#cb27-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-254"><a href="#cb27-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE, warning=FALSE, results='hide'}</span></span>
-<span id="cb27-255"><a href="#cb27-255" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb27-256"><a href="#cb27-256" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dlist,</span>
-<span id="cb27-257"><a href="#cb27-257" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> 100000L,</span>
-<span id="cb27-258"><a href="#cb27-258" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> 2000L,</span>
-<span id="cb27-259"><a href="#cb27-259" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> 4L,</span>
-<span id="cb27-260"><a href="#cb27-260" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">0</span></span>
-<span id="cb27-261"><a href="#cb27-261" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-262"><a href="#cb27-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-252"><a href="#cb27-252" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE, warning=FALSE, results='hide'}</span></span>
+<span id="cb27-253"><a href="#cb27-253" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb27-254"><a href="#cb27-254" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dlist,</span>
+<span id="cb27-255"><a href="#cb27-255" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> 100000L,</span>
+<span id="cb27-256"><a href="#cb27-256" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> 2000L,</span>
+<span id="cb27-257"><a href="#cb27-257" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> 4L,</span>
+<span id="cb27-258"><a href="#cb27-258" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">0</span></span>
+<span id="cb27-259"><a href="#cb27-259" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-260"><a href="#cb27-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-261"><a href="#cb27-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-262"><a href="#cb27-262" aria-hidden="true" tabindex="-1"></a>Una sintesi della distribuzione a posteriori dei parametri si ottiene nel modo seguente.</span>
 <span id="cb27-263"><a href="#cb27-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-264"><a href="#cb27-264" aria-hidden="true" tabindex="-1"></a>Una sintesi della distribuzione a posteriori dei parametri si ottiene nel modo seguente.</span>
-<span id="cb27-265"><a href="#cb27-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-268"><a href="#cb27-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-269"><a href="#cb27-269" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span><span class="fu">summary</span>(<span class="fu">c</span>(<span class="st">"mu"</span>))</span>
-<span id="cb27-270"><a href="#cb27-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-266"><a href="#cb27-266" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-267"><a href="#cb27-267" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span><span class="fu">summary</span>(<span class="fu">c</span>(<span class="st">"mu"</span>))</span>
+<span id="cb27-268"><a href="#cb27-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-269"><a href="#cb27-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-270"><a href="#cb27-270" aria-hidden="true" tabindex="-1"></a>Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero $\mu_p$ = 29.57 contro un valore teorico di 29.35 e $\tau_p$ = 0.96 contro un valore teorico di 1.03.</span>
 <span id="cb27-271"><a href="#cb27-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-272"><a href="#cb27-272" aria-hidden="true" tabindex="-1"></a>Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero $\mu_p$ = 29.57 contro un valore teorico di 29.35 e $\tau_p$ = 0.96 contro un valore teorico di 1.03.</span>
+<span id="cb27-272"><a href="#cb27-272" aria-hidden="true" tabindex="-1"></a>Qui sotto è fornita una rappresentazione grafica dell'intera distribuzione a posteriori del parametro $\mu$.</span>
 <span id="cb27-273"><a href="#cb27-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-274"><a href="#cb27-274" aria-hidden="true" tabindex="-1"></a>Qui sotto è fornita una rappresentazione grafica dell'intera distribuzione a posteriori del parametro $\mu$.</span>
-<span id="cb27-275"><a href="#cb27-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-278"><a href="#cb27-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-279"><a href="#cb27-279" aria-hidden="true" tabindex="-1"></a>stanfit <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">read_stan_csv</span>(fit<span class="sc">$</span><span class="fu">output_files</span>())</span>
-<span id="cb27-280"><a href="#cb27-280" aria-hidden="true" tabindex="-1"></a>mu_draws <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(stanfit,<span class="at">pars =</span><span class="st">"mu"</span>)</span>
-<span id="cb27-281"><a href="#cb27-281" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_areas</span>(mu_draws,<span class="at">prob =</span> <span class="fl">0.95</span>) </span>
-<span id="cb27-282"><a href="#cb27-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-276"><a href="#cb27-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-277"><a href="#cb27-277" aria-hidden="true" tabindex="-1"></a>stanfit <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">read_stan_csv</span>(fit<span class="sc">$</span><span class="fu">output_files</span>())</span>
+<span id="cb27-278"><a href="#cb27-278" aria-hidden="true" tabindex="-1"></a>mu_draws <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(stanfit,<span class="at">pars =</span><span class="st">"mu"</span>)</span>
+<span id="cb27-279"><a href="#cb27-279" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_areas</span>(mu_draws,<span class="at">prob =</span> <span class="fl">0.95</span>) </span>
+<span id="cb27-280"><a href="#cb27-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-281"><a href="#cb27-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-282"><a href="#cb27-282" aria-hidden="true" tabindex="-1"></a>Trovo l'intervallo di credibilità al 95%.</span>
 <span id="cb27-283"><a href="#cb27-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-284"><a href="#cb27-284" aria-hidden="true" tabindex="-1"></a>Trovo l'intervallo di credibilità al 95%.</span>
-<span id="cb27-285"><a href="#cb27-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-288"><a href="#cb27-288" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-289"><a href="#cb27-289" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> fit<span class="sc">$</span><span class="fu">draws</span>()</span>
-<span id="cb27-290"><a href="#cb27-290" aria-hidden="true" tabindex="-1"></a>post_parms <span class="ot">&lt;-</span> <span class="fu">subset_draws</span>(post, <span class="fu">c</span>(<span class="st">"mu"</span>))</span>
-<span id="cb27-291"><a href="#cb27-291" aria-hidden="true" tabindex="-1"></a>posterior<span class="sc">::</span><span class="fu">summarise_draws</span>(</span>
-<span id="cb27-292"><a href="#cb27-292" aria-hidden="true" tabindex="-1"></a>  post_parms,</span>
-<span id="cb27-293"><a href="#cb27-293" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">quantile</span>(.x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
-<span id="cb27-294"><a href="#cb27-294" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-295"><a href="#cb27-295" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-286"><a href="#cb27-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-287"><a href="#cb27-287" aria-hidden="true" tabindex="-1"></a>post <span class="ot">&lt;-</span> fit<span class="sc">$</span><span class="fu">draws</span>()</span>
+<span id="cb27-288"><a href="#cb27-288" aria-hidden="true" tabindex="-1"></a>post_parms <span class="ot">&lt;-</span> <span class="fu">subset_draws</span>(post, <span class="fu">c</span>(<span class="st">"mu"</span>))</span>
+<span id="cb27-289"><a href="#cb27-289" aria-hidden="true" tabindex="-1"></a>posterior<span class="sc">::</span><span class="fu">summarise_draws</span>(</span>
+<span id="cb27-290"><a href="#cb27-290" aria-hidden="true" tabindex="-1"></a>  post_parms,</span>
+<span id="cb27-291"><a href="#cb27-291" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> <span class="fu">quantile</span>(.x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb27-292"><a href="#cb27-292" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-293"><a href="#cb27-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-294"><a href="#cb27-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-295"><a href="#cb27-295" aria-hidden="true" tabindex="-1"></a>Le stime così trovate sono molto simili ai quantili di ordine 0.025 e 0.975 della vera distribuzione a posteriori di $\mu$.</span>
 <span id="cb27-296"><a href="#cb27-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-297"><a href="#cb27-297" aria-hidden="true" tabindex="-1"></a>Le stime così trovate sono molto simili ai quantili di ordine 0.025 e 0.975 della vera distribuzione a posteriori di $\mu$:</span>
-<span id="cb27-298"><a href="#cb27-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-301"><a href="#cb27-301" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-302"><a href="#cb27-302" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="fl">29.35073</span>, <span class="fl">1.032919</span>)</span>
-<span id="cb27-303"><a href="#cb27-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-299"><a href="#cb27-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-300"><a href="#cb27-300" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="fl">29.35073</span>, <span class="fl">1.032919</span>)</span>
+<span id="cb27-301"><a href="#cb27-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-302"><a href="#cb27-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-303"><a href="#cb27-303" aria-hidden="true" tabindex="-1"></a><span class="fu">### Versione 2 ($\sigma$ incognita)</span></span>
 <span id="cb27-304"><a href="#cb27-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-305"><a href="#cb27-305" aria-hidden="true" tabindex="-1"></a><span class="fu">### Versione 2 ($\sigma$ incognita)</span></span>
+<span id="cb27-305"><a href="#cb27-305" aria-hidden="true" tabindex="-1"></a>È facile estendere il caso precedente alla situazione in cui il parametro $\sigma$ è incognito. Se non conosciamo $\sigma$, è necessario imporre su tale parametro una distribuzione a priori. Supponiamo di ipotizzare per $\sigma$ una distribuzione a priori $\mbox{Cauchy}(0, 15)$.</span>
 <span id="cb27-306"><a href="#cb27-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-307"><a href="#cb27-307" aria-hidden="true" tabindex="-1"></a>È facile estendere il caso precedente alla situazione in cui il parametro $\sigma$ è incognito. Se non conosciamo $\sigma$, è necessario imporre su tale parametro una distribuzione a priori. Supponiamo di ipotizzare per $\sigma$ una distribuzione a priori $\mbox{Cauchy}(0, 15)$.</span>
+<span id="cb27-307"><a href="#cb27-307" aria-hidden="true" tabindex="-1"></a>Mediante una $\mbox{Cauchy}(0, 15)$ descrivo il grado di plausibilità soggettiva che attribuisco ai possibili valori (<span class="sc">\&gt;</span> 0) del parametro $\sigma$. Ai valori prossimi allo 0 attribuisco la plausibilità maggiore; la plausibilità dei possibili valori $\sigma$ diminuisce progressivamente quando ci si allontana dallo 0, come indicato dalla curva della figura seguente. Ritengo poco plausibili valori $\sigma$ maggiori di 40, anche se non escludo completamente che $\sigma$ possa assumere un valore di questo tipo.</span>
 <span id="cb27-308"><a href="#cb27-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-309"><a href="#cb27-309" aria-hidden="true" tabindex="-1"></a>Mediante una $\mbox{Cauchy}(0, 15)$ descrivo il grado di plausibilità soggettiva che attribuisco ai possibili valori (<span class="sc">\&gt;</span> 0) del parametro $\sigma$. Ai valori prossimi allo 0 attribuisco la plausibilità maggiore; la plausibilità dei possibili valori $\sigma$ diminuisce progressivamente quando ci si allontana dallo 0, come indicato dalla curva della figura seguente. Ritengo poco plausibili valori $\sigma$ maggiori di 40, anche se non escludo completamente che $\sigma$ possa assumere un valore di questo tipo.</span>
-<span id="cb27-310"><a href="#cb27-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-313"><a href="#cb27-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-314"><a href="#cb27-314" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(</span>
-<span id="cb27-315"><a href="#cb27-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dcauchy</span>(x, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">15</span>), </span>
-<span id="cb27-316"><a href="#cb27-316" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">'gray'</span>, <span class="at">lwd =</span> <span class="dv">3</span>,</span>
-<span id="cb27-317"><a href="#cb27-317" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Densità"</span>,</span>
-<span id="cb27-318"><a href="#cb27-318" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"sigma"</span></span>
-<span id="cb27-319"><a href="#cb27-319" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-320"><a href="#cb27-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-311"><a href="#cb27-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-312"><a href="#cb27-312" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(</span>
+<span id="cb27-313"><a href="#cb27-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dcauchy</span>(x, <span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">15</span>), </span>
+<span id="cb27-314"><a href="#cb27-314" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">50</span>, <span class="at">col =</span> <span class="st">'gray'</span>, <span class="at">lwd =</span> <span class="dv">3</span>,</span>
+<span id="cb27-315"><a href="#cb27-315" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Densità"</span>,</span>
+<span id="cb27-316"><a href="#cb27-316" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"sigma"</span></span>
+<span id="cb27-317"><a href="#cb27-317" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-318"><a href="#cb27-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-319"><a href="#cb27-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-320"><a href="#cb27-320" aria-hidden="true" tabindex="-1"></a>In questo secondo caso, più realistico, il modello diventa il seguente.</span>
 <span id="cb27-321"><a href="#cb27-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-322"><a href="#cb27-322" aria-hidden="true" tabindex="-1"></a>In questo secondo caso, più realistico, il modello diventa il seguente.</span>
-<span id="cb27-323"><a href="#cb27-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-324"><a href="#cb27-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb27-325"><a href="#cb27-325" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{align}</span></span>
-<span id="cb27-326"><a href="#cb27-326" aria-hidden="true" tabindex="-1"></a><span class="in">Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag\\</span></span>
-<span id="cb27-327"><a href="#cb27-327" aria-hidden="true" tabindex="-1"></a><span class="in">\mu &amp;\sim \mathcal{N}(25, 2) \notag\\</span></span>
-<span id="cb27-328"><a href="#cb27-328" aria-hidden="true" tabindex="-1"></a><span class="in">\sigma &amp;\sim \mbox{Cauchy}(0, 15) \notag</span></span>
-<span id="cb27-329"><a href="#cb27-329" aria-hidden="true" tabindex="-1"></a><span class="in">\end{align}</span></span>
-<span id="cb27-330"><a href="#cb27-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-331"><a href="#cb27-331" aria-hidden="true" tabindex="-1"></a>Il modello precedente è simile a quello esaminato in precedenza, eccetto che abbiamo quantificato la nostra incertezza relativa a $\sigma$ (che è ignota) mediante una distribuzione a priori $\mbox{Cauchy}(0, 15)$.</span>
-<span id="cb27-332"><a href="#cb27-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-333"><a href="#cb27-333" aria-hidden="true" tabindex="-1"></a>La procedura MCMC utilizzata da Stan è basata su un campionamento Monte Carlo Hamiltoniano che non richiede l'uso di distribuzioni a priori coniugate. Pertanto è possibile scegliere per i parametri una qualunque distribuzione a priori. Nel caso presente, appunto, per $\sigma$ ho scelto una $\mbox{Cauchy}(0, 15)$. Per un tale caso non è possibile ottenere la derivazione analitica della distribuzione a posteriori di $\mu$. È dunque necessario procedere con il campionamento MCMC.</span>
-<span id="cb27-334"><a href="#cb27-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-335"><a href="#cb27-335" aria-hidden="true" tabindex="-1"></a>Scrivo il modello in linguaggio in Stan.</span>
-<span id="cb27-336"><a href="#cb27-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-339"><a href="#cb27-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-340"><a href="#cb27-340" aria-hidden="true" tabindex="-1"></a>model_string_2 <span class="ot">=</span> <span class="st">"</span></span>
-<span id="cb27-341"><a href="#cb27-341" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
-<span id="cb27-342"><a href="#cb27-342" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; N;</span></span>
-<span id="cb27-343"><a href="#cb27-343" aria-hidden="true" tabindex="-1"></a><span class="st">  vector[N] y;</span></span>
-<span id="cb27-344"><a href="#cb27-344" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb27-345"><a href="#cb27-345" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
-<span id="cb27-346"><a href="#cb27-346" aria-hidden="true" tabindex="-1"></a><span class="st">  real mu;</span></span>
-<span id="cb27-347"><a href="#cb27-347" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; sigma;</span></span>
-<span id="cb27-348"><a href="#cb27-348" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb27-349"><a href="#cb27-349" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
-<span id="cb27-350"><a href="#cb27-350" aria-hidden="true" tabindex="-1"></a><span class="st">  mu ~ normal(25, 2);</span></span>
-<span id="cb27-351"><a href="#cb27-351" aria-hidden="true" tabindex="-1"></a><span class="st">  sigma ~ cauchy(0, 15);</span></span>
-<span id="cb27-352"><a href="#cb27-352" aria-hidden="true" tabindex="-1"></a><span class="st">  y ~ normal(mu, sigma);</span></span>
-<span id="cb27-353"><a href="#cb27-353" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb27-354"><a href="#cb27-354" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb27-355"><a href="#cb27-355" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(model_string_2, <span class="at">con =</span> <span class="st">"code/normal_mod_2.stan"</span>)</span>
-<span id="cb27-356"><a href="#cb27-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-357"><a href="#cb27-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-358"><a href="#cb27-358" aria-hidden="true" tabindex="-1"></a>Creo l'oggetto di classe <span class="in">`list`</span> che contiene i dati.</span>
-<span id="cb27-359"><a href="#cb27-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-362"><a href="#cb27-362" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-363"><a href="#cb27-363" aria-hidden="true" tabindex="-1"></a>dlist2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb27-364"><a href="#cb27-364" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">length</span>(df<span class="sc">$</span>y),</span>
-<span id="cb27-365"><a href="#cb27-365" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df<span class="sc">$</span>y</span>
-<span id="cb27-366"><a href="#cb27-366" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-367"><a href="#cb27-367" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-368"><a href="#cb27-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-369"><a href="#cb27-369" aria-hidden="true" tabindex="-1"></a>Leggo il file con il codice Stan del modello.</span>
-<span id="cb27-370"><a href="#cb27-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-373"><a href="#cb27-373" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-374"><a href="#cb27-374" aria-hidden="true" tabindex="-1"></a>file2 <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"code"</span>, <span class="st">"normal_mod_2.stan"</span>)</span>
-<span id="cb27-375"><a href="#cb27-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-376"><a href="#cb27-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-377"><a href="#cb27-377" aria-hidden="true" tabindex="-1"></a>Compilo il modello.</span>
-<span id="cb27-378"><a href="#cb27-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-381"><a href="#cb27-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-382"><a href="#cb27-382" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(file2)</span>
-<span id="cb27-383"><a href="#cb27-383" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-384"><a href="#cb27-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-385"><a href="#cb27-385" aria-hidden="true" tabindex="-1"></a>Eseguo il campionamento MCMC.</span>
-<span id="cb27-386"><a href="#cb27-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-387"><a href="#cb27-387" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE, warning=FALSE, results='hide'}</span></span>
-<span id="cb27-388"><a href="#cb27-388" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> mod2<span class="sc">$</span><span class="fu">sample</span>(</span>
-<span id="cb27-389"><a href="#cb27-389" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dlist2,</span>
-<span id="cb27-390"><a href="#cb27-390" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> 50000L,</span>
-<span id="cb27-391"><a href="#cb27-391" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> 2000L,</span>
-<span id="cb27-392"><a href="#cb27-392" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> 4L,</span>
-<span id="cb27-393"><a href="#cb27-393" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">0</span></span>
-<span id="cb27-394"><a href="#cb27-394" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-395"><a href="#cb27-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-396"><a href="#cb27-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-397"><a href="#cb27-397" aria-hidden="true" tabindex="-1"></a>In questo modo ottengo le seguenti stime a posteriori dei parametri.</span>
-<span id="cb27-398"><a href="#cb27-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-401"><a href="#cb27-401" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-402"><a href="#cb27-402" aria-hidden="true" tabindex="-1"></a>fit2<span class="sc">$</span><span class="fu">summary</span>(<span class="fu">c</span>(<span class="st">"mu"</span>, <span class="st">"sigma"</span>))</span>
-<span id="cb27-403"><a href="#cb27-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-404"><a href="#cb27-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-405"><a href="#cb27-405" aria-hidden="true" tabindex="-1"></a>Dopo avere trasformato l'oggetto <span class="in">`fit2`</span> nel formato <span class="in">`stanfit`</span>, trovo l'intervallo di credibilità al 95%.</span>
-<span id="cb27-406"><a href="#cb27-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-409"><a href="#cb27-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-410"><a href="#cb27-410" aria-hidden="true" tabindex="-1"></a>stanfit <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">read_stan_csv</span>(fit2<span class="sc">$</span><span class="fu">output_files</span>())</span>
-<span id="cb27-411"><a href="#cb27-411" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> rstantools<span class="sc">::</span><span class="fu">posterior_interval</span>(</span>
-<span id="cb27-412"><a href="#cb27-412" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(stanfit), </span>
-<span id="cb27-413"><a href="#cb27-413" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fl">0.95</span></span>
-<span id="cb27-414"><a href="#cb27-414" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-415"><a href="#cb27-415" aria-hidden="true" tabindex="-1"></a>out</span>
-<span id="cb27-416"><a href="#cb27-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-417"><a href="#cb27-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-418"><a href="#cb27-418" aria-hidden="true" tabindex="-1"></a>Come in precedenza, uso la funzione <span class="in">`mcmc_areas()`</span> per creare una rappresentazione grafica della distribuzione a posteriori di $\mu$.</span>
-<span id="cb27-419"><a href="#cb27-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-422"><a href="#cb27-422" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb27-423"><a href="#cb27-423" aria-hidden="true" tabindex="-1"></a>mu_draws <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(stanfit, <span class="at">pars =</span><span class="st">"mu"</span>)</span>
-<span id="cb27-424"><a href="#cb27-424" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_areas</span>(mu_draws, <span class="at">prob =</span> <span class="fl">0.95</span>) </span>
-<span id="cb27-425"><a href="#cb27-425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb27-426"><a href="#cb27-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-427"><a href="#cb27-427" aria-hidden="true" tabindex="-1"></a>Considerati i dati osservati e le mie ipotesi a priori sui parametri, posso dunque concludere, con un grado di certezza soggettiva del 95%, che la media della popolazione dei punteggi BDI-II dei pazienti clinici depressi è compresa nell'intervallo <span class="sc">\[</span><span class="in">`r round(out[1, 1], 2)`</span>, <span class="in">`r round(out[1, 2], 2)`</span><span class="sc">\]</span>.</span>
-<span id="cb27-428"><a href="#cb27-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-429"><a href="#cb27-429" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ## Il modello normale con `brms::brm()` --&gt;</span></span>
-<span id="cb27-430"><a href="#cb27-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-431"><a href="#cb27-431" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Ripetiamo qui l'analisi precedente usando la funzione `brms::brm()`. In questo caso non è necessario scrivere il modello in forma esplicita, come abbiamo fatto in precedenza. La sintassi seguente viene trasformata in maniera automatica in linguaggio Stan prima di adattare il modello ai dati: --&gt;</span></span>
-<span id="cb27-432"><a href="#cb27-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-433"><a href="#cb27-433" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
-<span id="cb27-434"><a href="#cb27-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-435"><a href="#cb27-435" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fit &lt;- brm( --&gt;</span></span>
-<span id="cb27-436"><a href="#cb27-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-437"><a href="#cb27-437" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   data = df, --&gt;</span></span>
-<span id="cb27-438"><a href="#cb27-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-439"><a href="#cb27-439" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   family = gaussian(), --&gt;</span></span>
-<span id="cb27-440"><a href="#cb27-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-441"><a href="#cb27-441" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   y ~ 1, --&gt;</span></span>
-<span id="cb27-442"><a href="#cb27-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-443"><a href="#cb27-443" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   prior = c( --&gt;</span></span>
-<span id="cb27-444"><a href="#cb27-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-445"><a href="#cb27-445" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     prior(normal(25, 2), class = Intercept), --&gt;</span></span>
-<span id="cb27-446"><a href="#cb27-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-447"><a href="#cb27-447" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     prior(normal(5, 2.5), class = sigma) --&gt;</span></span>
-<span id="cb27-448"><a href="#cb27-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-449"><a href="#cb27-449" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ), --&gt;</span></span>
-<span id="cb27-450"><a href="#cb27-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-451"><a href="#cb27-451" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   iter = 4000, --&gt;</span></span>
-<span id="cb27-452"><a href="#cb27-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-453"><a href="#cb27-453" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   refresh = 0, --&gt;</span></span>
-<span id="cb27-454"><a href="#cb27-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-455"><a href="#cb27-455" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   chains = 4, --&gt;</span></span>
-<span id="cb27-456"><a href="#cb27-456" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-457"><a href="#cb27-457" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   backend = "cmdstanr" --&gt;</span></span>
-<span id="cb27-458"><a href="#cb27-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-459"><a href="#cb27-459" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ) --&gt;</span></span>
-<span id="cb27-460"><a href="#cb27-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-461"><a href="#cb27-461" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
-<span id="cb27-462"><a href="#cb27-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-463"><a href="#cb27-463" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- I trace-plot si ottengono nel modo seguente: --&gt;</span></span>
-<span id="cb27-464"><a href="#cb27-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-465"><a href="#cb27-465" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
-<span id="cb27-466"><a href="#cb27-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-467"><a href="#cb27-467" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- plot(fit) --&gt;</span></span>
-<span id="cb27-468"><a href="#cb27-468" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-469"><a href="#cb27-469" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
-<span id="cb27-470"><a href="#cb27-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-471"><a href="#cb27-471" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- La stima a posteriori di $\mu$ è fornita dalla funzione `fixef()`: --&gt;</span></span>
-<span id="cb27-472"><a href="#cb27-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-473"><a href="#cb27-473" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
-<span id="cb27-474"><a href="#cb27-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-475"><a href="#cb27-475" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fixef(fit) --&gt;</span></span>
-<span id="cb27-476"><a href="#cb27-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-477"><a href="#cb27-477" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
-<span id="cb27-478"><a href="#cb27-478" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-479"><a href="#cb27-479" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- In conclusione, la funzione `brms::brm()` produce lo stesso risultato (considerate le fluttuazioni nella stima numerica MCMC) trovato in precedenza usando un modello scritto in Stan. --&gt;</span></span>
-<span id="cb27-480"><a href="#cb27-480" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-481"><a href="#cb27-481" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commenti e considerazioni finali {.unnumbered}</span></span>
-<span id="cb27-482"><a href="#cb27-482" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-483"><a href="#cb27-483" aria-hidden="true" tabindex="-1"></a>In questo capitolo abbiamo visto come calcolare l'intervallo di credibilità per la media di una v.c. Normale. La domanda più ovvia di analisi dei dati, dopo avere visto come trovare l'intervallo di credibilità per la media di un solo gruppo, riguarda il confronto tra le medie di due gruppi. Il confronto tra le medie di due gruppi può essere considerato come un caso particolare di un metodo più generale di analisi dei dati, chiamato analisi di regressione lineare. Prima di discutere il problema del confronto tra le medie di due gruppi è dunque necessario esaminare il modello statistico della regressione lineare.</span>
+<span id="cb27-322"><a href="#cb27-322" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-323"><a href="#cb27-323" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
+<span id="cb27-324"><a href="#cb27-324" aria-hidden="true" tabindex="-1"></a>Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag<span class="sc">\\</span></span>
+<span id="cb27-325"><a href="#cb27-325" aria-hidden="true" tabindex="-1"></a>\mu &amp;\sim \mathcal{N}(25, 2) \notag<span class="sc">\\</span></span>
+<span id="cb27-326"><a href="#cb27-326" aria-hidden="true" tabindex="-1"></a>\sigma &amp;\sim \mbox{Cauchy}(0, 15) \notag</span>
+<span id="cb27-327"><a href="#cb27-327" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
+<span id="cb27-328"><a href="#cb27-328" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb27-329"><a href="#cb27-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-330"><a href="#cb27-330" aria-hidden="true" tabindex="-1"></a>Il modello precedente è simile a quello esaminato in precedenza, eccetto che abbiamo quantificato la nostra incertezza relativa a $\sigma$ (che è ignota) mediante una distribuzione a priori $\mbox{Cauchy}(0, 15)$.</span>
+<span id="cb27-331"><a href="#cb27-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-332"><a href="#cb27-332" aria-hidden="true" tabindex="-1"></a>La procedura MCMC utilizzata da Stan è basata su un campionamento Monte Carlo Hamiltoniano che non richiede l'uso di distribuzioni a priori coniugate. Pertanto è possibile scegliere per i parametri una qualunque distribuzione a priori. Nel caso presente, appunto, per $\sigma$ ho scelto una $\mbox{Cauchy}(0, 15)$. Per un tale caso non è possibile ottenere la derivazione analitica della distribuzione a posteriori di $\mu$. È dunque necessario procedere con il campionamento MCMC.</span>
+<span id="cb27-333"><a href="#cb27-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-334"><a href="#cb27-334" aria-hidden="true" tabindex="-1"></a>Scrivo il modello in linguaggio in Stan.</span>
+<span id="cb27-335"><a href="#cb27-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-338"><a href="#cb27-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-339"><a href="#cb27-339" aria-hidden="true" tabindex="-1"></a>model_string_2 <span class="ot">=</span> <span class="st">"</span></span>
+<span id="cb27-340"><a href="#cb27-340" aria-hidden="true" tabindex="-1"></a><span class="st">data {</span></span>
+<span id="cb27-341"><a href="#cb27-341" aria-hidden="true" tabindex="-1"></a><span class="st">  int&lt;lower=0&gt; N;</span></span>
+<span id="cb27-342"><a href="#cb27-342" aria-hidden="true" tabindex="-1"></a><span class="st">  vector[N] y;</span></span>
+<span id="cb27-343"><a href="#cb27-343" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb27-344"><a href="#cb27-344" aria-hidden="true" tabindex="-1"></a><span class="st">parameters {</span></span>
+<span id="cb27-345"><a href="#cb27-345" aria-hidden="true" tabindex="-1"></a><span class="st">  real mu;</span></span>
+<span id="cb27-346"><a href="#cb27-346" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0&gt; sigma;</span></span>
+<span id="cb27-347"><a href="#cb27-347" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb27-348"><a href="#cb27-348" aria-hidden="true" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb27-349"><a href="#cb27-349" aria-hidden="true" tabindex="-1"></a><span class="st">  mu ~ normal(25, 2);</span></span>
+<span id="cb27-350"><a href="#cb27-350" aria-hidden="true" tabindex="-1"></a><span class="st">  sigma ~ cauchy(0, 15);</span></span>
+<span id="cb27-351"><a href="#cb27-351" aria-hidden="true" tabindex="-1"></a><span class="st">  y ~ normal(mu, sigma);</span></span>
+<span id="cb27-352"><a href="#cb27-352" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb27-353"><a href="#cb27-353" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb27-354"><a href="#cb27-354" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(model_string_2, <span class="at">con =</span> <span class="st">"code/normal_mod_2.stan"</span>)</span>
+<span id="cb27-355"><a href="#cb27-355" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-356"><a href="#cb27-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-357"><a href="#cb27-357" aria-hidden="true" tabindex="-1"></a>Creo l'oggetto di classe <span class="in">`list`</span> che contiene i dati.</span>
+<span id="cb27-358"><a href="#cb27-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-361"><a href="#cb27-361" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-362"><a href="#cb27-362" aria-hidden="true" tabindex="-1"></a>dlist2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb27-363"><a href="#cb27-363" aria-hidden="true" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">length</span>(df<span class="sc">$</span>y),</span>
+<span id="cb27-364"><a href="#cb27-364" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df<span class="sc">$</span>y</span>
+<span id="cb27-365"><a href="#cb27-365" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-366"><a href="#cb27-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-367"><a href="#cb27-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-368"><a href="#cb27-368" aria-hidden="true" tabindex="-1"></a>Leggo il file con il codice Stan del modello.</span>
+<span id="cb27-369"><a href="#cb27-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-372"><a href="#cb27-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-373"><a href="#cb27-373" aria-hidden="true" tabindex="-1"></a>file2 <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"code"</span>, <span class="st">"normal_mod_2.stan"</span>)</span>
+<span id="cb27-374"><a href="#cb27-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-375"><a href="#cb27-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-376"><a href="#cb27-376" aria-hidden="true" tabindex="-1"></a>Compilo il modello.</span>
+<span id="cb27-377"><a href="#cb27-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-380"><a href="#cb27-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-381"><a href="#cb27-381" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">cmdstan_model</span>(file2)</span>
+<span id="cb27-382"><a href="#cb27-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-383"><a href="#cb27-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-384"><a href="#cb27-384" aria-hidden="true" tabindex="-1"></a>Eseguo il campionamento MCMC.</span>
+<span id="cb27-385"><a href="#cb27-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-386"><a href="#cb27-386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE, warning=FALSE, results='hide'}</span></span>
+<span id="cb27-387"><a href="#cb27-387" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> mod2<span class="sc">$</span><span class="fu">sample</span>(</span>
+<span id="cb27-388"><a href="#cb27-388" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dlist2,</span>
+<span id="cb27-389"><a href="#cb27-389" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_sampling =</span> 50000L,</span>
+<span id="cb27-390"><a href="#cb27-390" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter_warmup =</span> 2000L,</span>
+<span id="cb27-391"><a href="#cb27-391" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> 4L,</span>
+<span id="cb27-392"><a href="#cb27-392" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">0</span></span>
+<span id="cb27-393"><a href="#cb27-393" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-394"><a href="#cb27-394" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-395"><a href="#cb27-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-396"><a href="#cb27-396" aria-hidden="true" tabindex="-1"></a>In questo modo ottengo le seguenti stime a posteriori dei parametri.</span>
+<span id="cb27-397"><a href="#cb27-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-400"><a href="#cb27-400" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-401"><a href="#cb27-401" aria-hidden="true" tabindex="-1"></a>fit2<span class="sc">$</span><span class="fu">summary</span>(<span class="fu">c</span>(<span class="st">"mu"</span>, <span class="st">"sigma"</span>))</span>
+<span id="cb27-402"><a href="#cb27-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-403"><a href="#cb27-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-404"><a href="#cb27-404" aria-hidden="true" tabindex="-1"></a>Dopo avere trasformato l'oggetto <span class="in">`fit2`</span> nel formato <span class="in">`stanfit`</span>, trovo l'intervallo di credibilità al 95%.</span>
+<span id="cb27-405"><a href="#cb27-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-408"><a href="#cb27-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-409"><a href="#cb27-409" aria-hidden="true" tabindex="-1"></a>stanfit <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">read_stan_csv</span>(fit2<span class="sc">$</span><span class="fu">output_files</span>())</span>
+<span id="cb27-410"><a href="#cb27-410" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> rstantools<span class="sc">::</span><span class="fu">posterior_interval</span>(</span>
+<span id="cb27-411"><a href="#cb27-411" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>(stanfit), </span>
+<span id="cb27-412"><a href="#cb27-412" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fl">0.95</span></span>
+<span id="cb27-413"><a href="#cb27-413" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-414"><a href="#cb27-414" aria-hidden="true" tabindex="-1"></a>out</span>
+<span id="cb27-415"><a href="#cb27-415" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-416"><a href="#cb27-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-417"><a href="#cb27-417" aria-hidden="true" tabindex="-1"></a>Come in precedenza, uso la funzione <span class="in">`mcmc_areas()`</span> per creare una rappresentazione grafica della distribuzione a posteriori di $\mu$.</span>
+<span id="cb27-418"><a href="#cb27-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-421"><a href="#cb27-421" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-422"><a href="#cb27-422" aria-hidden="true" tabindex="-1"></a>mu_draws <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(stanfit, <span class="at">pars =</span><span class="st">"mu"</span>)</span>
+<span id="cb27-423"><a href="#cb27-423" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_areas</span>(mu_draws, <span class="at">prob =</span> <span class="fl">0.95</span>) </span>
+<span id="cb27-424"><a href="#cb27-424" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb27-425"><a href="#cb27-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-426"><a href="#cb27-426" aria-hidden="true" tabindex="-1"></a>Considerati i dati osservati e le mie ipotesi a priori sui parametri, posso dunque concludere, con un grado di certezza soggettiva del 95%, che la media della popolazione dei punteggi BDI-II dei pazienti clinici depressi è compresa nell'intervallo <span class="sc">\[</span><span class="in">`r round(out[1, 1], 2)`</span>, <span class="in">`r round(out[1, 2], 2)`</span><span class="sc">\]</span>.</span>
+<span id="cb27-427"><a href="#cb27-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-428"><a href="#cb27-428" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ## Il modello normale con `brms::brm()` --&gt;</span></span>
+<span id="cb27-429"><a href="#cb27-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-430"><a href="#cb27-430" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Ripetiamo qui l'analisi precedente usando la funzione `brms::brm()`. In questo caso non è necessario scrivere il modello in forma esplicita, come abbiamo fatto in precedenza. La sintassi seguente viene trasformata in maniera automatica in linguaggio Stan prima di adattare il modello ai dati: --&gt;</span></span>
+<span id="cb27-431"><a href="#cb27-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-432"><a href="#cb27-432" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
+<span id="cb27-433"><a href="#cb27-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-434"><a href="#cb27-434" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fit &lt;- brm( --&gt;</span></span>
+<span id="cb27-435"><a href="#cb27-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-436"><a href="#cb27-436" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   data = df, --&gt;</span></span>
+<span id="cb27-437"><a href="#cb27-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-438"><a href="#cb27-438" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   family = gaussian(), --&gt;</span></span>
+<span id="cb27-439"><a href="#cb27-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-440"><a href="#cb27-440" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   y ~ 1, --&gt;</span></span>
+<span id="cb27-441"><a href="#cb27-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-442"><a href="#cb27-442" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   prior = c( --&gt;</span></span>
+<span id="cb27-443"><a href="#cb27-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-444"><a href="#cb27-444" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     prior(normal(25, 2), class = Intercept), --&gt;</span></span>
+<span id="cb27-445"><a href="#cb27-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-446"><a href="#cb27-446" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     prior(normal(5, 2.5), class = sigma) --&gt;</span></span>
+<span id="cb27-447"><a href="#cb27-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-448"><a href="#cb27-448" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ), --&gt;</span></span>
+<span id="cb27-449"><a href="#cb27-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-450"><a href="#cb27-450" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   iter = 4000, --&gt;</span></span>
+<span id="cb27-451"><a href="#cb27-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-452"><a href="#cb27-452" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   refresh = 0, --&gt;</span></span>
+<span id="cb27-453"><a href="#cb27-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-454"><a href="#cb27-454" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   chains = 4, --&gt;</span></span>
+<span id="cb27-455"><a href="#cb27-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-456"><a href="#cb27-456" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   backend = "cmdstanr" --&gt;</span></span>
+<span id="cb27-457"><a href="#cb27-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-458"><a href="#cb27-458" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ) --&gt;</span></span>
+<span id="cb27-459"><a href="#cb27-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-460"><a href="#cb27-460" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb27-461"><a href="#cb27-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-462"><a href="#cb27-462" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- I trace-plot si ottengono nel modo seguente: --&gt;</span></span>
+<span id="cb27-463"><a href="#cb27-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-464"><a href="#cb27-464" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
+<span id="cb27-465"><a href="#cb27-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-466"><a href="#cb27-466" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- plot(fit) --&gt;</span></span>
+<span id="cb27-467"><a href="#cb27-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-468"><a href="#cb27-468" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb27-469"><a href="#cb27-469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-470"><a href="#cb27-470" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- La stima a posteriori di $\mu$ è fornita dalla funzione `fixef()`: --&gt;</span></span>
+<span id="cb27-471"><a href="#cb27-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-472"><a href="#cb27-472" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r} --&gt;</span></span>
+<span id="cb27-473"><a href="#cb27-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-474"><a href="#cb27-474" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- fixef(fit) --&gt;</span></span>
+<span id="cb27-475"><a href="#cb27-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-476"><a href="#cb27-476" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb27-477"><a href="#cb27-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-478"><a href="#cb27-478" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- In conclusione, la funzione `brms::brm()` produce lo stesso risultato (considerate le fluttuazioni nella stima numerica MCMC) trovato in precedenza usando un modello scritto in Stan. --&gt;</span></span>
+<span id="cb27-479"><a href="#cb27-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-480"><a href="#cb27-480" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commenti e considerazioni finali {.unnumbered}</span></span>
+<span id="cb27-481"><a href="#cb27-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-482"><a href="#cb27-482" aria-hidden="true" tabindex="-1"></a>In questo capitolo abbiamo visto come calcolare l'intervallo di credibilità per la media di una v.c. Normale. La domanda più ovvia di analisi dei dati, dopo avere visto come trovare l'intervallo di credibilità per la media di un solo gruppo, riguarda il confronto tra le medie di due gruppi. Il confronto tra le medie di due gruppi può essere considerato come un caso particolare di un metodo più generale di analisi dei dati, chiamato analisi di regressione lineare. Prima di discutere il problema del confronto tra le medie di due gruppi è dunque necessario esaminare il modello statistico della regressione lineare.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

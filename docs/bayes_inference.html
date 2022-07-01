@@ -403,13 +403,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
-    </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
+    </ul>
+  </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
@@ -466,7 +466,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<!-- e, nell'ultima parte della dispensa verrà discusso l'argomento più difficile, quello dell'inferenza. Prima di affrontare il secondo tema, l'analisi descrittiva dei dati, sarà necessario introdurre il linguaggio di programmazione statistica R (un'introduzione a R è fornita in Appendice). Inoltre, prima di potere discutere l'inferenza, dovranno essere introdotti i concetti di base della teoria delle probabilità, in quanto l'inferenza non è che l'applicazione della teoria delle probabilità all'analisi dei dati. -->
+<p>In questa sezione della dispensa verrà discusso l’argomento più difficile, quello dell’inferenza bayesiana.</p>
+<ul>
+<li>Nel <a href="025_intro_bayes.html"><span>Capitolo&nbsp;15</span></a> verrà introdotto il flusso di lavoro bayesiano.</li>
+<li>Il <a href="026_subj_prop.html"><span>Capitolo&nbsp;16</span></a> spiega cosa significa, in termini bayesiani, fare un’inferenza. Sarà considerato qui il caso più semplice, ovvero quello di una proporzione.</li>
+<li>Il <a href="029_conjugate_families.html"><span>Capitolo&nbsp;17</span></a> mostra come la distribuzione a posteriori possa essere derivata per via analitica nel caso delle famiglie coniugate di distribuzioni. Verrà qui esaminato lo schema beta-binomiale.</li>
+<li>Il <a href="030_balance_prior_post.html"><span>Capitolo&nbsp;18</span></a> discute l’influenza della distribuzione a priori sulla distribuzione a posteriori.</li>
+<li>Il <a href="036_posterior_sim.html"><span>Capitolo&nbsp;19</span></a> mostra come la distribuzione a posteriori possa essere approssimata per via numerica, quando una derivazione formale non è possibile. Verranno descritto il metodo basato su griglia e l’algoritmo di Metropolis.</li>
+<li>Il <a href="040_beta_binomial_mod.html"><span>Capitolo&nbsp;20</span></a> fornisce un’introduzione al linguaggio di programmazione probabilistico Stan. L’algoritmo di Metropolis fornisce sempre una buona approssimazione alla distribuzione a posteriori. Ma ha lo svantaggio di essere poco efficiente – ovvero di richiedere un numero molto grande di iterazioni per produrre un’approssimazione accettabile. Nel caso di modelli statistici complessi, le simulazioni MCMC richiedono un tempo molto lungo (si parla di ore, giorni, settimane…). In tali circostanze è ovvio che l’efficienza del campionamento diventa importante. L’algoritmo di Metropolis è molto semplice ma è poco efficiente. Recentemente sono stati sviluppati algoritmi molto più efficienti. Il linguaggio probabilistico Stan implementa il campionamento hamiltoniano che, correntemente, è il campionamento MCMC più efficiente. Tale metodo di campionamento è anche implementato in software che sono più semplici da usare di Stan (si veda, ad esempio, la funzione <code>brm()</code> del pacchetto <span class="math inline">\(\mathsf{R}\)</span> <code>brms</code>). Tuttavia, per scopi didattici, nel testo presente useremo Stan.</li>
+</ul>
+<!-- Prima di affrontare il secondo tema, l'analisi descrittiva dei dati, sarà necessario introdurre il linguaggio di programmazione statistica R (un'introduzione a R è fornita in Appendice). Inoltre, prima di potere discutere l'inferenza, dovranno essere introdotti i concetti di base della teoria delle probabilità, in quanto l'inferenza non è che l'applicazione della teoria delle probabilità all'analisi dei dati.  -->
 
 
 <!-- -->
@@ -617,7 +626,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Parte 4: Inferenza bayesiana {#sec-bayes-inference}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- e, nell'ultima parte della dispensa verrà discusso l'argomento più difficile, quello dell'inferenza. Prima di affrontare il secondo tema, l'analisi descrittiva dei dati, sarà necessario introdurre il linguaggio di programmazione statistica R (un'introduzione a R è fornita in Appendice). Inoltre, prima di potere discutere l'inferenza, dovranno essere introdotti i concetti di base della teoria delle probabilità, in quanto l'inferenza non è che l'applicazione della teoria delle probabilità all'analisi dei dati. --&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>In questa sezione della dispensa verrà discusso l'argomento più difficile, quello dell'inferenza bayesiana.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Nel @sec-bayes-workflow verrà introdotto il flusso di lavoro bayesiano.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il @sec-subj-think-prop spiega cosa significa, in termini bayesiani, fare un'inferenza. Sarà considerato qui il caso più semplice, ovvero quello di una proporzione.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il @sec-distr-coniugate mostra come la distribuzione a posteriori possa essere derivata per via analitica nel caso delle famiglie coniugate di distribuzioni. Verrà qui esaminato lo schema beta-binomiale.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il @sec-prior-influence discute l'influenza della distribuzione a priori sulla distribuzione a posteriori.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il @sec-grid-metropolis mostra come la distribuzione a posteriori possa essere approssimata per via numerica, quando una derivazione formale non è possibile. Verranno descritto il metodo basato su griglia e l'algoritmo di Metropolis.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Il @sec-stan-beta-binom fornisce un'introduzione al linguaggio di programmazione probabilistico Stan. L'algoritmo di Metropolis fornisce sempre una buona approssimazione alla distribuzione a posteriori. Ma ha lo svantaggio di essere poco efficiente -- ovvero di richiedere un numero molto grande di iterazioni per produrre un'approssimazione accettabile. Nel caso di modelli statistici complessi, le simulazioni MCMC richiedono un tempo molto lungo (si parla di ore, giorni, settimane...). In tali circostanze è ovvio che l'efficienza del campionamento diventa importante. L'algoritmo di Metropolis è molto semplice ma è poco efficiente. Recentemente sono stati sviluppati algoritmi molto più efficienti. Il linguaggio probabilistico Stan implementa il campionamento hamiltoniano che, correntemente, è il campionamento MCMC più efficiente. Tale metodo di campionamento è anche implementato in software che sono più semplici da usare di Stan (si veda, ad esempio, la funzione <span class="in">`brm()`</span> del pacchetto $\mathsf{R}$ <span class="in">`brms`</span>). Tuttavia, per scopi didattici, nel testo presente useremo Stan.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Prima di affrontare il secondo tema, l'analisi descrittiva dei dati, sarà necessario introdurre il linguaggio di programmazione statistica R (un'introduzione a R è fornita in Appendice). Inoltre, prima di potere discutere l'inferenza, dovranno essere introdotti i concetti di base della teoria delle probabilità, in quanto l'inferenza non è che l'applicazione della teoria delle probabilità all'analisi dei dati.  --&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

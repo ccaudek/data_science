@@ -407,12 +407,12 @@ div.csl-indent {
   <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
-    </ul>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
+</li>
+    </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
@@ -472,7 +472,7 @@ div.csl-indent {
   </div>
   
 
-</header><p>Come discusso nel Paragrafo @ref(cmdstanr-gautret), le catene di Markov forniscono un’approssimazione che tende a convergere alla distribuzione a posteriori. “Approssimazione” e “convergenza” sono le parole chiave qui: il punto è che il campionamento MCMC non è perfetto. Questo solleva le seguenti domande:</p>
+</header><p>Come è stato discusso nel <span class="citation" data-cites="cmdstanr-gautret">(<a href="999_refs.html#ref-cmdstanr-gautret" role="doc-biblioref"><strong>cmdstanr-gautret?</strong></a>)</span>, le catene di Markov forniscono un’approssimazione che tende a convergere alla distribuzione a posteriori. “Approssimazione” e “convergenza” sono le parole chiave qui: il punto è che il campionamento MCMC non è perfetto. Questo solleva le seguenti domande:</p>
 <ul>
 <li>A cosa corrisponde, dal punto di vista grafico, una “buona” catena di Markov?</li>
 <li>Come possiamo sapere se il campione prodotto dalla catena di Markov costituisce un’approssimazione adeguata della distribuzione a posteriori?</li>
@@ -483,34 +483,34 @@ div.csl-indent {
 <section id="esame-dei-trace-plot" class="level2" data-number="21.1"><h2 data-number="21.1" class="anchored" data-anchor-id="esame-dei-trace-plot">
 <span class="header-section-number">21.1</span> Esame dei <em>trace plot</em>
 </h2>
-<p>La convergenza e il “mixing” possono essere controllate mediante il <em>trace plot</em> che mostra l’andamento delle simulazioni e ci dice se stiamo effettivamente utilizzando una distribuzione limite. Consideriamo nuovamente il <em>trace plot</em> del simulazione Beta-Binomiale della figura @ref(fig:trace-plot-gautret-2):</p>
+<p>La convergenza e il “mixing” possono essere controllate mediante il <em>trace plot</em> che mostra l’andamento delle simulazioni e ci dice se stiamo effettivamente utilizzando una distribuzione limite. Consideriamo nuovamente il <em>trace plot</em> del simulazione Beta-Binomiale della figura <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span>21.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="041_mcmc_diagnostics_files/figure-html/trace-plot-gautret-2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Trace plot per il modello Beta-Binomiale dei dati di Gautret et al.(2020).</figcaption><p></p>
+<div id="fig-trace-plot-gautret-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><p><img src="041_mcmc_diagnostics_files/figure-html/fig-trace-plot-gautret-2-1.png" class="img-fluid figure-img" width="576"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 21.1: Trace plot per il modello Beta-Binomiale dei dati di Gautret et al.(2020).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La figura @ref(fig:trace-plot-gautret-2) fornisce un esempio perfetto di come dovrebbero apparire i <em>trace plot</em>. Quando le catene markoviane raggiungono uno stato stazionario e sono stabili ciò significa che hanno raggiunto la distribuzione stazionaria e il <em>trace plot</em> rivela un’assenza di struttura e diventa simile alla rappresentazione del rumore bianco, come nella figura @ref(fig:trace-plot-gautret-2).</p>
-<p>Una mancanza di convergenza è invece indicata dalla figura @ref(fig:bad-trace-bayesrules)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>La <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span>21.1</span></a> fornisce un esempio perfetto di come dovrebbero apparire i <em>trace plot</em>. Quando le catene markoviane raggiungono uno stato stazionario e sono stabili ciò significa che hanno raggiunto la distribuzione stazionaria e il <em>trace plot</em> rivela un’assenza di struttura e diventa simile alla rappresentazione del rumore bianco, come nella <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span>21.1</span></a>.</p>
+<p>Una mancanza di convergenza è invece indicata dalla <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-bad-trace-bayesrules" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="images/bad-trace-bayesrules.png" class="img-fluid figure-img" width="1181"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Trace plots (a sinistra) e corrispondenti grafici di densità (a destra) di due ipotetiche catene di Markov. Queste figure forniscono due esempi di come potrebbero apparire delle catene di Markov non stazionarie. Le linee nere sovrapposte alle densità empiriche (a destra) rappresentano una ipotetica distribuzione target Beta(11,3).</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 21.2: Trace plots (a sinistra) e corrispondenti grafici di densità (a destra) di due ipotetiche catene di Markov. Queste figure forniscono due esempi di come potrebbero apparire delle catene di Markov non stazionarie. Le linee nere sovrapposte alle densità empiriche (a destra) rappresentano una ipotetica distribuzione target Beta(11,3).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Nel trace-plot della figura @ref(fig:bad-trace-bayesrules), la tendenza verso il basso indica che la catena A non è stazionaria, ovvero non si mantiene costante all’evolversi nel tempo. La tendenza verso il basso suggerisce inoltre la presenza di una forte correlazione tra i valori della catena: il trace-plot non fornisce una rappresentazione di rumore indipendente. Tutto questo significa che la catena A “si sta mescolando lentamente”. Sebbene le catene di Markov siano intrinsecamente dipendenti, più si comportano come se fossero dei campioni casuali (rumorosi), minore è l’errore dell’approssimazione alla distribuzione a posteriori.</p>
+<p>Nel trace-plot della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a> la tendenza verso il basso indica che la catena A non è stazionaria, ovvero non si mantiene costante all’evolversi nel tempo. La tendenza verso il basso suggerisce inoltre la presenza di una forte correlazione tra i valori della catena: il trace-plot non fornisce una rappresentazione di rumore indipendente. Tutto questo significa che la catena A “si sta mescolando lentamente”. Sebbene le catene di Markov siano intrinsecamente dipendenti, più si comportano come se fossero dei campioni casuali (rumorosi), minore è l’errore dell’approssimazione alla distribuzione a posteriori.</p>
 <p>La catena B presenta un problema diverso. Come evidenziato dalle due linee completamente piatte nel tracciato, essa tende a bloccarsi quando visita valori bassi di <span class="math inline">\(\theta\)</span>.</p>
-<p>Gli istogrammi lisciati della figura @ref(fig:bad-trace-bayesrules) (a destra) confermano che entrambe queste catene sono problematiche: infatti producono approssimazioni scadenti della distribuzione a posteriori che, nell’esempio di <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>, è una <span class="math inline">\(\mbox{Beta}(11, 3)\)</span> (la curva nera nella figura). Consideriamo la catena A. Dal momento che si sta mescolando lentamente, nelle iterazioni eseguite ha esplorato unicamente i valori <span class="math inline">\(\theta\)</span> nell’intervallo da 0.6 a 0.9. Di conseguenza, la sua approssimazione della distribuzione a posteriori sopravvaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> in questo intervallo e, nel contempo, sottovaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> esterni a questo intervallo. Consideriamo ora la catena B. Rimanendo bloccata, la catena B campiona in maniera eccessiva alcuni valori nella coda sinistra della distribuzione a posteriori di <span class="math inline">\(\theta\)</span>. Questo fenomeno produce i picchi che sono presenti nell’approssimazione alla distribuzione a posteriori.</p>
-<p>In pratica, al di là dei presenti esempi “scolastici” (in cui disponiamo di una formulazione analitica della distribuzione a posteriori), non abbiamo mai il privilegio di poter confrontare i risultati del campionamento MCMC con la corretta distribuzione a posteriori. Ecco perché la diagnostica delle catene di Markov è così importante: se vediamo trace-plots come quelli della figura @ref(fig:bad-trace-bayesrules), sappiamo che non abbiamo ottenuto una adeguata approssimazione della distribuzione a posteriori.</p>
+<p>Gli istogrammi lisciati della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a> (a destra) confermano che entrambe queste catene sono problematiche: infatti producono approssimazioni scadenti della distribuzione a posteriori che, nell’esempio di <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>, è una <span class="math inline">\(\mbox{Beta}(11, 3)\)</span> (la curva nera nella figura). Consideriamo la catena A. Dal momento che si sta mescolando lentamente, nelle iterazioni eseguite ha esplorato unicamente i valori <span class="math inline">\(\theta\)</span> nell’intervallo da 0.6 a 0.9. Di conseguenza, la sua approssimazione della distribuzione a posteriori sopravvaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> in questo intervallo e, nel contempo, sottovaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> esterni a questo intervallo. Consideriamo ora la catena B. Rimanendo bloccata, la catena B campiona in maniera eccessiva alcuni valori nella coda sinistra della distribuzione a posteriori di <span class="math inline">\(\theta\)</span>. Questo fenomeno produce i picchi che sono presenti nell’approssimazione alla distribuzione a posteriori.</p>
+<p>In pratica, al di là dei presenti esempi “scolastici” (in cui disponiamo di una formulazione analitica della distribuzione a posteriori), non abbiamo mai il privilegio di poter confrontare i risultati del campionamento MCMC con la corretta distribuzione a posteriori. Ecco perché la diagnostica delle catene di Markov è così importante: se vediamo trace-plots come quelli della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a>, sappiamo che non abbiamo ottenuto una adeguata approssimazione della distribuzione a posteriori.</p>
 <p>In tali circostanze possiamo ricorrere ad alcuni rimedi.</p>
 <ol type="1">
 <li>Controllare il modello. Siamo sicuri che le distribuzioni a priori e la verosimiglianza siano appropriate per i dati osservati?</li>
@@ -528,7 +528,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Per fare un confronto, per lo stesso modello, consideriamo la simulazione di una catena di Markov più corta. La chiamata seguente richiede quattro catene parallele per sole 100 iterazioni ciascuna:</p>
+<p>Per fare un confronto, per lo stesso modello, consideriamo la simulazione di una catena di Markov più corta. La chiamata seguente richiede quattro catene parallele per sole 100 iterazioni ciascuna.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bb_short <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data1_list,</span>
@@ -576,13 +576,13 @@ div.csl-indent {
 </section><section id="numerosita-campionaria-effettiva" class="level2" data-number="21.3"><h2 data-number="21.3" class="anchored" data-anchor-id="numerosita-campionaria-effettiva">
 <span class="header-section-number">21.3</span> Numerosità campionaria effettiva</h2>
 <p>Nella simulazione del modello beta-binomiale per i dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> abbiamo utilizzato quattro catene di Markov parallele che producono un totale di <span class="math inline">\(N\)</span> = 16000 campioni <em>dipendenti</em> di <span class="math inline">\(\theta\)</span>. Sapendo che l’errore dell’approssimazione alla distribuzione a posteriori è probabilmente più grande di quello che si otterrebbe usando 16000 campioni <em>indipendenti</em>, ci possiamo porre la seguente domanda: quanti campioni indipendenti sarebbero necessari per produrre un’approssimazione della distribuzione a posteriori equivalentemente a quella che abbiamo ottenuto? La numerosità campionaria effettiva (<em>effective sample size</em>, <span class="math inline">\(N_{eff}\)</span>) fornisce una risposta a questa domanda.</p>
-<p>Tipicamente, <span class="math inline">\(N_{eff} &lt; N\)</span>, per cui il rapporto campionario effettivo (<em>effective sample size ratio</em>) <span class="math inline">\(\frac{N_{eff}}{N}\)</span> è minore di 1. Come regola euristica, viene considerato problematico un rapporto campionario effettivo minore del 10% del numero totale di campioni ottenuti nella simulazione (più basso è il rapporto campionario effettivo peggiore è il “mixing” della catena). La funzione <code><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">bayesplot::neff_ratio()</a></code> consente di calcolare il rapporto campionario effettivo. Per il modello Beta-Binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, questo rapporto è di circa 0.34:</p>
+<p>Tipicamente, <span class="math inline">\(N_{eff} &lt; N\)</span>, per cui il rapporto campionario effettivo (<em>effective sample size ratio</em>) <span class="math inline">\(\frac{N_{eff}}{N}\)</span> è minore di 1. Come regola euristica, viene considerato problematico un rapporto campionario effettivo minore del 10% del numero totale di campioni ottenuti nella simulazione (più basso è il rapporto campionario effettivo peggiore è il “mixing” della catena). La funzione <code><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">bayesplot::neff_ratio()</a></code> consente di calcolare il rapporto campionario effettivo. Per il modello Beta-Binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, questo rapporto è di circa 0.34.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bayesplot</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">neff_ratio</a></span><span class="op">(</span><span class="va">stanfit1</span>, pars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"theta"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.3629411</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Ciò indica che l’accuratezza dell’approssimazione della distribuzione a posteriori di <span class="math inline">\(\theta\)</span> ottenuta mediante 16000 campioni dipendenti è approssimativamente simile a quella che si potrebbe ottenere con</p>
+<p>Ciò indica che l’accuratezza dell’approssimazione della distribuzione a posteriori di <span class="math inline">\(\theta\)</span> ottenuta mediante 16,000 campioni dipendenti è approssimativamente simile a quella che si potrebbe ottenere con</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bayesplot</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">neff_ratio</a></span><span class="op">(</span></span>
 <span>  <span class="va">stanfit1</span>, pars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"theta"</span><span class="op">)</span></span>
@@ -605,12 +605,12 @@ div.csl-indent {
 </div>
 </div>
 <p>Il correlogramma mostra l’autocorrelazione in funzione di ritardi da 0 a 20. L’autocorrelazione di lag 0 è naturalmente 1 – misura la correlazione tra un valore della catena di Markov e se stesso. L’autocorrelazione di lag 1 è di circa 0.5, indicando una correlazione moderata tra i valori della catena che distano di solo 1 passo l’uno dall’altro. Successivamente, l’autocorrelazione diminuisce rapidamente ed è effettivamente pari a 0 per un lag di 5. Questo risultato fornisce una conferma del fatto che la catena di Markov costituisce una buona approssimazione di un campione casuale di <span class="math inline">\(p(\theta \mid y)\)</span>.</p>
-<p>Al contrario, nella figura @ref(fig:bad-autocorrelation) (a destra) <span class="citation" data-cites="Johnson2022bayesrules">(riprodotta da <a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">Johnson et al., 2022</a>)</span> vediamo un esempio nel quale il trace plot rivela una forte tendenza tra i valori di una catena di Markov e, dunque, una forte autocorrelazione.</p>
+<p>Al contrario, nella <a href="#fig-bad-autocorrelation">Figura&nbsp;<span>21.3</span></a> (a destra) <span class="citation" data-cites="Johnson2022bayesrules">(riprodotta da <a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">Johnson et al., 2022</a>)</span> vediamo un esempio nel quale il trace plot rivela una forte tendenza tra i valori di una catena di Markov e, dunque, una forte autocorrelazione.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-bad-autocorrelation" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="images/ch6-acf-2-1.png" class="img-fluid figure-img" width="1181"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Trace plot (a sinistra) e correlogramma (a destra) di una catena di Markow in cui il mixing è lento – figura riprodotta da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 21.3: Trace plot (a sinistra) e correlogramma (a destra) di una catena di Markow in cui il mixing è lento – figura riprodotta da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -647,7 +647,7 @@ div.csl-indent {
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Una serie temporale della catena si ottiene con la funzione <code><a href="https://rdrr.io/pkg/ggmcmc/man/ggs_running.html">ggmcmc::ggs_running</a></code>:</p>
+<p>Una serie temporale della catena si ottiene con la funzione <code><a href="https://rdrr.io/pkg/ggmcmc/man/ggs_running.html">ggmcmc::ggs_running()</a></code>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggmcmc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggmcmc/man/ggs_running.html">ggs_running</a></span><span class="op">(</span><span class="va">S1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
@@ -658,7 +658,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Il grafico precedente mostra che, per il modello bayesiano che stiamo discutendo, una condizione di equilibrio della catena di Markov richiederebbe un numero maggiore di iterazioni di quelle che sono state effettivamente simulate.</p>
-<p>L’autocorrelazione di ordine 1 si ottiene nel modo seguente (si veda il Paragrafo @ref(approx-post-autocor)):</p>
+<p>L’autocorrelazione di ordine 1 si ottiene nel modo seguente (si veda il Paragrafo @ref(approx-post-autocor)).</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">S1</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">S1</span><span class="op">$</span><span class="va">value</span><span class="op">)</span><span class="op">]</span>, <span class="va">S1</span><span class="op">$</span><span class="va">value</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.3819515</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -897,7 +897,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_stan_options.R"</span>)</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>Come discusso nel Paragrafo \@ref(cmdstanr-gautret), le catene di Markov forniscono un'approssimazione che tende a convergere alla distribuzione a posteriori. "Approssimazione" e "convergenza" sono le parole chiave qui: il punto è che il campionamento MCMC non è perfetto. Questo solleva le seguenti domande:</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>Come è stato discusso nel @cmdstanr-gautret, le catene di Markov forniscono un'approssimazione che tende a convergere alla distribuzione a posteriori. "Approssimazione" e "convergenza" sono le parole chiave qui: il punto è che il campionamento MCMC non è perfetto. Questo solleva le seguenti domande:</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A cosa corrisponde, dal punto di vista grafico, una "buona" catena di Markov?</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Come possiamo sapere se il campione prodotto dalla catena di Markov costituisce un'approssimazione adeguata della distribuzione a posteriori?</span>
@@ -909,7 +909,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Esame dei *trace plot*</span></span>
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>La convergenza e il "mixing" possono essere controllate mediante il *trace plot* che mostra l'andamento delle simulazioni e ci dice se stiamo effettivamente utilizzando una distribuzione limite. Consideriamo nuovamente il *trace plot* del simulazione Beta-Binomiale della figura \@ref(fig:trace-plot-gautret-2):</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>La convergenza e il "mixing" possono essere controllate mediante il *trace plot* che mostra l'andamento delle simulazioni e ci dice se stiamo effettivamente utilizzando una distribuzione limite. Consideriamo nuovamente il *trace plot* del simulazione Beta-Binomiale della figura @fig-trace-plot-gautret-2.</span>
 <span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE, comment=FALSE, error=FALSE, results=FALSE}</span></span>
 <span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>data1_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -958,28 +958,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>posterior1 <span class="ot">&lt;-</span> <span class="fu">extract</span>(stanfit1)</span>
 <span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r trace-plot-gautret-2,  echo=FALSE, fig.cap="Trace plot per il modello Beta-Binomiale dei dati di Gautret et al.(2020)."}</span></span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-trace-plot-gautret-2, echo=FALSE, fig.cap="Trace plot per il modello Beta-Binomiale dei dati di Gautret et al.(2020)."}</span></span>
 <span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>stanfit1 <span class="sc">%&gt;%</span> </span>
 <span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mcmc_trace</span>(<span class="at">pars =</span> <span class="fu">c</span>(<span class="st">"theta"</span>), <span class="at">size =</span> <span class="fl">0.1</span>)</span>
 <span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>La figura \@ref(fig:trace-plot-gautret-2) fornisce un esempio perfetto di come dovrebbero apparire i *trace plot*. Quando le catene markoviane raggiungono uno stato stazionario e sono stabili ciò significa che hanno raggiunto la distribuzione stazionaria e il *trace plot* rivela un'assenza di struttura e diventa simile alla rappresentazione del rumore bianco, come nella figura \@ref(fig:trace-plot-gautret-2).</span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>La @fig-trace-plot-gautret-2 fornisce un esempio perfetto di come dovrebbero apparire i *trace plot*. Quando le catene markoviane raggiungono uno stato stazionario e sono stabili ciò significa che hanno raggiunto la distribuzione stazionaria e il *trace plot* rivela un'assenza di struttura e diventa simile alla rappresentazione del rumore bianco, come nella @fig-trace-plot-gautret-2.</span>
 <span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a>Una mancanza di convergenza è invece indicata dalla figura \@ref(fig:bad-trace-bayesrules)<span class="ot">[^mcmc_diagnostics-1]</span>.</span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a>Una mancanza di convergenza è invece indicata dalla @fig-bad-trace-bayesrules<span class="ot">[^mcmc_diagnostics-1]</span>.</span>
 <span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a><span class="ot">[^mcmc_diagnostics-1]: </span>Figura riprodotta da @Johnson2022bayesrules</span>
 <span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r bad-trace-bayesrules, echo=FALSE, fig.cap="Trace plots (a sinistra) e corrispondenti grafici di densità (a destra) di due ipotetiche catene di Markov. Queste figure forniscono due esempi di come potrebbero apparire delle catene di Markov non stazionarie. Le linee nere sovrapposte alle densità empiriche (a destra) rappresentano una ipotetica distribuzione target Beta(11,3)."}</span></span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-bad-trace-bayesrules, echo=FALSE, fig.cap="Trace plots (a sinistra) e corrispondenti grafici di densità (a destra) di due ipotetiche catene di Markov. Queste figure forniscono due esempi di come potrebbero apparire delle catene di Markov non stazionarie. Le linee nere sovrapposte alle densità empiriche (a destra) rappresentano una ipotetica distribuzione target Beta(11,3)."}</span></span>
 <span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/bad-trace-bayesrules.png"</span>)</span>
 <span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a>Nel trace-plot della figura \@ref(fig:bad-trace-bayesrules), la tendenza verso il basso indica che la catena A non è stazionaria, ovvero non si mantiene costante all'evolversi nel tempo. La tendenza verso il basso suggerisce inoltre la presenza di una forte correlazione tra i valori della catena: il trace-plot non fornisce una rappresentazione di rumore indipendente. Tutto questo significa che la catena A "si sta mescolando lentamente". Sebbene le catene di Markov siano intrinsecamente dipendenti, più si comportano come se fossero dei campioni casuali (rumorosi), minore è l'errore dell'approssimazione alla distribuzione a posteriori.</span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a>Nel trace-plot della @fig-bad-trace-bayesrules la tendenza verso il basso indica che la catena A non è stazionaria, ovvero non si mantiene costante all'evolversi nel tempo. La tendenza verso il basso suggerisce inoltre la presenza di una forte correlazione tra i valori della catena: il trace-plot non fornisce una rappresentazione di rumore indipendente. Tutto questo significa che la catena A "si sta mescolando lentamente". Sebbene le catene di Markov siano intrinsecamente dipendenti, più si comportano come se fossero dei campioni casuali (rumorosi), minore è l'errore dell'approssimazione alla distribuzione a posteriori.</span>
 <span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>La catena B presenta un problema diverso. Come evidenziato dalle due linee completamente piatte nel tracciato, essa tende a bloccarsi quando visita valori bassi di $\theta$.</span>
 <span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a>Gli istogrammi lisciati della figura \@ref(fig:bad-trace-bayesrules) (a destra) confermano che entrambe queste catene sono problematiche: infatti producono approssimazioni scadenti della distribuzione a posteriori che, nell'esempio di @Johnson2022bayesrules, è una $\mbox{Beta}(11, 3)$ (la curva nera nella figura). Consideriamo la catena A. Dal momento che si sta mescolando lentamente, nelle iterazioni eseguite ha esplorato unicamente i valori $\theta$ nell'intervallo da 0.6 a 0.9. Di conseguenza, la sua approssimazione della distribuzione a posteriori sopravvaluta la plausibilità dei valori $\theta$ in questo intervallo e, nel contempo, sottovaluta la plausibilità dei valori $\theta$ esterni a questo intervallo. Consideriamo ora la catena B. Rimanendo bloccata, la catena B campiona in maniera eccessiva alcuni valori nella coda sinistra della distribuzione a posteriori di $\theta$. Questo fenomeno produce i picchi che sono presenti nell'approssimazione alla distribuzione a posteriori.</span>
+<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a>Gli istogrammi lisciati della @fig-bad-trace-bayesrules (a destra) confermano che entrambe queste catene sono problematiche: infatti producono approssimazioni scadenti della distribuzione a posteriori che, nell'esempio di @Johnson2022bayesrules, è una $\mbox{Beta}(11, 3)$ (la curva nera nella figura). Consideriamo la catena A. Dal momento che si sta mescolando lentamente, nelle iterazioni eseguite ha esplorato unicamente i valori $\theta$ nell'intervallo da 0.6 a 0.9. Di conseguenza, la sua approssimazione della distribuzione a posteriori sopravvaluta la plausibilità dei valori $\theta$ in questo intervallo e, nel contempo, sottovaluta la plausibilità dei valori $\theta$ esterni a questo intervallo. Consideriamo ora la catena B. Rimanendo bloccata, la catena B campiona in maniera eccessiva alcuni valori nella coda sinistra della distribuzione a posteriori di $\theta$. Questo fenomeno produce i picchi che sono presenti nell'approssimazione alla distribuzione a posteriori.</span>
 <span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a>In pratica, al di là dei presenti esempi "scolastici" (in cui disponiamo di una formulazione analitica della distribuzione a posteriori), non abbiamo mai il privilegio di poter confrontare i risultati del campionamento MCMC con la corretta distribuzione a posteriori. Ecco perché la diagnostica delle catene di Markov è così importante: se vediamo trace-plots come quelli della figura \@ref(fig:bad-trace-bayesrules), sappiamo che non abbiamo ottenuto una adeguata approssimazione della distribuzione a posteriori.</span>
+<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a>In pratica, al di là dei presenti esempi "scolastici" (in cui disponiamo di una formulazione analitica della distribuzione a posteriori), non abbiamo mai il privilegio di poter confrontare i risultati del campionamento MCMC con la corretta distribuzione a posteriori. Ecco perché la diagnostica delle catene di Markov è così importante: se vediamo trace-plots come quelli della @fig-bad-trace-bayesrules, sappiamo che non abbiamo ottenuto una adeguata approssimazione della distribuzione a posteriori.</span>
 <span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a>In tali circostanze possiamo ricorrere ad alcuni rimedi.</span>
 <span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a></span>
@@ -995,7 +995,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"density"</span>)</span>
 <span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-107"><a href="#cb15-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-108"><a href="#cb15-108" aria-hidden="true" tabindex="-1"></a>Per fare un confronto, per lo stesso modello, consideriamo la simulazione di una catena di Markov più corta. La chiamata seguente richiede quattro catene parallele per sole 100 iterazioni ciascuna:</span>
+<span id="cb15-108"><a href="#cb15-108" aria-hidden="true" tabindex="-1"></a>Per fare un confronto, per lo stesso modello, consideriamo la simulazione di una catena di Markov più corta. La chiamata seguente richiede quattro catene parallele per sole 100 iterazioni ciascuna.</span>
 <span id="cb15-109"><a href="#cb15-109" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-110"><a href="#cb15-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE, comment=FALSE, error=FALSE}</span></span>
 <span id="cb15-111"><a href="#cb15-111" aria-hidden="true" tabindex="-1"></a>bb_short <span class="ot">&lt;-</span> mod<span class="sc">$</span><span class="fu">sample</span>(</span>
@@ -1027,13 +1027,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-141"><a href="#cb15-141" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-142"><a href="#cb15-142" aria-hidden="true" tabindex="-1"></a>Nella simulazione del modello beta-binomiale per i dati di @Gautret_2020 abbiamo utilizzato quattro catene di Markov parallele che producono un totale di $N$ = 16000 campioni *dipendenti* di $\theta$. Sapendo che l'errore dell'approssimazione alla distribuzione a posteriori è probabilmente più grande di quello che si otterrebbe usando 16000 campioni *indipendenti*, ci possiamo porre la seguente domanda: quanti campioni indipendenti sarebbero necessari per produrre un'approssimazione della distribuzione a posteriori equivalentemente a quella che abbiamo ottenuto? La numerosità campionaria effettiva (*effective sample size*, $N_{eff}$) fornisce una risposta a questa domanda.</span>
 <span id="cb15-143"><a href="#cb15-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-144"><a href="#cb15-144" aria-hidden="true" tabindex="-1"></a>Tipicamente, $N_{eff} &lt; N$, per cui il rapporto campionario effettivo (*effective sample size ratio*) $\frac{N_{eff}}{N}$ è minore di 1. Come regola euristica, viene considerato problematico un rapporto campionario effettivo minore del 10% del numero totale di campioni ottenuti nella simulazione (più basso è il rapporto campionario effettivo peggiore è il "mixing" della catena). La funzione <span class="in">`bayesplot::neff_ratio()`</span> consente di calcolare il rapporto campionario effettivo. Per il modello Beta-Binomiale dei dati di @Gautret_2020, questo rapporto è di circa 0.34:</span>
+<span id="cb15-144"><a href="#cb15-144" aria-hidden="true" tabindex="-1"></a>Tipicamente, $N_{eff} &lt; N$, per cui il rapporto campionario effettivo (*effective sample size ratio*) $\frac{N_{eff}}{N}$ è minore di 1. Come regola euristica, viene considerato problematico un rapporto campionario effettivo minore del 10% del numero totale di campioni ottenuti nella simulazione (più basso è il rapporto campionario effettivo peggiore è il "mixing" della catena). La funzione <span class="in">`bayesplot::neff_ratio()`</span> consente di calcolare il rapporto campionario effettivo. Per il modello Beta-Binomiale dei dati di @Gautret_2020, questo rapporto è di circa 0.34.</span>
 <span id="cb15-145"><a href="#cb15-145" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-148"><a href="#cb15-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb15-149"><a href="#cb15-149" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">neff_ratio</span>(stanfit1, <span class="at">pars =</span> <span class="fu">c</span>(<span class="st">"theta"</span>))</span>
 <span id="cb15-150"><a href="#cb15-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-151"><a href="#cb15-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-152"><a href="#cb15-152" aria-hidden="true" tabindex="-1"></a>Ciò indica che l'accuratezza dell'approssimazione della distribuzione a posteriori di $\theta$ ottenuta mediante 16000 campioni dipendenti è approssimativamente simile a quella che si potrebbe ottenere con</span>
+<span id="cb15-152"><a href="#cb15-152" aria-hidden="true" tabindex="-1"></a>Ciò indica che l'accuratezza dell'approssimazione della distribuzione a posteriori di $\theta$ ottenuta mediante 16,000 campioni dipendenti è approssimativamente simile a quella che si potrebbe ottenere con</span>
 <span id="cb15-153"><a href="#cb15-153" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-156"><a href="#cb15-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb15-157"><a href="#cb15-157" aria-hidden="true" tabindex="-1"></a>bayesplot<span class="sc">::</span><span class="fu">neff_ratio</span>(</span>
@@ -1055,9 +1055,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-175"><a href="#cb15-175" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-176"><a href="#cb15-176" aria-hidden="true" tabindex="-1"></a>Il correlogramma mostra l'autocorrelazione in funzione di ritardi da 0 a 20. L'autocorrelazione di lag 0 è naturalmente 1 -- misura la correlazione tra un valore della catena di Markov e se stesso. L'autocorrelazione di lag 1 è di circa 0.5, indicando una correlazione moderata tra i valori della catena che distano di solo 1 passo l'uno dall'altro. Successivamente, l'autocorrelazione diminuisce rapidamente ed è effettivamente pari a 0 per un lag di 5. Questo risultato fornisce una conferma del fatto che la catena di Markov costituisce una buona approssimazione di un campione casuale di $p(\theta \mid y)$.</span>
 <span id="cb15-177"><a href="#cb15-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-178"><a href="#cb15-178" aria-hidden="true" tabindex="-1"></a>Al contrario, nella figura \@ref(fig:bad-autocorrelation) (a destra) <span class="co">[</span><span class="ot">riprodotta da @Johnson2022bayesrules</span><span class="co">]</span> vediamo un esempio nel quale il trace plot rivela una forte tendenza tra i valori di una catena di Markov e, dunque, una forte autocorrelazione.</span>
+<span id="cb15-178"><a href="#cb15-178" aria-hidden="true" tabindex="-1"></a>Al contrario, nella @fig-bad-autocorrelation (a destra) <span class="co">[</span><span class="ot">riprodotta da @Johnson2022bayesrules</span><span class="co">]</span> vediamo un esempio nel quale il trace plot rivela una forte tendenza tra i valori di una catena di Markov e, dunque, una forte autocorrelazione.</span>
 <span id="cb15-179"><a href="#cb15-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-180"><a href="#cb15-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, bad-autocorrelation, echo=FALSE, fig.cap="Trace plot (a sinistra) e correlogramma (a destra) di una catena di Markow in cui il mixing è lento -- figura riprodotta da @Johnson2022bayesrules."}</span></span>
+<span id="cb15-180"><a href="#cb15-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig-bad-autocorrelation, echo=FALSE, fig.cap="Trace plot (a sinistra) e correlogramma (a destra) di una catena di Markow in cui il mixing è lento -- figura riprodotta da @Johnson2022bayesrules."}</span></span>
 <span id="cb15-181"><a href="#cb15-181" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/ch6-acf-2-1.png"</span>)</span>
 <span id="cb15-182"><a href="#cb15-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-183"><a href="#cb15-183" aria-hidden="true" tabindex="-1"></a></span>
@@ -1088,7 +1088,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-212"><a href="#cb15-212" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb15-213"><a href="#cb15-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-214"><a href="#cb15-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-215"><a href="#cb15-215" aria-hidden="true" tabindex="-1"></a>Una serie temporale della catena si ottiene con la funzione <span class="in">`ggmcmc::ggs_running`</span>:</span>
+<span id="cb15-215"><a href="#cb15-215" aria-hidden="true" tabindex="-1"></a>Una serie temporale della catena si ottiene con la funzione <span class="in">`ggmcmc::ggs_running()`</span>.</span>
 <span id="cb15-216"><a href="#cb15-216" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-219"><a href="#cb15-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb15-220"><a href="#cb15-220" aria-hidden="true" tabindex="-1"></a>ggmcmc<span class="sc">::</span><span class="fu">ggs_running</span>(S1)</span>
@@ -1096,7 +1096,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-222"><a href="#cb15-222" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-223"><a href="#cb15-223" aria-hidden="true" tabindex="-1"></a>Il grafico precedente mostra che, per il modello bayesiano che stiamo discutendo, una condizione di equilibrio della catena di Markov richiederebbe un numero maggiore di iterazioni di quelle che sono state effettivamente simulate.</span>
 <span id="cb15-224"><a href="#cb15-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-225"><a href="#cb15-225" aria-hidden="true" tabindex="-1"></a>L'autocorrelazione di ordine 1 si ottiene nel modo seguente (si veda il Paragrafo \@ref(approx-post-autocor)):</span>
+<span id="cb15-225"><a href="#cb15-225" aria-hidden="true" tabindex="-1"></a>L'autocorrelazione di ordine 1 si ottiene nel modo seguente (si veda il Paragrafo \@ref(approx-post-autocor)).</span>
 <span id="cb15-226"><a href="#cb15-226" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-229"><a href="#cb15-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb15-230"><a href="#cb15-230" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(S1<span class="sc">$</span>value[<span class="sc">-</span><span class="fu">length</span>(S1<span class="sc">$</span>value)], S1<span class="sc">$</span>value[<span class="sc">-</span><span class="dv">1</span>])</span>

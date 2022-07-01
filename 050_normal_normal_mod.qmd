@@ -5,7 +5,7 @@ source("_common.R")
 source("_stan_options.R")
 ```
 
-Estendiamo ora la discussione precedente considerano un altro caso comune: quello in cui disponiamo di un campione di dati a livello di scala a intervalli o rapporti e vogliamo fare inferenza sulla media della popolazione da cui il campione è stato estratto.
+Esaminiamo ora in maggiore dettaglio un caso che abbiamo anticipato in precedenza, ovvero quello in cui disponiamo di un campione di dati a livello di scala a intervalli o rapporti e vogliamo fare inferenza sulla media della popolazione da cui il campione è stato estratto.
 
 ## Caso Normale-Normale con varianza nota
 
@@ -37,7 +37,7 @@ $$
 
 Una volta osservati i dati $y$, la verosimiglianza diventa
 
-```{=tex}
+$$
 \begin{align}
 p(y \mid \mu) =& \, \prod_{i=1}^n p(y_i \mid \mu) = \notag\\
 & \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_1 - \mu)^2}{2\sigma^2}}\right\} \times \notag\\
@@ -45,41 +45,34 @@ p(y \mid \mu) =& \, \prod_{i=1}^n p(y_i \mid \mu) = \notag\\
 & \vdots \notag\\
  & \frac{1}{{\sigma \sqrt {2\pi}}}\exp\left\{{-\frac{(y_n - \mu)^2}{2\sigma^2}}\right\}.
 \end{align}
-```
+$$
+
 Se la densità a priori $p(\mu)$ è gaussiana, allora anche la densità a posteriori $p(\mu \mid y)$ sarà gaussiana. Poniamo
 
-```{=tex}
-\begin{equation}
+$$
 p(\mu) = \frac{1}{{\tau_0 \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_0)^2}{2\tau_0^2}}\right\},
-(\#eq:prior-mu-norm-norm)
-\end{equation}
-```
+$$ {#eq:prior-mu-norm-norm}
+
 ovvero imponiamo a $\mu$ una distribuzione a priori gaussiana con media $\mu_0$ e varianza $\tau_0^2$. Ciò significa dire che, a priori, $\mu_0$ rappresenta il valore più verosimile per $\mu$, mentre $\tau_0^2$ quantifica il grado della nostra incertezza rispetto a tale valore.
 
 Svolgendo una serie di passaggi algebrici, si arriva alla distribuzione a posteriori
 
-```{=tex}
-\begin{equation}
+$$
 p(\mu \mid y) = \frac{1}{{\tau_p \sqrt {2\pi}}}\exp\left\{{-\frac{(\mu - \mu_p)^2}{2\tau_p^2}}\right\},
-(\#eq:post-norm-norm)
-\end{equation}
-```
+$$ {#eq-post-norm-norm}
+
 dove
 
-```{=tex}
-\begin{equation}
+$$
 \mu_p = \frac{\frac{1}{\tau_0^2}\mu_0+ \frac{n}{\sigma^2}\bar{y}}{\frac {1}{\tau_0^2} + \frac{n}{\sigma^2}} 
-(\#eq:post-norm-mup)
-\end{equation}
-```
+$$ {#eq-post-norm-mup}
+
 e
 
-```{=tex}
-\begin{equation}
+$$
 \tau_p^2 = \frac{1}{\frac {1}{\tau_0^2}+ \frac{n}{\sigma^2}}.
-(\#eq:post-norm-taup2)
-\end{equation}
-```
+$$ {#eq-post-norm-taup2}
+
 Ciò significa che, se la distribuzione a priori $p(\mu)$ è gaussiana, allora anche la distribuzione a posteriori $p(\mu \mid y)$ sarà gaussiana con valore atteso $\mu_p$ e varianza $\tau_p^2$ date dalle espressioni precedenti.
 
 In conclusione, il risultato trovato indica che:
@@ -87,8 +80,8 @@ In conclusione, il risultato trovato indica che:
 -   il valore atteso a posteriori è una media pesata fra il valore atteso a priori $\mu_0$ e la media campionaria $\bar{y}$; il peso della media campionaria è tanto maggiore tanto più è grande $n$ (il numero di osservazioni) e $\tau_0^2$ (l'incertezza iniziale);
 -   l'incertezza (varianza) a posteriori $\tau_p^2$ è sempre più piccola dell'incertezza a priori $\tau_0^2$ e diminuisce al crescere di $n$.
 
-::: exercise
-Per esaminare un esempio pratico, consideriamo i 30 valori BDI-II dei soggetti clinici di @zetschefuture2019:
+::: {#exr-mod-norm-1}
+Per esaminare un esempio pratico, consideriamo i 30 valori BDI-II dei soggetti clinici di @zetschefuture2019.
 
 ```{r}
 df <- data.frame(
@@ -131,13 +124,15 @@ bayesrules::summarize_normal_normal(
 )
 ```
 
-Verifichiamo i risultati forniti da `bayesrules::summarize_normal_normal()` applicando le formule \@ref(eq:post-norm-mup) e \@ref(eq:post-norm-taup2). La media della distribuzione a posteriori di $\mu$ è
+Verifichiamo i risultati forniti da `bayesrules::summarize_normal_normal()` applicando le formule \@ref(eq:post-norm-mup) e \@ref(eq:post-norm-taup2). Definiamo la funzione della media della distribuzione a posteriori di $\mu$.
 
 ```{r}
 mu_post <- function(tau_0, mu_0, sigma, ybar, n) {
   (1/tau_0^2 * mu_0 + n/sigma^2 * ybar) / (1/tau_0^2 + n/sigma^2)
 }
 ```
+
+Troviamo la media a posteriori.
 
 ```{r}
 mu_0 <- 25  # media della distribuzione a priori per mu
@@ -149,13 +144,15 @@ n <- length(df$y)
 mu_post(tau_0, mu_0, sigma, ybar, n) 
 ```
 
-La deviazione standard della distribuzione a posteriori di $\mu$ è
+Definiamo una funzione per la deviazione standard della distribuzione a posteriori di $\mu$.
 
 ```{r}
 tau_post <- function(tau_0, sigma, n) {
   sqrt(1 / (1/tau_0^2 + n/sigma^2))
 }
 ```
+
+Troviamo la deviazione standard a posteriori.
 
 ```{r}
 tau_0 <- 2  # sd della distribuzione a priori per mu
@@ -165,7 +162,7 @@ n <- length(df$y)
 tau_post(tau_0, sigma, n) 
 ```
 
-I risultati trovati riproducono quelli forniti da `bayesrules::summarize_normal_normal()`.
+I risultati così trovati riproducono quelli forniti da `bayesrules::summarize_normal_normal()`.
 :::
 
 ## Il modello Normale con Stan
@@ -176,13 +173,14 @@ I priori coniugati Normali di una Normale non richiedono una approssimazione num
 
 Come in precedenza, impongo su $\mu$ una distribuzione a priori $\mathcal{N}(25, 2)$ e considero noto il parametro $\sigma = 6.606858$. Il modello dunque diventa il seguente.
 
-```{=tex}
+$$
 \begin{align}
 Y_i &\sim \mathcal{N}(\mu, \sigma) \notag\\
 \mu &\sim \mathcal{N}(25, 2) \notag\\
 \sigma &= 6.606858 \notag
 \end{align}
-```
+$$
+
 In base al modello definito sopra, la variabile casuale $Y$ segue la distribuzione Normale di parametri $\mu$ e $\sigma$. Il parametro $\mu$ è sconosciuto e abbiamo deciso di descrivere la nostra incertezza relativa ad esso mediante una distribuzione a priori Normale di media 25 e deviazione standard 2. Il parametro $\sigma$ è invece assunto essere noto e uguale a 6.606858. Usando il linguaggio Stan specifico il modello come segue.
 
 ```{r}
@@ -264,7 +262,7 @@ posterior::summarise_draws(
 )
 ```
 
-Le stime così trovate sono molto simili ai quantili di ordine 0.025 e 0.975 della vera distribuzione a posteriori di $\mu$:
+Le stime così trovate sono molto simili ai quantili di ordine 0.025 e 0.975 della vera distribuzione a posteriori di $\mu$.
 
 ```{r}
 qnorm(c(0.025, 0.975), 29.35073, 1.032919)
@@ -287,13 +285,14 @@ curve(
 
 In questo secondo caso, più realistico, il modello diventa il seguente.
 
-```{=tex}
+$$
 \begin{align}
 Y_i &\sim \mathcal{N}(\mu, \sigma) \notag\\
 \mu &\sim \mathcal{N}(25, 2) \notag\\
 \sigma &\sim \mbox{Cauchy}(0, 15) \notag
 \end{align}
-```
+$$
+
 Il modello precedente è simile a quello esaminato in precedenza, eccetto che abbiamo quantificato la nostra incertezza relativa a $\sigma$ (che è ignota) mediante una distribuzione a priori $\mbox{Cauchy}(0, 15)$.
 
 La procedura MCMC utilizzata da Stan è basata su un campionamento Monte Carlo Hamiltoniano che non richiede l'uso di distribuzioni a priori coniugate. Pertanto è possibile scegliere per i parametri una qualunque distribuzione a priori. Nel caso presente, appunto, per $\sigma$ ho scelto una $\mbox{Cauchy}(0, 15)$. Per un tale caso non è possibile ottenere la derivazione analitica della distribuzione a posteriori di $\mu$. È dunque necessario procedere con il campionamento MCMC.
