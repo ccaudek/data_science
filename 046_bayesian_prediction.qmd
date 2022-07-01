@@ -29,29 +29,25 @@ I tre metodi producono risultati equivalenti. In seguito useremo il metodo MCMC 
 
 Nel caso dell'esempio in discussione, la distribuzione di $\tilde{Y}$ dipende da $\theta$ e ciò che sappiamo di $\theta$ è sintetizzato nella distribuzione a posteriori $p(\theta \mid y)$. Usando la regola della catena, possiamo scrivere la distribuzione congiunta di $\tilde{y}$ e $\theta$ nel modo seguente
 
-```{=tex}
-\begin{equation}
+$$
 p(\tilde{y}, \theta \mid y) = p(\tilde{y} \mid \theta, y) p(\theta \mid y).
-\end{equation}
-```
+$$
+
 Assumendo che le osservazioni future $\tilde{y}$ e passate $y$ siano condizionalmente indipendenti dato $\theta$, l'espressione precedente può essere scritta come
 
-```{=tex}
-\begin{equation}
+$$
 p(\tilde{y}, \theta \mid y) = p(\tilde{y} \mid \theta) p(\theta \mid y).
-\end{equation}
-```
+$$
+
 La distribuzione predittiva a posteriori viene ottenuta dalla distribuzione congiunta di $\tilde{y}$ e $\theta$ integrando rispetto a $\theta$:
 
-```{=tex}
-\begin{equation}
+$$
 p(\tilde{y} \mid y) = \int_{\theta} p(\tilde{y} \mid \theta) p(\theta \mid y) \,\operatorname {d}\!\theta.
-(\#eq:post-pred-distr)
-\end{equation}
-```
+$$ {#eq-post-pred-distr}
+
 Nel caso dello schema beta-binomiale, la funzione $p(\tilde{y} \mid \theta)$ è binomiale di parametri $m$ e $\theta$, e la distribuzione a posteriori $p(\theta \mid y)$ è una $\mbox{Beta}(\alpha + y, \beta + n - y)$. Risolvendo l'integrale otteniamo:
 
-```{=tex}
+$$
 \begin{align}
 p(\tilde{y} \mid y) &= \int_0^1 p(\tilde{y} \mid \theta)
 p(\theta \mid y)\,\operatorname {d}\!\theta \notag\\
@@ -62,22 +58,18 @@ p(\theta \mid y)\,\operatorname {d}\!\theta \notag\\
 (1-\theta)^{m-\tilde{y}} \frac{1}{B(a+y, b+n-y)}\theta^{a+y-1}(1-\theta)^{b+n-y-1}\notag\\
 &= \begin{pmatrix}{ m }\\\tilde{y}\end{pmatrix} \frac{1}{B(a+y, b+n-y)}\int_0^1 \theta^{\tilde{y}+a+y-1}(1-\theta)^{m-\tilde{y}+b+n-y-1}\notag\\
 &= \begin{pmatrix}{ m }\\\tilde{y}\end{pmatrix} \frac{B(\tilde{y}+a+y,b+n-y+m-\tilde{y})}{B(a+y, b+n-y)} \; .
-(\#eq:post-yprime-an-sol-betabin)
 \end{align}
-```
-In conclusione, per lo schema beta-binomiale, la distribuzione predittiva a posteriori è
+$$ {#eq-post-yprime-an-sol-betabin}
 
-```{=tex}
-\begin{equation}
+In conclusione, per lo schema beta-binomiale, la distribuzione predittiva a posteriori corrisponde ad una distribuzione di probabilità discreta chiamata *distribuzione beta-binomiale* di parametri $m$, $\alpha+y$ e $\beta+n-y$.
+
+$$
 f(\tilde{y} \mid y) = \binom{m}{\tilde{y}} \frac{B(a+ y + \tilde{y}, b + n - y + m - \tilde{y})}{B(a+y, b+n-y)},
-(\#eq:beta-binomial-distr)
-\end{equation}
-```
-ovvero, corrisponde ad una distribuzione di probabilità discreta chiamata *distribuzione beta-binomiale* di parametri $m$, $\alpha+y$ e $\beta+n-y$.
+$$ {#eq-beta-binomial-distr}
 
 Nell'esempio relativo allo studio di @zetschefuture2019, la verosimiglianza è binomiale, i dati sono costituiti da 23 successi su 30 prove e la distribuzione a priori su $\theta$ è $\mbox{Beta}(2, 10)$. Di conseguenza, la distribuzione a posteriori è $\mbox{Beta}(25, 17)$. Vogliamo calcolare la distribuzione predittiva a posteriori per un nuovo campione, poniamo, di $m = 30$ osservazioni (ma, in generale, $m$ può essere diverso da $n$).
 
-In base alla \@ref(eq:beta-binomial-distr) sappiamo che la distribuzione predittiva a posteriori è una distribuzione beta-binomiale di parametri $m$, $\alpha+y$ e $\beta+n-y$, dove $m$ è il numero di prove nel nuovo campione, $\alpha$ e $\beta$ sono i parametri della distribuzione a priori, e $y$ e $n$ sono le proprietà del campione corrente. Nel caso dell'esempio in discussione, $m = 30$, $\alpha = 2 + 23 = 25$, $\beta = 10 + 30 - 23 = 17$. Possiamo svolgere i calcoli necessario usando le funzioni del pacchetto `extraDistr`. Per i parametri specificati sopra, un grafico della distribuzione predittiva a posteriori si ottiene nel modo seguente:
+In base all'@eq-beta-binomial-distr sappiamo che la distribuzione predittiva a posteriori è una distribuzione beta-binomiale di parametri $m$, $\alpha+y$ e $\beta+n-y$, dove $m$ è il numero di prove nel nuovo campione, $\alpha$ e $\beta$ sono i parametri della distribuzione a priori, e $y$ e $n$ sono le proprietà del campione corrente. Nel caso dell'esempio in discussione, $m = 30$, $\alpha = 2 + 23 = 25$, $\beta = 10 + 30 - 23 = 17$. Possiamo svolgere i calcoli necessario usando le funzioni del pacchetto `extraDistr`. Per i parametri specificati sopra, un grafico della distribuzione predittiva a posteriori si ottiene nel modo seguente.
 
 ```{r}
 prob <- extraDistr::dbbinom(0:30, 30, 25, 17)
@@ -177,8 +169,8 @@ Si noti che i risultati della simulazione sono indistinguibili dalla soluzione e
 
 Il metodo basato su simulazione che abbiamo discusso sopra si basa sulla stessa logica usata dai metodi MCMC per ottenere un'approssimazione della distribuzione predittiva a posteriori. Mediante i metodi MCMC, le stime delle possibili osservazioni future $p(\tilde{y} \mid y)$, chiamate $p(y^{rep} \mid y)$, si ottengono nel modo seguente:
 
--   campionare $\theta_i \sim p(\theta \mid y)$, ovvero scegliere a caso un valore del parametro dalla distribuzione a posteriori;
--   campionare $y^{rep} \sim p(y^{rep} \mid \theta_i)$, ovvero scegliere a caso un'osservazione dalla funzione di verosimiglianza condizionata al valore del parametro definito nel passo precedente.
+-   campionare $\theta_i \sim p(\theta \mid y)$, ovvero scegliere un valore a caso del parametro dalla distribuzione a posteriori;
+-   campionare $y^{rep} \sim p(y^{rep} \mid \theta_i)$, ovvero scegliere un'osservazione a caso dalla funzione di verosimiglianza condizionata al valore del parametro definito nel passo precedente.
 
 Se i due passaggi descritti sopra vengono ripetuti un numero sufficiente di volte, l'istogramma risultante approssimerà la distribuzione predittiva a posteriori che, in teoria potrebbe essere ottenuta per via analitica.
 
@@ -523,4 +515,4 @@ Nella discussione dell'analisi dei dati di @zetschefuture2019, la $\mbox{Beta}(2
 
 ## Commenti e considerazioni finali {.unnumbered}
 
-Questo capitolo discute la predizione bayesiana e ne mostra un'applicazione nel caso dei controlli predittivi a posteriori. A questo proposito è necessario notare un punto importante: un buona corrispondenza tra $y$ e $y^{rep}$ costituisce una condizione necessaria ma non sufficiente per la validità del modello. Infatti, i PPC non sono in grado di garantire la generalizzabilità del modello a nuovi campioni di dati. D'altra parte, invece, se i PPC mostrano un cattivo adattamento del modello ai dati previsti futuri, questo ci dice chiaramente che il modello è specificato in manera errata.
+Questo capitolo discute la predizione bayesiana e ne mostra un'applicazione nel caso dei controlli predittivi a posteriori. A questo proposito è necessario notare un punto importante: un buona corrispondenza tra $y$ e $y^{rep}$ costituisce una condizione necessaria ma non sufficiente per la validità del modello. Infatti, i PPC non sono in grado di garantire la generalizzabilità del modello a nuovi campioni di dati. D'altra parte, invece, se i PPC mostrano un cattivo adattamento del modello ai dati previsti futuri, questo ci dice chiaramente che il modello è specificato in maniera errata.
