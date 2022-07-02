@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -475,7 +480,7 @@ div.csl-indent {
 <p>In precedenza abbiamo visto come si genera la distribuzione predittiva a posteriori nel caso del modello più semplice: quello di un’unica variabile con una data distribuzione di probabilità. In particolare, abbiamo considerato il caso beta-binomiale. In questo Capitolo estenderemo la discussione al caso del modello di regressione lineare. Esamineremo un esempio di <em>posterior predictive check</em> in cui simuleremo <span class="math inline">\(p(y^{rep} \mid \theta, y)\)</span> e un esempio di <em>prior predictive check</em> in cui simuleremo <span class="math inline">\(p(y^{rep} \mid \mathcal{M})\)</span>, ovvero condizionando il modello al meccanismo generatore dei dati <span class="math inline">\(\mathcal{M}\)</span>, ma senza però includere i dati del campione.</p>
 <section id="distribuzione-predittiva-a-posteriori" class="level2" data-number="30.1"><h2 data-number="30.1" class="anchored" data-anchor-id="distribuzione-predittiva-a-posteriori">
 <span class="header-section-number">30.1</span> Distribuzione predittiva a posteriori</h2>
-<p>Consideriamo qui un esempio nel quale vengono usati i dati <code>kidiq</code> <span class="citation" data-cites="gelman2020regression">(<a href="999_refs.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al., 2020</a>)</span>. Leggiamo i dati in <span class="math inline">\(\mathsf{R}\)</span>.</p>
+<p>Consideriamo qui un esempio nel quale vengono usati i dati <code>kidiq</code> <span class="citation" data-cites="gelman2020regression">(<a href="#ref-gelman2020regression" role="doc-biblioref">Gelman et al., 2020</a>)</span>. Leggiamo i dati in <span class="math inline">\(\mathsf{R}\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/leeper/rio">"rio"</a></span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="fu">here</span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"kidiq.dta"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -823,7 +828,7 @@ div.csl-indent {
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-gelman2020regression" class="csl-entry" role="doc-biblioentry">
 Gelman, A., Hill, J., &amp; Vehtari, A. (2020). <em>Regression and other stories</em>. Cambridge University Press.
 </div>

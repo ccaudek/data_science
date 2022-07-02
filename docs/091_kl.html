@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -506,7 +511,7 @@ h(p, q) = h(p) + \mathbb{KL} (p \mid\mid q),
 \end{equation}\]</span>
 <p>il che mostra come la divergenza <span class="math inline">\(\mathbb{KL}\)</span> possa essere interpretata come l’incremento di entropia, rispetto a <span class="math inline">\(h(p)\)</span>, quando <span class="math inline">\(q\)</span> viene usata per rappresentare <span class="math inline">\(p\)</span>.</p>
 <div class="example">
-<p><span class="citation" data-cites="McElreath_rethinking">(da <a href="999_refs.html#ref-McElreath_rethinking" role="doc-biblioref">McElreath, 2020</a>)</span> Sia la distribuzione target <span class="math inline">\(p = \{0.3, 0.7\}\)</span>. Supponiamo che la distribuzione approssimata <span class="math inline">\(q\)</span> possa assumere valori da <span class="math inline">\(q = \{0.01, 0.99\}\)</span> a <span class="math inline">\(q = \{0.99, 0.01\}\)</span>. Calcoliamo la divergenza KL.</p>
+<p><span class="citation" data-cites="McElreath_rethinking">(da <a href="#ref-McElreath_rethinking" role="doc-biblioref">McElreath, 2020</a>)</span> Sia la distribuzione target <span class="math inline">\(p = \{0.3, 0.7\}\)</span>. Supponiamo che la distribuzione approssimata <span class="math inline">\(q\)</span> possa assumere valori da <span class="math inline">\(q = \{0.01, 0.99\}\)</span> a <span class="math inline">\(q = \{0.99, 0.01\}\)</span>. Calcoliamo la divergenza KL.</p>
 <p>Le istruzioni <span class="math inline">\(\mathsf{R}\)</span> sono le seguenti:</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">t</span> <span class="op">&lt;-</span></span>
@@ -659,7 +664,7 @@ p(\tilde{y} \mid y) = \int_\Theta p(\tilde{y} \mid \theta) p(\theta \mid y) \,\o
 (\#eq:lppd)
 \end{equation}\]</span>
 <p>e corrisponde alla somma delle densità predittive logaritmiche delle <span class="math inline">\(n\)</span> osservazioni. Valori più grandi della @ref(eq:lppd) sono da preferire perché indicano una maggiore accuratezza media. È anche comune vedere espressa la quantità precedente nei termini della <em>devianza</em>, ovvero alla <span class="math inline">\(\mbox{lppd}\)</span> moltiplicata per -2. In questo secondo caso sono da preferire valori piccoli.</p>
-<p>È importante notare che <span class="math inline">\(\lppd\)</span> fornisce una <em>sovrastima</em> della @ref(eq:elpd). Tale sovrastima è dovuta al fatto che, nel calcolo della @ref(eq:lppd), abbiamo usato <span class="math inline">\(p(y^{rep} \mid y)\)</span> al posto di <span class="math inline">\(p(\tilde{y} \mid y)\)</span>: in altri termini, abbiamo considerato le osservazioni del campione come se fossero un nuovo campione di dati. In una serie di simulazioni, <span class="citation" data-cites="McElreath_rethinking">McElreath (<a href="999_refs.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> esamina il significato di questa sovrastima. Nelle simulazioni la devianza viene calcolata come funzione della complessità (ovvero, il numero di parametri) del modello. La simulazione mostra che <span class="math inline">\(\mbox{lppd}\)</span> aumenta al crescere del numero di parametri del modello. Ciò significa che <span class="math inline">\(\mbox{lppd}\)</span> mostra lo stesso limite del coefficiente di determinazione: aumenta all’aumentare della complessità del modello.</p>
+<p>È importante notare che <span class="math inline">\(\lppd\)</span> fornisce una <em>sovrastima</em> della @ref(eq:elpd). Tale sovrastima è dovuta al fatto che, nel calcolo della @ref(eq:lppd), abbiamo usato <span class="math inline">\(p(y^{rep} \mid y)\)</span> al posto di <span class="math inline">\(p(\tilde{y} \mid y)\)</span>: in altri termini, abbiamo considerato le osservazioni del campione come se fossero un nuovo campione di dati. In una serie di simulazioni, <span class="citation" data-cites="McElreath_rethinking">McElreath (<a href="#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> esamina il significato di questa sovrastima. Nelle simulazioni la devianza viene calcolata come funzione della complessità (ovvero, il numero di parametri) del modello. La simulazione mostra che <span class="math inline">\(\mbox{lppd}\)</span> aumenta al crescere del numero di parametri del modello. Ciò significa che <span class="math inline">\(\mbox{lppd}\)</span> mostra lo stesso limite del coefficiente di determinazione: aumenta all’aumentare della complessità del modello.</p>
 <div class="example">
 <p>Esaminiamo un esempio tratto da <a href="https://vasishth.github.io/bayescogsci/book/expected-log-predictive-density-of-a-model.html">Bayesian Data Analysis for Cognitive Science</a> nel quale la <span class="math inline">\(\mbox{lppd}\)</span> viene calcolata in forma esatta oppure mediante approssimazione. Supponiamo di disporre di un campione di <span class="math inline">\(n\)</span> osservazioni. Supponiamo inoltre di conoscere il vero processo generativo dei dati (qualcosa che in pratica non è mai possibile), ovvero:</p>
 <p><span class="math display">\[
@@ -711,7 +716,7 @@ p(y^{rep} \mid y) \sim \mbox{Beta}(2, 2).
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-gelman2014understanding" class="csl-entry" role="doc-biblioentry">
 Gelman, A., Hwang, J., &amp; Vehtari, A. (2014). Understanding predictive information criteria for bayesian models. <em>Statistics and Computing</em>, <em>24</em>(6), 997–1016.
 </div>
@@ -722,7 +727,7 @@ McElreath, R. (2020). <em>Statistical rethinking: <span>A</span> <span>Bayesian<
 </section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Se il modello sottostante i dati fosse noto non avremmo bisogno di cercare il modello migliore, perché <span class="math inline">\(p_t\)</span> è il modello migliore.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>In riferimento alla notazione, ricordiamo che <span class="citation" data-cites="gelman2014understanding">Gelman et al. (<a href="999_refs.html#ref-gelman2014understanding" role="doc-biblioref">2014</a>)</span> distinguono tra <span class="math inline">\(y^{rep}\)</span> e <span class="math inline">\(\tilde{y}\)</span>. I valori <span class="math inline">\(y^{rep}\)</span> corrispondono ad un’altra possibile realizzazione del medesimo modello statistico che ha prodotto <span class="math inline">\(y\)</span> mediante determinati valori dei parametri <span class="math inline">\(\theta\)</span> (repliche sotto lo stesso modello statistico). I valori <span class="math inline">\(\tilde{y}\)</span> corrispondono invece ad un campione empirico di dati osservato in qualche futura occasione.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>In riferimento alla notazione, ricordiamo che <span class="citation" data-cites="gelman2014understanding">Gelman et al. (<a href="#ref-gelman2014understanding" role="doc-biblioref">2014</a>)</span> distinguono tra <span class="math inline">\(y^{rep}\)</span> e <span class="math inline">\(\tilde{y}\)</span>. I valori <span class="math inline">\(y^{rep}\)</span> corrispondono ad un’altra possibile realizzazione del medesimo modello statistico che ha prodotto <span class="math inline">\(y\)</span> mediante determinati valori dei parametri <span class="math inline">\(\theta\)</span> (repliche sotto lo stesso modello statistico). I valori <span class="math inline">\(\tilde{y}\)</span> corrispondono invece ad un campione empirico di dati osservato in qualche futura occasione.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const icon = "";

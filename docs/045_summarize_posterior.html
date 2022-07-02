@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -499,12 +504,12 @@ div.csl-indent {
 <p>Le procedure bayesiane basate sui metodi MCMC utilizzano un numero finito di campioni dalla distribuzione stazionaria, e una tale caratteristica della simulazione introduce un ulteriore livello di incertezza nella stima del parametro. L’<em>errore standard della stima</em> (in inglese <em>Monte Carlo standard error</em>, MCSE) misura l’accuratezza della simulazione. La deviazione standard a posteriori e l’errore standard della stima sono due concetti completamente diversi. La deviazione standard a posteriori descrive l’incertezza circa il parametro (l’ampiezza della distribuzione a posteriori) ed è una funzione della dimensione del campione; il MCSE descrive invece l’incertezza nella stima del parametro dovuta alla simulazione MCMC ed è una funzione del numero di iterazioni nella simulazione.</p>
 </section><section id="intervallo-di-credibilità" class="level2" data-number="22.2"><h2 data-number="22.2" class="anchored" data-anchor-id="intervallo-di-credibilità">
 <span class="header-section-number">22.2</span> Intervallo di credibilità</h2>
-<p>Molto spesso la stima puntuale è accompagnata da una stima intervallare (abbiamo già incontrato questo aspetto nel Capitolo <a href="029_conjugate_families.html"><span>Capitolo&nbsp;17</span></a> discutendo lo schema beta-binomiale). Nella statistica bayesiana, se il parametro <span class="math inline">\(\theta \in \Theta\)</span> è monodimensionale, si dice <em>intervallo di credibilità</em> un intervallo di valori <span class="math inline">\(I_{\alpha}\)</span> che contiene la proporzione <span class="math inline">\(1 - \alpha\)</span> della massa di probabilità della funzione a posteriori:</p>
+<p>Molto spesso la stima puntuale è accompagnata da una stima intervallare (abbiamo già incontrato questo aspetto nel Capitolo <a href="#sec-distr-coniugate"><span class="quarto-unresolved-ref">sec-distr-coniugate</span></a> discutendo lo schema beta-binomiale). Nella statistica bayesiana, se il parametro <span class="math inline">\(\theta \in \Theta\)</span> è monodimensionale, si dice <em>intervallo di credibilità</em> un intervallo di valori <span class="math inline">\(I_{\alpha}\)</span> che contiene la proporzione <span class="math inline">\(1 - \alpha\)</span> della massa di probabilità della funzione a posteriori:</p>
 <p><span id="eq-credibint"><span class="math display">\[
 p(\Theta \in I_{\alpha} \mid y) = 1 - \alpha.
 \tag{22.1}\]</span></span></p>
 <p>L’intervallo di credibilità ha lo scopo di esprimere il nostro grado di incertezza riguardo la stima del parametro. Se il parametro <span class="math inline">\(\theta\)</span> è multidimensionale, si parla invece di “regione di credibilità”.</p>
-<p>L’<a href="#eq-credibint">Equazione&nbsp;<span>22.1</span></a> non determina un unico intervallo di credibilità di ordine <span class="math inline">\((1 - \alpha) \cdot 100\%\)</span>. In realtà esiste un numero infinito di tali intervalli. Ciò significa che dobbiamo definire alcune condizioni aggiuntive per la scelta dell’intervallo di credibilità. Esaminiamo due delle condizioni aggiuntive più comuni.</p>
+<p>L’<a href="#eq-credibint">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-credibint</span></a> non determina un unico intervallo di credibilità di ordine <span class="math inline">\((1 - \alpha) \cdot 100\%\)</span>. In realtà esiste un numero infinito di tali intervalli. Ciò significa che dobbiamo definire alcune condizioni aggiuntive per la scelta dell’intervallo di credibilità. Esaminiamo due delle condizioni aggiuntive più comuni.</p>
 <section id="intervallo-di-credibilità-a-code-uguali" class="level3" data-number="22.2.1"><h3 data-number="22.2.1" class="anchored" data-anchor-id="intervallo-di-credibilità-a-code-uguali">
 <span class="header-section-number">22.2.1</span> Intervallo di credibilità a code uguali</h3>
 <p>Un intervallo di credibilità <em>a code uguali</em> a livello <span class="math inline">\(\alpha\)</span> è un intervallo</p>
@@ -524,7 +529,7 @@ I_{0.05} = [q_{0.025}, q_{0.975}]
 <p>L’interpretazione dell’intervallo di credibilità è molto intuitiva: l’intervallo di credibilità è un intervallo di valori all’interno del quale cade il valore del parametro incognito con un particolare livello di probabilità soggettiva. Possiamo dire che, dopo aver visto i dati crediamo, con un determinato livello di probabilità soggettiva, che il valore del parametro (ad esempio, la dimensione dell’effetto di un trattamento) abbia un valore compreso all’interno dell’intervallo che è stato calcolato, laddove per probabilità soggettiva intendiamo “il grado di fiducia che lo sperimentatore ripone nel verificarsi di un evento”. Gli intervalli di credibilità si calcolano con un software.</p>
 </section></section><section id="un-esempio-concreto" class="level2" data-number="22.3"><h2 data-number="22.3" class="anchored" data-anchor-id="un-esempio-concreto">
 <span class="header-section-number">22.3</span> Un esempio concreto</h2>
-<p>Per fare un esempio pratico, consideriamo nuovamente i valori del BDI-II dei 30 soggetti clinici di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p>Per fare un esempio pratico, consideriamo nuovamente i valori del BDI-II dei 30 soggetti clinici di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">26</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">25</span>, <span class="fl">44</span>, <span class="fl">30</span>, <span class="fl">33</span>, <span class="fl">43</span>, <span class="fl">22</span>, <span class="fl">43</span>, </span>
@@ -533,7 +538,7 @@ I_{0.05} = [q_{0.025}, q_{0.975}]
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Un valore BDI-II <span class="math inline">\(\geq 30\)</span> indica la presenza di un livello grave di depressione. Nel campione clinico di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>, 17 pazienti su 30 manifestano un livello grave di depressione.</p>
+<p>Un valore BDI-II <span class="math inline">\(\geq 30\)</span> indica la presenza di un livello grave di depressione. Nel campione clinico di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>, 17 pazienti su 30 manifestano un livello grave di depressione.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">y</span> <span class="op">&gt;</span> <span class="fl">29</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 17</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -633,7 +638,7 @@ P(\theta \in (0.472, 0.766) | Y = 17) = \int_{0.472}^{0.766} f(\theta \mid y=17)
 <p>Non è sempre appropriato riportare l’intervallo di credibilità a code uguali. Se la distribuzione a posteriori è fortemente asimmetrica è più appropriato riportare l’intervallo di credibilità a densità a posteriori più alta (HPD). L’intervallo HPD risulta più semplice da determinare quando la distribuzione a posteriori viene approssimata con il metodo MCMC.</p>
 </section><section id="probabilità-della-distribuzione-a-posteriori" class="level3" data-number="22.3.3"><h3 data-number="22.3.3" class="anchored" data-anchor-id="probabilità-della-distribuzione-a-posteriori">
 <span class="header-section-number">22.3.3</span> Probabilità della distribuzione a posteriori</h3>
-<p>Il test di ipotesi è un compito comune dell’analisi della distribuzione a posteriori (si veda anche il <a href="029_conjugate_families.html"><span>Capitolo&nbsp;17</span></a>). Supponiamo che si voglia conoscere la probabilità a posteriori che <span class="math inline">\(\theta\)</span> sia superiore a 0.5. Per sapere quanto può essere ritenuto credibile l’evento <span class="math inline">\(\theta &gt; 0.5\)</span> possiamo calcolare il seguente integrale:</p>
+<p>Il test di ipotesi è un compito comune dell’analisi della distribuzione a posteriori (si veda anche il <a href="#sec-distr-coniugate"><span class="quarto-unresolved-ref">sec-distr-coniugate</span></a>). Supponiamo che si voglia conoscere la probabilità a posteriori che <span class="math inline">\(\theta\)</span> sia superiore a 0.5. Per sapere quanto può essere ritenuto credibile l’evento <span class="math inline">\(\theta &gt; 0.5\)</span> possiamo calcolare il seguente integrale:</p>
 <p><span class="math display">\[
 P(\theta &gt; 0.5 \; \mid \; y = 17) = \int_{0.5}^{1}f(\theta \mid y=17)d\theta \;,
 \]</span></p>
@@ -732,7 +737,7 @@ P(\theta &gt; 0.5 \; \mid \; y = 17) = \int_{0.5}^{1}f(\theta \mid y=17)d\theta 
 <li>BF &gt; 1: La credibilità di <span class="math inline">\(H_a\)</span> è aumentata dopo avere osservato i dati. Quindi maggiore è BF, più convincente risulta l’evidenza per <span class="math inline">\(H_a\)</span>.</li>
 <li>BF &lt; 1: La credibilità di <span class="math inline">\(H_a\)</span> è diminuita dopo avere osservato i dati.</li>
 </ul>
-<p>Non ci sono delle soglie universalmente riconosciute per interpretare il BF, ma uno schema popolare, proposto da <span class="citation" data-cites="lee2014bayesian">Lee &amp; Wagenmakers (<a href="999_refs.html#ref-lee2014bayesian" role="doc-biblioref">2014</a>)</span>, è il seguente:</p>
+<p>Non ci sono delle soglie universalmente riconosciute per interpretare il BF, ma uno schema popolare, proposto da <span class="citation" data-cites="lee2014bayesian">Lee &amp; Wagenmakers (<a href="#ref-lee2014bayesian" role="doc-biblioref">2014</a>)</span>, è il seguente:</p>
 <table class="table">
 <thead><tr class="header">
 <th style="text-align: right;">BF</th>
@@ -801,7 +806,7 @@ P(\theta &gt; 0.5 \; \mid \; y = 17) = \int_{0.5}^{1}f(\theta \mid y=17)d\theta 
 </section></section></section><section id="la-funzione-di-perdita-attesa" class="level2" data-number="22.4"><h2 data-number="22.4" class="anchored" data-anchor-id="la-funzione-di-perdita-attesa">
 <span class="header-section-number">22.4</span> La funzione di perdita attesa</h2>
 <p>In generale, il modo più razionale per giungere ad una decisione statistica utilizzando <em>l’intera distribuzione a posteriori</em> è quello di usare la <em>funzione di perdita</em> (<em>loss function</em>). La funzione di perdita è un concetto nella teoria delle decisioni statistiche e consente di quantificare <em>il costo</em> che deriva dalla decisione di scegliere il valore <span class="math inline">\(\theta_0\)</span> quale stima del parametro, quando in realtà il parametro ha il valore <span class="math inline">\(\theta\)</span>.</p>
-<p>Per chiarire che cosa si intende per funzione di perdita, esaminiamo qui un semplice esempio nel quale vengono considerati due soli valori di probabilità per l’evento target, anziché l’intera distribuzione a posteriori <span class="citation" data-cites="schmettow2021new">(il codice è ricavato da <a href="999_refs.html#ref-schmettow2021new" role="doc-biblioref">Schmettow, 2021</a>)</span>.</p>
+<p>Per chiarire che cosa si intende per funzione di perdita, esaminiamo qui un semplice esempio nel quale vengono considerati due soli valori di probabilità per l’evento target, anziché l’intera distribuzione a posteriori <span class="citation" data-cites="schmettow2021new">(il codice è ricavato da <a href="#ref-schmettow2021new" role="doc-biblioref">Schmettow, 2021</a>)</span>.</p>
 <p>Si consideri la scelta di prendere o meno l’ombrello nell’uscire di casa. Le previsioni del tempo sono indicate di seguito.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Risultato</span> <span class="op">&lt;-</span></span>
@@ -862,14 +867,14 @@ P(\theta &gt; 0.5 \; \mid \; y = 17) = \int_{0.5}^{1}f(\theta \mid y=17)d\theta 
 </details>
 </div>
 <p>La regola della <em>minimizzazione dei costi</em> ci porta a scegliere l’alternativa che comporta il costo minore: nel nostro esempio, questo corrisponde all’azione “prendere l’ombrello”.</p>
-<p>La stessa logica dell’esempio qui discusso può essere usata anche quando, anziché avere solo due valori per la probabilità dello stato del mondo (pioverà / non pioverà), utilizziamo l’intera distribuzione a posteriori (per esempio, quella relativa alla previsione di pioggia). Concludiamo questi brevi accenni relativi alla funzione di perdita con una considerazione di <span class="citation" data-cites="McElreath_rethinking">McElreath (<a href="999_refs.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span>: anche se gli statistici e i teorici dei giochi sono da tempo interessati alle funzioni di perdita e alle relazioni che intercorrono tra esse e l’inferenza bayesiana, i ricercatori non le usano quasi mai in modo esplicito.</p>
+<p>La stessa logica dell’esempio qui discusso può essere usata anche quando, anziché avere solo due valori per la probabilità dello stato del mondo (pioverà / non pioverà), utilizziamo l’intera distribuzione a posteriori (per esempio, quella relativa alla previsione di pioggia). Concludiamo questi brevi accenni relativi alla funzione di perdita con una considerazione di <span class="citation" data-cites="McElreath_rethinking">McElreath (<a href="#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span>: anche se gli statistici e i teorici dei giochi sono da tempo interessati alle funzioni di perdita e alle relazioni che intercorrono tra esse e l’inferenza bayesiana, i ricercatori non le usano quasi mai in modo esplicito.</p>
 </section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
 <p>Questo capitolo introduce le procedure di base per la manipolazione della distribuzione a posteriori. Lo strumento fondamentale che è stato utilizzato è quello fornito dai campioni di valori del parametro che vengono estratti dalla distribuzione a posteriori. Lavorare con campioni di valori del parametro estratti dalla distribuzione a posteriori trasforma un problema di calcolo integrale in un problema di riepilogo dei dati. Abbiamo visto le procedure maggiormente usate che consentono di utilizzare i campioni a posteriori per produrre indici di sintesi della distribuzione a posteriori: gli intervalli di credibilità e le stime puntuali.</p>
 
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-lee2014bayesian" class="csl-entry" role="doc-biblioentry">
 Lee, M. D., &amp; Wagenmakers, E.-J. (2014). <em>Bayesian cognitive modeling: A practical course</em>. Cambridge university press.
 </div>

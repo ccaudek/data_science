@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -477,8 +482,8 @@ div.csl-indent {
 <section id="sec-bayes-cancer" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sec-bayes-cancer">
 <span class="header-section-number">7.1</span> Probabilità condizionata su altri eventi</h2>
 <p>L’attribuzione di una probabilità ad un evento è sempre condizionata dalle conoscenze che abbiamo a disposizione. Per un determinato stato di conoscenze, attribuiamo ad un dato evento una certa probabilità di verificarsi; ma se il nostro stato di conoscenze cambia, allora cambierà anche la probabilità che attribuiremo all’evento in questione. Infatti, si può pensare che tutte le probabilità siano probabilità condizionate, anche se l’evento condizionante non è sempre esplicitamente menzionato.</p>
-<p>Per introdurre la probabilità condizionata, <span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="999_refs.html#ref-albert2019probability" role="doc-biblioref">2019</a>)</span> utilizzando il famoso paradosso delle tre carte. “Ci sono tre carte, delle quali la prima (<span class="math inline">\(A\)</span>) è rossa su entrambi i lati, la seconda (<span class="math inline">\(B\)</span>) su un lato è rossa e sull’altro è bianca e la terza (<span class="math inline">\(C\)</span>) è bianca su entrambi i lati. Ponendo su un tavolo una delle tre carte, scelta a caso, ottengo che il lato visibile è di colore rosso. Qual è la probabilità che anche il lato non visibile sia di colore rosso? La risposta intuitiva porta solitamente a rispondere che la probabilità ricercata sia pari al 50%, in quanto solo due carte (la <span class="math inline">\(A\)</span> e la <span class="math inline">\(B\)</span>) possono mostrare il colore rosso e solo una di queste (la <span class="math inline">\(A\)</span>) può mostrare anche sull’altro lato il colore rosso; tuttavia si dimostra che la risposta giusta è 2/3.” (da Wikipedia)</p>
-<p><span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="999_refs.html#ref-albert2019probability" role="doc-biblioref">2019</a>)</span> propongono di risolvere il problema con una simulazione in <span class="math inline">\(\textsf{R}\)</span>: prima di tutto si sceglie una carta a caso, e poi si sceglie un lato della carta. Ci sono tre carte possibili, che chiamiamo “c_rossa”, “c_bianca”, e “c_entrambi”. Per la carta rossa, ci sono due lati rossi; per la carta bianca ci sono due lati bianchi e la carta “entrambi” ha un lato rosso e un lato bianco.</p>
+<p>Per introdurre la probabilità condizionata, <span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="#ref-albert2019probability" role="doc-biblioref">2019</a>)</span> utilizzando il famoso paradosso delle tre carte. “Ci sono tre carte, delle quali la prima (<span class="math inline">\(A\)</span>) è rossa su entrambi i lati, la seconda (<span class="math inline">\(B\)</span>) su un lato è rossa e sull’altro è bianca e la terza (<span class="math inline">\(C\)</span>) è bianca su entrambi i lati. Ponendo su un tavolo una delle tre carte, scelta a caso, ottengo che il lato visibile è di colore rosso. Qual è la probabilità che anche il lato non visibile sia di colore rosso? La risposta intuitiva porta solitamente a rispondere che la probabilità ricercata sia pari al 50%, in quanto solo due carte (la <span class="math inline">\(A\)</span> e la <span class="math inline">\(B\)</span>) possono mostrare il colore rosso e solo una di queste (la <span class="math inline">\(A\)</span>) può mostrare anche sull’altro lato il colore rosso; tuttavia si dimostra che la risposta giusta è 2/3.” (da Wikipedia)</p>
+<p><span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="#ref-albert2019probability" role="doc-biblioref">2019</a>)</span> propongono di risolvere il problema con una simulazione in <span class="math inline">\(\textsf{R}\)</span>: prima di tutto si sceglie una carta a caso, e poi si sceglie un lato della carta. Ci sono tre carte possibili, che chiamiamo “c_rossa”, “c_bianca”, e “c_entrambi”. Per la carta rossa, ci sono due lati rossi; per la carta bianca ci sono due lati bianchi e la carta “entrambi” ha un lato rosso e un lato bianco.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
 <span>  Carta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
@@ -520,7 +525,7 @@ div.csl-indent {
 <p>Supponiamo che lo screening per la diagnosi precoce del tumore mammario si avvalga di un test che è accurato al 90%, nel senso che classifica correttamente il 90% delle donne colpite dal cancro e il 90% delle donne che non hanno il cancro al seno. Supponiamo che l’1% delle donne sottoposte allo screening abbia effettivamente il cancro al seno (e d’altra parte, il 99% non lo ha). Ci chiediamo: (1) qual è la probabilità che una donna scelta a caso ottenga una mammografia positiva, e (2) se la mammografia è positiva, qual è la probabilità che vi sia effettivamente un tumore al seno?</p>
 </div>
 <div class="solution proof">
-<p><span class="proof-title"><em>Soluzione</em>. </span>Per risolvere questo problema, supponiamo che il test in questione venga somministrato ad un grande campione di donne, diciamo a 1000 donne. Di queste 1000 donne, 10 (ovvero, l’1%) hanno il cancro al seno. Per queste 10 donne, il test darà un risultato positivo in 9 casi (ovvero, nel 90% dei casi). Per le rimanenti 990 donne che non hanno il cancro al seno, il test darà un risultato positivo in 99 casi (se la probabilità di un vero positivo è del 90%, la probabilità di un falso positivo è del 10%). Questa situazione è rappresentata nella figura <a href="#fig-mammografia">Figura&nbsp;<span>7.1</span></a>.</p>
+<p><span class="proof-title"><em>Soluzione</em>. </span>Per risolvere questo problema, supponiamo che il test in questione venga somministrato ad un grande campione di donne, diciamo a 1000 donne. Di queste 1000 donne, 10 (ovvero, l’1%) hanno il cancro al seno. Per queste 10 donne, il test darà un risultato positivo in 9 casi (ovvero, nel 90% dei casi). Per le rimanenti 990 donne che non hanno il cancro al seno, il test darà un risultato positivo in 99 casi (se la probabilità di un vero positivo è del 90%, la probabilità di un falso positivo è del 10%). Questa situazione è rappresentata nella figura <a href="#fig-mammografia">Figura&nbsp;<span class="quarto-unresolved-ref">fig-mammografia</span></a>.</p>
 <p>Combinando i due risultati precedenti, vediamo che il test dà un risultato positivo per 9 donne che hanno effettivamente il cancro al seno e per 99 donne che non ce l’hanno, per un totale di 108 risultati positivi. Dunque, la probabilità di ottenere un risultato positivo al test è <span class="math inline">\(\frac{108}{1000}\)</span> = 11%. Ma delle 108 donne che hanno ottenuto un risultato positivo al test, solo 9 hanno il cancro al seno. Dunque, la probabilità di essere una donna che ha veramente il cancro al seno, dato un risultato positivo al test (che ha le proprietà descritte sopra), è pari a <span class="math inline">\(\frac{9}{108}\)</span> = 8%.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -547,7 +552,7 @@ P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \quad \text{con}\, P(B) &gt; 0,
 <p>Da un mazzo di 52 carte (13 carte per ciascuno dei 4 semi) ne viene estratta una in modo casuale. Qual è la probabilità che esca una figura di cuori? Sapendo che la carta estratta ha il seme di cuori, qual è la probabilità che il valore numerico della carta sia 7, 8 o 9?</p>
 </div>
 <div class="solution proof">
-<p><span class="proof-title"><em>Soluzione</em>. </span>Ci sono 13 carte di cuori, dunque la risposta alla prima domanda è 1/4. Questa è una probabilità non condizionata, dunque il suo calcolo non presenta alcuna difficoltà. La seconda probabilità cercata è una probabilità condizionata. Anche in questo secondo caso dobbiamo solo contare, ma, in questo caso, considerando solo un sottoinsieme di carte, ovvero le 13 carte di cuori. In questo modo è facile arrivare al risultato cercato, ovvero 3/13. Applicando la formula <a href="#eq-probcond">Equazione&nbsp;<span>7.1</span></a>, con <span class="math inline">\(A\)</span> = 7, 8, o 9 e <span class="math inline">\(B\)</span> = cuori, arriviamo allo stesso risulato:</p>
+<p><span class="proof-title"><em>Soluzione</em>. </span>Ci sono 13 carte di cuori, dunque la risposta alla prima domanda è 1/4. Questa è una probabilità non condizionata, dunque il suo calcolo non presenta alcuna difficoltà. La seconda probabilità cercata è una probabilità condizionata. Anche in questo secondo caso dobbiamo solo contare, ma, in questo caso, considerando solo un sottoinsieme di carte, ovvero le 13 carte di cuori. In questo modo è facile arrivare al risultato cercato, ovvero 3/13. Applicando la formula <a href="#eq-probcond">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probcond</span></a>, con <span class="math inline">\(A\)</span> = 7, 8, o 9 e <span class="math inline">\(B\)</span> = cuori, arriviamo allo stesso risulato:</p>
 <p><span class="math display">\[
 P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{3/52}{13/52} = \frac{3}{13}.
 \]</span></p>
@@ -558,11 +563,11 @@ P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{3/52}{13/52} = \frac{3}{13}.
 <!-- Le considerazioni precedenti risultano più chiare se facciamo nuovamente riferimento all'esercizio sul tumore mammario descritto sopra. In tale esercizio abbiamo visto come la probabilità di cancro dato un risultato positivo al test sia uguale a 0.08. Tale probabilità è molto diversa dalla probabilità di un risultato positivo al test data la presenza del cancro. Infatti, questa seconda probabilità è uguale a 0.90 ed è descritta nel problema come una delle caratteristiche del test in questione. -->
 </section><section id="la-regola-moltiplicativa" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="la-regola-moltiplicativa">
 <span class="header-section-number">7.2</span> La regola moltiplicativa</h2>
-<p>Dalla definizione di probabilità condizionata (<a href="#eq-probcond">Equazione&nbsp;<span>7.1</span></a>) è possibile esprimere la probabilità congiunta tramite le condizionate. La <em>regola moltiplicativa</em> (o <em>legge delle probabilità composte</em>, o <em>regola della catena</em>) afferma che la probabilità che si verifichino due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> è pari alla probabilità di uno dei due eventi moltiplicato con la probabilità dell’altro evento condizionato al verificarsi del primo:</p>
+<p>Dalla definizione di probabilità condizionata (<a href="#eq-probcond">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probcond</span></a>) è possibile esprimere la probabilità congiunta tramite le condizionate. La <em>regola moltiplicativa</em> (o <em>legge delle probabilità composte</em>, o <em>regola della catena</em>) afferma che la probabilità che si verifichino due eventi <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> è pari alla probabilità di uno dei due eventi moltiplicato con la probabilità dell’altro evento condizionato al verificarsi del primo:</p>
 <p><span id="eq-probcondinv"><span class="math display">\[
 P(A \cap B) = P(B)P(A \mid B) = P(A)P(B \mid A).
 \tag{7.2}\]</span></span></p>
-<p>La <a href="#eq-probcondinv">Equazione&nbsp;<span>7.2</span></a> si estende al caso di <span class="math inline">\(n\)</span> eventi <span class="math inline">\(A_1, \dots, A_n\)</span> nella forma seguente:</p>
+<p>La <a href="#eq-probcondinv">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probcondinv</span></a> si estende al caso di <span class="math inline">\(n\)</span> eventi <span class="math inline">\(A_1, \dots, A_n\)</span> nella forma seguente:</p>
 <p><span id="eq-probcomposte"><span class="math display">\[
 P\left( \bigcap_{k=1}^n A_k \right) = \prod_{k=1}^n P\left(  A_k  \ \Biggl\lvert \ \bigcap_{j=1}^{k-1} A_j \right)
 \tag{7.3}\]</span></span></p>
@@ -574,7 +579,7 @@ P(A_1 \cap A_2 \cap A_3 \cap A_4) = {}&amp; P(A_1) \cdot P(A_2 \mid A_1) \cdot  
 \end{split}
 \]</span></p>
 <div id="exm-prob-cond-2" class="theorem example">
-<p><span class="theorem-title"><strong>Esempio 7.3 </strong></span>Da un’urna contenente 6 palline bianche e 4 nere si estrae una pallina per volta, senza reintrodurla nell’urna. Indichiamo con <span class="math inline">\(B_i\)</span> l’evento: “esce una pallina bianca alla <span class="math inline">\(i\)</span>-esima estrazione” e con <span class="math inline">\(N_i\)</span> l’estrazione di una pallina nera. L’evento: “escono due palline bianche nelle prime due estrazioni” è rappresentato dalla intersezione <span class="math inline">\(\{B_1 \cap B_2\}\)</span> e, per l’<a href="#eq-probcondinv">Equazione&nbsp;<span>7.2</span></a>, la sua probabilità vale</p>
+<p><span class="theorem-title"><strong>Esempio 7.3 </strong></span>Da un’urna contenente 6 palline bianche e 4 nere si estrae una pallina per volta, senza reintrodurla nell’urna. Indichiamo con <span class="math inline">\(B_i\)</span> l’evento: “esce una pallina bianca alla <span class="math inline">\(i\)</span>-esima estrazione” e con <span class="math inline">\(N_i\)</span> l’estrazione di una pallina nera. L’evento: “escono due palline bianche nelle prime due estrazioni” è rappresentato dalla intersezione <span class="math inline">\(\{B_1 \cap B_2\}\)</span> e, per l’<a href="#eq-probcondinv">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probcondinv</span></a>, la sua probabilità vale</p>
 <p><span class="math display">\[
 P(B_1 \cap B_2) = P(B_1)P(B_2 \mid B_1).
 \]</span></p>
@@ -586,7 +591,7 @@ P(B_1 \cap B_2) = \frac{6}{10} \cdot \frac{5}{9} = \frac{1}{3}.
 <p><span class="math display">\[
 P(N_1 \cap N_2) = P(N_1)P(N_2 \mid N_1) = \frac{4}{10} \cdot \frac{3}{9} = \frac{4}{30}.
 \]</span></p>
-<p>Se l’esperimento consiste nell’estrazione successiva di 3 palline, la probabilità che queste siano tutte bianche, per la <a href="#eq-probcomposte">Equazione&nbsp;<span>7.3</span></a>, vale</p>
+<p>Se l’esperimento consiste nell’estrazione successiva di 3 palline, la probabilità che queste siano tutte bianche, per la <a href="#eq-probcomposte">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probcomposte</span></a>, vale</p>
 <p><span class="math display">\[
 P(B_1 \cap B_2 \cap B_3)=P(B_1)P(B_2 \mid B_1)P(B_3 \mid B_1 \cap B_2),
 \]</span></p>
@@ -604,7 +609,7 @@ P(N_1 \cap N_2 \cap N_3) &amp;= P(N_1)P(N_2 \mid N_1)P(N_3 \mid N_1 \cap N_2)\no
 </div>
 </section><section id="lindipendendenza-stocastica" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="lindipendendenza-stocastica">
 <span class="header-section-number">7.3</span> L’indipendendenza stocastica</h2>
-<p>Un concetto molto importante per le applicazioni statistiche della probabilità è quello dell’indipendenza stocastica. L’<a href="#eq-probcond">Equazione&nbsp;<span>7.1</span></a> consente di esprimere il concetto di indipendenza di un evento da un altro in forma intuitiva: se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono eventi indipendenti, allora il verificarsi di <span class="math inline">\(A\)</span> non influisce sulla probabilità del verificarsi di <span class="math inline">\(B\)</span>, ovvero non la condiziona, e il verificarsi di <span class="math inline">\(B\)</span> non influisce sulla probabilità del verificarsi di <span class="math inline">\(A\)</span>. Infatti, per l’<a href="#eq-probcond">Equazione&nbsp;<span>7.1</span></a>, si ha che, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi indipendenti, risulta:</p>
+<p>Un concetto molto importante per le applicazioni statistiche della probabilità è quello dell’indipendenza stocastica. L’<a href="#eq-probcond">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probcond</span></a> consente di esprimere il concetto di indipendenza di un evento da un altro in forma intuitiva: se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono eventi indipendenti, allora il verificarsi di <span class="math inline">\(A\)</span> non influisce sulla probabilità del verificarsi di <span class="math inline">\(B\)</span>, ovvero non la condiziona, e il verificarsi di <span class="math inline">\(B\)</span> non influisce sulla probabilità del verificarsi di <span class="math inline">\(A\)</span>. Infatti, per l’<a href="#eq-probcond">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probcond</span></a>, si ha che, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi indipendenti, risulta:</p>
 <p><span class="math display">\[
 P(A \mid B) = \frac{P(A)P(B)}{P(B)} = P(A),
 \]</span></p>
@@ -652,7 +657,7 @@ P(A \cup B \cup C) &amp;= P(A)+P(B)+P(C)-P(A\cap B)-P(A\cap C) - \\
 \end{split}
 \]</span></p>
 <p>La formula per il caso di <span class="math inline">\(n\)</span> eventi si ricava per induzione.</p>
-<p>Per il caso di due soli eventi, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti, l’<a href="#eq-probunione">Equazione&nbsp;<span>7.4</span></a> si modifica nella relazione seguente:</p>
+<p>Per il caso di due soli eventi, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono indipendenti, l’<a href="#eq-probunione">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-probunione</span></a> si modifica nella relazione seguente:</p>
 <p><span class="math display">\[
 P(A \cup B) = P(A) + P(B) - P(A)P(B).
 \]</span></p>
@@ -740,7 +745,7 @@ P(A, B \mid C) = P(A \mid C) P(B \mid C).
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-albert2019probability" class="csl-entry" role="doc-biblioentry">
 Albert, J., &amp; Hu, J. (2019). <em>Probability and bayesian modeling</em>. Chapman; Hall/CRC.
 </div>

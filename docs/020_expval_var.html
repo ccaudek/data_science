@@ -390,6 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -520,11 +525,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span id="eq-prop-expval-linearity"><span class="math display">\[
 \mathbb{E}(X + Y) = \mathbb{E}(X) + \mathbb{E}(Y).
 \tag{11.2}\]</span></span></p>
-<p>L’<a href="#eq-prop-expval-linearity">Equazione&nbsp;<span>11.2</span></a> sembra ragionevole quando <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono indipendenti, ma è anche vera quando <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono associati. Abbiamo anche che</p>
+<p>L’<a href="#eq-prop-expval-linearity">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-prop-expval-linearity</span></a> sembra ragionevole quando <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono indipendenti, ma è anche vera quando <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono associati. Abbiamo anche che</p>
 <p><span id="eq-prop-expval-const"><span class="math display">\[
 \mathbb{E}(cY) = c \mathbb{E}(Y).
 \tag{11.3}\]</span></span></p>
-<p>L’<a href="#eq-prop-expval-const">Equazione&nbsp;<span>11.3</span></a> ci dice che possiamo estrarre una costante dall’operatore di valore atteso. Tale proprietà si estende a qualunque numero di variabili casuali. Infine, se due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono indipendenti, abbiamo che</p>
+<p>L’<a href="#eq-prop-expval-const">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-prop-expval-const</span></a> ci dice che possiamo estrarre una costante dall’operatore di valore atteso. Tale proprietà si estende a qualunque numero di variabili casuali. Infine, se due variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> sono indipendenti, abbiamo che</p>
 <p><span id="eq-expval-prod-ind-rv"><span class="math display">\[
 \mathbb{E}(X Y) = \mathbb{E}(X) \mathbb{E}(Y).
 \tag{11.4}\]</span></span></p>
@@ -665,7 +670,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 \mathbb{E}(XY) = 1 \cdot \frac{1}{8} + 2 \cdot \frac{2}{8} + 3 \cdot \frac{1}{8} = 1.0.
 \]</span></p>
-<p>Si noti che le variabili casuali <span class="math inline">\(Y\)</span> e <span class="math inline">\(Y\)</span> non sono indipendenti. Dunque non possiamo usare la proprietà del <span class="quarto-unresolved-ref">?thm-prodindrv</span>. Infatti, il valore atteso di <span class="math inline">\(X\)</span> è</p>
+<p>Si noti che le variabili casuali <span class="math inline">\(Y\)</span> e <span class="math inline">\(Y\)</span> non sono indipendenti. Dunque non possiamo usare la proprietà del <a href="#thm-prodindrv">Teorema&nbsp;<span class="quarto-unresolved-ref">thm-prodindrv</span></a>. Infatti, il valore atteso di <span class="math inline">\(X\)</span> è</p>
 <p><span class="math display">\[
 \mathbb{E}(X) = 1 \cdot \frac{3}{8} + 2 \cdot \frac{3}{8} + 3 \cdot \frac{1}{8} = 1.5
 \]</span></p>
@@ -813,7 +818,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Interpretiamo la deviazione standard di una variabile casuale come nella statistica descrittiva: misura approssimativamente la distanza tipica o prevista dei possibili valori <span class="math inline">\(y\)</span> dalla loro media.</p>
 <div id="exr-sd-discr-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 11.7 </strong></span></p>
-<p>Per i dadi equilibrati dell’<a href="#exr-var-discr-1">Esercizio&nbsp;<span>11.5</span></a>, la deviazione standard della variabile casuale <span class="math inline">\(S\)</span> è uguale a <span class="math inline">\(\sqrt{5.833} = 2.415\)</span>.</p>
+<p>Per i dadi equilibrati dell’<a href="#exr-var-discr-1">Esercizio&nbsp;<span class="quarto-unresolved-ref">exr-var-discr-1</span></a>, la deviazione standard della variabile casuale <span class="math inline">\(S\)</span> è uguale a <span class="math inline">\(\sqrt{5.833} = 2.415\)</span>.</p>
 </div>
 </section><section id="standardizzazione" class="level2" data-number="11.4"><h2 data-number="11.4" class="anchored" data-anchor-id="standardizzazione">
 <span class="header-section-number">11.4</span> Standardizzazione</h2>
@@ -860,7 +865,7 @@ Z = \frac{Y - \mathbb{E}(Y)}{\sigma_Y}.
 \mbox{Cov}(X,Y) = \mathbb{E}(XY) - \mathbb{E}(Y)\mathbb{E}(X).
 \tag{11.16}\]</span></span></p>
 <div class="proof">
-<p><span class="proof-title"><em>Dimostrazione</em>. </span>L’<a href="#eq-cov_vc_alt">Equazione&nbsp;<span>11.16</span></a> si ricava nel modo seguente:</p>
+<p><span class="proof-title"><em>Dimostrazione</em>. </span>L’<a href="#eq-cov_vc_alt">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-cov_vc_alt</span></a> si ricava nel modo seguente:</p>
 <p><span class="math display">\[
 \begin{align}
 \mbox{Cov}(X,Y) &amp;= \mathbb{E}\Bigl(\bigl(X-\mathbb{E}(X)\bigr) \bigl(Y-\mathbb{E}(Y)\bigr)\Bigr)\notag\\

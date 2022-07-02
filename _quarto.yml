@@ -62,6 +62,7 @@ book:
       - 090_entropy.qmd
       - 091_kl.qmd
       - 092_info_criterion.qmd
+      # - 093_projpred.qmd
       - 999_refs.qmd
   appendices:
     - a01_math_symbols.qmd

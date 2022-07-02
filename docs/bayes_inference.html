@@ -405,6 +405,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -468,12 +473,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>In questa sezione della dispensa verrà discusso l’argomento più difficile, quello dell’inferenza bayesiana.</p>
 <ul>
-<li>Nel <a href="025_intro_bayes.html"><span>Capitolo&nbsp;15</span></a> verrà introdotto il flusso di lavoro bayesiano.</li>
-<li>Il <a href="026_subj_prop.html"><span>Capitolo&nbsp;16</span></a> spiega cosa significa, in termini bayesiani, fare un’inferenza. Sarà considerato qui il caso più semplice, ovvero quello di una proporzione.</li>
-<li>Il <a href="029_conjugate_families.html"><span>Capitolo&nbsp;17</span></a> mostra come la distribuzione a posteriori possa essere derivata per via analitica nel caso delle famiglie coniugate di distribuzioni. Verrà qui esaminato lo schema beta-binomiale.</li>
-<li>Il <a href="030_balance_prior_post.html"><span>Capitolo&nbsp;18</span></a> discute l’influenza della distribuzione a priori sulla distribuzione a posteriori.</li>
-<li>Il <a href="036_posterior_sim.html"><span>Capitolo&nbsp;19</span></a> mostra come la distribuzione a posteriori possa essere approssimata per via numerica, quando una derivazione formale non è possibile. Verranno descritto il metodo basato su griglia e l’algoritmo di Metropolis.</li>
-<li>Il <a href="040_beta_binomial_mod.html"><span>Capitolo&nbsp;20</span></a> fornisce un’introduzione al linguaggio di programmazione probabilistico Stan. L’algoritmo di Metropolis fornisce sempre una buona approssimazione alla distribuzione a posteriori. Ma ha lo svantaggio di essere poco efficiente – ovvero di richiedere un numero molto grande di iterazioni per produrre un’approssimazione accettabile. Nel caso di modelli statistici complessi, le simulazioni MCMC richiedono un tempo molto lungo (si parla di ore, giorni, settimane…). In tali circostanze è ovvio che l’efficienza del campionamento diventa importante. L’algoritmo di Metropolis è molto semplice ma è poco efficiente. Recentemente sono stati sviluppati algoritmi molto più efficienti. Il linguaggio probabilistico Stan implementa il campionamento hamiltoniano che, correntemente, è il campionamento MCMC più efficiente. Tale metodo di campionamento è anche implementato in software che sono più semplici da usare di Stan (si veda, ad esempio, la funzione <code>brm()</code> del pacchetto <span class="math inline">\(\mathsf{R}\)</span> <code>brms</code>). Tuttavia, per scopi didattici, nel testo presente useremo Stan.</li>
+<li>Nel <a href="#sec-bayes-workflow"><span class="quarto-unresolved-ref">sec-bayes-workflow</span></a> verrà introdotto il flusso di lavoro bayesiano.</li>
+<li>Il <a href="#sec-subj-think-prop"><span class="quarto-unresolved-ref">sec-subj-think-prop</span></a> spiega cosa significa, in termini bayesiani, fare un’inferenza. Sarà considerato qui il caso più semplice, ovvero quello di una proporzione.</li>
+<li>Il <a href="#sec-distr-coniugate"><span class="quarto-unresolved-ref">sec-distr-coniugate</span></a> mostra come la distribuzione a posteriori possa essere derivata per via analitica nel caso delle famiglie coniugate di distribuzioni. Verrà qui esaminato lo schema beta-binomiale.</li>
+<li>Il <a href="#sec-prior-influence"><span class="quarto-unresolved-ref">sec-prior-influence</span></a> discute l’influenza della distribuzione a priori sulla distribuzione a posteriori.</li>
+<li>Il <a href="#sec-grid-metropolis"><span class="quarto-unresolved-ref">sec-grid-metropolis</span></a> mostra come la distribuzione a posteriori possa essere approssimata per via numerica, quando una derivazione formale non è possibile. Verranno descritto il metodo basato su griglia e l’algoritmo di Metropolis.</li>
+<li>Il <a href="#sec-stan-beta-binom"><span class="quarto-unresolved-ref">sec-stan-beta-binom</span></a> fornisce un’introduzione al linguaggio di programmazione probabilistico Stan. L’algoritmo di Metropolis fornisce sempre una buona approssimazione alla distribuzione a posteriori. Ma ha lo svantaggio di essere poco efficiente – ovvero di richiedere un numero molto grande di iterazioni per produrre un’approssimazione accettabile. Nel caso di modelli statistici complessi, le simulazioni MCMC richiedono un tempo molto lungo (si parla di ore, giorni, settimane…). In tali circostanze è ovvio che l’efficienza del campionamento diventa importante. L’algoritmo di Metropolis è molto semplice ma è poco efficiente. Recentemente sono stati sviluppati algoritmi molto più efficienti. Il linguaggio probabilistico Stan implementa il campionamento hamiltoniano che, correntemente, è il campionamento MCMC più efficiente. Tale metodo di campionamento è anche implementato in software che sono più semplici da usare di Stan (si veda, ad esempio, la funzione <code>brm()</code> del pacchetto <span class="math inline">\(\mathsf{R}\)</span> <code>brms</code>). Tuttavia, per scopi didattici, nel testo presente useremo Stan.</li>
 </ul>
 <!-- Prima di affrontare il secondo tema, l'analisi descrittiva dei dati, sarà necessario introdurre il linguaggio di programmazione statistica R (un'introduzione a R è fornita in Appendice). Inoltre, prima di potere discutere l'inferenza, dovranno essere introdotti i concetti di base della teoria delle probabilità, in quanto l'inferenza non è che l'applicazione della teoria delle probabilità all'analisi dei dati.  -->
 

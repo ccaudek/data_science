@@ -20,9 +20,11 @@ In generale, che cos'è la statistica? Ci sono molte definizioni. Fondamentalmen
 
 ## Riassumere i dati
 
-Iniziamo a porci una domanda. Quando riassumiamo i dati, necessariamente buttiamo via delle informazioni; ma è una buona idea procedere in questo modo? Non sarebbe meglio conservare le informazioni specifiche di ciascun soggetto che partecipa ad un esperimento psicologico, al di là di ciò che viene trasmesso dagli indici riassuntivi della statistica descrittiva? Che dire delle informazioni che descrivono come sono stati raccolti i dati, come l'ora del giorno o l'umore del partecipante? Tutte queste informazioni vengono perdute quando riassumiamo i dati. La risposta alla domanda che ci siamo posti è che, in generale, non è una buona idea conservare tutti i dettagli di ciò che sappiamo. È molto più utile riassumere le informazioni perché la semplificazione risultante consente i processi di *generalizzazione*.
+Iniziamo a porci una domanda. Quando riassumiamo i dati, necessariamente buttiamo via delle informazioni; ma è una buona idea procedere in questo modo? Non sarebbe meglio conservare le informazioni specifiche di ciascun soggetto che partecipa ad un esperimento psicologico, al di là di ciò che viene trasmesso dagli indici riassuntivi della statistica descrittiva? Che dire delle informazioni che descrivono come sono stati raccolti i dati, come l'ora del giorno o l'umore del partecipante? Tutte queste informazioni vengono perdute quando riassumiamo i dati. La risposta alla domanda che ci siamo posti è che, in generale, non è una buona idea conservare tutti i dettagli di ciò che sappiamo. È molto più utile riassumere le informazioni perché la semplificazione risultante consente i processi di generalizzazione.
 
-In un contesto letterario, l'importanza della generalizzazione è stata sottolineata da Jorge Luis Borges nel suo racconto "Funes o della memoria", che descrive un individuo che perde la capacità di dimenticare. Borges si concentra sulla relazione tra generalizzazione e pensiero: *"Pensare è dimenticare una differenza, generalizzare, astrarre. Nel mondo troppo pieno di Funes, c'erano solo dettagli."*
+In un contesto letterario, l'importanza della generalizzazione è stata sottolineata da Jorge Luis Borges nel suo racconto "Funes o della memoria", che descrive un individuo che perde la capacità di dimenticare. Borges si concentra sulla relazione tra generalizzazione e pensiero:
+
+> Pensare è dimenticare una differenza, generalizzare, astrarre. Nel mondo troppo pieno di Funes, c'erano solo dettagli.
 
 Come possiamo ben capire, la vita di Funes non è facile. Se facciamo riferimento alla psicologia possiamo dire che gli psicologi hanno studiato a lungo l'utilità della generalizzazione per il pensiero. Un esempio è fornito dal fenomeno della formazione dei concetti e lo psicologo che viene in mente a questo proposito è sicuramente Eleanor Rosch, la quale ha studiato i principi di base della categorizzazione. I concetti ci forniscono uno strumento potente per organizzare le conoscenze. Noi siamo in grado di riconoscere facilmente i diversi esemplare di un concetto -- per esempio, "gli uccelli" -- anche se i singoli esemplari che fanno parte di una categoria sono molto diversi tra loro (l'aquila, il gabbiano, il pettirosso). L'uso dei concetti, cioè la generalizzazione, è utile perché ci consente di fare previsioni sulle proprietà dei singoli esemplari che appartengono ad una categoria, anche se non abbiamo mai avuto esperienza diretta con essi -- per esempio, possiamo fare la predizione che tutti gli uccelli possono volare e mangiare vermi, ma non possono guidare un'automobile o parlare in inglese. Queste previsioni non sono sempre corrette, ma sono utili.
 
@@ -36,10 +38,12 @@ Per introdurre i principali strumenti della statistica descrittiva considereremo
 
 [^freq_distr-1]: Si veda l'Appendice \@ref(es-pratico-zetsche).
 
-::: exercise
+::: {#exr-eda-1}
 Qual è la la gravità della depressione riportata dai soggetti nel campione esaminato da @zetschefuture2019?
+:::
 
-Per rispondere a questa domanda, iniziamo a leggere in $\mathsf{R}$ i dati, assumendo che il file `data.mood.csv` si trovi nella cartella `data` contenuta nella *working directory*.
+::: solution
+Per rispondere alla domanda del problema, iniziamo a leggere in $\mathsf{R}$ i dati, assumendo che il file `data.mood.csv` si trovi nella cartella `data` contenuta nella *working directory*.
 
 ```{r}
 library("rio")
@@ -71,13 +75,13 @@ sort(bysubj$bdi)
 
 È chiaro che i dati grezzi sono di difficile lettura. Poniamoci dunque il problema di creare una rappresentazione sintetica e comprensibile di questo insieme di valori. Uno dei modi che ci consentono di effettuare una sintesi dei dati è quello di generare una *distribuzione di frequenze*.
 
-::: definition
+::: {#def-freq-distrib}
 Una distribuzione di frequenze è un riepilogo del conteggio della frequenza con cui le modalità osservate in un insieme di dati si verificano in un intervallo di valori.
 :::
 
 In altre parole, la distribuzione di frequenze della variabile $X$ corrisponde all'insieme delle frequenze assegnate a ciascun possibile valore di $X$.
 
-Per creare una distribuzione di frequenze possiamo procedere effettuando una partizione delle modalità della variabile di interesse in $m$ classi (denotate con $\Delta_i$) tra loro disgiunte. In tale partizione, la classe $i$-esima coincide con un intervallo di valori aperto a destra $[a_i, b_i)$ o aperto a sinistra $(a_i, b_i]$. Ad ogni classe $\Delta_i$ avente $a_i$ e $b_i$ come limite inferiore e superiore associamo l'ampiezza $b_i - a_i$ (non necessariamente uguale per ogni classe) e il valore centrale $\bar{x}_i$. La scelta delle classi è arbitraria, ma è buona norma non definire classi con un numero troppo piccolo (\< 5) di osservazioni. Poiché ogni elemento dell'insieme $\{x_i\}_{i=1}^n$ appartiene ad una ed una sola classe $\Delta_i$, possiamo calcolare le quantità elencate di seguito.
+Per creare una distribuzione di frequenze possiamo procedere effettuando una partizione delle modalità della variabile di interesse in $m$ classi (denotate con $\Delta_i$) tra loro disgiunte. In tale partizione, la classe $i$-esima coincide con un intervallo di valori aperto a destra $[a_i, b_i)$ o aperto a sinistra $(a_i, b_i]$. Ad ogni classe $\Delta_i$ avente $a_i$ e $b_i$ come limite inferiore e superiore associamo l'ampiezza $b_i - a_i$ (non necessariamente uguale per ogni classe) e il valore centrale $\bar{x}_i$. La scelta delle classi è arbitraria, ma è buona norma non definire classi con un numero troppo piccolo ($< 5$) di osservazioni. Poiché ogni elemento dell'insieme $\{x_i\}_{i=1}^n$ appartiene ad una ed una sola classe $\Delta_i$, possiamo calcolare le quantità elencate di seguito.
 
 -   La *frequenza assoluta* $n_i$ di ciascuna classe, ovvero il numero di osservazioni che ricadono nella classe $\Delta_i$.
 
@@ -91,9 +95,11 @@ Per creare una distribuzione di frequenze possiamo procedere effettuando una par
 
 -   La *frequenza cumulata relativa* $F_i$, ovvero $F_i = f_1+f_2+\dots+f_m = \frac{N_i}{n} = \frac{1}{n} \sum_{i=1}^m f_i.$
 
-::: exercise
+::: {#exr-freq-distrib-1}
 Si calcoli la distribuzione di frequenza assoluta e la distribuzione di frequenza relativa per i valori del BDI-II del campione clinico di @zetschefuture2019.
+:::
 
+::: solution
 Per costruire una distribuzione di frequenza è innanzitutto necessario scegliere gli intervalli delle classi. Facendo riferimento ai cut-off usati per l'interpretazione del BDI-II, definiamo i seguenti *intervalli aperti a destra*:
 
 -   depressione minima: \[0, 13.5),
@@ -129,7 +135,7 @@ bysubj$bdi_level <- cut(
 bysubj$bdi_level
 ```
 
-\noindent Possiamo ora usare la funzione `table()` la quale ritorna un elenco che associa la frequenza assoluta a ciascuna modalità della variabile -- ovvero, ritorna la distribuzione di frequenza assoluta.
+Possiamo ora usare la funzione `table()` la quale ritorna un elenco che associa la frequenza assoluta a ciascuna modalità della variabile -- ovvero, ritorna la distribuzione di frequenza assoluta.
 
 ```{r}
 table(bysubj$bdi_level)
@@ -149,7 +155,7 @@ table(bysubj$bdi_level) / sum(table(bysubj$bdi_level))
 | \[28.5, 63\]        | 17                 | 17/66              |
 :::
 
-[^freq_distr-2]: In una sezione successiva di questo capitolo discuteremo i principi che, secondo Edward Tufte, devono guidare la Data Science. Parlando delle rappresentazioni grafiche dei dati, Edward Tufte ci dice che la prima cosa da fare è "mostrare i dati". Questa può sembrare una tautologia, considerato che questo è lo scopo della statistica descrittiva: trasformare i dati attraverso vari indici riassuntivi o rappresentazioni grafiche, in modo tale da renderli *comprensibili*. Tuttavia, spesso le tecniche statistiche vengono usate per *nascondere* e non per *mostrare* i dati. L'uso delle frequenze relative offre un chiaro esempio di questo. Di questi tempi capita spesso di incontrare, sulla stampa, notizie a proposito un nuovo farmaco che, in una prova clinica, ha mostrato risultati incoraggianti che suggeriscono la sua efficacia come possibile trattamento del COVID-19. Alle volte i risultati della sperimentazione clinica sono riportati nei termini di una *frequenza relativa*. Ad esempio, potremmo leggere che l'uso del farmaco ha portato ad una riduzione del 21% dei ricoveri o dei decessi. Sembra tanto. Ma è necessario guardare i dati! Ovvero, molto spesso, quello che *non* viene riportato dai comunicati stampa. Infatti, una riduzione del 21% può corrispondere ad un cambiamento dal 5% al 4%. E una riduzione del 44% può corrispondere ad una differenza di 10 contro 18, o di 5 contro 9, o di 15 contro 27. In altri termini, una proporzione, anche grande, può corrispondere ad una differenza *assoluta* piuttosto piccola: un piccolo passo in avanti, ma non ad un balzo! Per questa ragione, per capire cosa i dati significano, è necessario guardare i dati da diversi punti di vista, utilizzando diverse statistiche descrittive, senza limitarci alla statistica descrittiva che racconta la storia che piace di più. Perché la scelta della statistica descrittiva da utilizzare per riassumere i dati dipende dagli scopi di chi esegue l'analisi statisica: il nostro scopo è quelloi di capire se il farmaco funziona; lo scopo delle compagnie farmaceutiche è quello di vendere il farmaco. Sono obiettivi molto diversi.
+[^freq_distr-2]: In una sezione successiva di questo capitolo discuteremo i principi che, secondo Edward Tufte, devono guidare la Data Science. Parlando delle rappresentazioni grafiche dei dati, Edward Tufte ci dice che la prima cosa da fare è "mostrare i dati". Questa può sembrare una tautologia, considerato che questo è lo scopo della statistica descrittiva: trasformare i dati attraverso vari indici riassuntivi o rappresentazioni grafiche, in modo tale da renderli *comprensibili*. Tuttavia, spesso le tecniche statistiche vengono usate per *nascondere* e non per *mostrare* i dati. L'uso delle frequenze relative offre un chiaro esempio di questo. Di questi tempi capita spesso di incontrare, sulla stampa, notizie a proposito un nuovo farmaco che, in una prova clinica, ha mostrato risultati incoraggianti che suggeriscono la sua efficacia come possibile trattamento del COVID-19. Alle volte i risultati della sperimentazione clinica sono riportati nei termini di una *frequenza relativa*. Ad esempio, potremmo leggere che l'uso del farmaco ha portato ad una riduzione del 21% dei ricoveri o dei decessi. Sembra tanto. Ma è necessario guardare i dati! Ovvero, molto spesso, quello che *non* viene riportato dai comunicati stampa. Infatti, una riduzione del 21% può corrispondere ad un cambiamento dal 5% al 4%. E una riduzione del 44% può corrispondere ad una differenza di 10 contro 18, o di 5 contro 9, o di 15 contro 27. In altri termini, una proporzione, anche grande, può corrispondere ad una differenza *assoluta* piuttosto piccola: un piccolo passo in avanti, ma non ad un balzo! Per questa ragione, per capire cosa i dati significano, è necessario guardare i dati da diversi punti di vista, utilizzando diverse statistiche descrittive, senza limitarci alla statistica descrittiva che racconta la storia che piace di più. Perché la scelta della statistica descrittiva da utilizzare per riassumere i dati dipende dagli scopi di chi esegue l'analisi statisica: il nostro scopo è quello di capire se il farmaco funziona; lo scopo delle compagnie farmaceutiche è quello di vendere il farmaco. Sono obiettivi molto diversi.
 
 Insiemi di variabili possono anche avere distribuzioni di frequenze, dette distribuzioni congiunte. La distribuzione congiunta di un insieme di variabili $V$ è l'insieme delle frequenze di ogni possibile combinazione di valori delle variabili in $V$. Ad esempio, se $V$ è un insieme di due variabili, $X$ e $Y$, ciascuna delle quali può assumere due valori, 1 e 2, allora una possibile distribuzione congiunta di frequenze relative per $V$ è $f(X = 1, Y = 1) = 0.2$, $f(X = 1, Y = 2) = 0.1$, $f(X = 2, Y = 1) = 0.5$, $f(X = 2, Y = 2) = 0.2$. Proprio come con le distribuzioni di frequenze relative di una singola variabile, le frequenze relative di una distribuzione congiunta devono sommare a 1.
 
@@ -159,14 +165,18 @@ I dati che sono stati sintetizzati in una distribuzione di frequenze possono ess
 
 $$
 \varphi_n(x)= \frac{f_i}{b_i-a_i}, \quad x\in \Delta_i,\, i=1, \dots, m
-$$ che misura la *densità della frequenza relativa* della variabile $X$ nella classe $\Delta_i$, ovvero il rapporto fra la frequenza relativa $f_i$ e l'ampiezza ($b_i - a_i$) della classe. In questo modo il rettangolo dell'istogramma associato alla classe $\Delta_i$ avrà un'area proporzionale alla frequenza relativa $f_i$. Si noti che l'area totale dell'istogramma delle frequenze relative è data della somma delle aree dei singoli rettangoli e quindi vale 1.0.
+$$
 
-::: exercise
+che misura la *densità della frequenza relativa* della variabile $X$ nella classe $\Delta_i$, ovvero il rapporto fra la frequenza relativa $f_i$ e l'ampiezza ($b_i - a_i$) della classe. In questo modo il rettangolo dell'istogramma associato alla classe $\Delta_i$ avrà un'area proporzionale alla frequenza relativa $f_i$. Si noti che l'area totale dell'istogramma delle frequenze relative è data della somma delle aree dei singoli rettangoli e quindi vale 1.0.
+
+::: {#exr-freq-distrib-2}
 Si utilizzi $\mathsf{R}$ per costruire un istogramma per i valori BDI-II riportati da @zetschefuture2019.
+:::
 
-Con i quattro intervalli individuati dai cut-off del BDI-II otteniamo la rappresentazione riportata nella figura \@ref(fig:hist1zetsche). Per chiarezza, precisiamo che `ggplot()` utilizza intervalli aperti a destra. Nel caso della prima barra dell'istogramma, l'ampiezza dell'intervallo è pari a 13.5 e l'area della barra (ovvero, la frequenza relativa) è uguale a 36/66. Dunque l'altezza della barra è uguale a $(36 / 66) / 13.5 = 0.040$. Lo stesso procedimento si applica per il calcolo dell'altezza degli altri rettangoli.
+::: solution
+Con i quattro intervalli individuati dai cut-off del BDI-II otteniamo la rappresentazione riportata nella @fig-hist1zetsche. Per chiarezza, precisiamo che `ggplot()` utilizza intervalli aperti a destra. Nel caso della prima barra dell'istogramma, l'ampiezza dell'intervallo è pari a 13.5 e l'area della barra (ovvero, la frequenza relativa) è uguale a 36/66. Dunque l'altezza della barra è uguale a $(36 / 66) / 13.5 = 0.040$. Lo stesso procedimento si applica per il calcolo dell'altezza degli altri rettangoli.
 
-```{r hist1zetsche, fig.cap="Istogramma per i valori BDI-II riportati da Zetsche et al. (2019)."}
+```{r fig-hist1zetsche, fig.cap="Istogramma per i valori BDI-II riportati da @zetschefuture2019."}
 bysubj %>%
   ggplot(aes(x = bdi)) +
   geom_histogram(
@@ -183,9 +193,9 @@ bysubj %>%
   )
 ```
 
-Anche se nel caso presente è sensato usare ampiezze diverse per gli intervalli delle classi, in generale gli istogrammi si costruiscono utilizzando intervalli riportati sulle ascisse con un'ampiezza uguale. Questo è il caso dell'istogramma della figura \@ref(fig:hist2zetsche).
+Anche se nel caso presente è sensato usare ampiezze diverse per gli intervalli delle classi, in generale gli istogrammi si costruiscono utilizzando intervalli riportati sulle ascisse con un'ampiezza uguale. Questo è il caso dell'istogramma della @fig-hist2zetsche.
 
-```{r hist2zetsche, fig.cap="Una rappresentazione più comune per l'istogramma dei valori BDI-II nella quale gli intervalli delle classi hanno ampiezze uguali."}
+```{r fig-hist2zetsche, fig.cap="Una rappresentazione più comune per l'istogramma dei valori BDI-II nella quale gli intervalli delle classi hanno ampiezze uguali."}
 bysubj %>%
   ggplot(aes(x = bdi)) +
   geom_histogram(
@@ -204,16 +214,16 @@ bysubj %>%
 
 ## Kernel density plot
 
-Il confronto tra le figure \@ref(fig:hist1zetsche) e \@ref(fig:hist2zetsche) rende chiaro il limite dell'istogramma: il profilo dell'istogramma è arbitrario, in quanto dipende dal numero e dall'ampiezza delle classi. Questo rende difficile l'interpretazione.
+Il confronto tra la @fig-hist1zetsche e la @fig-hist2zetsche rende chiaro il limite dell'istogramma: il profilo dell'istogramma è arbitrario, in quanto dipende dal numero e dall'ampiezza delle classi. Questo rende difficile l'interpretazione.
 
 Il problema precedente può essere alleviato utilizzando una rappresentazione alternativa della distribuzione di frequenza, ovvero la stima della densità della frequenza dei dati (detta anche stima *kernel di densità*). Un modo semplice per pensare a tale rappresentazione, che in inglese va sotto il nome di *kernel density plot* (cioè i grafici basati sulla stima kernel di densità), è quello di immaginare un grande campione di dati, in modo che diventi possibile definire un enorme numero di classi di equivalenza di ampiezza molto piccola, le quali non risultino vuote. In tali circostanze, la funzione di densità empirica non è altro che il profilo *lisciato* dell'istogramma. La stessa idea si applica anche quando il campione è piccolo. In tali circostanze, invece di raccogliere le osservazioni in barre come negli istogrammi, lo stimatore di densità kernel colloca una piccola "gobba" (*bump*), determinata da un fattore $K$ (kernel) e da un parametro $h$ di smussamento detto ampiezza di banda (*bandwidth*), in corrispondenza di ogni osservazione, quindi somma le gobbe risultanti generando una curva smussata.
 
 L'interpretazione che possiamo attribuire al kernel density plot è simile a quella che viene assegnata agli istogrammi: l'area sottesa al kernel density plot in un certo intervallo rappresenta la proporzione di casi della distribuzione che hanno valori compresi in quell'intervallo.
 
-::: exercise
+::: {#exr-freq-distrib-3}
 All'istogramma dei valori BDI-II di @zetschefuture2019 si sovrapponga un kernel density plot.
 
-```{r zetschehist3, fig.cap="Kernel density plot e corrispondente istogramma per i valori BDI-II."}
+```{r fig-zetschehist3, fig.cap="Kernel density plot e corrispondente istogramma per i valori BDI-II."}
 bysubj %>%
   ggplot(aes(x = bdi)) +
   geom_histogram(
@@ -236,14 +246,14 @@ bysubj %>%
 
 ## Forma di una distribuzione
 
-In generale, la forma di una distribuzione descrive come i dati si distribuiscono intorno ai valori centrali. Distinguiamo tra distribuzioni simmetriche e asimmetriche, e tra distribuzioni unimodali o multimodali. Un'illustrazione grafica è fornita nella figura \@ref(fig:distrib-shapes). Nel pannello 1 la distribuzione è unimodale con asimmetria negativa; nel pannello 2 la distribuzione è unimodale con asimmetria positiva; nel pannello 3 la distribuzione è simmetrica e unimodale; nel pannello 4 la distribuzione è bimodale.
+In generale, la forma di una distribuzione descrive come i dati si distribuiscono intorno ai valori centrali. Distinguiamo tra distribuzioni simmetriche e asimmetriche, e tra distribuzioni unimodali o multimodali. Un'illustrazione grafica è fornita nella @fig-distrib-shapes. Nel pannello 1 la distribuzione è unimodale con asimmetria negativa; nel pannello 2 la distribuzione è unimodale con asimmetria positiva; nel pannello 3 la distribuzione è simmetrica e unimodale; nel pannello 4 la distribuzione è bimodale.
 
 ```{r fig-shape-distr, echo=FALSE, fig.cap="1: Asimmetria negativa. 2: Asimmetria positiva. 3: Distribuzione unimodale. 4: Distribuzione bimodale.", fig.align="center", out.width = "70%"}
 knitr::include_graphics("images/shape_distribution.png")
 ```
 
-::: exercise
-Il kernel density plot della figura \@ref(fig:zetschehist3) indica che la distribuzione dei valori del BDI-II nel campione di @zetschefuture2019 è bimodale. Ciò indica che le osservazioni della distribuzione si addensano in due cluster ben distinti: un gruppo di osservazioni tende ad avere valori BDI-II bassi, mentre l'altro gruppo tende ad avere BDI-II alti. Questi due cluster di osservazioni corrispondono al gruppo di controllo e al gruppo clinico nel campione di dati esaminato da @zetschefuture2019.
+::: {#exr-freq-distrib-4}
+Il kernel density plot della @fig-zetschehist3 indica che la distribuzione dei valori del BDI-II nel campione di @zetschefuture2019 è bimodale. Ciò indica che le osservazioni della distribuzione si addensano in due cluster ben distinti: un gruppo di osservazioni tende ad avere valori BDI-II bassi, mentre l'altro gruppo tende ad avere BDI-II alti. Questi due cluster di osservazioni corrispondono al gruppo di controllo e al gruppo clinico nel campione di dati esaminato da @zetschefuture2019.
 :::
 
 ## Indici di posizione
@@ -256,7 +266,7 @@ Come si calcolano i quantili? Consideriamo la definizione di quantile *non inter
 
 Gli indici di posizione, tra le altre cose, hanno un ruolo importante, ovvero vengono utilizzati per creare una rappresentazione grafica di una distribuzione di valori che è molto popolare e può essere usata in alternativa ad un istogramma (in realtà vedremo poi come possa essere combinata con un istogramma). Tale rappresentazione va sotto il nome di box-plot.
 
-::: exercise
+::: {#exr-freq-distrib-5}
 Per fare un esempio, consideriamo i nove soggetti del campione clinico di @zetschefuture2019 che hanno riportato un unico episodio di depressione maggiore. Per tali soggetti i valori ordinati del BDI-II (per semplicità li chiameremo $x$) sono i seguenti: 19, 26, 27, 28, 28, 33, 33, 41, 43. Per il calcolo del secondo quartile (non interpolato), ovvero per il calcolo della mediana, dobbiamo considerare la quantità $np = 9 \cdot 0.5 = 4.5$, non intero. Quindi, $q_1 = x_{4 + 1} = 27$. Per il calcolo del quantile (non interpolato) di ordine $p = 2/3$ dobbiamo considerare la quantità $np = 9 \cdot 2/3 = 6$, intero. Quindi, $q_{\frac{2}{3}} = \frac{1}{2} (x_{6} + x_{7}) = \frac{1}{2} (33 + 33) = 33$.
 :::
 
@@ -268,12 +278,12 @@ Il *diagramma a scatola* (o box plot) è uno strumento grafico utile al fine di 
 knitr::include_graphics("images/boxplot.png")
 ```
 
-::: exercise
+::: {#exr-freq-distrib-6}
 Per i dati di @zetschefuture2019, si utilizzi un box-plot per rappresentare graficamente la distribuzione dei punteggi BDI-II nel gruppo dei pazienti e nel gruppo di controllo.
 
-Nella figura \@ref(fig:violin-zetsche) sinistra sono rappresentati i dati grezzi. La linea curva che circonda (simmetricamente) le osservazioni è l'*istogramma lisciato* (kernel density plot) che abbiamo descritto in precedenza. Nella figura \@ref(fig:violin-zetsche) destra sono rappresentanti gli stessi dati: il kernel density plot è lo stesso di prima, ma al suo interno è stato collocato un box-plot. Entrambe le rappresentazioni suggeriscono che la distribuzione dei dati è all'incirca simmetrica nel gruppo clinico. Il gruppo di controllo mostra invece un'asimmetria positiva.
+Nella @fig-violin-zetsche sinistra sono rappresentati i dati grezzi. La linea curva che circonda (simmetricamente) le osservazioni è l'*istogramma lisciato* (kernel density plot) che abbiamo descritto in precedenza. Nella @fig-violin-zetsche destra sono rappresentanti gli stessi dati: il kernel density plot è lo stesso di prima, ma al suo interno è stato collocato un box-plot. Entrambe le rappresentazioni suggeriscono che la distribuzione dei dati è all'incirca simmetrica nel gruppo clinico. Il gruppo di controllo mostra invece un'asimmetria positiva.
 
-```{r violin-zetsche, fig.cap = "Due versioni di un violin plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da Zetsche et al. (2019)."}
+```{r fig-violin-zetsche, fig.cap = "Due versioni di un violin plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da Zetsche et al. (2019)."}
 bysubj <- df %>%
   group_by(esm_id, group) %>%
   summarise(
@@ -313,12 +323,12 @@ p1 + p2
 
 Si noti che i box plot non sono necessariamente la rappresentazione migliore della distribuzione di una variabile. Infatti, richiedono la comprensione di concetti complessi (quali i quantili e la differenza interquantile) che non sono necessari se vogliamo presentare in maniera grafica la distribuzione della variabile e, in generale, non sono compresi da un pubblico di non specialisti. Inoltre, i box plot nascondono informazioni che di solito sono importanti. È dunque preferibile presentare direttamente i dati.
 
-Nella figura \@ref(fig:sina-zetsche) viene presentato un cosiddetto "sina plot". In tale rappresentazione grafica vengono mostrate le singole osservazioni divise in classi. Ai punti viene aggiunto un jitter, così da evitare sovrapposizioni. L'ampiezza del jitter lungo l'asse $x$ è determinata dalla distribuzione della densità dei dati all'interno di ciascuna classe; quindi il grafico mostra lo stesso contorno di un *violin plot*, ma trasmette informazioni sia sul numero di punti dati, sia sulla distribuzione della densità, sui valori anomali e sulla distribuzione dei dati in un formato molto semplice, comprensibile e sintetico. Per un esempio in una recente pubblicazione, possiamo considerare le figure 3 e 6 di @lazic2020determining.
+Nella @fig-sina-zetsche viene presentato un cosiddetto "sina plot". In tale rappresentazione grafica vengono mostrate le singole osservazioni divise in classi. Ai punti viene aggiunto un jitter, così da evitare sovrapposizioni. L'ampiezza del jitter lungo l'asse $x$ è determinata dalla distribuzione della densità dei dati all'interno di ciascuna classe; quindi il grafico mostra lo stesso contorno di un *violin plot*, ma trasmette informazioni sia sul numero di punti dati, sia sulla distribuzione della densità, sui valori anomali e sulla distribuzione dei dati in un formato molto semplice, comprensibile e sintetico. Per un esempio in una recente pubblicazione, possiamo considerare le figure 3 e 6 di @lazic2020determining.
 
-::: exercise
-Si generi un sina plot per i dati della figura \@ref(fig:violin-zetsche). Si aggiunga alla figura una rappresentazione della mediana.
+::: {#exr-freq-distrib-7}
+Si generi un sina plot per i dati della @fig-violin-zetsche. Si aggiunga alla figura una rappresentazione della mediana.
 
-```{r sina-zetsche, fig.cap = "Sina plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da Zetsche et al. (2019) con l'indicazione della mediana per ciascun gruppo."}
+```{r fig-sina-zetsche, fig.cap = "Sina plot per i valori BDI-II di ciascuno dei due gruppi di soggetti esaminati da Zetsche et al. (2019) con l'indicazione della mediana per ciascun gruppo."}
 zetsche_summary <- bysubj %>%
   group_by(group) %>%
   summarize(
@@ -361,8 +371,8 @@ Non c'è un unico modo "corretto" per la rappresentazione grafica dei dati. Cias
 8.  servire ad uno scopo preciso (descrizione, esplorazione, o la risposta a qualche domanda);
 9.  essere fortemente integrate con le descrizioni statistiche e verbali dei dati fornite nel testo.
 
-In base a questi principi, figura \@ref(fig:sina-zetsche) sembra fornire la rappresentazione migliore dei dati di @zetschefuture2019. Il seguente [link](https://www.biostat.wisc.edu/~kbroman/presentations/graphs2018.pdf) fornisce alcune illustrazioni dei principi elencati sopra.
+In base a questi principi, la @fig-sina-zetsche sembra fornire la rappresentazione migliore dei dati di @zetschefuture2019. Il seguente [link](https://www.biostat.wisc.edu/~kbroman/presentations/graphs2018.pdf) fornisce alcune illustrazioni dei principi elencati sopra.
 
 ## Commenti e considerazioni finali {.unnumbered}
 
-Una distribuzione è una rappresentazione del modo in cui le diverse modalità di una variabile $X$ si distribuiscono nelle unità statistiche che compongono il campione o la popolazione oggetto di studio. Il modo più diretto per trasmettere descrivere le proprietà della distribuzione di una variabile discreta è quello di fornire una rappresentazione grafica della distribuzione di frequenza. In seguito vedremo la corrispondente rappresentazione che viene usata nel caso delle variabili continue.
+Una distribuzione è una rappresentazione del modo in cui le diverse modalità di una variabile si distribuiscono nelle unità statistiche che compongono il campione o la popolazione oggetto di studio. Il modo più diretto per trasmettere descrivere le proprietà della distribuzione di una variabile discreta è quello di fornire una rappresentazione grafica della distribuzione di frequenza. In seguito vedremo la corrispondente rappresentazione che viene usata nel caso delle variabili continue.

@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -499,7 +504,7 @@ div.csl-indent {
   </div>
   
 
-</header><p>Dopo avere introdotto con una simulazione il concetto di funzione di densità nel Capitolo <a href="019_density_func.html"><span>Capitolo&nbsp;10</span></a>, prendiamo ora in esame alcune delle densità di probabilità più note. La più importante di esse è sicuramente la distribuzione Normale.</p>
+</header><p>Dopo avere introdotto con una simulazione il concetto di funzione di densità nel Capitolo <a href="#sec-intro-density-function"><span class="quarto-unresolved-ref">sec-intro-density-function</span></a>, prendiamo ora in esame alcune delle densità di probabilità più note. La più importante di esse è sicuramente la distribuzione Normale.</p>
 <section id="distribuzione-gaussiana" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="distribuzione-gaussiana">
 <span class="header-section-number">13.1</span> Distribuzione Gaussiana</h2>
 <p>Non c’è un’unica distribuzione gaussiana (o normale): la distribuzione gaussiana è una famiglia di distribuzioni. Tali distribuzioni sono dette “gaussiane” in onore di Carl Friedrich Gauss (uno dei più grandi matematici della storia il quale, tra le altre cose, scoprì l’utilità di tale funzione di densità per descrivere gli errori di misurazione). Adolphe Quetelet, il padre delle scienze sociali quantitative, fu il primo ad applicare tale funzione di densità alle misurazioni dell’uomo. Karl Pearson usò per primo il termine “distribuzione normale” anche se ammise che questa espressione “ha lo svantaggio di indurre le persone a credere che le altre distribuzioni, in un senso o nell’altro, non siano normali.”</p>
@@ -552,9 +557,9 @@ div.csl-indent {
 <p>La distribuzione Normale fu scoperta da Gauss nel 1809. Il Paragrafo successivo illustra come si possa giungere alla Normale mediante una simulazione.</p>
 </section></section><section id="normal-random-walk" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="normal-random-walk">
 <span class="header-section-number">13.2</span> La Normale prodotta con una simulazione</h2>
-<p><span class="citation" data-cites="McElreath_rethinking">McElreath (<a href="999_refs.html#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> illustra come sia possibile giungere alla distribuzione Normale mediante una simulazione. Supponiamo che vi siano mille persone tutte allineate su una linea di partenza. Quando viene dato un segnale, ciascuna persona lancia una moneta e fa un passo in avanti oppure all’indietro a seconda che sia uscita testa o croce. Supponiamo che la lunghezza di ciascun passo vari da 0 a 1 metro. Ciascuna persona lancia una moneta 16 volte e dunque compie 16 passi.</p>
+<p><span class="citation" data-cites="McElreath_rethinking">McElreath (<a href="#ref-McElreath_rethinking" role="doc-biblioref">2020</a>)</span> illustra come sia possibile giungere alla distribuzione Normale mediante una simulazione. Supponiamo che vi siano mille persone tutte allineate su una linea di partenza. Quando viene dato un segnale, ciascuna persona lancia una moneta e fa un passo in avanti oppure all’indietro a seconda che sia uscita testa o croce. Supponiamo che la lunghezza di ciascun passo vari da 0 a 1 metro. Ciascuna persona lancia una moneta 16 volte e dunque compie 16 passi.</p>
 <p>Alla conclusione di queste passeggiate casuali (<em>random walk</em>) non possiamo sapere con esattezza dove si troverà ciascuna persona, ma possiamo conoscere con certezza le caratteristiche della distribuzione delle mille distanze dall’origine. Per esempio, possiamo predire in maniera accurata la proporzione di persone che si sono spostate in avanti oppure all’indietro. Oppure, possiamo predire accuratamente la proporzione di persone che si troveranno ad una certa distanza dalla linea di partenza (es., a 1.5 m dall’origine).</p>
-<p>Queste predizioni sono possibili perché tali distanze si distribuiscono secondo la legge Normale. È facile simulare questo processo usando . I risultati della simulazione sono riportati nella <a href="#fig-rw-normal-4816">Figura&nbsp;<span>13.3</span></a>.</p>
+<p>Queste predizioni sono possibili perché tali distanze si distribuiscono secondo la legge Normale. È facile simulare questo processo usando . I risultati della simulazione sono riportati nella <a href="#fig-rw-normal-4816">Figura&nbsp;<span class="quarto-unresolved-ref">fig-rw-normal-4816</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pos</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">16</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -589,7 +594,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>Un kernel density plot delle distanze ottenute dopo 4, 8 e 16 passi è riportato nella <a href="#fig-rw-normal-3panels">Figura&nbsp;<span>13.4</span></a>. Nel pannello di destra, al kernel density plot è stata sovrapposta una densità Normale di opportuni parametri (linea tratteggiata).</p>
+<p>Un kernel density plot delle distanze ottenute dopo 4, 8 e 16 passi è riportato nella <a href="#fig-rw-normal-3panels">Figura&nbsp;<span class="quarto-unresolved-ref">fig-rw-normal-3panels</span></a>. Nel pannello di destra, al kernel density plot è stata sovrapposta una densità Normale di opportuni parametri (linea tratteggiata).</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">pos</span> <span class="op">%&gt;%</span></span>
@@ -642,11 +647,11 @@ f(y; \mu, \sigma) = {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(y -  \mu)
 \tag{13.1}\]</span></span></p>
 <p>dove <span class="math inline">\(\mu \in \mathbb{R}\)</span> e <span class="math inline">\(\sigma &gt; 0\)</span> sono i parametri della distribuzione.</p>
 <p>La densità normale è unimodale e simmetrica con una caratteristica forma a campana e con il punto di massima densità in corrispondenza di <span class="math inline">\(\mu\)</span>.</p>
-<p>Il significato dei parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> che appaiono nell’<a href="#eq-normal-formula">Equazione&nbsp;<span>13.1</span></a> viene chiarito dalla dimostrazione che</p>
+<p>Il significato dei parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> che appaiono nell’<a href="#eq-normal-formula">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-normal-formula</span></a> viene chiarito dalla dimostrazione che</p>
 <p><span class="math display">\[
 \mathbb{E}(Y) = \mu, \qquad \mathbb{V}(Y) = \sigma^2.
 \]</span></p>
-<p>La rappresentazione grafica di quattro densità Normali tutte con media 0 e con deviazioni standard 0.25, 0.5, 1 e 2 è fornita nella <a href="#fig-gaussian-plot-demo">Figura&nbsp;<span>13.5</span></a>.</p>
+<p>La rappresentazione grafica di quattro densità Normali tutte con media 0 e con deviazioni standard 0.25, 0.5, 1 e 2 è fornita nella <a href="#fig-gaussian-plot-demo">Figura&nbsp;<span class="quarto-unresolved-ref">fig-gaussian-plot-demo</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-gaussian-plot-demo" class="quarto-figure quarto-figure-center anchored">
@@ -790,7 +795,7 @@ Z_1^2 + Z_2^2 + \dots + Z_k^2,
 f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x &gt; 0,
 \]</span></p>
 <p>dove <span class="math inline">\(C_{\nu}\)</span> è una costante positiva.</p>
-<p>La <a href="#fig-alcune-chi-quadrato">Figura&nbsp;<span>13.6</span></a> mostra alcune distribuzioni Chi-quadrato variando il parametro <span class="math inline">\(\nu\)</span>.</p>
+<p>La <a href="#fig-alcune-chi-quadrato">Figura&nbsp;<span class="quarto-unresolved-ref">fig-alcune-chi-quadrato</span></a> mostra alcune distribuzioni Chi-quadrato variando il parametro <span class="math inline">\(\nu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-alcune-chi-quadrato" class="quarto-figure quarto-figure-center anchored">
@@ -837,7 +842,7 @@ f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x &gt; 0,
 T = \frac{Z}{\Big( \frac{W}{\nu}\Big)^{\frac{1}{2}}}
 \tag{13.3}\]</span></span></p>
 <p>definisce la distribuzione <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(\nu\)</span> gradi di libertà. Si usa scrivere <span class="math inline">\(T \sim t_{\nu}\)</span>. L’andamento della distribuzione <span class="math inline">\(t\)</span> di Student è simile a quello della distribuzione Normale, ma ha una maggiore dispersione (ha le code più pesanti di una Normale, ovvero ha una varianza maggiore di 1).</p>
-<p>La <a href="#fig-alcune-t-student">Figura&nbsp;<span>13.7</span></a> mostra alcune distribuzioni <span class="math inline">\(t\)</span> di Student variando il parametro <span class="math inline">\(\nu\)</span>.</p>
+<p>La <a href="#fig-alcune-t-student">Figura&nbsp;<span class="quarto-unresolved-ref">fig-alcune-t-student</span></a> mostra alcune distribuzioni <span class="math inline">\(t\)</span> di Student variando il parametro <span class="math inline">\(\nu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-alcune-t-student" class="quarto-figure quarto-figure-center anchored">
@@ -968,7 +973,7 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 </div>
 <div id="exr-beta-binom-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 13.5 </strong></span></p>
-<p>Nel disturbo depressivo la recidiva è definita come la comparsa di un nuovo episodio depressivo che si manifesta dopo un prolungato periodo di recupero (6-12 mesi) con stato di eutimia (umore relativamente normale). Supponiamo che una serie di studi mostri una comparsa di recidiva in una proporzione che va dal 20% al 60% dei casi, con una media del 40% <span class="citation" data-cites="nuggerud2020analysis">(per una recente discussione, si veda <a href="999_refs.html#ref-nuggerud2020analysis" role="doc-biblioref">Nuggerud-Galeas et al., 2020</a>)</span>. Sulla base di queste informazioni, si usi la distribuzione Beta per rappresentare le credenze a priori relativamente alla probabilità di recidiva.</p>
+<p>Nel disturbo depressivo la recidiva è definita come la comparsa di un nuovo episodio depressivo che si manifesta dopo un prolungato periodo di recupero (6-12 mesi) con stato di eutimia (umore relativamente normale). Supponiamo che una serie di studi mostri una comparsa di recidiva in una proporzione che va dal 20% al 60% dei casi, con una media del 40% <span class="citation" data-cites="nuggerud2020analysis">(per una recente discussione, si veda <a href="#ref-nuggerud2020analysis" role="doc-biblioref">Nuggerud-Galeas et al., 2020</a>)</span>. Sulla base di queste informazioni, si usi la distribuzione Beta per rappresentare le credenze a priori relativamente alla probabilità di recidiva.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Il problema richiede di trovare i parametri della distribuzione Beta tali per cui la massa della densità sia compresa tra 0.2 e 0.6, con la media in corrispondenza di 0.4. Procedendo per tentativi ed errori, ed usando la funzione <code><a href="https://bayes-rules.github.io/bayesrules/docs/reference/plot_beta.html">bayesrules::plot_beta()</a></code>, un risultato possibile è <span class="math inline">\(\mbox{Beta}(16, 24)\)</span>.</p>
@@ -1020,7 +1025,7 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 </div>
 <div id="exr-beta-binom-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 13.6 </strong></span></p>
-<p>Poniamoci ora il problema di verificare la nostra comprensione delle funzioni <span class="math inline">\(\mathsf{R}\)</span> che possono essere usate per la funzione Beta. Si risolva l’<a href="029_conjugate_families.html#exr-beta-binom-1">Esercizio&nbsp;<span>17.1</span></a> usando <span class="math inline">\(\mathsf{R}\)</span>.</p>
+<p>Poniamoci ora il problema di verificare la nostra comprensione delle funzioni <span class="math inline">\(\mathsf{R}\)</span> che possono essere usate per la funzione Beta. Si risolva l’<a href="#exr-beta-binom-1">Esercizio&nbsp;<span class="quarto-unresolved-ref">exr-beta-binom-1</span></a> usando <span class="math inline">\(\mathsf{R}\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Utilizziamo i seguenti parametri per la distribuzione Beta:</p>
@@ -1114,7 +1119,7 @@ f(x)=(x_m/x)^\alpha,
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-McElreath_rethinking" class="csl-entry" role="doc-biblioentry">
 McElreath, R. (2020). <em>Statistical rethinking: <span>A</span> <span>Bayesian</span> course with examples in <span>R</span> and <span>Stan</span></em> (2nd Edition). CRC Press.
 </div>

@@ -390,6 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -463,7 +468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Le variabili casuali continue assumono valori reali. L’insieme dei numeri reali è <em>non numerabile</em> perché è più grande dell’insieme degli interi.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Le leggi della probabilità sono le stesse per le variabili casuali discrete e quelle continue. La nozione di funzione di massa di probabilità, invece, deve essere sostituita dal suo equivalente continuo, ovvero dalla <em>funzione di densità di probabilità</em>. Lo scopo di questo Capitolo è quello di chiarire il significato di questa nozione, usando un approccio basato sulle simulazioni.</p>
 <section id="spinner-e-variabili-casuali-continue-uniformi" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="spinner-e-variabili-casuali-continue-uniformi">
 <span class="header-section-number">10.1</span> Spinner e variabili casuali continue uniformi</h2>
-<p>Consideriamo il seguente esperimento casuale. Facciamo ruotare ad alta velocità uno spinner simmetrico imperniato su un goniometro e osserviamo la posizione in cui si ferma (individuata dall’angolo acuto con segno tra il suo asse e l’asse orizzontale del goniometro). Chiamiamo <span class="math inline">\(\Theta\)</span> la variabile casuale “pendenza dello spinner” – <a href="#fig-spinner">Figura&nbsp;<span>10.1</span></a>. Nella trattazione seguente useremo i gradi e, di conseguenza, <span class="math inline">\(\Theta \in [0, 360]\)</span>.</p>
+<p>Consideriamo il seguente esperimento casuale. Facciamo ruotare ad alta velocità uno spinner simmetrico imperniato su un goniometro e osserviamo la posizione in cui si ferma (individuata dall’angolo acuto con segno tra il suo asse e l’asse orizzontale del goniometro). Chiamiamo <span class="math inline">\(\Theta\)</span> la variabile casuale “pendenza dello spinner” – <a href="#fig-spinner">Figura&nbsp;<span class="quarto-unresolved-ref">fig-spinner</span></a>. Nella trattazione seguente useremo i gradi e, di conseguenza, <span class="math inline">\(\Theta \in [0, 360]\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-spinner" class="quarto-figure quarto-figure-center anchored">
@@ -497,7 +502,7 @@ F_{\Theta}(\theta) = \mbox{P}(\Theta \leq \theta).
 <p><span class="math display">\[
 F_{\Theta}(\theta) = \frac{\theta}{360}.
 \]</span></p>
-<p>Questa è una funzione lineare di <span class="math inline">\(\theta\)</span>, cioè <span class="math inline">\(\frac{1}{360} \cdot \theta\)</span>, come indicato dal grafico della <a href="#fig-spinner-cdf">Figura&nbsp;<span>10.2</span></a>.</p>
+<p>Questa è una funzione lineare di <span class="math inline">\(\theta\)</span>, cioè <span class="math inline">\(\frac{1}{360} \cdot \theta\)</span>, come indicato dal grafico della <a href="#fig-spinner-cdf">Figura&nbsp;<span class="quarto-unresolved-ref">fig-spinner-cdf</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-spinner-cdf" class="quarto-figure quarto-figure-center anchored">
@@ -622,7 +627,7 @@ F_{\Theta}(\theta) = \frac{\theta}{360}.
 </div>
 </div>
 </div>
-<p>Dalla <a href="#fig-unif-distr-2">Figura&nbsp;<span>10.5</span></a> vediamo che l’area sottesa alla funzione di densità è <span class="math inline">\((b - a)\cdot c\)</span>. Dato che tale area deve essere unitaria, ovvero, <span class="math inline">\((b - a) \cdot c = 1\)</span>, possiamo trovare <span class="math inline">\(c\)</span> dividendo entrambi i termini per <span class="math inline">\(b - a\)</span>,</p>
+<p>Dalla <a href="#fig-unif-distr-2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-unif-distr-2</span></a> vediamo che l’area sottesa alla funzione di densità è <span class="math inline">\((b - a)\cdot c\)</span>. Dato che tale area deve essere unitaria, ovvero, <span class="math inline">\((b - a) \cdot c = 1\)</span>, possiamo trovare <span class="math inline">\(c\)</span> dividendo entrambi i termini per <span class="math inline">\(b - a\)</span>,</p>
 <p><span class="math display">\[
 c  = \frac{\displaystyle{1}}{\displaystyle b - a}.
 \]</span></p>
@@ -787,7 +792,7 @@ F(x_k) = P(X \leq x_k) = \int_{-\infty}^{x_k} f(x) \,\operatorname {d}\!x .
 </div>
 </div>
 </div>
-<p>La <a href="#fig-median-mean">Figura&nbsp;<span>10.8</span></a> mostra come differiscono i due concetti di mediana (indicata dalla linea verticale) e media (indicata dal “punto di equilibrio” triangolare). A sinistra, per una densità di probabilità simmetrica, la media e la mediana coincidono. A destra, una piccola porzione della distribuzione è stata spostata all’estremo destro. Questa modifica non ha influito sulla posizione della mediana, poiché le aree a destra e a sinistra della linea verticale sono ancora uguali. In altri termini, la mediana, <span class="math inline">\(x_m\)</span>, divide l’area sottesa alla funzione di densità in due porzioni uguali:</p>
+<p>La <a href="#fig-median-mean">Figura&nbsp;<span class="quarto-unresolved-ref">fig-median-mean</span></a> mostra come differiscono i due concetti di mediana (indicata dalla linea verticale) e media (indicata dal “punto di equilibrio” triangolare). A sinistra, per una densità di probabilità simmetrica, la media e la mediana coincidono. A destra, una piccola porzione della distribuzione è stata spostata all’estremo destro. Questa modifica non ha influito sulla posizione della mediana, poiché le aree a destra e a sinistra della linea verticale sono ancora uguali. In altri termini, la mediana, <span class="math inline">\(x_m\)</span>, divide l’area sottesa alla funzione di densità in due porzioni uguali:</p>
 <p><span class="math display">\[
 \int_{-\infty}^{x_m} p(x) dx = \int_{x_m}^{-\infty} p(x) dx = \frac{1}{2}.
 \]</span></p>

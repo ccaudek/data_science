@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -474,7 +479,7 @@ div.csl-indent {
   </div>
   
 
-</header><p>Obiettivo di questo Capitolo è introdurre l’inferenza bayesiana considerando il modello binomiale. Esamineremo prima il caso di una distribuzione a priori discreta; esamineremo poi il caso di una distribuzione a priori continua. Il materiale qui presentato segue molto da vicino il capitolo 7 del testo di <span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="999_refs.html#ref-albert2019probability" role="doc-biblioref">2019</a>)</span>.</p>
+</header><p>Obiettivo di questo Capitolo è introdurre l’inferenza bayesiana considerando il modello binomiale. Esamineremo prima il caso di una distribuzione a priori discreta; esamineremo poi il caso di una distribuzione a priori continua. Il materiale qui presentato segue molto da vicino il capitolo 7 del testo di <span class="citation" data-cites="albert2019probability">Albert &amp; Hu (<a href="#ref-albert2019probability" role="doc-biblioref">2019</a>)</span>.</p>
 <section id="ch-prior-discr-binom" class="level2" data-number="16.1"><h2 data-number="16.1" class="anchored" data-anchor-id="ch-prior-discr-binom">
 <span class="header-section-number">16.1</span> Inferenza bayesiana con una distribuzione a priori discreta</h2>
 <p>Nei problemi tradizionali di teoria delle probabilità ci sono molti esempi che riguardano l’estrazione di palline colorate da un’urna. In questi esempi ci viene fornito il numero di palline di vari colori presenti nell’urna e ci viene chiesto di calcolare le probabilità di vari eventi. Ad esempio, in un’urna ci sono 40 palline bianche e 20 rosse. Se estrai due palline a caso, qual è la probabilità che entrambe siano bianche?</p>
@@ -556,7 +561,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 <span><span class="co">#&gt;  [6] 1.797058e-01 1.143967e-01 2.216088e-02 3.557765e-04 0.000000e+00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Per i 10 valori <span class="math inline">\(\theta\)</span> considerati, la funzione di verosimiglianza assume la forma indicata dalla <a href="#fig-like-12-20">Figura&nbsp;<span>16.3</span></a> .</p>
+<p>Per i 10 valori <span class="math inline">\(\theta\)</span> considerati, la funzione di verosimiglianza assume la forma indicata dalla <a href="#fig-like-12-20">Figura&nbsp;<span class="quarto-unresolved-ref">fig-like-12-20</span></a> .</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tibble</span><span class="op">(</span><span class="va">theta</span>, <span class="va">like</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">theta</span>, <span class="va">like</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -586,7 +591,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 <span><span class="co">#&gt;  [6] 3.929756e-01 2.501596e-01 1.384594e-02 2.222863e-04 0.000000e+00</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Una rappresentazione grafica della distribuzione a posteriori di <span class="math inline">\(\theta\)</span> è fornita dalla <a href="#fig-post-bino-12-20-discr">Figura&nbsp;<span>16.4</span></a>.</p>
+<p>Una rappresentazione grafica della distribuzione a posteriori di <span class="math inline">\(\theta\)</span> è fornita dalla <a href="#fig-post-bino-12-20-discr">Figura&nbsp;<span class="quarto-unresolved-ref">fig-post-bino-12-20-discr</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tibble</span><span class="op">(</span><span class="va">theta</span>, <span class="va">post</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">theta</span>, <span class="va">post</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -596,7 +601,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 </details><div class="cell-output-display">
 <div id="fig-post-bino-12-20-discr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="026_subj_prop_files/figure-html/fig-post-bino-12-20-discr-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 16.4: Distribuzione a posteriori per il modello binomiale con 12 successi in 20 prove e la distribuzione a priori indicata in <a href="#fig-prior-bino-12-20-2">Figura&nbsp;<span>16.2</span></a>.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 16.4: Distribuzione a posteriori per il modello binomiale con 12 successi in 20 prove e la distribuzione a priori indicata in <a href="#fig-prior-bino-12-20-2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-prior-bino-12-20-2</span></a>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -655,7 +660,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 </section><section id="ch-prior-cont-binom" class="level2" data-number="16.2"><h2 data-number="16.2" class="anchored" data-anchor-id="ch-prior-cont-binom">
 <span class="header-section-number">16.2</span> Inferenza bayesiana con una distribuzione a priori continua</h2>
 <p>Il caso di una distribuzione a priori discreta è stato discusso solo per scopi didattici. In generale, l’uso di una distribuzione a priori discreta non è una buona scelta per rappresentare le nostre credenze a priori sul parametro sconosciuto. Infatti, per definizione, una distribuzione a priori discreta può rappresentare solo alcuni dei possibili valori del parametro – nel caso discusso sopra, ad esempio, non abbiamo considerato il valore 0.55. Sembra dunque più sensato descrivere le nostre credenze a priori sul parametro utilizzando una distribuzione continua.</p>
-<p>Cerchiamo una funzione di densità con supporto in <span class="math inline">\([0, 1]\)</span>. Il candidato naturale è fornito dalla funzione Beta (si veda il <a href="023_cont_rv_distr.html"><span>Capitolo&nbsp;13</span></a>). Come per le altre funzioni di densità, abbiamo a disposizione quattro funzioni <span class="math inline">\(\textsf{R}\)</span> che ci consentono di manipolare facilmente questa densità.</p>
+<p>Cerchiamo una funzione di densità con supporto in <span class="math inline">\([0, 1]\)</span>. Il candidato naturale è fornito dalla funzione Beta (si veda il <a href="#sec-distr-rv-cont"><span class="quarto-unresolved-ref">sec-distr-rv-cont</span></a>). Come per le altre funzioni di densità, abbiamo a disposizione quattro funzioni <span class="math inline">\(\textsf{R}\)</span> che ci consentono di manipolare facilmente questa densità.</p>
 <p>Ad esempio, possiamo valutare la funzione di densità <span class="math inline">\(\mbox{Beta}(1, 1)\)</span> in corrispondenza dei valori <span class="math inline">\(p = 0.5\)</span> e <span class="math inline">\(p = 0.8\)</span>, che dovrebbe essere entrambi uguali a 1, e in corrispondenza di <span class="math inline">\(p = 1.2\)</span>, che dovrebbe essere ugualea 0 poiché questo valore è al di fuori dell’intervallo <span class="math inline">\([ 0, 1]\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.2</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
@@ -730,7 +735,7 @@ p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)}.
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-albert2019probability" class="csl-entry" role="doc-biblioentry">
 Albert, J., &amp; Hu, J. (2019). <em>Probability and bayesian modeling</em>. Chapman; Hall/CRC.
 </div>

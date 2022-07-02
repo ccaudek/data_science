@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -501,7 +506,7 @@ div.csl-indent {
 <p><span id="eq-like-binomial-kernel"><span class="math display">\[
 \mathcal{L}(p \mid y) = \theta^y (1-\theta)^{n - y}.\notag
 \tag{14.1}\]</span></span></p>
-<p>Per fare un esempio pratico, consideriamo la ricerca di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>. Questi ricercatori hanno trovato che, su 30 pazienti clinicamente depressi, 23 manifestavano delle aspettative relative al loro umore futuro distorsione negativamente. Se i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span> vengono riassunti da una proporzione (ovvero, 23/30), allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:</p>
+<p>Per fare un esempio pratico, consideriamo la ricerca di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>. Questi ricercatori hanno trovato che, su 30 pazienti clinicamente depressi, 23 manifestavano delle aspettative relative al loro umore futuro distorsione negativamente. Se i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span> vengono riassunti da una proporzione (ovvero, 23/30), allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:</p>
 <p><span id="eq-binomialmodel"><span class="math display">\[
 y  \sim \mbox{Bin}(n, \theta),
 \tag{14.2}\]</span></span></p>
@@ -512,7 +517,7 @@ p(y \mid \theta)
 \mbox{Bin}(y \mid n, \theta).
 \]</span></p>
 <p>Nei capitoli precedenti è stato mostrato come, sulla base del modello binomiale, sia possibile assegnare una probabilità a ciascun possibile valore <span class="math inline">\(y \in \{0, 1, \dots, n\}\)</span> <em>assumendo noto il valore del parametro</em> <span class="math inline">\(\theta\)</span>. Ma ora abbiamo il problema inverso, ovvero quello di fare inferenza su <span class="math inline">\(\theta\)</span> alla luce dei dati campionari <span class="math inline">\(y\)</span>. In altre parole, riteniamo di conoscere il modello probabilistico che ha generato i dati, ma di tale modello non conosciamo i parametri: vogliamo dunque ottenere informazioni su <span class="math inline">\(\theta\)</span> avendo osservato i dati <span class="math inline">\(y\)</span>. Per fare questo, in un ottica bayesiana, è innanzitutto necessario definire la funzione di verosimiglianza.</p>
-<p>Per i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span> la funzione di verosimiglianza corrisponde alla funzione binomiale di parametro <span class="math inline">\(\theta \in [0, 1]\)</span> sconosciuto. Abbiamo osservato 23 successi, <span class="math inline">\(y = 23\)</span>, in 30 prove, <span class="math inline">\(n = 30\)</span>.</p>
+<p>Per i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span> la funzione di verosimiglianza corrisponde alla funzione binomiale di parametro <span class="math inline">\(\theta \in [0, 1]\)</span> sconosciuto. Abbiamo osservato 23 successi, <span class="math inline">\(y = 23\)</span>, in 30 prove, <span class="math inline">\(n = 30\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">23</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -522,7 +527,7 @@ p(y \mid \theta)
 <p><span id="eq-likebino23"><span class="math display">\[
 \mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} \theta^{23} + (1-\theta)^7.
 \tag{14.3}\]</span></span></p>
-<p>Per costruire la funzione di verosimiglianza dobbiamo applicare l’<a href="#eq-likebino23">Equazione&nbsp;<span>14.3</span></a> tante volte, cambiando ogni volta il valore <span class="math inline">\(\theta\)</span>, ma tenendo sempre costante il valore dei dati. Nella simulazione considereremo 100 possibili valori <span class="math inline">\(\theta \in [0, 1]\)</span>.</p>
+<p>Per costruire la funzione di verosimiglianza dobbiamo applicare l’<a href="#eq-likebino23">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-likebino23</span></a> tante volte, cambiando ogni volta il valore <span class="math inline">\(\theta\)</span>, ma tenendo sempre costante il valore dei dati. Nella simulazione considereremo 100 possibili valori <span class="math inline">\(\theta \in [0, 1]\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">theta</span></span>
@@ -568,7 +573,7 @@ p(y \mid \theta)
 <details><summary>Codice</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">like</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Special.html">choose</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">y</span><span class="op">)</span> <span class="op">*</span> <span class="va">theta</span><span class="op">^</span><span class="va">y</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">theta</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="va">y</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>La curva che interpola tali punti è la funzione di verosimiglianza. La <a href="#fig-likefutexpect">Figura&nbsp;<span>14.1</span></a> fornisce una rappresentazione grafica di tale funzione.</p>
+<p>La curva che interpola tali punti è la funzione di verosimiglianza. La <a href="#fig-likefutexpect">Figura&nbsp;<span class="quarto-unresolved-ref">fig-likefutexpect</span></a> fornisce una rappresentazione grafica di tale funzione.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tibble</span><span class="op">(</span><span class="va">theta</span>, <span class="va">like</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">theta</span>, y <span class="op">=</span> <span class="va">like</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -620,7 +625,7 @@ p(y \mid \theta)
 <details><summary>Codice</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ll</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">n</span>, <span class="va">theta</span>, log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>La funzione di log-verosimiglianza è rappresentata nella <a href="#fig-loglike-futureexp">Figura&nbsp;<span>14.2</span></a>.</p>
+<p>La funzione di log-verosimiglianza è rappresentata nella <a href="#fig-loglike-futureexp">Figura&nbsp;<span class="quarto-unresolved-ref">fig-loglike-futureexp</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tibble</span><span class="op">(</span><span class="va">theta</span>, <span class="va">ll</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">theta</span>, y <span class="op">=</span> <span class="va">ll</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -651,7 +656,7 @@ p(y \mid \theta)
 <p><span id="eq-gaussian-sim-like"><span class="math display">\[
 f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigma^2}(y-\mu)^2\right\}.
 \tag{14.5}\]</span></span></p>
-<p>Ci poniamo ora il problema di costruire la funzione di verosimiglianza per la densità dell’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a>.</p>
+<p>Ci poniamo ora il problema di costruire la funzione di verosimiglianza per la densità dell’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-gaussian-sim-like</span></a>.</p>
 <section id="una-singola-osservazione" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="una-singola-osservazione">
 <span class="header-section-number">14.2.1</span> Una singola osservazione</h3>
 <p>Esaminiamo prima il caso in cui i dati corrispondono ad una singola osservazione <span class="math inline">\(y\)</span>.</p>
@@ -659,12 +664,12 @@ f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigm
 <details><summary>Codice</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">114</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>L’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a> dipende dai parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> e dai dati <span class="math inline">\(y\)</span>. Per semplicità, ipotizzeremo <span class="math inline">\(\sigma\)</span> noto e uguale a 15. Nella simulazione considereremo 1000 valori <span class="math inline">\(\mu\)</span> compresi tra 70 e 160.</p>
+<p>L’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-gaussian-sim-like</span></a> dipende dai parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> e dai dati <span class="math inline">\(y\)</span>. Per semplicità, ipotizzeremo <span class="math inline">\(\sigma\)</span> noto e uguale a 15. Nella simulazione considereremo 1000 valori <span class="math inline">\(\mu\)</span> compresi tra 70 e 160.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">70</span>, <span class="fl">160</span>, length.out <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Dato che consideriamo 1000 possibili valori <span class="math inline">\(\mu\)</span>, per costruire la funzione di verosimiglianza applicheremo l’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a> 1000 volte. In ciascun passo della simulazione inseriremo nell’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a></p>
+<p>Dato che consideriamo 1000 possibili valori <span class="math inline">\(\mu\)</span>, per costruire la funzione di verosimiglianza applicheremo l’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-gaussian-sim-like</span></a> 1000 volte. In ciascun passo della simulazione inseriremo nell’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-gaussian-sim-like</span></a></p>
 <ul>
 <li>il singolo valore <span class="math inline">\(y\)</span> considerato,</li>
 <li>il valore <span class="math inline">\(\sigma\)</span> assunto noto,</li>
@@ -791,7 +796,7 @@ f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
 </details><div class="cell-output-display">
 <div id="fig-loglike-bdi2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="024_likelihood_files/figure-html/fig-loglike-bdi2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 14.3: Log-verosimiglianza del parametro <span class="math inline">\(\mu\)</span> per i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 14.3: Log-verosimiglianza del parametro <span class="math inline">\(\mu\)</span> per i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -816,7 +821,7 @@ f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
 <p>In altri termini, la s.m.v. del parametro <span class="math inline">\(\mu\)</span> è la media del campione e la s.m.v. del parametro <span class="math inline">\(\sigma\)</span> è la deviazione standard del campione.</p>
 <div id="exr-loglike-bdi2-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 14.1 </strong></span></p>
-<p>Dalla <a href="#fig-loglike-bdi2">Figura&nbsp;<span>14.3</span></a> notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero 30.93, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</p>
+<p>Dalla <a href="#fig-loglike-bdi2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-loglike-bdi2</span></a> notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero 30.93, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</p>
 </div>
 </section></section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
 <p>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) <span class="math inline">\(\theta\)</span> vengono variati: la verosimiglianza è una funzione di <span class="math inline">\(\theta\)</span> per il dato fisso <span class="math inline">\(y\)</span>. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per <span class="math inline">\(\theta\)</span> e i dati osservati <span class="math inline">\(y\)</span>.</p>
@@ -826,7 +831,7 @@ f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-zetschefuture2019" class="csl-entry" role="doc-biblioentry">
 Zetsche, U., Bürkner, P.-C., &amp; Renneberg, B. (2019). Future expectations in clinical depression: <span>Biased</span> or realistic? <em>Journal of Abnormal Psychology</em>, <em>128</em>(7), 678–688.
 </div>

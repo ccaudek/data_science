@@ -14,7 +14,9 @@ Se $X$ è una variabile dicotomica con valori 0 e 1, allora per il modello linea
 
 $$
 \mu_i = \alpha
-$$ mentre, quando $x=1$, il modello diventa
+$$
+
+mentre, quando $x=1$, il modello diventa
 
 $$
 \mu_i = \alpha + \beta.

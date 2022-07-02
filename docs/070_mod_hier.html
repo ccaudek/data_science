@@ -409,6 +409,11 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -516,7 +521,7 @@ div.csl-indent {
 <p>I modelli statistici che consentono di ottenere questo risultato si chiamano lineari misti, o modelli lineari gerarchici/multilivello, e sono diventati uno strumento fondamentale della ricerca sperimentale in psicologia, in linguistica e nelle scienze cognitive, dove i progetti di ricerca a misure ripetute sono la norma. In questo Capitolo esploreremo alcune tecniche che consentono di rendere conto della struttura gerarchica presente nei dati e discuteremo due esempi: il famoso problema delle otto scuole e il modello <em>Random Intercept Model</em>.</p>
 </section><section id="il-problema-delle-8-scuole" class="level2" data-number="32.5"><h2 data-number="32.5" class="anchored" data-anchor-id="il-problema-delle-8-scuole">
 <span class="header-section-number">32.5</span> Il problema delle 8 scuole</h2>
-<p>Il classico problema delle otto scuole <span class="citation" data-cites="rubin1981estimation gelman1995bayesian">(<a href="999_refs.html#ref-rubin1981estimation" role="doc-biblioref">Rubin, 1981</a>; questo esempio è anche discusso nel Capitolo 5 di <a href="999_refs.html#ref-gelman1995bayesian" role="doc-biblioref">Gelman et al., 1995</a>)</span> fornisce uno degli esempi più semplici di dati organizzati in maniera gerarchica e viene spesso usato per illustrare l’utilità di modellazione gerarchica. Il problema considera l’efficacia dei programmi di coaching SAT condotti in parallelo in otto scuole.</p>
+<p>Il classico problema delle otto scuole <span class="citation" data-cites="rubin1981estimation gelman1995bayesian">(<a href="#ref-rubin1981estimation" role="doc-biblioref">Rubin, 1981</a>; questo esempio è anche discusso nel Capitolo 5 di <a href="#ref-gelman1995bayesian" role="doc-biblioref">Gelman et al., 1995</a>)</span> fornisce uno degli esempi più semplici di dati organizzati in maniera gerarchica e viene spesso usato per illustrare l’utilità di modellazione gerarchica. Il problema considera l’efficacia dei programmi di coaching SAT condotti in parallelo in otto scuole.</p>
 <blockquote class="blockquote">
 <p>Per conto del Servizio Prove Educative è stato condotto uno studio per analizzare gli effetti di speciali programmi di coaching per SAT-V (Scholastic Attitude Test-Verbal) in ciascuna delle otto scuole superiori. La variabile di esito in ogni studio era il punteggio su un’amministrazione speciale del SAT-V, un test a scelta multipla standardizzato somministrato dall’Educational Testing Service e utilizzato per aiutare i college a prendere decisioni di ammissione; i punteggi possono variare tra 200 e 800, con media circa 500 e deviazione standard circa 100. Gli esami SAT sono progettati per resistere a sforzi a breve termine diretti specificamente al miglioramento delle prestazioni del test; invece sono progettati per riflettere le conoscenze acquisite e le abilità sviluppate in molti anni di istruzione. Tuttavia, ciascuna delle otto scuole in questo studio ha considerato il suo programma di coaching a breve termine molto efficace nell’aumentare i punteggi SAT. Inoltre, non vi era alcuna ragione preliminare per ritenere che uno degli otto programmi fosse più efficace di un altro o che alcuni fossero più simili negli effetti l’uno all’altro che a qualsiasi altro.</p>
 </blockquote>
@@ -605,13 +610,13 @@ div.csl-indent {
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Running MCMC with 4 sequential chains...</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Chain 1 finished in 0.2 seconds.</span></span>
-<span><span class="co">#&gt; Chain 2 finished in 0.2 seconds.</span></span>
-<span><span class="co">#&gt; Chain 3 finished in 0.3 seconds.</span></span>
+<span><span class="co">#&gt; Chain 1 finished in 0.3 seconds.</span></span>
+<span><span class="co">#&gt; Chain 2 finished in 0.3 seconds.</span></span>
+<span><span class="co">#&gt; Chain 3 finished in 0.2 seconds.</span></span>
 <span><span class="co">#&gt; Chain 4 finished in 0.2 seconds.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; All 4 chains finished successfully.</span></span>
-<span><span class="co">#&gt; Mean chain execution time: 0.2 seconds.</span></span>
+<span><span class="co">#&gt; Mean chain execution time: 0.3 seconds.</span></span>
 <span><span class="co">#&gt; Total execution time: 1.4 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -699,13 +704,13 @@ div.csl-indent {
 <span><span class="co">#&gt; Running MCMC with 4 sequential chains...</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Chain 1 finished in 0.5 seconds.</span></span>
-<span><span class="co">#&gt; Chain 2 finished in 0.6 seconds.</span></span>
+<span><span class="co">#&gt; Chain 2 finished in 0.5 seconds.</span></span>
 <span><span class="co">#&gt; Chain 3 finished in 0.5 seconds.</span></span>
 <span><span class="co">#&gt; Chain 4 finished in 0.5 seconds.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; All 4 chains finished successfully.</span></span>
 <span><span class="co">#&gt; Mean chain execution time: 0.5 seconds.</span></span>
-<span><span class="co">#&gt; Total execution time: 2.3 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Total execution time: 2.2 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>I risultati sono i seguenti.</p>
@@ -794,14 +799,14 @@ div.csl-indent {
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Running MCMC with 4 sequential chains...</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Chain 1 finished in 0.6 seconds.</span></span>
+<span><span class="co">#&gt; Chain 1 finished in 0.5 seconds.</span></span>
 <span><span class="co">#&gt; Chain 2 finished in 0.6 seconds.</span></span>
 <span><span class="co">#&gt; Chain 3 finished in 0.6 seconds.</span></span>
 <span><span class="co">#&gt; Chain 4 finished in 0.6 seconds.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; All 4 chains finished successfully.</span></span>
 <span><span class="co">#&gt; Mean chain execution time: 0.6 seconds.</span></span>
-<span><span class="co">#&gt; Total execution time: 2.6 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Total execution time: 2.7 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Esaminiamo la distribuzione a posteriori delle stime dei parametri.</p>
@@ -865,21 +870,21 @@ y_j &amp;\sim \mathcal{N}(\theta_j, \sigma_j), \quad j = 1, \dots, 8\notag\\
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Running MCMC with 4 sequential chains...</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Chain 1 finished in 0.9 seconds.</span></span>
-<span><span class="co">#&gt; Chain 2 finished in 1.1 seconds.</span></span>
+<span><span class="co">#&gt; Chain 1 finished in 1.1 seconds.</span></span>
+<span><span class="co">#&gt; Chain 2 finished in 1.2 seconds.</span></span>
 <span><span class="co">#&gt; Chain 3 finished in 1.0 seconds.</span></span>
 <span><span class="co">#&gt; Chain 4 finished in 1.0 seconds.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; All 4 chains finished successfully.</span></span>
-<span><span class="co">#&gt; Mean chain execution time: 1.0 seconds.</span></span>
-<span><span class="co">#&gt; Total execution time: 4.3 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Mean chain execution time: 1.1 seconds.</span></span>
+<span><span class="co">#&gt; Total execution time: 4.6 seconds.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Le stime dei parametri sono le seguenti.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">output4_stanfit</span> <span class="op">&lt;-</span> <span class="fu">rstan</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/rstan/reference/stan_csv.html">read_stan_csv</a></span><span class="op">(</span><span class="va">fit4</span><span class="op">$</span><span class="fu">output_files</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">output4_stanfit</span>, pars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"theta"</span>, <span class="st">"mu"</span>, <span class="st">"tau"</span><span class="op">)</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.025</span>, <span class="fl">.5</span>, <span class="fl">.975</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Inference for Stan model: hmod_4-202207010817-1-386cf7.</span></span>
+<span><span class="co">#&gt; Inference for Stan model: hmod_4-202207010854-1-38840b.</span></span>
 <span><span class="co">#&gt; 4 chains, each with iter=30000; warmup=10000; thin=1; </span></span>
 <span><span class="co">#&gt; post-warmup draws per chain=20000, total post-warmup draws=80000.</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -895,7 +900,7 @@ y_j &amp;\sim \mathcal{N}(\theta_j, \sigma_j), \quad j = 1, \dots, 8\notag\\
 <span><span class="co">#&gt; mu        6.94    0.29 4.71  -2.09 6.92 16.43   272 1.02</span></span>
 <span><span class="co">#&gt; tau       5.93    0.39 4.85   0.64 4.74 18.11   154 1.03</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Ven Lug 01 08:17:04 2022.</span></span>
+<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Ven Lug 01 08:54:22 2022.</span></span>
 <span><span class="co">#&gt; For each parameter, n_eff is a crude measure of effective sample size,</span></span>
 <span><span class="co">#&gt; and Rhat is the potential scale reduction factor on split chains (at </span></span>
 <span><span class="co">#&gt; convergence, Rhat=1).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -917,8 +922,8 @@ y_j &amp;\sim \mathcal{N}(\theta_j, \sigma_j), \quad j = 1, \dots, 8\notag\\
 <p>In conclusione, il modello gerarchico consente di ottenere stime degli effetti <span class="math inline">\(\theta_j\)</span> degli otto esperimenti più precise di quelle ottenute dal modelo non gerarchico no-pooling e dal modello gerarchico di partial pooling. Si noti inoltre che, con <span class="math inline">\(\tau \rightarrow \infty\)</span>, le stime di un modello gerarchico diventano sempre più simili a quelle di un modello no-pooling, vale a dire, ciascuna delle stime dell’effetto del trattamento della scuola diventa via via più indipendente dalle altre stime. Con <span class="math inline">\(\tau \rightarrow 0\)</span>, le stime di un modello gerarchico diventano sempre più simili alle stime di un modello di pooling completo, vale a dire, tutti gli effetti del trattamento della scuola tendono a diventare via via più simili all’effetto medio del gruppo.</p>
 </section></section><section id="modelli-lineari-ad-intercetta-casuale" class="level2" data-number="32.6"><h2 data-number="32.6" class="anchored" data-anchor-id="modelli-lineari-ad-intercetta-casuale">
 <span class="header-section-number">32.6</span> Modelli lineari ad intercetta casuale</h2>
-<p>Esaminiamo ora un modello gerarchico più complesso per l’analisi di un set di dati a misure ripetute con due condizioni. I dati sono stati raccolti da <span class="citation" data-cites="gibson2013processing sorensen2015bayesian">(<a href="999_refs.html#ref-gibson2013processing" role="doc-biblioref">Gibson &amp; Wu, 2013</a>; si veda <a href="999_refs.html#ref-sorensen2015bayesian" role="doc-biblioref">Sorensen &amp; Vasishth, 2015</a>)</span>. La variabile dipendente <code>rt</code> dell’esperimento di <span class="citation" data-cites="gibson2013processing">Gibson &amp; Wu (<a href="999_refs.html#ref-gibson2013processing" role="doc-biblioref">2013</a>)</span> è il tempo di lettura in millisecondi del soggetto di una proposizione relativa in un testo. I tempi di reazione sono stati registrati in due condizioni: in presenza di un sostantivo riferito al soggetto della proposizione, oppure in presenza di un sostantivo riferito all’oggetto della proposizione.</p>
-<p>I dati di <span class="citation" data-cites="gibson2013processing">Gibson &amp; Wu (<a href="999_refs.html#ref-gibson2013processing" role="doc-biblioref">2013</a>)</span> provengono da un esperimento con 37 soggetti e 15 item. Gli item erano presentati in un disegno a quadrato latino (ovvero, un disegno nel quale vengono considerate tutte le combinazioni possibili), il che produce 37 <span class="math inline">\(\times\)</span> 15 = 555 dati. Risultano mancanti otto dati di un soggetto (id 27), il che porta ad un totale di 555 − 8 = 547 dati. Le prime righe del data.frame sono mostrate di seguito:</p>
+<p>Esaminiamo ora un modello gerarchico più complesso per l’analisi di un set di dati a misure ripetute con due condizioni. I dati sono stati raccolti da <span class="citation" data-cites="gibson2013processing sorensen2015bayesian">(<a href="#ref-gibson2013processing" role="doc-biblioref">Gibson &amp; Wu, 2013</a>; si veda <a href="#ref-sorensen2015bayesian" role="doc-biblioref">Sorensen &amp; Vasishth, 2015</a>)</span>. La variabile dipendente <code>rt</code> dell’esperimento di <span class="citation" data-cites="gibson2013processing">Gibson &amp; Wu (<a href="#ref-gibson2013processing" role="doc-biblioref">2013</a>)</span> è il tempo di lettura in millisecondi del soggetto di una proposizione relativa in un testo. I tempi di reazione sono stati registrati in due condizioni: in presenza di un sostantivo riferito al soggetto della proposizione, oppure in presenza di un sostantivo riferito all’oggetto della proposizione.</p>
+<p>I dati di <span class="citation" data-cites="gibson2013processing">Gibson &amp; Wu (<a href="#ref-gibson2013processing" role="doc-biblioref">2013</a>)</span> provengono da un esperimento con 37 soggetti e 15 item. Gli item erano presentati in un disegno a quadrato latino (ovvero, un disegno nel quale vengono considerate tutte le combinazioni possibili), il che produce 37 <span class="math inline">\(\times\)</span> 15 = 555 dati. Risultano mancanti otto dati di un soggetto (id 27), il che porta ad un totale di 555 − 8 = 547 dati. Le prime righe del data.frame sono mostrate di seguito:</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">rdat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"gibsonwu2012data.txt"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">rdat</span><span class="op">)</span></span>
@@ -1076,10 +1081,10 @@ rt \sim \mbox{LogNormal}(\beta_0 + \beta_1 so,\sigma).
 <p>Se ignoriamo la struttura gerarchica dei dati, concludiamo che l’effetto della manipolazione sperimentale corrisponde ad una differenza medie nel tempo di lettura nelle due condizioni di 36 ms, con tempi di lettura maggiore quando il sostantivo era riferito al soggetto della proposizione.</p>
 </section><section id="modello-gerarchico-1" class="level3" data-number="32.6.2"><h3 data-number="32.6.2" class="anchored" data-anchor-id="modello-gerarchico-1">
 <span class="header-section-number">32.6.2</span> Modello gerarchico</h3>
-<p>Un modello non gerarchico (detto ad effetti fissi) è inappropriato per il campione di <span class="citation" data-cites="gibson2013processing">Gibson &amp; Wu (<a href="999_refs.html#ref-gibson2013processing" role="doc-biblioref">2013</a>)</span> perché non tiene conto del fatto che i dati sono a misure ripetute, ovvero, con più ripetizioni per ogni soggetto e per ogni item. Il modello ad effetti usato sopra viola l’assunzione di indipendenza degli errori. Inoltre, i coefficienti di effetti fissi <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> rappresentano le medie calcolate aggregando i dati sulla dimensione dei soggetti e degli item. Così facendo, non si tiene in considerazione il fatto che alcuni soggetti sono più veloci e altri più lenti della media, e il fatto che alcuni item sono stati letti più velocemente e altri in maniera più lenta della media. Ovvero, il modello non considera informazioni che sono presenti nei dati.</p>
+<p>Un modello non gerarchico (detto ad effetti fissi) è inappropriato per il campione di <span class="citation" data-cites="gibson2013processing">Gibson &amp; Wu (<a href="#ref-gibson2013processing" role="doc-biblioref">2013</a>)</span> perché non tiene conto del fatto che i dati sono a misure ripetute, ovvero, con più ripetizioni per ogni soggetto e per ogni item. Il modello ad effetti usato sopra viola l’assunzione di indipendenza degli errori. Inoltre, i coefficienti di effetti fissi <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> rappresentano le medie calcolate aggregando i dati sulla dimensione dei soggetti e degli item. Così facendo, non si tiene in considerazione il fatto che alcuni soggetti sono più veloci e altri più lenti della media, e il fatto che alcuni item sono stati letti più velocemente e altri in maniera più lenta della media. Ovvero, il modello non considera informazioni che sono presenti nei dati.</p>
 <p>Un modello gerarchico, invece, rende conto delle diverse fonti di variabilità che derivano da questo disegno sperimentale, ovvero la variabilità dovuta alle differenze tra i soggetti e la variabilità dovuta alle differenze tra gli item. Per rendere conto di queste fonti di variabilità nei dati, vengono aggiunti al modello di regressione lineare due nuovi termini: <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span>. Tali termini “aggiustano” <span class="math inline">\(\beta_0\)</span> in modo tale da stimare una componente specifica della variabile risposta dovuta al soggetto <span class="math inline">\(j\)</span>-esimo e all’item <span class="math inline">\(k\)</span>-esimo.</p>
 <p>Questa formulazione del modello scompone parzialmente la componente d’errore <span class="math inline">\(\varepsilon_i\)</span> nella somma dei termini <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span>. Geometricamente, i termini <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span> corrispondono ad aggiustamenti dell’intercetta <span class="math inline">\(\beta_0\)</span> che sono specifici per il soggetto <span class="math inline">\(j\)</span>-esimo e per l’item <span class="math inline">\(k\)</span>-esimo.</p>
-<p>Se il soggetto <span class="math inline">\(j\)</span>-esimo è più lento della media di tutti i soggetti, allora il parametro <span class="math inline">\(u_j\)</span> sarà un numero positivo. Se l’item <span class="math inline">\(k\)</span>-esimo viene letto più velocemente del tempo di lettura medio di tutti gli item, allora il parametro <span class="math inline">\(w_k\)</span> sarà un numero negativo. Viene stimato un aggiustamento <span class="math inline">\(u_{0j}\)</span> per ogni soggetto <span class="math inline">\(j\)</span>-esimo e un aggiustamento <span class="math inline">\(w_{0k}\)</span> per ogni item <span class="math inline">\(k\)</span>-esimo. I parametri <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span> sono chiamati <em>random intercepts</em> o <em>varying intercepts</em> <span class="citation" data-cites="gelman2020regression">(<a href="999_refs.html#ref-gelman2020regression" role="doc-biblioref">Gelman et al., 2020</a>)</span>. L’aggiustamento di <span class="math inline">\(\beta_0\)</span> mediante <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span> consente dunque di tenere in considerazione la struttura gerarchica dei dati, ovvero consente di stimare la quota di variabilità dovuta ai soggetti e agli item.</p>
+<p>Se il soggetto <span class="math inline">\(j\)</span>-esimo è più lento della media di tutti i soggetti, allora il parametro <span class="math inline">\(u_j\)</span> sarà un numero positivo. Se l’item <span class="math inline">\(k\)</span>-esimo viene letto più velocemente del tempo di lettura medio di tutti gli item, allora il parametro <span class="math inline">\(w_k\)</span> sarà un numero negativo. Viene stimato un aggiustamento <span class="math inline">\(u_{0j}\)</span> per ogni soggetto <span class="math inline">\(j\)</span>-esimo e un aggiustamento <span class="math inline">\(w_{0k}\)</span> per ogni item <span class="math inline">\(k\)</span>-esimo. I parametri <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span> sono chiamati <em>random intercepts</em> o <em>varying intercepts</em> <span class="citation" data-cites="gelman2020regression">(<a href="#ref-gelman2020regression" role="doc-biblioref">Gelman et al., 2020</a>)</span>. L’aggiustamento di <span class="math inline">\(\beta_0\)</span> mediante <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span> consente dunque di tenere in considerazione la struttura gerarchica dei dati, ovvero consente di stimare la quota di variabilità dovuta ai soggetti e agli item.</p>
 <p>Il random intercept model assume che gli aggiustamenti <span class="math inline">\(u_{0j}\)</span> e <span class="math inline">\(w_{0k}\)</span> siano distribuiti normalmente attorno allo zero con una deviazione standard sconosciuta:</p>
 <p><span class="math display">\[
 u_0 ∼ \mathcal{N}(0, \sigma_u),
@@ -1293,7 +1298,7 @@ w_0 ∼ \mathcal{N}(0, \sigma_w).
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-gelman1995bayesian" class="csl-entry" role="doc-biblioentry">
 Gelman, A., Carlin, J. B., Stern, H. S., &amp; Rubin, D. B. (1995). <em>Bayesian data analysis</em>. Chapman; Hall/CRC.
 </div>

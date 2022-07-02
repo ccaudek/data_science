@@ -390,6 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -477,7 +482,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>
 <span class="math inline">\(Y \in \{0, 1\}\)</span> = “numero di realizzazioni con il risultato testa nel primo lancio”.</li>
 </ul>
-<p>Indicando con T = ‘testa’ e C = ‘croce’, si ottiene la situazione riportata nella <a href="#tbl-tre-monete-distr-cong-1">Tabella&nbsp;<span>9.1</span></a>.</p>
+<p>Indicando con T = ‘testa’ e C = ‘croce’, si ottiene la situazione riportata nella <a href="#tbl-tre-monete-distr-cong-1">Tabella&nbsp;<span class="quarto-unresolved-ref">tbl-tre-monete-distr-cong-1</span></a>.</p>
 <div id="tbl-tre-monete-distr-cong-1" class="anchored">
 <table class="table">
 <caption>Tabella 9.1: Spazio campione dell’esperimento consistente nel lancio di tre monete equilibrate su cui sono state definite le variabili aleatorie <span class="math inline">\(X\)</span> = ‘numero di realizzazioni con il risultato testa nei tre lanci’ e <span class="math inline">\(Y\)</span> = ‘numero di realizzazioni con il risultato testa nel primo lancio’.</caption>
@@ -566,7 +571,7 @@ P(X = 2, Y = 1) &amp;= P(\omega_3 = TCT) + P(\omega_2 = TTC) = 2/8; \notag\\
 P(X = 3, Y = 1) &amp;= P(\omega_1 = TTT) = 1/8; \notag
 \end{align}
 \]</span></p>
-<p>Le probabilità così trovate sono riportate nella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>9.2</span></a> che descrive la <em>distribuzione di probabilità congiunta</em> delle variabili casuali <span class="math inline">\(X\)</span> (“numero di realizzazioni con il risultato testa nei tre lanci”) e <span class="math inline">\(Y\)</span> (“numero di realizzazioni con il risultato testa nel primo lancio”) per l’esperimento casuale che consiste nel lancio di tre monete equilibrate.</p>
+<p>Le probabilità così trovate sono riportate nella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span class="quarto-unresolved-ref">tbl-distr-cong-biv-1</span></a> che descrive la <em>distribuzione di probabilità congiunta</em> delle variabili casuali <span class="math inline">\(X\)</span> (“numero di realizzazioni con il risultato testa nei tre lanci”) e <span class="math inline">\(Y\)</span> (“numero di realizzazioni con il risultato testa nel primo lancio”) per l’esperimento casuale che consiste nel lancio di tre monete equilibrate.</p>
 <div id="tbl-distr-cong-biv-1" class="anchored">
 <table class="table">
 <caption>Tabella 9.2: Distribuzione di probabilità congiunta per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate.</caption>
@@ -620,7 +625,7 @@ P(x, y) = P(X = x, Y = y).
 <p>Si noti che dalla probabilità congiunta possiamo calcolare la probabilità di qualsiasi evento definito in base alle variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Per capire come questo possa essere fatto, consideriamo nuovamente l’esperimento casuale discusso in precedenza.</p>
 <div id="exr-join-prob-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 9.1 </strong></span></p>
-<p>Per la distribuzione di massa di probabilità congiunta riportata nella tabella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>9.2</span></a> si trovi la probabilità dell’evento <span class="math inline">\(X+Y \leq 1\)</span>.</p>
+<p>Per la distribuzione di massa di probabilità congiunta riportata nella tabella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span class="quarto-unresolved-ref">tbl-distr-cong-biv-1</span></a> si trovi la probabilità dell’evento <span class="math inline">\(X+Y \leq 1\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Per trovare la probabilità richiesta dobbiamo sommare le probabilità associate a tutte le coppie <span class="math inline">\((x,y)\)</span> che soddisfano la condizione <span class="math inline">\(X+Y \leq 1\)</span>, ovvero</p>
@@ -640,13 +645,13 @@ P(X = x) = \sum_y P(X, Y = y) = \sum_y P(X \mid Y = y) P(Y = y),
 <p><span class="math display">\[
 \sum_x P(X=x) = 1.0, \quad \sum_y P(Y=y) = 1.0.
 \]</span></p>
-<p>Nel caso continuo si sostituisce l’integrazione alla somma – si veda la <a href="#sec-margin-vc-cont"><span>Sezione&nbsp;9.1.4</span></a>.</p>
+<p>Nel caso continuo si sostituisce l’integrazione alla somma – si veda la <a href="#sec-margin-vc-cont"><span class="quarto-unresolved-ref">sec-margin-vc-cont</span></a>.</p>
 <div id="exr-join-prob-2" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 9.2 </strong></span></p>
-<p>Per l’esperimento casuale descritto nella <a href="#sec-fun-join-prob"><span>Sezione&nbsp;9.1</span></a>, si calcolino le probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p>Per l’esperimento casuale descritto nella <a href="#sec-fun-join-prob"><span class="quarto-unresolved-ref">sec-fun-join-prob</span></a>, si calcolino le probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
 <div class="solution proof">
-<p><span class="proof-title"><em>Soluzione</em>. </span>Come indicato nella <a href="#tbl-ditr-cong-biv">Tabella&nbsp;<span>9.3</span></a>, <span class="math inline">\(P_X\)</span> si ottiene sommando su ciascuna riga fissata la colonna <span class="math inline">\(j\)</span>, <span class="math inline">\(P_X(X = j) = \sum_y p_{xy}(x = j, y)\)</span> e <span class="math inline">\(P_Y\)</span> si trova sommando su ciascuna colonna fissata la riga <span class="math inline">\(i,\)</span> <span class="math inline">\(P_Y (Y = i) = \sum_x p_{xy}(x, y = i)\)</span>.</p>
+<p><span class="proof-title"><em>Soluzione</em>. </span>Come indicato nella <a href="#tbl-ditr-cong-biv">Tabella&nbsp;<span class="quarto-unresolved-ref">tbl-ditr-cong-biv</span></a>, <span class="math inline">\(P_X\)</span> si ottiene sommando su ciascuna riga fissata la colonna <span class="math inline">\(j\)</span>, <span class="math inline">\(P_X(X = j) = \sum_y p_{xy}(x = j, y)\)</span> e <span class="math inline">\(P_Y\)</span> si trova sommando su ciascuna colonna fissata la riga <span class="math inline">\(i,\)</span> <span class="math inline">\(P_Y (Y = i) = \sum_x p_{xy}(x, y = i)\)</span>.</p>
 <div id="tbl-ditr-cong-biv" class="anchored">
 <table class="table">
 <caption>Tabella 9.3: Distribuzione di probabilità congiunta <span class="math inline">\(P(X,Y)\)</span> per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate e probabilità marginali <span class="math inline">\(P(X)\)</span> e <span class="math inline">\(P(Y)\)</span>.</caption>
@@ -697,7 +702,7 @@ P(X = x) = \sum_y P(X, Y = y) = \sum_y P(X \mid Y = y) P(Y = y),
 <p><span id="eq-ex-marg-cont"><span class="math display">\[
 p(y) = \int_{\theta} p(y, \theta) = \int_{\theta} p(y \mid \theta) p(\theta),
 \tag{9.1}\]</span></span></p>
-<p>laddove <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span> sono due variabili casuali continue – nello specifico, con <span class="math inline">\(y\)</span> denoteremo i dati e con <span class="math inline">\(\theta\)</span> i parametri di un modello statistico. Alla luce di quanto detto sopra, è possibiile pensare al caso continuo indicato nella <a href="#eq-ex-marg-cont">Equazione&nbsp;<span>9.1</span></a> come all’estensione dell’esempio discusso in questo capitolo ad un numero infinito di valori delle due variabili continue (qui <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span>).</p>
+<p>laddove <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span> sono due variabili casuali continue – nello specifico, con <span class="math inline">\(y\)</span> denoteremo i dati e con <span class="math inline">\(\theta\)</span> i parametri di un modello statistico. Alla luce di quanto detto sopra, è possibiile pensare al caso continuo indicato nella <a href="#eq-ex-marg-cont">Equazione&nbsp;<span class="quarto-unresolved-ref">eq-ex-marg-cont</span></a> come all’estensione dell’esempio discusso in questo capitolo ad un numero infinito di valori delle due variabili continue (qui <span class="math inline">\(y\)</span> e <span class="math inline">\(\theta\)</span>).</p>
 </section></section><section id="valore-atteso-di-una-funzione-di-una-variabile-casuale" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="valore-atteso-di-una-funzione-di-una-variabile-casuale">
 <span class="header-section-number">9.2</span> Valore atteso di una funzione di una variabile casuale</h2>
 <p>A volte ci viene data una variabile casuale $ X$e dobbiamo lavorare con una funzione di <span class="math inline">\(X\)</span>. Se <span class="math inline">\(X\)</span> è una variabile casuale e <span class="math inline">\(h(X)\)</span> è una funzione di <span class="math inline">\(X\)</span>, allora anche <span class="math inline">\(h(X)\)</span> è una variabile casuale. Se si vuole calcolare il valore atteso di <span class="math inline">\(h(X)\)</span>, lo si può fare usando la funzione di massa di probabilità o la funzione di densità di probabilità di <span class="math inline">\(X\)</span>; non è necessario conoscere la funzione di massa di probabilità (o la funzione di densità di probabilità) di <span class="math inline">\(h(X)\)</span>.</p>
@@ -859,7 +864,7 @@ P_{Y\mid X}(4 \mid 3) =  \frac{P_{XY}(3,4)}{P_X(3)} = \frac{(2/16)}{(3/16)} = \f
 </div>
 <div id="exr-conditional-expectation" class="theorem exercise">
 <p><span class="theorem-title"><strong>Esercizio 9.8 </strong></span></p>
-<p>Si trovi il valore atteso condizionato dell’<a href="#exr-conditional-distribution">Esercizio&nbsp;<span>9.7</span></a> dato che <span class="math inline">\(X = 3\)</span>.</p>
+<p>Si trovi il valore atteso condizionato dell’<a href="#exr-conditional-distribution">Esercizio&nbsp;<span class="quarto-unresolved-ref">exr-conditional-distribution</span></a> dato che <span class="math inline">\(X = 3\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Abbiamo che</p>
