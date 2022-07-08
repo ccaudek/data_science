@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ccaudek.github.io/data_science/preface.html</loc>
-    <lastmod>2022-07-01T08:52:23.657Z</lastmod>
+    <lastmod>2022-07-02T09:18:10.123Z</lastmod>
   </url>
   <url>
     <loc>https://ccaudek.github.io/data_science/007_freq_distr.html</loc>
-    <lastmod>2022-07-01T21:20:00.019Z</lastmod>
+    <lastmod>2022-07-02T09:18:02.571Z</lastmod>
   </url>
   <url>
     <loc>https://ccaudek.github.io/data_science/999_refs.html</loc>
@@ -35,5 +35,17 @@
   <url>
     <loc>https://ccaudek.github.io/data_science/055_reglin5.html</loc>
     <lastmod>2022-07-01T22:31:05.594Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ccaudek.github.io/data_science/index.html</loc>
+    <lastmod>2022-07-02T09:51:30.421Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ccaudek.github.io/data_science/basics.html</loc>
+    <lastmod>2022-07-02T09:18:51.190Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ccaudek.github.io/data_science/a10_markov_chains.html</loc>
+    <lastmod>2022-07-02T09:23:39.215Z</lastmod>
   </url>
 </urlset>

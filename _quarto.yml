@@ -69,6 +69,8 @@ book:
     - a02_number_sets.qmd
     - a03_set_theory.qmd
     - a04_summation_notation.qmd
+    - a10_markov_chains.qmd
+    - a15_stan_lang.qmd
 
 bibliography: book.bib
 csl: apa.csl
