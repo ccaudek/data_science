@@ -6,7 +6,7 @@ source("_stan_options.R")
 library("magick")
 ```
 
-Lo scopo della ricerca è trovare le associazioni tra le variabili e fare confronti fra le condizioni sperimentali. Nel caso della psicologia, il ricercatore vuole scoprire le leggi generali che descrivono le relazioni tra i costrutti psicologici e le relazioni che intercorrono tra i fenomeni psicologici e quelli non psicologici (sociali, economici, storici, ...). Abbiamo già visto come la correlazione di Pearson sia uno strumento adatto a questo scopo. Infatti, essa ci informa sulla direzione e sull'intensità della relazione lineare tra due variabili. Tuttavia, la correlazione non è sufficiente, in quanto il ricercatore ha a disposizione solo i dati di un campione, mentre vorrebbe descrivere la relazione tra le variabili nella popolazione. A causa della variabilità campionaria, le proprietà dei campioni sono necessariamente diverse da quelle della popolazione: ciò che si può osservare nella popolazione potrebbe non emergere nel campione e, al contrario, il campione manifesta caratteristiche che non sono necessariamente presenti nella popolazione. È dunque necessario chiarire, dal punto di vista statistico, il legame che intercorre tra le proprietà del campione e le proprietà della popolazione da cui esso è stato estratto. Il modello lineare utilizza la funzione matematica più semplice per descrivere la relazione fra due variabili, ovvero la funzione lineare. In questo Capitolo vedremo come si possa fare inferenza sulla relazione tra due variabili mediante il modello lineare bayesiano. Inizieremo a descrivere le proprietà geometriche della funzione lineare per poi utilizzare questa semplice funzione per costruire un modello statistico secondo un approccio bayesiano.
+Il fine primario dei ricercatori è quello di scoprire associazioni tra variabili e di fare confronti fra condizioni sperimentali. Nel caso della psicologia, il ricercatore vuole descrivere le relazioni tra i costrutti psicologici e le relazioni tra fenomeni psicologici e non psicologici (sociali, economici, storici, ...). Abbiamo già visto come la correlazione di Pearson sia uno strumento adatto a descrivere le relazioni tra variabili. Infatti, la correlazione ci informa sulla direzione e sull'intensità della *relazione lineare* tra due variabili. Tuttavia, la correlazione non è sufficiente, in quanto il ricercatore ha a disposizione solo i dati di un campione, mentre vorrebbe descrivere la relazione tra le variabili nella popolazione. A causa della variabilità campionaria, le proprietà dei campioni sono necessariamente diverse da quelle della popolazione: ciò che si può osservare nella popolazione potrebbe non emergere nel campione e, al contrario, il campione può manifestare caratteristiche che non sono presenti nella popolazione. È dunque necessario chiarire, dal punto di vista statistico, il legame che intercorre tra le proprietà del campione e le proprietà della popolazione da cui esso è stato estratto. Questo è l'obiettivo del modello di regressione lineare. Tale modello utilizza la funzione matematica più semplice per descrivere la relazione fra due variabili, ovvero la funzione lineare. In questo Capitolo vedremo come il modello di regressione lineare possa essere usato per fare inferenza sulla relazione tra variabili. Inizieremo a descrivere le proprietà geometriche della funzione lineare per poi utilizzare questa semplice funzione per costruire un modello statistico secondo un approccio bayesiano.
 
 ## La funzione lineare
 
@@ -30,19 +30,21 @@ $$
 y = a + b x
 $$
 
-non fa altro che sommare una costante $a$ a ciascuno dei valori $y = b x$. Nella funzione lineare $y = a + b x$, se $b$ è positivo allora $y$ aumenta al crescere di $x$; se $b$ è negativo allora $y$ diminuisce al crescere di $x$; se $b=0$ la retta è orizzontale, ovvero $y$ non muta al variare di $x$.
+non fa altro che sommare una costante $a$ a ciascuno dei valori $y = b x$. Nella funzione lineare $y = a + b x$, se $b$ è positivo allora $y$ aumenta al crescere di $x$; se $b$ è negativo $y$ diminuisce al crescere di $x$; se $b=0$ la retta è orizzontale, ovvero $y$ non muta al variare di $x$.
 
-Consideriamo ora il coefficiente $b$. Si consideri un punto $x_0$ e un incremento arbitrario $\varepsilon$ come indicato nella figura \@ref(fig:linearfunction). Le differenze $\Delta x = (x_0 + \varepsilon) - x_0$ e $\Delta y = f(x_0 + \varepsilon) - f(x_0)$ sono detti *incrementi* di $x$ e $y$. Il coefficiente angolare $b$ è uguale al rapporto
+Consideriamo ora più in dettaglio il coefficiente $b$. Si consideri un punto $x_0$ e un incremento arbitrario $\varepsilon$, come indicato nella @fig-linearfunction. Le differenze $\Delta x = (x_0 + \varepsilon) - x_0$ e $\Delta y = f(x_0 + \varepsilon) - f(x_0)$ sono detti *incrementi* di $x$ e $y$. Il coefficiente angolare $b$ è uguale al rapporto
 
 $$
 b = \frac{\Delta y}{\Delta x} = \frac{f(x_0 + \varepsilon) - f(x_0)}{(x_0 + \varepsilon) - x_0},
 $$
 
-indipendentemente dalla grandezza degli incrementi $\Delta x$ e $\Delta y$. Il modo più semplice per assegnare un'interpretazione geometrica al coefficiente angolare (o pendenza) della retta è dunque quello di porre $\Delta x = 1$. In tali circostanze infatti $b = \Delta y$.
+indipendentemente dalla grandezza degli incrementi $\Delta x$ e $\Delta y$. Il modo più semplice per assegnare un'interpretazione geometrica al coefficiente angolare (o pendenza) della retta è quello di porre $\Delta x = 1$. In tali circostanze, $b = \Delta y$.
 
-```{r linearfunction, echo=FALSE, out.width="75%", fig.cap="La funzione lineare $y = a + bx$."}
+```{r fig-linearfunction, echo=FALSE, out.width="75%", fig.cap="La funzione lineare $y = a + bx$."}
 knitr::include_graphics("images/linear_function.png")
 ```
+
+Possiamo dunque dire che la pendenza $b$ di un retta è uguale all'incremento $\Delta y$ associato ad un incremento unitario nella $x$.
 
 <!-- ## L'errore di misurazione -->
 
@@ -74,13 +76,13 @@ knitr::include_graphics("images/linear_function.png")
 
 ## Una media per ciascuna osservazione
 
-In precedenza abbiamo visto come sia possibile stimare i parametri di un modello bayesiano nel quale le osservazioni sono indipendenti e identicamente distribuite secondo una densità gaussiana,
+In precedenza abbiamo visto come stimare i parametri di un modello bayesiano nel quale le osservazioni sono indipendenti e identicamente distribuite secondo una densità gaussiana,
 
 $$
 Y_i \stackrel{i.i.d.}{\sim} \mathcal{N}(\mu, \sigma), \quad i = 1, \dots, n.
 $$ {#eq-normalsamplingmodel}
 
-Il modello @eq-normalsamplingmodel assume che ogni $Y_i$ sia la realizzazione di una v.c. descritta da una $\mathcal{N}(\mu, \sigma^2)$. Da un punto di vista bayesiano,questo modello può essere implementato assegnando le distribuzioni a priori ai parametri $\mu$ e $\sigma$ e generando la verosimiglianza in base ai dati osservati. Con queste informazioni, possono poi essere definite le distribuzioni a posteriori dei parametri [@gelman2020regression]:
+Il modello dell'@eq-normalsamplingmodel assume che ogni $Y_i$ sia la realizzazione di una v.c. distribuita come $\mathcal{N}(\mu, \sigma^2)$. Da un punto di vista bayesiano, questo modello può essere implementato assegnando delle distribuzioni a priori ai parametri $\mu$ e $\sigma$ e generando la verosimiglianza in base ai dati osservati.
 
 $$
 \begin{align}
@@ -90,29 +92,33 @@ Y_i \mid \mu, \sigma & \stackrel{iid}{\sim} \mathcal{N}(\mu, \sigma^2)\notag\\
 \end{align}
 $$
 
+Con queste informazioni, possono poi essere trovate le distribuzioni a posteriori dei parametri [@gelman2020regression]. Vediamo ora come sia possibile estendere questo modello bayesiano in modo che possa descrivere la relazione *lineare* tra due variabili.
+
 ## Relazione lineare tra la media $y \mid x$ e il predittore
 
-È però comune che vengano registrate altre variabili che possono essere associate alla risposta di interesse $y_i$. Chiamiamo $x$ una di tali variabili. La variabile $x$ viene chiamata *predittore* (o variabile indipendente) in quanto il ricercatore è tipicamente interessato a predire $y_i$ a partire dal valore assunto da $x_i$. Come si può estende il modello @eq-normalsamplingmodel descritto in precedenza per lo studio della relazione tra $y_i$ e $x_i$?
+Il ricercatore si trova spesso nella condizione in cui osserva altre variabili di interesse associate a ciascuna risposta $y_i$. Chiamiamo $x$ una di tali variabili. Nel contesto del modello di regressione, la variabile $x$ viene chiamata *predittore* (o *variabile indipendente*), in quanto il ricercatore è tipicamente interessato a predire $y_i$ a partire dal valore assunto da $x_i$. Chiediamoci dunque come si può estende il modello dell'@eq-normalsamplingmodel per lo studio della relazione tra $y_i$ e $x_i$.
 
-Il modello @eq-normalsamplingmodel assume una media $\mu$ comune per ciascuna osservazione $Y_i$. Dal momento che desideriamo introdurre una nuova variabile $x_i$ che assume un diverso valore per ciascuna osservazione $y_i$, il modello @eq-normalsamplingmodel può essere modificato in modo che la media comune $\mu$ venga sostituita da una media $\mu_i$ specifica a ciascuna osservazione $i$-esima:
+L'@eq-normalsamplingmodel assume una media $\mu$ comune per tutte le osservazioni $Y_i$. Dal momento che desideriamo introdurre una nuova variabile $x_i$ che assume un diverso valore per ciascuna osservazione $y_i$, l'@eq-normalsamplingmodel può essere modificata così da sostituire alla media comune $\mu$ una media $\mu_i$ specifica a ciascuna $i$-esima osservazione:
 
 $$
 Y_i \mid \mu_i, \sigma \stackrel{ind}{\sim} \mathcal{N}(\mu_i, \sigma), \quad i = 1, \dots, n.
 $$ {#eq-normalsamplinglinearmodel}
 
-Si noti che le osservazioni $Y_1, \dots, Y_n$ non sono più identicamente distribuite poiché hanno medie diverse, ma sono ancora indipendenti come indicato dalla notazione `ind` posta sopra il simbolo $\sim$ nell'@eq-normalsamplinglinearmodel.
+Si noti che le osservazioni $Y_1, \dots, Y_n$ non sono più *identicamente distribuite* poiché hanno medie diverse, ma sono ancora indipendenti come indicato dalla notazione `ind` posta sopra il simbolo $\sim$ nell'@eq-normalsamplinglinearmodel.
 
-L'approccio che consente di mettere in relazione un predittore $x_i$ con la risposta $Y_i$ è quello di assumere che la media di ciascuna $Y_i$, ovvero $\mu_i$, sia una funzione lineare del predittore $x_i$. Una tale relazione lineare è scritta come
+L'@eq-normalsamplinglinearmodel afferma che ciascuna osservazione $Y_i$ è estratta a caso dalla corrispondente distribuzione $\mathcal{N}(\mu_i, \sigma)$. Al fine di potere descrivere la relazione tra il predittore $x_i$ e la risposta $Y_i$, il modello di regressione assume che la media della distribuzione da cui abbiamo estratto $Y_i$, ovvero $\mu_i$, sia una funzione lineare del predittore $x_i$, ovvero
 
 $$
 \mu_i = \beta_0 + \beta_ 1 x_i, \quad i = 1, \dots, n.
 $$ {#eq-regmodel}
 
-Nell'@eq-regmodel, ciascuna $x_i$ è una costante nota (ecco perché viene usata una lettera minuscola per la $x$) e $\beta_0$ e $\beta_ 1$ sono parametri incogniti. Questi parametri rappresentano l'intercetta e la pendenza della retta di regressione e sono delle variabili casuali.[^reglin1-1] L'inferenza bayesiana procede assegnando una distribuzione a priori a $\beta_0$ e a $\beta_ 1$ e si esegue l'inferenza riassumendo la distribuzione a posteriori di questi parametri.
+Nell'@eq-regmodel, ciascuna $x_i$ è una costante nota (ecco perché viene usata una lettera minuscola per la $x$) e $\beta_0$ e $\beta_ 1$ sono parametri incogniti. Questi parametri rappresentano l'intercetta e la pendenza della retta di regressione e sono delle variabili casuali.[^reglin1-1] L'inferenza bayesiana procede assegnando una distribuzione a priori a $\beta_0$ e a $\beta_1$, trovando la verosimiglianza dei dati e calcolando la distribuzione a priori dei parametri $\beta_0$ e a $\beta_1$.
 
-[^reglin1-1]: Una notazione alternativa per tali parametri è $\alpha$, $\beta$, anziché $\beta_0$, $\beta_ 1$.
+[^reglin1-1]: Una notazione alternativa per tali parametri è $\alpha$, $\beta$, anziché $\beta_0$, $\beta_1$.
 
-Nel modello dell'@eq-regmodel, la funzione lineare $\beta_0 + \beta_ 1 x_i$ è interpretata come il valore atteso della $Y_i$ per ciascun valore $x_i$, mentre l'intercetta $\beta_0$ rappresenta il valore atteso della $Y_i$ quando $x_i = 0$. Il parametro $\beta_ 1$ (pendenza) rappresenta invece l'aumento medio della $Y_i$ quando $x_i$ aumenta di un'unità. È importante notare che la relazione lineare dell'@eq-normalsamplinglinearmodel di parametri $\beta_0$ e $\beta_ 1$ descrive l'associazione tra *la media* $\mu_i$ e il predittore $x_i$. In altri termini, tale relazione lineare ci fornisce una predizione sul valore medio $\mu_i$, non sul valore *effettivo* $Y_i$.
+Nel modello dell'@eq-regmodel, la funzione lineare $\beta_0 + \beta_1 x_i$ è interpretata come il valore atteso della $Y_i$ per ciascun valore $x_i$. L'intercetta $\beta_0$ rappresenta il valore atteso della $Y_i$ quando $x_i = 0$. La pendenza $\beta_1$ rappresenta l'incremento atteso della $Y_i$ quando $x_i$ aumenta di un'unità.
+
+È importante notare che la relazione lineare dell'@eq-normalsamplinglinearmodel di parametri $\beta_0$ e $\beta_1$ descrive l'associazione tra *la media* $\mu_i$ e il predittore $x_i$. In altri termini, tale relazione lineare fornisce una predizione sul valore atteso $\mu_i$, non sul valore *effettivo* di ciascuna osservazione $Y_i$.
 
 ## Il modello lineare
 
@@ -122,11 +128,11 @@ $$
 Y_i \mid \beta_0, \beta_ 1, \sigma \stackrel{ind}{\sim} \mathcal{N}(\beta_0 + \beta_ 1 x_i, \sigma), \quad i = 1, \dots, n.
 $$ {#eq-samplinglinearmodel}
 
-Questo è dunque un caso speciale del modello di campionamento Normale, dove le $Y_i$ seguono indipendentemente una densità Normale con una media ($\beta_0 + \beta_ 1 x_i$) specifica per ciascuna osservazione e con una deviazione standard ($\sigma$) comune a tutte le osservazioni. Poiché include un solo predittore ($x$), questo modello è chiamato *modello di regressione lineare bivariata*.
+L'@eq-samplinglinearmodel è dunque un caso speciale del modello di campionamento Normale, dove le $Y_i$ seguono indipendentemente una densità Normale di media ($\beta_0 + \beta_ 1 x_i$) specifica per ciascuna osservazione, con una deviazione standard ($\sigma$) comune a tutte le osservazioni. Poiché include un solo predittore ($x$), questo modello è chiamato *modello di regressione lineare bivariato*.
 
-Il modello statistico di regressione lineare bivariata può essere rappresentato in forma geometrica come indicato di seguito. La figura illustra che, in tale modello statistico, la variabile $X$ è fissa per disegno -- in altre parole, i valori $x$ restano immutati tra campioni diversi. Potendo ipotizzare infiniti campioni tutti con gli stessi valori $x$, in corrispondenza di ciascun valore $x_i$ vi sarà una distribuzione di valori $y$. La figura illustra il caso di tre valori $x$. A ciascun valore $x_i$, con $i = 1, 2, 3$ per l'esempio della figura, corrisponde una distribuzione di valori $y$ condizionati a $x_i$, $p(y \mid x_i)$.
+Il modello di regressione lineare bivariato può essere rappresentato in forma geometrica come indicato nella @fig-modregbiv. La figura illustra che, in tale modello statistico, la variabile $x$ è fissa per disegno -- in altre parole, i valori $x$ restano immutati tra campioni diversi. Potendo ipotizzare infiniti campioni tutti con gli stessi valori $x$, in corrispondenza di ciascun valore $x_i$ vi sarà una distribuzione di valori $y$. La @fig-modregbiv illustra il caso di tre valori $x$. A ciascun valore $x_i$, con $i = 1, 2, 3$, corrisponde una distribuzione di valori $y$ condizionati a $x_i$, $p(y \mid x_i)$.
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE}
+```{r fig-modregbiv, fig.cap="Modello statistico di regressione lineare bivariato.", echo = FALSE, message=FALSE, warning=FALSE}
 x <- runif(100, 0, 15)
 y <- 1000 + 200*x + rnorm(100, 0, 300)
 df <- data.frame(x, y)
@@ -168,7 +174,7 @@ ggplot(df, mapping = aes(x=x, y=y)) +
     )
 ```
 
-Il modello statistico di regressione lineare assume che le distribuzioni condizionate $p(y \mid x_i)$ siano
+Il modello statistico di regressione lineare assume che le distribuzioni condizionate $p(y \mid x_i)$ sono
 
 $$
 y_i \sim \mathcal{N}(\mu_i, \sigma),
@@ -234,6 +240,6 @@ Se questa è la struttura della popolazione, possiamo pensare ad un campione cas
 
 ## Commenti e considerazioni finali {.unnumbered}
 
-Il modello lineare semplice viene usato per descrivere la relazione tra due variabili e per determinare il segno e l'intensità di tale relazione. Inoltre, il modello lineare ci consente di prevedere il valore della variabile dipendente in base al valore assunto dalla variabile indipendente.
+Il modello di regressione lineare bivariato viene usato per descrivere la relazione lineare tra due variabili $x$ e $Y$, e per determinare il segno e l'intensità di tale relazione. Inoltre, il modello di regressione lineare consente di prevedere il valore della variabile dipendente $Y$ in base al valore assunto dalla variabile indipendente $x$.
 
 <!-- Il modello lineare semplice è in realtà molto limitato, in quanto descrive soltanto la relazione tra la variabile dipendente $y$ e una sola variabile esplicativa $x$. Esso diventa molto più utile quando incorpora più variabili indipendenti. In questo secondo caso, però, i calcoli per la stima dei coefficienti del modello diventano più complicati. Abbiamo deciso di iniziare considerando il modello lineare semplice perché, in questo caso, sia la logica dell'inferenza sia le procedure di calcolo sono facilmente maneggiabili. Nel caso più generale, quello del modello lineare multiplo (ovvero, con più di un predittore), la logica dell'inferenza rimane identica a quella discussa qui, ma le procedure di calcolo richiedono l'uso dell'algebra matriciale. Il modello lineare multiplo può includere sia regressori quantitativi, sia regressori qualitativi, utilizzando un opportuno schema di codifica. È interessante notare come un modello lineare multiplo che include una sola variabile esplicativa qualitativa corrisponde all'analisi della varianza ad una via; un modello lineare multiplo che include più di una variabile esplicativa qualitativa corrisponde all'analisi della varianza più vie. Possiamo qui concludere dicendo che il modello lineare, nelle sue varie forme e varianti, costituisce la tecnica di analisi dei dati maggiormente usata in psicologia. -->
