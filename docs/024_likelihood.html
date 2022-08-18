@@ -669,18 +669,18 @@ f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigm
 <details><summary>Codice</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">114</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>L’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a> dipende dai parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> e dai dati <span class="math inline">\(y\)</span>. Per semplicità, ipotizzeremo <span class="math inline">\(\sigma\)</span> noto e uguale a 15. Nella simulazione considereremo 1000 valori <span class="math inline">\(\mu\)</span> compresi tra 70 e 160.</p>
+<p>L’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a> dipende dai parametri <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span> e dai dati <span class="math inline">\(y\)</span>. Per semplicità, ipotizziamo <span class="math inline">\(\sigma\)</span> noto e uguale a 15. Nella simulazione considereremo 1000 valori <span class="math inline">\(\mu\)</span> compresi tra 70 e 160.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">70</span>, <span class="fl">160</span>, length.out <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Dato che consideriamo 1000 possibili valori <span class="math inline">\(\mu\)</span>, per costruire la funzione di verosimiglianza applicheremo l’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a> 1000 volte. In ciascun passo della simulazione inseriremo nell’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a></p>
+<p>Dato che consideriamo 1000 possibili valori <span class="math inline">\(\mu\)</span>, per costruire la funzione di verosimiglianza applicheremo l’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a> 1000 volte. In ciascun passo della simulazione, nell’<a href="#eq-gaussian-sim-like">Equazione&nbsp;<span>14.5</span></a> inseriremo</p>
 <ul>
 <li>il singolo valore <span class="math inline">\(y\)</span> considerato,</li>
 <li>il valore <span class="math inline">\(\sigma\)</span> assunto noto,</li>
-<li>ciascuno dei valori <span class="math inline">\(\mu\)</span> che abbiamo considerato.</li>
+<li>uno alla volta dei valori <span class="math inline">\(\mu\)</span> che abbiamo considerato.</li>
 </ul>
-<p>La distribuzione Gaussiana è implementata in <span class="math inline">\(\mathsf{R}\)</span> nella funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code>. La funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> ha tre argomenti: il valore <span class="math inline">\(y\)</span> (o il vettore <span class="math inline">\(y\)</span>), la media, ovvero il parametro <span class="math inline">\(\mu\)</span> e la deviazione standard, ovvero il parametro <span class="math inline">\(\sigma\)</span>.</p>
+<p>La distribuzione Gaussiana è implementata in <span class="math inline">\(\mathsf{R}\)</span> nella funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code>. La funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> richiede tre argomenti: il valore <span class="math inline">\(y\)</span> (o il vettore <span class="math inline">\(y\)</span>), la media, ovvero il parametro <span class="math inline">\(\mu\)</span>, e la deviazione standard, ovvero il parametro <span class="math inline">\(\sigma\)</span>.</p>
 <p>Usando la funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> 1000 volte, una volta per ciascuno dei valori <span class="math inline">\(\mu\)</span> che abbiamo considerato (e tenendo fissi <span class="math inline">\(y = 114\)</span> e <span class="math inline">\(\sigma = 15\)</span>) otteniamo 1000 valori <span class="math inline">\(f(\mu)\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">f_mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">y</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -705,7 +705,7 @@ f(y \mid \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left\{-\frac{1}{2\sigm
 </div>
 </div>
 </div>
-<p>Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione (ma solo in questo caso) ha un’area unitaria.</p>
+<p>Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione, ma solo in questo caso, ha anche un’area unitaria.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">integrand</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">mu</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">y</span> <span class="op">=</span> <span class="fl">114</span></span>
@@ -746,15 +746,11 @@ f(y \mid \theta) &amp;= f(y_1 \mid \theta) \cdot f(y_2 \mid \theta) \cdot \; \do
 </details>
 </div>
 <p>Abbiamo visto in precedenza che, per una singola osservazione, la funzione di verosimiglianza è la densità Gaussiana espressa in funzione dei parametri (in questo caso, solo <span class="math inline">\(\mu\)</span>). Per un campione di osservazioni i.i.d., ovvero <span class="math inline">\(y = (y_1, y_2, \dots, y_n)\)</span>, la verosimiglianza è la funzione di densità congiunta <span class="math inline">\(f(y \mid \mu, \sigma)\)</span> espressa in funzione dei parametri. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni.</p>
-<p>Per l’osservazione <span class="math inline">\(y_i\)</span> abbiamo</p>
+<p>Se consideriamo l’osservazione <span class="math inline">\(y_i\)</span> abbiamo</p>
 <p><span class="math display">\[
 f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right\}.
 \]</span></p>
-<p>La densità congiunta è dunque</p>
-<p><span class="math display">\[
-f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
-\]</span></p>
-<p>Alla luce dei dati osservati (e assumendo <span class="math inline">\(\sigma = 6.61\)</span>), la verosimiglianza diventa</p>
+<p>Per tutte le osservazioni, la densità congiunta sarà data dal prodotto delle densità delle singole osservazioni: <span class="math inline">\(f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)\)</span>. Utilizzando i dati del campione, e assumendo <span class="math inline">\(\sigma = 6.61\)</span>, la verosimiglianza sarà dunque uguale a</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathcal{L}(\mu, \sigma \mid y) =&amp; \, \prod_{i=1}^n f(y_i \mid \mu, \sigma) = \notag\\
@@ -764,15 +760,14 @@ f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
 &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(22 - \mu)^2}{2\cdot 6.61^2}}\right\}.
 \end{aligned}
 \]</span></p>
-<p>È più conveniente svolgere l’esercizio usando il logaritmo della verosimiglianza. In <span class="math inline">\(\textsf{R}\)</span>, definiamo la funzione di log-verosimiglianza, <code>log_likelihood()</code>, che prende come argomenti <code>y</code>, <code>mu</code> e <code>sigma = 6.61</code>.</p>
+<p>È più conveniente svolgere i calcoli usando il logaritmo della verosimiglianza. In <span class="math inline">\(\textsf{R}\)</span>, definiamo la funzione di log-verosimiglianza, <code>log_likelihood()</code>, che prende come argomenti <code>y</code>, <code>mu</code> e <code>sigma = 6.61</code>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log_likelihood</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">y</span>, <span class="va">mu</span>, <span class="va">sigma</span> <span class="op">=</span> <span class="va">true_sigma</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">mu</span>, <span class="va">sigma</span>, log <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>L’argomento <code>y</code> è un vettore di 30 elementi; gli argomenti <code>mu</code> e <code>sigma</code> sono scalari.</p>
-<p>Per ciascuno valore <code>y</code>, la funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> trova la densità Normale utilizzando il valore <code>mu</code> in input e <code>sigma = 6.61</code>. L’argomento <code>log = TRUE</code> specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>.</p>
+<p>L’argomento <code>y</code> è un vettore di 30 elementi; gli argomenti <code>mu</code> e <code>sigma</code> sono degli scalari. Per ciascuno valore <code>y</code>, la funzione <code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code> trova la densità Normale utilizzando il valore <code>mu</code> in input e <code>sigma = 6.61</code>; l’argomento <code>log = TRUE</code> specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>.</p>
 <p>Utilizzando un singolo valore <span class="math inline">\(\mu\)</span> otteniamo l’ordinata della funzione di log-verosimiglianza in corrispondenza del valore <span class="math inline">\(\mu\)</span> utilizzato. Vogliamo però trovare l’ordinata della log-verosimiglianza per tutti i possibili valori che <span class="math inline">\(\mu\)</span> può assumere. Nella simulazione, usiamo 100,000 valori possibili del parametro <span class="math inline">\(\mu \in [\bar{y} - \mbox{SD}, \bar{y} + \mbox{SD}]\)</span>. Mediante un ciclo <code>for()</code>, ripetiamo dunque i calcoli descritti sopra 100,000 volte, una volta per ciascuno dei valori <span class="math inline">\(\mu\)</span> considerati. I 100,000 risultati vengono salvati nel vettore <code>ll</code>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nrep</span> <span class="op">&lt;-</span> <span class="fl">1e5</span></span>
@@ -1186,19 +1181,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-203"><a href="#cb21-203" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">114</span></span>
 <span id="cb21-204"><a href="#cb21-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-205"><a href="#cb21-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a>L'@eq-gaussian-sim-like dipende dai parametri $\mu$ e $\sigma$ e dai dati $y$. Per semplicità, ipotizzeremo $\sigma$ noto e uguale a 15. Nella simulazione considereremo 1000 valori $\mu$ compresi tra 70 e 160.</span>
+<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a>L'@eq-gaussian-sim-like dipende dai parametri $\mu$ e $\sigma$ e dai dati $y$. Per semplicità, ipotizziamo $\sigma$ noto e uguale a 15. Nella simulazione considereremo 1000 valori $\mu$ compresi tra 70 e 160.</span>
 <span id="cb21-207"><a href="#cb21-207" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-210"><a href="#cb21-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb21-211"><a href="#cb21-211" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">70</span>, <span class="dv">160</span>, <span class="at">length.out =</span> <span class="fl">1e3</span>)</span>
 <span id="cb21-212"><a href="#cb21-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-213"><a href="#cb21-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a>Dato che consideriamo 1000 possibili valori $\mu$, per costruire la funzione di verosimiglianza applicheremo l'@eq-gaussian-sim-like 1000 volte. In ciascun passo della simulazione inseriremo nell'@eq-gaussian-sim-like</span>
+<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a>Dato che consideriamo 1000 possibili valori $\mu$, per costruire la funzione di verosimiglianza applicheremo l'@eq-gaussian-sim-like 1000 volte. In ciascun passo della simulazione, nell'@eq-gaussian-sim-like inseriremo</span>
 <span id="cb21-215"><a href="#cb21-215" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-216"><a href="#cb21-216" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il singolo valore $y$ considerato,</span>
 <span id="cb21-217"><a href="#cb21-217" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>il valore $\sigma$ assunto noto,</span>
-<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>ciascuno dei valori $\mu$ che abbiamo considerato.</span>
+<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>uno alla volta dei valori $\mu$ che abbiamo considerato.</span>
 <span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a>La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione <span class="in">`dnorm()`</span>. La funzione <span class="in">`dnorm()`</span> ha tre argomenti: il valore $y$ (o il vettore $y$), la media, ovvero il parametro $\mu$ e la deviazione standard, ovvero il parametro $\sigma$.</span>
+<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a>La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione <span class="in">`dnorm()`</span>. La funzione <span class="in">`dnorm()`</span> richiede tre argomenti: il valore $y$ (o il vettore $y$), la media, ovvero il parametro $\mu$, e la deviazione standard, ovvero il parametro $\sigma$.</span>
 <span id="cb21-221"><a href="#cb21-221" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-222"><a href="#cb21-222" aria-hidden="true" tabindex="-1"></a>Usando la funzione <span class="in">`dnorm()`</span> 1000 volte, una volta per ciascuno dei valori $\mu$ che abbiamo considerato (e tenendo fissi $y = 114$ e $\sigma = 15$) otteniamo 1000 valori $f(\mu)$.</span>
 <span id="cb21-223"><a href="#cb21-223" aria-hidden="true" tabindex="-1"></a></span>
@@ -1221,7 +1216,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-244"><a href="#cb21-244" aria-hidden="true" tabindex="-1"></a>    ) </span>
 <span id="cb21-245"><a href="#cb21-245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-246"><a href="#cb21-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-247"><a href="#cb21-247" aria-hidden="true" tabindex="-1"></a>Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione (ma solo in questo caso) ha un'area unitaria.</span>
+<span id="cb21-247"><a href="#cb21-247" aria-hidden="true" tabindex="-1"></a>Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione, ma solo in questo caso, ha anche un'area unitaria.</span>
 <span id="cb21-248"><a href="#cb21-248" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-251"><a href="#cb21-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb21-252"><a href="#cb21-252" aria-hidden="true" tabindex="-1"></a>integrand <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {</span>
@@ -1270,113 +1265,105 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a>Abbiamo visto in precedenza che, per una singola osservazione, la funzione di verosimiglianza è la densità Gaussiana espressa in funzione dei parametri (in questo caso, solo $\mu$). Per un campione di osservazioni i.i.d., ovvero $y = (y_1, y_2, \dots, y_n)$, la verosimiglianza è la funzione di densità congiunta $f(y \mid \mu, \sigma)$ espressa in funzione dei parametri. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni.</span>
 <span id="cb21-301"><a href="#cb21-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a>Per l'osservazione $y_i$ abbiamo</span>
+<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a>Se consideriamo l'osservazione $y_i$ abbiamo</span>
 <span id="cb21-303"><a href="#cb21-303" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a>f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span>.</span>
 <span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a>La densità congiunta è dunque</span>
+<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a>Per tutte le osservazioni, la densità congiunta sarà data dal prodotto delle densità delle singole osservazioni: $f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)$. Utilizzando i dati del campione, e assumendo $\sigma = 6.61$, la verosimiglianza sarà dunque uguale a</span>
 <span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-310"><a href="#cb21-310" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-311"><a href="#cb21-311" aria-hidden="true" tabindex="-1"></a>f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)</span>
-<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-314"><a href="#cb21-314" aria-hidden="true" tabindex="-1"></a>Alla luce dei dati osservati (e assumendo $\sigma = 6.61$), la verosimiglianza diventa</span>
-<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-317"><a href="#cb21-317" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb21-318"><a href="#cb21-318" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\mu, \sigma \mid y) =&amp; \, \prod_{i=1}^n f(y_i \mid \mu, \sigma) = \notag<span class="sc">\\</span></span>
-<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a>&amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(26 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times \notag<span class="sc">\\</span></span>
-<span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(35 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times  \notag<span class="sc">\\</span></span>
-<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a>&amp; \vdots \notag<span class="sc">\\</span></span>
-<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(22 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span>.</span>
-<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a>È più conveniente svolgere l'esercizio usando il logaritmo della verosimiglianza. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza, <span class="in">`log_likelihood()`</span>, che prende come argomenti <span class="in">`y`</span>, <span class="in">`mu`</span> e <span class="in">`sigma = 6.61`</span>.</span>
-<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a>log_likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, <span class="at">sigma =</span> true_sigma) {</span>
-<span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">dnorm</span>(y, mu, sigma, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-336"><a href="#cb21-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-337"><a href="#cb21-337" aria-hidden="true" tabindex="-1"></a>L'argomento <span class="in">`y`</span> è un vettore di 30 elementi; gli argomenti <span class="in">`mu`</span> e <span class="in">`sigma`</span> sono scalari.</span>
-<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a>Per ciascuno valore <span class="in">`y`</span>, la funzione <span class="in">`dnorm()`</span> trova la densità Normale utilizzando il valore <span class="in">`mu`</span> in input e <span class="in">`sigma = 6.61`</span>. L'argomento <span class="in">`log = TRUE`</span> specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione <span class="in">`sum()`</span>.</span>
-<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a>Utilizzando un singolo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ utilizzato. Vogliamo però trovare l'ordinata della log-verosimiglianza per tutti i possibili valori che $\mu$ può assumere. Nella simulazione, usiamo 100,000 valori possibili del parametro $\mu \in <span class="co">[</span><span class="ot">\bar{y} - \mbox{SD}, \bar{y} + \mbox{SD}</span><span class="co">]</span>$. Mediante un ciclo <span class="in">`for()`</span>, ripetiamo dunque i calcoli descritti sopra 100,000 volte, una volta per ciascuno dei valori $\mu$ considerati. I 100,000 risultati vengono salvati nel vettore <span class="in">`ll`</span>.</span>
-<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb21-347"><a href="#cb21-347" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
-<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">-</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
-<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">+</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
-<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a>  <span class="at">length.out =</span> nrep</span>
-<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-311"><a href="#cb21-311" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a>\mathcal{L}(\mu, \sigma \mid y) =&amp; \, \prod_{i=1}^n f(y_i \mid \mu, \sigma) = \notag<span class="sc">\\</span></span>
+<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a>&amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(26 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times \notag<span class="sc">\\</span></span>
+<span id="cb21-314"><a href="#cb21-314" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(35 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span> \times  \notag<span class="sc">\\</span></span>
+<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a>&amp; \vdots \notag<span class="sc">\\</span></span>
+<span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a> &amp; \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left<span class="sc">\{</span>{-\frac{(22 - \mu)^2}{2\cdot 6.61^2}}\right<span class="sc">\}</span>.</span>
+<span id="cb21-317"><a href="#cb21-317" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb21-318"><a href="#cb21-318" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a>È più conveniente svolgere i calcoli usando il logaritmo della verosimiglianza. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza, <span class="in">`log_likelihood()`</span>, che prende come argomenti <span class="in">`y`</span>, <span class="in">`mu`</span> e <span class="in">`sigma = 6.61`</span>.</span>
+<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a>log_likelihood <span class="ot">&lt;-</span> <span class="cf">function</span>(y, mu, <span class="at">sigma =</span> true_sigma) {</span>
+<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">dnorm</span>(y, mu, sigma, <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb21-328"><a href="#cb21-328" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a>L'argomento <span class="in">`y`</span> è un vettore di 30 elementi; gli argomenti <span class="in">`mu`</span> e <span class="in">`sigma`</span> sono degli scalari. Per ciascuno valore <span class="in">`y`</span>, la funzione <span class="in">`dnorm()`</span> trova la densità Normale utilizzando il valore <span class="in">`mu`</span> in input e <span class="in">`sigma = 6.61`</span>; l'argomento <span class="in">`log = TRUE`</span> specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione <span class="in">`sum()`</span>.</span>
+<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a>Utilizzando un singolo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ utilizzato. Vogliamo però trovare l'ordinata della log-verosimiglianza per tutti i possibili valori che $\mu$ può assumere. Nella simulazione, usiamo 100,000 valori possibili del parametro $\mu \in <span class="co">[</span><span class="ot">\bar{y} - \mbox{SD}, \bar{y} + \mbox{SD}</span><span class="co">]</span>$. Mediante un ciclo <span class="in">`for()`</span>, ripetiamo dunque i calcoli descritti sopra 100,000 volte, una volta per ciascuno dei valori $\mu$ considerati. I 100,000 risultati vengono salvati nel vettore <span class="in">`ll`</span>.</span>
+<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-337"><a href="#cb21-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
+<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">-</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
+<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(d<span class="sc">$</span>y) <span class="sc">+</span> <span class="fu">sd</span>(d<span class="sc">$</span>y), </span>
+<span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a>  <span class="at">length.out =</span> nrep</span>
+<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, nrep)</span>
+<span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nrep) {</span>
+<span id="cb21-347"><a href="#cb21-347" aria-hidden="true" tabindex="-1"></a>  ll[i] <span class="ot">&lt;-</span> <span class="fu">log_likelihood</span>(d<span class="sc">$</span>y, mu[i], true_sigma)</span>
+<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a>Nel caso di un solo parametro sconosciuto (nel caso presente, $\mu$) è possibile rappresentare la log-verosimiglianza con una curva che interpola i punti (<span class="in">`mu`</span>, <span class="in">`ll`</span>).</span>
 <span id="cb21-352"><a href="#cb21-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a>ll <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, nrep)</span>
-<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nrep) {</span>
-<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a>  ll[i] <span class="ot">&lt;-</span> <span class="fu">log_likelihood</span>(d<span class="sc">$</span>y, mu[i], true_sigma)</span>
-<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a>Nel caso di un solo parametro sconosciuto (nel caso presente, $\mu$) è possibile rappresentare la log-verosimiglianza con una curva che interpola i punti (<span class="in">`mu`</span>, <span class="in">`ll`</span>).</span>
-<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-loglike-bdi2, fig.cap="Log-verosimiglianza del parametro $\\mu$ per i dati di @zetschefuture2019."}</span></span>
-<span id="cb21-362"><a href="#cb21-362" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(mu, ll) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-363"><a href="#cb21-363" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> ll)) <span class="sc">+</span></span>
-<span id="cb21-364"><a href="#cb21-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-365"><a href="#cb21-365" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fu">mean</span>(d<span class="sc">$</span>y), <span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb21-366"><a href="#cb21-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-367"><a href="#cb21-367" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Log-verosimiglianza"</span>,</span>
-<span id="cb21-368"><a href="#cb21-368" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Parametro"</span><span class="sc">~</span>mu)</span>
-<span id="cb21-369"><a href="#cb21-369" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb21-370"><a href="#cb21-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig-loglike-bdi2, fig.cap="Log-verosimiglianza del parametro $\\mu$ per i dati di @zetschefuture2019."}</span></span>
+<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(mu, ll) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> ll)) <span class="sc">+</span></span>
+<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline_at</span>(<span class="fu">mean</span>(d<span class="sc">$</span>y), <span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Log-verosimiglianza"</span>,</span>
+<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">expression</span>(<span class="st">"Parametro"</span><span class="sc">~</span>mu)</span>
+<span id="cb21-361"><a href="#cb21-361" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb21-362"><a href="#cb21-362" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-363"><a href="#cb21-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-364"><a href="#cb21-364" aria-hidden="true" tabindex="-1"></a>Tale funzione descrive la credibilità relativa che può essere attribuita ai valori del parametro $\mu$ alla luce dei dati osservati.</span>
+<span id="cb21-365"><a href="#cb21-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-366"><a href="#cb21-366" aria-hidden="true" tabindex="-1"></a><span class="fu">### Massima verosimiglianza</span></span>
+<span id="cb21-367"><a href="#cb21-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-368"><a href="#cb21-368" aria-hidden="true" tabindex="-1"></a>Il valore $\mu$ più credibile corrisponde al massimo della funzione di log-verosimiglinza e viene detto *stima di massima verosimiglianza*.</span>
+<span id="cb21-369"><a href="#cb21-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-370"><a href="#cb21-370" aria-hidden="true" tabindex="-1"></a>Il massimo della funzione di log-verosimiglianza, ovvero <span class="in">`r round(mean(d$y), 2)`</span> nel caso dell'esempio presente, è identico alla media dei dati campionari. Tale risultato, ottenuto per via numerica, può essere dimostrato formalmente nel modo seguente.</span>
 <span id="cb21-371"><a href="#cb21-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-372"><a href="#cb21-372" aria-hidden="true" tabindex="-1"></a>Tale funzione descrive la credibilità relativa che può essere attribuita ai valori del parametro $\mu$ alla luce dei dati osservati.</span>
+<span id="cb21-372"><a href="#cb21-372" aria-hidden="true" tabindex="-1"></a>Usando la notazione matematica possiamo dire che cerchiamo l'argmax dell'equazione precedente rispetto a $\theta$, ovvero</span>
 <span id="cb21-373"><a href="#cb21-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-374"><a href="#cb21-374" aria-hidden="true" tabindex="-1"></a><span class="fu">### Massima verosimiglianza</span></span>
-<span id="cb21-375"><a href="#cb21-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-376"><a href="#cb21-376" aria-hidden="true" tabindex="-1"></a>Il valore $\mu$ più credibile corrisponde al massimo della funzione di log-verosimiglinza e viene detto *stima di massima verosimiglianza*.</span>
+<span id="cb21-374"><a href="#cb21-374" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-375"><a href="#cb21-375" aria-hidden="true" tabindex="-1"></a>\hat{\theta} = \text{argmax}_{\theta} \prod_{i=1}^n f(y_i \mid \theta).</span>
+<span id="cb21-376"><a href="#cb21-376" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb21-377"><a href="#cb21-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-378"><a href="#cb21-378" aria-hidden="true" tabindex="-1"></a>Il massimo della funzione di log-verosimiglianza, ovvero <span class="in">`r round(mean(d$y), 2)`</span> nel caso dell'esempio presente, è identico alla media dei dati campionari. Tale risultato, ottenuto per via numerica, può essere dimostrato formalmente nel modo seguente.</span>
+<span id="cb21-378"><a href="#cb21-378" aria-hidden="true" tabindex="-1"></a>Questo problema si risolve calcolando le derivate della funzione rispetto a $\theta$, ponendo le derivate uguali a zero e risolvendo. Saltando tutti i passaggi algebrici di questo procedimento, per $\mu$ troviamo</span>
 <span id="cb21-379"><a href="#cb21-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-380"><a href="#cb21-380" aria-hidden="true" tabindex="-1"></a>Usando la notazione matematica possiamo dire che cerchiamo l'argmax dell'equazione precedente rispetto a $\theta$, ovvero</span>
-<span id="cb21-381"><a href="#cb21-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-382"><a href="#cb21-382" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-383"><a href="#cb21-383" aria-hidden="true" tabindex="-1"></a>\hat{\theta} = \text{argmax}_{\theta} \prod_{i=1}^n f(y_i \mid \theta).</span>
-<span id="cb21-384"><a href="#cb21-384" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb21-385"><a href="#cb21-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-386"><a href="#cb21-386" aria-hidden="true" tabindex="-1"></a>Questo problema si risolve calcolando le derivate della funzione rispetto a $\theta$, ponendo le derivate uguali a zero e risolvendo. Saltando tutti i passaggi algebrici di questo procedimento, per $\mu$ troviamo</span>
-<span id="cb21-387"><a href="#cb21-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-388"><a href="#cb21-388" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb21-389"><a href="#cb21-389" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb21-390"><a href="#cb21-390" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\mu} = \frac{1}{n} \sum_{i=1}^n y_i</span></span>
-<span id="cb21-391"><a href="#cb21-391" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb21-392"><a href="#cb21-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-393"><a href="#cb21-393" aria-hidden="true" tabindex="-1"></a>e per $\sigma$ abbiamo</span>
-<span id="cb21-394"><a href="#cb21-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-395"><a href="#cb21-395" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
-<span id="cb21-396"><a href="#cb21-396" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
-<span id="cb21-397"><a href="#cb21-397" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\sigma} = \sqrt{\sum_{i=1}^n\frac{1}{n}(y_i- \mu)^2}.</span></span>
-<span id="cb21-398"><a href="#cb21-398" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
-<span id="cb21-399"><a href="#cb21-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-400"><a href="#cb21-400" aria-hidden="true" tabindex="-1"></a>In altri termini, la s.m.v. del parametro $\mu$ è la media del campione e la s.m.v. del parametro $\sigma$ è la deviazione standard del campione.</span>
+<span id="cb21-380"><a href="#cb21-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
+<span id="cb21-381"><a href="#cb21-381" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
+<span id="cb21-382"><a href="#cb21-382" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\mu} = \frac{1}{n} \sum_{i=1}^n y_i</span></span>
+<span id="cb21-383"><a href="#cb21-383" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
+<span id="cb21-384"><a href="#cb21-384" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-385"><a href="#cb21-385" aria-hidden="true" tabindex="-1"></a>e per $\sigma$ abbiamo</span>
+<span id="cb21-386"><a href="#cb21-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-387"><a href="#cb21-387" aria-hidden="true" tabindex="-1"></a><span class="in">```{=tex}</span></span>
+<span id="cb21-388"><a href="#cb21-388" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{equation}</span></span>
+<span id="cb21-389"><a href="#cb21-389" aria-hidden="true" tabindex="-1"></a><span class="in">\hat{\sigma} = \sqrt{\sum_{i=1}^n\frac{1}{n}(y_i- \mu)^2}.</span></span>
+<span id="cb21-390"><a href="#cb21-390" aria-hidden="true" tabindex="-1"></a><span class="in">\end{equation}</span></span>
+<span id="cb21-391"><a href="#cb21-391" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-392"><a href="#cb21-392" aria-hidden="true" tabindex="-1"></a>In altri termini, la s.m.v. del parametro $\mu$ è la media del campione e la s.m.v. del parametro $\sigma$ è la deviazione standard del campione.</span>
+<span id="cb21-393"><a href="#cb21-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-394"><a href="#cb21-394" aria-hidden="true" tabindex="-1"></a>::: {#exr-loglike-bdi2-1}</span>
+<span id="cb21-395"><a href="#cb21-395" aria-hidden="true" tabindex="-1"></a>Dalla @fig-loglike-bdi2 notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero <span class="in">`r round(mean(d$y), 2)`</span>, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</span>
+<span id="cb21-396"><a href="#cb21-396" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-397"><a href="#cb21-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-398"><a href="#cb21-398" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commenti e considerazioni finali {.unnumbered}</span></span>
+<span id="cb21-399"><a href="#cb21-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-400"><a href="#cb21-400" aria-hidden="true" tabindex="-1"></a>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.</span>
 <span id="cb21-401"><a href="#cb21-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-402"><a href="#cb21-402" aria-hidden="true" tabindex="-1"></a>::: {#exr-loglike-bdi2-1}</span>
-<span id="cb21-403"><a href="#cb21-403" aria-hidden="true" tabindex="-1"></a>Dalla @fig-loglike-bdi2 notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero <span class="in">`r round(mean(d$y), 2)`</span>, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</span>
-<span id="cb21-404"><a href="#cb21-404" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb21-405"><a href="#cb21-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-406"><a href="#cb21-406" aria-hidden="true" tabindex="-1"></a><span class="fu">## Commenti e considerazioni finali {.unnumbered}</span></span>
-<span id="cb21-407"><a href="#cb21-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-408"><a href="#cb21-408" aria-hidden="true" tabindex="-1"></a>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) $\theta$ vengono variati: la verosimiglianza è una funzione di $\theta$ per il dato fisso $y$. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per $\theta$ e i dati osservati $y$.</span>
-<span id="cb21-409"><a href="#cb21-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-410"><a href="#cb21-410" aria-hidden="true" tabindex="-1"></a>Nella statistica frequentista l'inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l'inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Le basi dell'inferenza frequentista, dunque, sono state riassunte in questo Capitolo. Nella statistica bayesiana, invece, l'inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti $\theta$. Ciò verrà discusso nei Capitoli successivi.</span>
-<span id="cb21-411"><a href="#cb21-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-412"><a href="#cb21-412" aria-hidden="true" tabindex="-1"></a>La differenza fondamentale tra inferenza bayesiana e frequentista è dunque che i frequentisti non ritengono utile descrivere i parametri in termini probabilistici: i parametri dei modelli statistici vengono concepiti come fissi ma sconosciuti. Nell'inferenza bayesiana, invece, i parametri sconosciuti sono intesi come delle variabili casuali e ciò consente di quantificare in termini probabilistici il nostro grado di intertezza relativamente al loro valore.</span>
+<span id="cb21-402"><a href="#cb21-402" aria-hidden="true" tabindex="-1"></a>Nella statistica frequentista l'inferenza si basa solo sui dati a disposizione e qualunque informazione fornita dalle conoscenze precedenti non viene presa in considerazione. Nello specifico, nella statistica frequentista l'inferenza viene condotta massimizzando la funzione di (log) verosimiglianza, condizionatamente ai valori assunti dalle variabili casuali campionarie. Le basi dell'inferenza frequentista, dunque, sono state riassunte in questo Capitolo. Nella statistica bayesiana, invece, l'inferenza statistica viene condotta combinando la funzione di verosimiglianza con le distribuzioni a priori dei parametri incogniti $\theta$. Ciò verrà discusso nei Capitoli successivi.</span>
+<span id="cb21-403"><a href="#cb21-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-404"><a href="#cb21-404" aria-hidden="true" tabindex="-1"></a>La differenza fondamentale tra inferenza bayesiana e frequentista è dunque che i frequentisti non ritengono utile descrivere i parametri in termini probabilistici: i parametri dei modelli statistici vengono concepiti come fissi ma sconosciuti. Nell'inferenza bayesiana, invece, i parametri sconosciuti sono intesi come delle variabili casuali e ciò consente di quantificare in termini probabilistici il nostro grado di intertezza relativamente al loro valore.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

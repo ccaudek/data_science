@@ -269,19 +269,13 @@ true_sigma
 
 Abbiamo visto in precedenza che, per una singola osservazione, la funzione di verosimiglianza è la densità Gaussiana espressa in funzione dei parametri (in questo caso, solo $\mu$). Per un campione di osservazioni i.i.d., ovvero $y = (y_1, y_2, \dots, y_n)$, la verosimiglianza è la funzione di densità congiunta $f(y \mid \mu, \sigma)$ espressa in funzione dei parametri. Dato che le osservazioni sono i.i.d., la densità congiunta è data dal prodotto delle densità delle singole osservazioni.
 
-Per l'osservazione $y_i$ abbiamo
+Se consideriamo l'osservazione $y_i$ abbiamo
 
 $$
 f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i - \mu)^2}{2\cdot 6.61^2}}\right\}.
 $$
 
-La densità congiunta è dunque
-
-$$
-f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)
-$$
-
-Alla luce dei dati osservati (e assumendo $\sigma = 6.61$), la verosimiglianza diventa
+Per tutte le osservazioni, la densità congiunta sarà data dal prodotto delle densità delle singole osservazioni: $f(y \mid \mu, \sigma) = \, \prod_{i=1}^n f(y_i \mid \mu, \sigma)$. Utilizzando i dati del campione, e assumendo $\sigma = 6.61$, la verosimiglianza sarà dunque uguale a
 
 $$
 \begin{aligned}
@@ -293,7 +287,7 @@ $$
 \end{aligned}
 $$
 
-È più conveniente svolgere l'esercizio usando il logaritmo della verosimiglianza. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza, `log_likelihood()`, che prende come argomenti `y`, `mu` e `sigma = 6.61`.
+È più conveniente svolgere i calcoli usando il logaritmo della verosimiglianza. In $\textsf{R}$, definiamo la funzione di log-verosimiglianza, `log_likelihood()`, che prende come argomenti `y`, `mu` e `sigma = 6.61`.
 
 ```{r}
 #| echo: true
@@ -302,9 +296,7 @@ log_likelihood <- function(y, mu, sigma = true_sigma) {
 }
 ```
 
-L'argomento `y` è un vettore di 30 elementi; gli argomenti `mu` e `sigma` sono degli scalari.
-
-Per ciascuno valore `y`, la funzione `dnorm()` trova la densità Normale utilizzando il valore `mu` in input e `sigma = 6.61`. L'argomento `log = TRUE` specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione `sum()`.
+L'argomento `y` è un vettore di 30 elementi; gli argomenti `mu` e `sigma` sono degli scalari. Per ciascuno valore `y`, la funzione `dnorm()` trova la densità Normale utilizzando il valore `mu` in input e `sigma = 6.61`; l'argomento `log = TRUE` specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione `sum()`.
 
 Utilizzando un singolo valore $\mu$ otteniamo l'ordinata della funzione di log-verosimiglianza in corrispondenza del valore $\mu$ utilizzato. Vogliamo però trovare l'ordinata della log-verosimiglianza per tutti i possibili valori che $\mu$ può assumere. Nella simulazione, usiamo 100,000 valori possibili del parametro $\mu \in [\bar{y} - \mbox{SD}, \bar{y} + \mbox{SD}]$. Mediante un ciclo `for()`, ripetiamo dunque i calcoli descritti sopra 100,000 volte, una volta per ciascuno dei valori $\mu$ considerati. I 100,000 risultati vengono salvati nel vettore `ll`.
 
