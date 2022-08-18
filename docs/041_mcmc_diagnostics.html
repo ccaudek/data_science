@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.629">
+<meta name="generator" content="quarto-1.0.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 21&nbsp; Diagnostica delle catene markoviane</title>
 <style>
@@ -113,7 +113,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -170,284 +170,289 @@ div.csl-indent {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./001_key_notions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Concetti chiave</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./005_measurement.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">La misurazione in psicologia</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./007_freq_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variabili e distribuzioni di frequenza</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./011_loc_scale.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Indici di posizione e di scala</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./012_correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Le relazioni tra variabili</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./015_prob_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./016_conditional_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./017_bayes_theorem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./018_joint_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./019_density_func.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./020_expval_var.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Valore atteso e varianza</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./022_discr_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. discrete</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./023_cont_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./024_likelihood.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./025_intro_bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Credibilità, modelli e parametri</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./026_subj_prop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./029_conjugate_families.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Distribuzioni coniugate</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./030_balance_prior_post.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">L’influenza della distribuzione a priori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./036_posterior_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Approssimazione della distribuzione a posteriori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./040_beta_binomial_mod.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Il modello beta-binomiale in linguaggio Stan</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./041_mcmc_diagnostics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Diagnostica delle catene markoviane</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./045_summarize_posterior.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Sintesi a posteriori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./046_bayesian_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">La predizione bayesiana</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./050_normal_normal_mod.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Inferenza sul parametro <span class="math inline">\(\mu\)</span> (media di una v.c. Normale)</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./regression.html" class="sidebar-item-text sidebar-link">Parte 5: Regressione lineare</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./regression.html" class="sidebar-item-text sidebar-link">Parte 5: Regressione lineare</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./051_reglin1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduzione</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare con un singolo predittore</span></a>
+  <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare bivariata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./053_reglin3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Modello di regressione in linguaggio Stan</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./054_reglin4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Inferenza sul modello lineare</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./055_reglin5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confronto tra due gruppi indipendenti</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./056_pred_check.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Predictive checks</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./060_anova.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Confronto tra le medie di tre o più gruppi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./070_mod_hier.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Modello gerarchico</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./071_mod_hier_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Modello gerarchico: simulazioni</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./entropy.html" class="sidebar-item-text sidebar-link">Parte 6: Entropia</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./entropy.html" class="sidebar-item-text sidebar-link">Parte 6: Entropia</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./090_entropy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Entropia</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./091_kl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">La divergenza di Kullback-Leibler</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a01_math_symbols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Simbologia di base</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a02_number_sets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Numeri binari, interi, razionali, irrazionali e reali</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a03_set_theory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Insiemi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a04_summation_notation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Simbolo di somma (sommatorie)</span></a>
   </div>
 </li>
-    </ul>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a10_markov_chains.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Le catene di Markov</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a15_stan_lang.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Programmare in Stan</span></a>
+  </div>
+</li>
+      </ul>
 </li>
     </ul>
 </div>
@@ -477,7 +482,7 @@ div.csl-indent {
   </div>
   
 
-</header><p>Come è stato discusso nel <span class="citation" data-cites="cmdstanr-gautret">(<a href="#ref-cmdstanr-gautret" role="doc-biblioref"><strong>cmdstanr-gautret?</strong></a>)</span>, le catene di Markov forniscono un’approssimazione che tende a convergere alla distribuzione a posteriori. “Approssimazione” e “convergenza” sono le parole chiave qui: il punto è che il campionamento MCMC non è perfetto. Questo solleva le seguenti domande:</p>
+</header><p>Come è stato discusso nel <span class="citation" data-cites="cmdstanr-gautret">(<a href="999_refs.html#ref-cmdstanr-gautret" role="doc-biblioref"><strong>cmdstanr-gautret?</strong></a>)</span>, le catene di Markov forniscono un’approssimazione che tende a convergere alla distribuzione a posteriori. “Approssimazione” e “convergenza” sono le parole chiave qui: il punto è che il campionamento MCMC non è perfetto. Questo solleva le seguenti domande:</p>
 <ul>
 <li>A cosa corrisponde, dal punto di vista grafico, una “buona” catena di Markov?</li>
 <li>Come possiamo sapere se il campione prodotto dalla catena di Markov costituisce un’approssimazione adeguata della distribuzione a posteriori?</li>
@@ -488,7 +493,7 @@ div.csl-indent {
 <section id="esame-dei-trace-plot" class="level2" data-number="21.1"><h2 data-number="21.1" class="anchored" data-anchor-id="esame-dei-trace-plot">
 <span class="header-section-number">21.1</span> Esame dei <em>trace plot</em>
 </h2>
-<p>La convergenza e il “mixing” possono essere controllate mediante il <em>trace plot</em> che mostra l’andamento delle simulazioni e ci dice se stiamo effettivamente utilizzando una distribuzione limite. Consideriamo nuovamente il <em>trace plot</em> del simulazione Beta-Binomiale della figura <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-trace-plot-gautret-2</span></a>.</p>
+<p>La convergenza e il “mixing” possono essere controllate mediante il <em>trace plot</em> che mostra l’andamento delle simulazioni e ci dice se stiamo effettivamente utilizzando una distribuzione limite. Consideriamo nuovamente il <em>trace plot</em> del simulazione Beta-Binomiale della figura <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span>21.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 
 </div>
@@ -496,33 +501,33 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-trace-plot-gautret-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="041_mcmc_diagnostics_files/figure-html/fig-trace-plot-gautret-2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 21.1: Trace plot per il modello Beta-Binomiale dei dati di Gautret et al.(2020).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 21.1: Trace plot per il modello Beta-Binomiale dei dati di Gautret et al.(2020).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-trace-plot-gautret-2</span></a> fornisce un esempio perfetto di come dovrebbero apparire i <em>trace plot</em>. Quando le catene markoviane raggiungono uno stato stazionario e sono stabili ciò significa che hanno raggiunto la distribuzione stazionaria e il <em>trace plot</em> rivela un’assenza di struttura e diventa simile alla rappresentazione del rumore bianco, come nella <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span class="quarto-unresolved-ref">fig-trace-plot-gautret-2</span></a>.</p>
-<p>Una mancanza di convergenza è invece indicata dalla <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span class="quarto-unresolved-ref">fig-bad-trace-bayesrules</span></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>La <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span>21.1</span></a> fornisce un esempio perfetto di come dovrebbero apparire i <em>trace plot</em>. Quando le catene markoviane raggiungono uno stato stazionario e sono stabili ciò significa che hanno raggiunto la distribuzione stazionaria e il <em>trace plot</em> rivela un’assenza di struttura e diventa simile alla rappresentazione del rumore bianco, come nella <a href="#fig-trace-plot-gautret-2">Figura&nbsp;<span>21.1</span></a>.</p>
+<p>Una mancanza di convergenza è invece indicata dalla <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-bad-trace-bayesrules" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="images/bad-trace-bayesrules.png" class="img-fluid figure-img" width="1181"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 21.2: Trace plots (a sinistra) e corrispondenti grafici di densità (a destra) di due ipotetiche catene di Markov. Queste figure forniscono due esempi di come potrebbero apparire delle catene di Markov non stazionarie. Le linee nere sovrapposte alle densità empiriche (a destra) rappresentano una ipotetica distribuzione target Beta(11,3).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 21.2: Trace plots (a sinistra) e corrispondenti grafici di densità (a destra) di due ipotetiche catene di Markov. Queste figure forniscono due esempi di come potrebbero apparire delle catene di Markov non stazionarie. Le linee nere sovrapposte alle densità empiriche (a destra) rappresentano una ipotetica distribuzione target Beta(11,3).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Nel trace-plot della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span class="quarto-unresolved-ref">fig-bad-trace-bayesrules</span></a> la tendenza verso il basso indica che la catena A non è stazionaria, ovvero non si mantiene costante all’evolversi nel tempo. La tendenza verso il basso suggerisce inoltre la presenza di una forte correlazione tra i valori della catena: il trace-plot non fornisce una rappresentazione di rumore indipendente. Tutto questo significa che la catena A “si sta mescolando lentamente”. Sebbene le catene di Markov siano intrinsecamente dipendenti, più si comportano come se fossero dei campioni casuali (rumorosi), minore è l’errore dell’approssimazione alla distribuzione a posteriori.</p>
+<p>Nel trace-plot della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a> la tendenza verso il basso indica che la catena A non è stazionaria, ovvero non si mantiene costante all’evolversi nel tempo. La tendenza verso il basso suggerisce inoltre la presenza di una forte correlazione tra i valori della catena: il trace-plot non fornisce una rappresentazione di rumore indipendente. Tutto questo significa che la catena A “si sta mescolando lentamente”. Sebbene le catene di Markov siano intrinsecamente dipendenti, più si comportano come se fossero dei campioni casuali (rumorosi), minore è l’errore dell’approssimazione alla distribuzione a posteriori.</p>
 <p>La catena B presenta un problema diverso. Come evidenziato dalle due linee completamente piatte nel tracciato, essa tende a bloccarsi quando visita valori bassi di <span class="math inline">\(\theta\)</span>.</p>
-<p>Gli istogrammi lisciati della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span class="quarto-unresolved-ref">fig-bad-trace-bayesrules</span></a> (a destra) confermano che entrambe queste catene sono problematiche: infatti producono approssimazioni scadenti della distribuzione a posteriori che, nell’esempio di <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>, è una <span class="math inline">\(\mbox{Beta}(11, 3)\)</span> (la curva nera nella figura). Consideriamo la catena A. Dal momento che si sta mescolando lentamente, nelle iterazioni eseguite ha esplorato unicamente i valori <span class="math inline">\(\theta\)</span> nell’intervallo da 0.6 a 0.9. Di conseguenza, la sua approssimazione della distribuzione a posteriori sopravvaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> in questo intervallo e, nel contempo, sottovaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> esterni a questo intervallo. Consideriamo ora la catena B. Rimanendo bloccata, la catena B campiona in maniera eccessiva alcuni valori nella coda sinistra della distribuzione a posteriori di <span class="math inline">\(\theta\)</span>. Questo fenomeno produce i picchi che sono presenti nell’approssimazione alla distribuzione a posteriori.</p>
-<p>In pratica, al di là dei presenti esempi “scolastici” (in cui disponiamo di una formulazione analitica della distribuzione a posteriori), non abbiamo mai il privilegio di poter confrontare i risultati del campionamento MCMC con la corretta distribuzione a posteriori. Ecco perché la diagnostica delle catene di Markov è così importante: se vediamo trace-plots come quelli della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span class="quarto-unresolved-ref">fig-bad-trace-bayesrules</span></a>, sappiamo che non abbiamo ottenuto una adeguata approssimazione della distribuzione a posteriori.</p>
+<p>Gli istogrammi lisciati della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a> (a destra) confermano che entrambe queste catene sono problematiche: infatti producono approssimazioni scadenti della distribuzione a posteriori che, nell’esempio di <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>, è una <span class="math inline">\(\mbox{Beta}(11, 3)\)</span> (la curva nera nella figura). Consideriamo la catena A. Dal momento che si sta mescolando lentamente, nelle iterazioni eseguite ha esplorato unicamente i valori <span class="math inline">\(\theta\)</span> nell’intervallo da 0.6 a 0.9. Di conseguenza, la sua approssimazione della distribuzione a posteriori sopravvaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> in questo intervallo e, nel contempo, sottovaluta la plausibilità dei valori <span class="math inline">\(\theta\)</span> esterni a questo intervallo. Consideriamo ora la catena B. Rimanendo bloccata, la catena B campiona in maniera eccessiva alcuni valori nella coda sinistra della distribuzione a posteriori di <span class="math inline">\(\theta\)</span>. Questo fenomeno produce i picchi che sono presenti nell’approssimazione alla distribuzione a posteriori.</p>
+<p>In pratica, al di là dei presenti esempi “scolastici” (in cui disponiamo di una formulazione analitica della distribuzione a posteriori), non abbiamo mai il privilegio di poter confrontare i risultati del campionamento MCMC con la corretta distribuzione a posteriori. Ecco perché la diagnostica delle catene di Markov è così importante: se vediamo trace-plots come quelli della <a href="#fig-bad-trace-bayesrules">Figura&nbsp;<span>21.2</span></a>, sappiamo che non abbiamo ottenuto una adeguata approssimazione della distribuzione a posteriori.</p>
 <p>In tali circostanze possiamo ricorrere ad alcuni rimedi.</p>
 <ol type="1">
 <li>Controllare il modello. Siamo sicuri che le distribuzioni a priori e la verosimiglianza siano appropriate per i dati osservati?</li>
 <li>Utilizzare un numero maggiore di iterazioni. Alcune tendenze indesiderate a breve termine della catena possono appianarsi nel lungo termine.</li>
 </ol></section><section id="confronto-delle-catene-parallele" class="level2" data-number="21.2"><h2 data-number="21.2" class="anchored" data-anchor-id="confronto-delle-catene-parallele">
 <span class="header-section-number">21.2</span> Confronto delle catene parallele</h2>
-<p>Nella simulazione <code>cmdstanr()</code> per il modello beta-binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> abbiamo utilizzato quattro catene di Markov parallele. Non solo è necessario che ogni singola catena sia stazionaria (come discusso sopra), ma è anche necessario che le quattro catene siano coerenti tra loro. Sebbene le catene esplorino percorsi diversi nello spazio dei parametri, quando convergono ad uno stato di equilibrio dovrebbero presentare caratteristiche simili e dovrebbero produrre approssimazioni simili alla distribuzione a posteriori. Per il caso beta-binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, gli istogrammi lisciati della figura seguente indicano che le quattro catene producono approssimazioni della distribuzione a posteriori quasi indistinguibili tra loro. Ciò prova che la simulazione è stabile e contiene un nunero sufficiente di valori: l’esecuzione delle catene per un numero maggiore di iterazioni non porterebbe ad un miglioramento della stima della distribuzione a posteriori.</p>
+<p>Nella simulazione <code>cmdstanr()</code> per il modello beta-binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> abbiamo utilizzato quattro catene di Markov parallele. Non solo è necessario che ogni singola catena sia stazionaria (come discusso sopra), ma è anche necessario che le quattro catene siano coerenti tra loro. Sebbene le catene esplorino percorsi diversi nello spazio dei parametri, quando convergono ad uno stato di equilibrio dovrebbero presentare caratteristiche simili e dovrebbero produrre approssimazioni simili alla distribuzione a posteriori. Per il caso beta-binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, gli istogrammi lisciati della figura seguente indicano che le quattro catene producono approssimazioni della distribuzione a posteriori quasi indistinguibili tra loro. Ciò prova che la simulazione è stabile e contiene un nunero sufficiente di valori: l’esecuzione delle catene per un numero maggiore di iterazioni non porterebbe ad un miglioramento della stima della distribuzione a posteriori.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mcmc_dens_overlay</span><span class="op">(</span><span class="va">stanfit1</span>, pars <span class="op">=</span> <span class="st">"theta"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"density"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -580,8 +585,8 @@ div.csl-indent {
 <p>Anche se i <em>trace plot</em> sembrano tutti mostrare un andamento casuale, gli istogrammi lisciati sono piuttosto diversi tra loro e producono approssimazioni diverse della distribuzione a posteriori. Di fronte a tale instabilità è chiaro che sarebbe un errore interrompere la simulazione dopo solo 100 iterazioni.</p>
 </section><section id="numerosita-campionaria-effettiva" class="level2" data-number="21.3"><h2 data-number="21.3" class="anchored" data-anchor-id="numerosita-campionaria-effettiva">
 <span class="header-section-number">21.3</span> Numerosità campionaria effettiva</h2>
-<p>Nella simulazione del modello beta-binomiale per i dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> abbiamo utilizzato quattro catene di Markov parallele che producono un totale di <span class="math inline">\(N\)</span> = 16000 campioni <em>dipendenti</em> di <span class="math inline">\(\theta\)</span>. Sapendo che l’errore dell’approssimazione alla distribuzione a posteriori è probabilmente più grande di quello che si otterrebbe usando 16000 campioni <em>indipendenti</em>, ci possiamo porre la seguente domanda: quanti campioni indipendenti sarebbero necessari per produrre un’approssimazione della distribuzione a posteriori equivalentemente a quella che abbiamo ottenuto? La numerosità campionaria effettiva (<em>effective sample size</em>, <span class="math inline">\(N_{eff}\)</span>) fornisce una risposta a questa domanda.</p>
-<p>Tipicamente, <span class="math inline">\(N_{eff} &lt; N\)</span>, per cui il rapporto campionario effettivo (<em>effective sample size ratio</em>) <span class="math inline">\(\frac{N_{eff}}{N}\)</span> è minore di 1. Come regola euristica, viene considerato problematico un rapporto campionario effettivo minore del 10% del numero totale di campioni ottenuti nella simulazione (più basso è il rapporto campionario effettivo peggiore è il “mixing” della catena). La funzione <code><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">bayesplot::neff_ratio()</a></code> consente di calcolare il rapporto campionario effettivo. Per il modello Beta-Binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, questo rapporto è di circa 0.34.</p>
+<p>Nella simulazione del modello beta-binomiale per i dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> abbiamo utilizzato quattro catene di Markov parallele che producono un totale di <span class="math inline">\(N\)</span> = 16000 campioni <em>dipendenti</em> di <span class="math inline">\(\theta\)</span>. Sapendo che l’errore dell’approssimazione alla distribuzione a posteriori è probabilmente più grande di quello che si otterrebbe usando 16000 campioni <em>indipendenti</em>, ci possiamo porre la seguente domanda: quanti campioni indipendenti sarebbero necessari per produrre un’approssimazione della distribuzione a posteriori equivalentemente a quella che abbiamo ottenuto? La numerosità campionaria effettiva (<em>effective sample size</em>, <span class="math inline">\(N_{eff}\)</span>) fornisce una risposta a questa domanda.</p>
+<p>Tipicamente, <span class="math inline">\(N_{eff} &lt; N\)</span>, per cui il rapporto campionario effettivo (<em>effective sample size ratio</em>) <span class="math inline">\(\frac{N_{eff}}{N}\)</span> è minore di 1. Come regola euristica, viene considerato problematico un rapporto campionario effettivo minore del 10% del numero totale di campioni ottenuti nella simulazione (più basso è il rapporto campionario effettivo peggiore è il “mixing” della catena). La funzione <code><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">bayesplot::neff_ratio()</a></code> consente di calcolare il rapporto campionario effettivo. Per il modello Beta-Binomiale dei dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, questo rapporto è di circa 0.34.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bayesplot</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">neff_ratio</a></span><span class="op">(</span><span class="va">stanfit1</span>, pars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"theta"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.3629411</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -610,12 +615,12 @@ div.csl-indent {
 </div>
 </div>
 <p>Il correlogramma mostra l’autocorrelazione in funzione di ritardi da 0 a 20. L’autocorrelazione di lag 0 è naturalmente 1 – misura la correlazione tra un valore della catena di Markov e se stesso. L’autocorrelazione di lag 1 è di circa 0.5, indicando una correlazione moderata tra i valori della catena che distano di solo 1 passo l’uno dall’altro. Successivamente, l’autocorrelazione diminuisce rapidamente ed è effettivamente pari a 0 per un lag di 5. Questo risultato fornisce una conferma del fatto che la catena di Markov costituisce una buona approssimazione di un campione casuale di <span class="math inline">\(p(\theta \mid y)\)</span>.</p>
-<p>Al contrario, nella <a href="#fig-bad-autocorrelation">Figura&nbsp;<span class="quarto-unresolved-ref">fig-bad-autocorrelation</span></a> (a destra) <span class="citation" data-cites="Johnson2022bayesrules">(riprodotta da <a href="#ref-Johnson2022bayesrules" role="doc-biblioref">Johnson et al., 2022</a>)</span> vediamo un esempio nel quale il trace plot rivela una forte tendenza tra i valori di una catena di Markov e, dunque, una forte autocorrelazione.</p>
+<p>Al contrario, nella <a href="#fig-bad-autocorrelation">Figura&nbsp;<span>21.3</span></a> (a destra) <span class="citation" data-cites="Johnson2022bayesrules">(riprodotta da <a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">Johnson et al., 2022</a>)</span> vediamo un esempio nel quale il trace plot rivela una forte tendenza tra i valori di una catena di Markov e, dunque, una forte autocorrelazione.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-bad-autocorrelation" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="images/ch6-acf-2-1.png" class="img-fluid figure-img" width="1181"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 21.3: Trace plot (a sinistra) e correlogramma (a destra) di una catena di Markow in cui il mixing è lento – figura riprodotta da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 21.3: Trace plot (a sinistra) e correlogramma (a destra) di una catena di Markow in cui il mixing è lento – figura riprodotta da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -674,7 +679,7 @@ div.csl-indent {
 <span class="header-section-number">21.5</span> Statistica <span class="math inline">\(\hat{R}\)</span>
 </h2>
 <p>In precedenza abbiamo detto che non solo è necessario che ogni singola catena sia stazionaria, è anche necessario che le diverse catene siano coerenti tra loro. La statistica <span class="math inline">\(\hat{R}\)</span> affronta questo problema calcolando il rapporto tra la varianza tra le catene markoviane e la varianza entro le catene. In una situazione ottimale <span class="math inline">\(\hat{R} = 1\)</span>; se <span class="math inline">\(\hat{R}\)</span> è lontano da 1 questo vuol dire che non è ancora stata raggiunta la convergenza.</p>
-<p>È possibile calcolare <span class="math inline">\(\hat{R}\)</span> mediante la chiamata alla funzione <code><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">bayesplot::rhat()</a></code>. Per il modello Beta-Binomiale applicato ai dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> abbiamo:</p>
+<p>È possibile calcolare <span class="math inline">\(\hat{R}\)</span> mediante la chiamata alla funzione <code><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">bayesplot::rhat()</a></code>. Per il modello Beta-Binomiale applicato ai dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> abbiamo:</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">bayesplot</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/bayesplot/reference/bayesplot-extractors.html">rhat</a></span><span class="op">(</span><span class="va">stanfit1</span>, pars <span class="op">=</span> <span class="st">"theta"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1.00039</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -743,7 +748,7 @@ div.csl-indent {
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
 <div id="ref-Gautret_2020" class="csl-entry" role="doc-biblioentry">
 Gautret, P., Lagier, J. C., Parola, P., Meddeb, L., Mailhe, M., Doudier, B., &amp; Honoré, S. (2020). Hydroxychloroquine and azithromycin as a treatment of COVID-19: Results of an open-label non-randomized clinical trial. <em>International Journal of Antimicrobial Agents</em>.
 </div>
@@ -753,10 +758,28 @@ Johnson, A. A., Ott, M., &amp; Dogucu, M. (2022). <em><span class="nocase">Bayes
 </div>
 </section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Figura riprodotta da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>Figura riprodotta da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Una (famiglia di) catene di Markov è <em>rapidly mixing</em> se mostra un comportamento simile a quello di un campione indipendente: i valori delle catene si addensano nell’intervallo dei valori più plausibili della distribuzione a posteriori; l’autocorrelazione tra i valori della catena diminuisce rapidamente; il rapporto campionario effettivo è ragionevolmente grande. Le catene che non sono <em>rapidly mixing</em> non godono delle caratteristiche di un campione indipendente: le catene non si addensano nell’intervallo dei valori più plausibili della distribuzione a posteriori; l’autocorrelazione tra i valori della catena diminuisce molto lentamente; il rapporto campionario effettivo è piccolo.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

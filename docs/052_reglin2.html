@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.28">
+<meta name="generator" content="quarto-1.0.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 26&nbsp; Regressione lineare bivariata</title>
 <style>
@@ -94,7 +94,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -151,289 +151,289 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./001_key_notions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Concetti chiave</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./005_measurement.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">La misurazione in psicologia</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./007_freq_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variabili e distribuzioni di frequenza</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./011_loc_scale.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Indici di posizione e di scala</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./012_correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Le relazioni tra variabili</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./015_prob_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./016_conditional_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./017_bayes_theorem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./018_joint_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./019_density_func.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./020_expval_var.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Valore atteso e varianza</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./022_discr_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. discrete</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./023_cont_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./024_likelihood.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./025_intro_bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Credibilità, modelli e parametri</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./026_subj_prop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./029_conjugate_families.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Distribuzioni coniugate</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./030_balance_prior_post.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">L’influenza della distribuzione a priori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./036_posterior_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Approssimazione della distribuzione a posteriori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./040_beta_binomial_mod.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Il modello beta-binomiale in linguaggio Stan</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./041_mcmc_diagnostics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Diagnostica delle catene markoviane</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./045_summarize_posterior.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Sintesi a posteriori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./046_bayesian_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">La predizione bayesiana</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./050_normal_normal_mod.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Inferenza sul parametro <span class="math inline">\(\mu\)</span> (media di una v.c. Normale)</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./regression.html" class="sidebar-item-text sidebar-link">Parte 5: Regressione lineare</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./regression.html" class="sidebar-item-text sidebar-link">Parte 5: Regressione lineare</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./051_reglin1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduzione</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare bivariata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./053_reglin3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Modello di regressione in linguaggio Stan</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./054_reglin4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Inferenza sul modello lineare</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./055_reglin5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confronto tra due gruppi indipendenti</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./056_pred_check.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Predictive checks</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./060_anova.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Confronto tra le medie di tre o più gruppi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./070_mod_hier.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Modello gerarchico</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./071_mod_hier_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Modello gerarchico: simulazioni</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./entropy.html" class="sidebar-item-text sidebar-link">Parte 6: Entropia</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./entropy.html" class="sidebar-item-text sidebar-link">Parte 6: Entropia</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./090_entropy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Entropia</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./091_kl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">La divergenza di Kullback-Leibler</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a01_math_symbols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Simbologia di base</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a02_number_sets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Numeri binari, interi, razionali, irrazionali e reali</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a03_set_theory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Insiemi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a04_summation_notation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Simbolo di somma (sommatorie)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a10_markov_chains.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Le catene di Markov</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a15_stan_lang.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Programmare in Stan</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
     </ul>
 </div>
@@ -494,8 +494,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>mom_age Mother’s age</li>
 </ul>
 </blockquote>
-<p>In questo esercizio sulla regressione lineare considererò la relazione tra l’intelligenza del bambino (<code>kid_score</code>) e l’intelligenza della madre (<code>mom_iq</code>). Mi chiederò se l’intelligenza della madre sia in grado di predire l’intelligenza del bambino e in che misura lo faccia.</p>
-<p>Leggo i dati in <span class="math inline">\(\mathsf{R}\)</span>.</p>
+<p>Nel presente Capitolo esaminerò la relazione tra l’intelligenza del bambino (<code>kid_score</code>) e l’intelligenza della madre (<code>mom_iq</code>). Mi chiederò se, e in che misura, l’intelligenza della madre sia in grado di predire l’intelligenza del bambino.</p>
+<p>Per iniziare, leggo i dati in <span class="math inline">\(\mathsf{R}\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kidiq</span> <span class="op">&lt;-</span> <span class="fu">rio</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rio/man/import.html">import</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span></span>
 <span>  <span class="st">"data"</span>, <span class="st">"kidiq.dta"</span></span>
@@ -522,7 +522,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>La regressione lineare descrive questa associazione mediante una retta.</p>
+<p>Il modello di regressione lineare descrive questa associazione mediante una retta.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kidiq</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">mom_iq</span>, y <span class="op">=</span> <span class="va">kid_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -552,10 +552,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>Una retta che passa per il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span> ha delle desiderabili proprietà statistiche che verranno descritte in seguito.</p>
+<p>Una retta che passa per il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span> (evidenziato in rosso nella figura precedente) ha delle desiderabili proprietà statistiche che verranno descritte in seguito.</p>
 <p>Il campione è costituito da <span class="math inline">\(n\)</span> coppie di osservazioni (<span class="math inline">\(x, y\)</span>). Per ciascuna coppia di valori <span class="math inline">\(x_i, y_i\)</span>, il modello di regressione si aspetta che il valore <span class="math inline">\(y_i\)</span> sia associato al corrispondente valore <span class="math inline">\(x_i\)</span> come indicato dalla seguente equazione:</p>
 <p><span class="math display">\[
-y_i = a + b x_i + e_i
+y_i = a + b x_i + e_i.
 \]</span></p>
 <p>I valori <span class="math inline">\(y_i\)</span> corrispondono, nell’esempio che stiamo discutendo, alla variabile <code>kid_score</code>. I primi 10 valori della variabile <span class="math inline">\(y\)</span> sono i seguenti:</p>
 <div class="cell" data-layout-align="center">
@@ -569,7 +569,7 @@ y_i = a + b x_i + e_i
 <span><span class="co">#&gt; [1] 85</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Nel caso presente, la variabile <span class="math inline">\(x\)</span> è <code>mom_iq</code>. I primi 10 valori di <span class="math inline">\(x\)</span> sono</p>
+<p>Nel caso presente, la variabile <span class="math inline">\(x\)</span> è <code>mom_iq</code>. I primi 10 valori di <span class="math inline">\(x\)</span> sono i seguenti:</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kidiq</span><span class="op">$</span><span class="va">mom_iq</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
 <span><span class="co">#&gt;  [1] 121.11753  89.36188 115.44316  99.44964  92.74571 107.90184 138.89311</span></span>
@@ -582,17 +582,17 @@ y_i = a + b x_i + e_i
 <span><span class="co">#&gt; [1] 115.4432</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>L’equazione precedente ci dice che ciascun valore <span class="math inline">\(y\)</span> è dato dalla somma di due componenti: una componente deterministica e una componente aleatoria. Consideriamo il primo valore <span class="math inline">\(y\)</span> del campione. Per esso, il modello di regressione ci dice che</p>
+<p>Il modello di regressione bivariata, descritto dall’equazione precedente, ci dice che ciascun valore <span class="math inline">\(y\)</span> è dato dalla somma di due componenti: una componente deterministica e una componente aleatoria. Consideriamo il primo valore <span class="math inline">\(y\)</span> del campione. Per esso, il modello di regressione diventa</p>
 <p><span class="math display">\[
 y_1 = a + b x_1 + e_1,
 \]</span></p>
 <p>laddove <span class="math inline">\(a + b x_1\)</span> è la componente deterministica, denotata con <span class="math inline">\(\hat{y}\)</span>, e <span class="math inline">\(e_1\)</span> è la componente aleatoria.</p>
-<p>La componente deterministica è la <em>componente</em> di ciascun valore <span class="math inline">\(y_i\)</span> che è possibile prevedere conoscendo <span class="math inline">\(x_i\)</span>. Tuttavia, non è possibile prevedere <em>perfettamente</em> i valori <span class="math inline">\(y\)</span> – ciò si verificherebbe soltanto se tutti punti del diagramma a dispersione fossero disposti su una retta. Ma non lo sono mai nella pratica concreta: la retta è solo un’approssimazione della relazione (lineare) tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Pertanto, conoscendo <span class="math inline">\(x_i\)</span> possiamo solo prevedere una “componente” del corrispondente valore <span class="math inline">\(y_i\)</span>.</p>
-<p>Cosa significa che possiamo prevedere una componente di ciascuna osservazione <span class="math inline">\(y_i\)</span>? Significa che il valore osservato <span class="math inline">\(y_i\)</span> sarà diverso dal valore <span class="math inline">\(\hat{y}_i\)</span> previsto dal modello. Ciascun valore <span class="math inline">\(y_i\)</span> sarà dunque dato dalla seguente somma: <span class="math inline">\(y_i = \hat{y}_i + e_i\)</span>, laddove <span class="math inline">\(e_i\)</span>, detto “residuo” è la componente di <span class="math inline">\(y_i\)</span> non predicibile dal modello lineare.</p>
+<p>La componente deterministica è la <em>componente</em> di ciascun valore <span class="math inline">\(y_i\)</span> che è possibile prevedere conoscendo <span class="math inline">\(x_i\)</span>. Tuttavia, non è possibile prevedere <em>perfettamente</em> i valori <span class="math inline">\(y\)</span> – ciò si verificherebbe soltanto se tutti punti del diagramma a dispersione fossero disposti su una retta. Ma non lo sono mai nella pratica concreta: la retta è solo un’approssimazione della relazione lineare tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Pertanto, conoscendo <span class="math inline">\(x_i\)</span> possiamo solo prevedere una porzione (o “componente”) del corrispondente valore <span class="math inline">\(y_i\)</span>.</p>
+<p>Cosa significa che possiamo prevedere solo una componente di ciascuna osservazione <span class="math inline">\(y_i\)</span>? Significa che il valore osservato <span class="math inline">\(y_i\)</span> sarà diverso dal valore <span class="math inline">\(\hat{y}_i\)</span> previsto dal modello. Ciascun valore osservato <span class="math inline">\(y_i\)</span> sarà dunque dato dalla seguente somma: <span class="math inline">\(y_i = \hat{y}_i + e_i\)</span>, laddove <span class="math inline">\(e_i\)</span>, detto “residuo” è la componente di <span class="math inline">\(y_i\)</span> non predicibile dal modello lineare.</p>
 <p>Ci possiamo dunque porre due domande:</p>
 <ul>
-<li>come possiamo trovare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> che consentono di predire una componente della <span class="math inline">\(y\)</span> conoscendo <span class="math inline">\(x\)</span>?</li>
-<li>quant’è grande la porzione della <span class="math inline">\(y\)</span> che può essere predetta conoscendo <span class="math inline">\(x\)</span>? In altre parole, quant’è accurata la predizione della <span class="math inline">\(y\)</span> che può essere fornita dal modello di regressione lineare?</li>
+<li>come è possibile trovare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> che consentono di predire una componente della <span class="math inline">\(y\)</span> conoscendo la <span class="math inline">\(x\)</span>?</li>
+<li>quant’è grande la porzione della <span class="math inline">\(y\)</span> che può essere predetta conoscendo <span class="math inline">\(x\)</span>? In altre parole, quant’è accurata la predizione della <span class="math inline">\(y\)</span> fornita dal modello di regressione lineare?</li>
 </ul>
 <p>Rispondere a tali due domanda definisce i primi due obiettivi del modello statistico della regressione lineare. Il terzo obiettivo è quello dell’inferenza, ovvero quello di capire che relazioni ci sono tra la relazione tra <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> osservata nel campione e la la relazione tra le due variabili nella popolazione.</p>
 <section id="stima-dei-coefficienti-di-regressione" class="level2" data-number="26.1"><h2 data-number="26.1" class="anchored" data-anchor-id="stima-dei-coefficienti-di-regressione">
@@ -975,6 +975,24 @@ R^2 \triangleq \frac{\mbox{dev_R}}{\mbox{dev_T}} = 1 - \frac{\mbox{dev_E}}{\mbox
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1135,9 +1153,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   mom_iq Mother's IQ score</span></span>
 <span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; -   mom_age Mother's age</span></span>
 <span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>In questo esercizio sulla regressione lineare considererò la relazione tra l'intelligenza del bambino (<span class="in">`kid_score`</span>) e l'intelligenza della madre (<span class="in">`mom_iq`</span>). Mi chiederò se l'intelligenza della madre sia in grado di predire l'intelligenza del bambino e in che misura lo faccia.</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>Nel presente Capitolo esaminerò la relazione tra l'intelligenza del bambino (<span class="in">`kid_score`</span>) e l'intelligenza della madre (<span class="in">`mom_iq`</span>). Mi chiederò se, e in che misura, l'intelligenza della madre sia in grado di predire l'intelligenza del bambino.</span>
 <span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>Leggo i dati in $\mathsf{R}$.</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>Per iniziare, leggo i dati in $\mathsf{R}$.</span>
 <span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>kidiq <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(</span>
@@ -1154,7 +1172,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>La regressione lineare descrive questa associazione mediante una retta.</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>Il modello di regressione lineare descrive questa associazione mediante una retta.</span>
 <span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a>kidiq <span class="sc">%&gt;%</span> </span>
@@ -1176,12 +1194,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb36-69"><a href="#cb36-69" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb36-70"><a href="#cb36-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb36-71"><a href="#cb36-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a>Una retta che passa per il punto $(\bar{x}, \bar{y})$ ha delle desiderabili proprietà statistiche che verranno descritte in seguito.</span>
+<span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a>Una retta che passa per il punto $(\bar{x}, \bar{y})$ (evidenziato in rosso nella figura precedente) ha delle desiderabili proprietà statistiche che verranno descritte in seguito.</span>
 <span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a>Il campione è costituito da $n$ coppie di osservazioni ($x, y$). Per ciascuna coppia di valori $x_i, y_i$, il modello di regressione si aspetta che il valore $y_i$ sia associato al corrispondente valore $x_i$ come indicato dalla seguente equazione:</span>
 <span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-76"><a href="#cb36-76" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb36-77"><a href="#cb36-77" aria-hidden="true" tabindex="-1"></a>y_i = a + b x_i + e_i</span>
+<span id="cb36-77"><a href="#cb36-77" aria-hidden="true" tabindex="-1"></a>y_i = a + b x_i + e_i.</span>
 <span id="cb36-78"><a href="#cb36-78" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb36-79"><a href="#cb36-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-80"><a href="#cb36-80" aria-hidden="true" tabindex="-1"></a>I valori $y_i$ corrispondono, nell'esempio che stiamo discutendo, alla variabile <span class="in">`kid_score`</span>. I primi 10 valori della variabile $y$ sono i seguenti:</span>
@@ -1196,7 +1214,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb36-93"><a href="#cb36-93" aria-hidden="true" tabindex="-1"></a>kidiq<span class="sc">$</span>kid_score[<span class="dv">3</span>]</span>
 <span id="cb36-94"><a href="#cb36-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb36-95"><a href="#cb36-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-96"><a href="#cb36-96" aria-hidden="true" tabindex="-1"></a>Nel caso presente, la variabile $x$ è <span class="in">`mom_iq`</span>. I primi 10 valori di $x$ sono</span>
+<span id="cb36-96"><a href="#cb36-96" aria-hidden="true" tabindex="-1"></a>Nel caso presente, la variabile $x$ è <span class="in">`mom_iq`</span>. I primi 10 valori di $x$ sono i seguenti:</span>
 <span id="cb36-97"><a href="#cb36-97" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-100"><a href="#cb36-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb36-101"><a href="#cb36-101" aria-hidden="true" tabindex="-1"></a>kidiq<span class="sc">$</span>mom_iq[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span>
@@ -1208,7 +1226,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb36-109"><a href="#cb36-109" aria-hidden="true" tabindex="-1"></a>kidiq<span class="sc">$</span>mom_iq[<span class="dv">3</span>]</span>
 <span id="cb36-110"><a href="#cb36-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb36-111"><a href="#cb36-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-112"><a href="#cb36-112" aria-hidden="true" tabindex="-1"></a>L'equazione precedente ci dice che ciascun valore $y$ è dato dalla somma di due componenti: una componente deterministica e una componente aleatoria. Consideriamo il primo valore $y$ del campione. Per esso, il modello di regressione ci dice che</span>
+<span id="cb36-112"><a href="#cb36-112" aria-hidden="true" tabindex="-1"></a>Il modello di regressione bivariata, descritto dall'equazione precedente, ci dice che ciascun valore $y$ è dato dalla somma di due componenti: una componente deterministica e una componente aleatoria. Consideriamo il primo valore $y$ del campione. Per esso, il modello di regressione diventa</span>
 <span id="cb36-113"><a href="#cb36-113" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-114"><a href="#cb36-114" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb36-115"><a href="#cb36-115" aria-hidden="true" tabindex="-1"></a>y_1 = a + b x_1 + e_1,</span>
@@ -1216,14 +1234,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb36-117"><a href="#cb36-117" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-118"><a href="#cb36-118" aria-hidden="true" tabindex="-1"></a>laddove $a + b x_1$ è la componente deterministica, denotata con $\hat{y}$, e $e_1$ è la componente aleatoria.</span>
 <span id="cb36-119"><a href="#cb36-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-120"><a href="#cb36-120" aria-hidden="true" tabindex="-1"></a>La componente deterministica è la *componente* di ciascun valore $y_i$ che è possibile prevedere conoscendo $x_i$. Tuttavia, non è possibile prevedere *perfettamente* i valori $y$ -- ciò si verificherebbe soltanto se tutti punti del diagramma a dispersione fossero disposti su una retta. Ma non lo sono mai nella pratica concreta: la retta è solo un'approssimazione della relazione (lineare) tra $x$ e $y$. Pertanto, conoscendo $x_i$ possiamo solo prevedere una "componente" del corrispondente valore $y_i$.</span>
+<span id="cb36-120"><a href="#cb36-120" aria-hidden="true" tabindex="-1"></a>La componente deterministica è la *componente* di ciascun valore $y_i$ che è possibile prevedere conoscendo $x_i$. Tuttavia, non è possibile prevedere *perfettamente* i valori $y$ -- ciò si verificherebbe soltanto se tutti punti del diagramma a dispersione fossero disposti su una retta. Ma non lo sono mai nella pratica concreta: la retta è solo un'approssimazione della relazione lineare tra $x$ e $y$. Pertanto, conoscendo $x_i$ possiamo solo prevedere una porzione (o "componente") del corrispondente valore $y_i$.</span>
 <span id="cb36-121"><a href="#cb36-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-122"><a href="#cb36-122" aria-hidden="true" tabindex="-1"></a>Cosa significa che possiamo prevedere una componente di ciascuna osservazione $y_i$? Significa che il valore osservato $y_i$ sarà diverso dal valore $\hat{y}_i$ previsto dal modello. Ciascun valore $y_i$ sarà dunque dato dalla seguente somma: $y_i = \hat{y}_i + e_i$, laddove $e_i$, detto "residuo" è la componente di $y_i$ non predicibile dal modello lineare.</span>
+<span id="cb36-122"><a href="#cb36-122" aria-hidden="true" tabindex="-1"></a>Cosa significa che possiamo prevedere solo una componente di ciascuna osservazione $y_i$? Significa che il valore osservato $y_i$ sarà diverso dal valore $\hat{y}_i$ previsto dal modello. Ciascun valore osservato $y_i$ sarà dunque dato dalla seguente somma: $y_i = \hat{y}_i + e_i$, laddove $e_i$, detto "residuo" è la componente di $y_i$ non predicibile dal modello lineare.</span>
 <span id="cb36-123"><a href="#cb36-123" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-124"><a href="#cb36-124" aria-hidden="true" tabindex="-1"></a>Ci possiamo dunque porre due domande:</span>
 <span id="cb36-125"><a href="#cb36-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-126"><a href="#cb36-126" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>come possiamo trovare i coefficienti $a$ e $b$ che consentono di predire una componente della $y$ conoscendo $x$?</span>
-<span id="cb36-127"><a href="#cb36-127" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>quant'è grande la porzione della $y$ che può essere predetta conoscendo $x$? In altre parole, quant'è accurata la predizione della $y$ che può essere fornita dal modello di regressione lineare?</span>
+<span id="cb36-126"><a href="#cb36-126" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>come è possibile trovare i coefficienti $a$ e $b$ che consentono di predire una componente della $y$ conoscendo la $x$?</span>
+<span id="cb36-127"><a href="#cb36-127" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>quant'è grande la porzione della $y$ che può essere predetta conoscendo $x$? In altre parole, quant'è accurata la predizione della $y$ fornita dal modello di regressione lineare?</span>
 <span id="cb36-128"><a href="#cb36-128" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-129"><a href="#cb36-129" aria-hidden="true" tabindex="-1"></a>Rispondere a tali due domanda definisce i primi due obiettivi del modello statistico della regressione lineare. Il terzo obiettivo è quello dell'inferenza, ovvero quello di capire che relazioni ci sono tra la relazione tra $x$ e $y$ osservata nel campione e la la relazione tra le due variabili nella popolazione.</span>
 <span id="cb36-130"><a href="#cb36-130" aria-hidden="true" tabindex="-1"></a></span>

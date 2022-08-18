@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.629">
+<meta name="generator" content="quarto-1.0.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 20&nbsp; Il modello beta-binomiale in linguaggio Stan</title>
 <style>
@@ -113,7 +113,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -170,284 +170,289 @@ div.csl-indent {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./basics.html" class="sidebar-item-text sidebar-link">Parte 1: Nozioni di base</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./001_key_notions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Concetti chiave</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./005_measurement.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">La misurazione in psicologia</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./007_freq_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variabili e distribuzioni di frequenza</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./011_loc_scale.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Indici di posizione e di scala</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./012_correlation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Le relazioni tra variabili</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./prob.html" class="sidebar-item-text sidebar-link">Parte 2: Il calcolo delle probabilità</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./015_prob_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">La logica dell’incerto</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./016_conditional_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilità condizionata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./017_bayes_theorem.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">L’interpretazione soggettivista della probabilità</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./018_joint_prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilità congiunta</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./019_density_func.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">La densità di probabilità</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./020_expval_var.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Valore atteso e varianza</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./distr.html" class="sidebar-item-text sidebar-link">Parte 3: Distribuzioni di v.c. discrete e continue</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./022_discr_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. discrete</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./023_cont_rv_distr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Distribuzioni di v.c. continue</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./024_likelihood.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">La funzione di verosimiglianza</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./bayes_inference.html" class="sidebar-item-text sidebar-link">Parte 4: Inferenza bayesiana</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./025_intro_bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Credibilità, modelli e parametri</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./026_subj_prop.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Pensare ad una proporzione in termini soggettivi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./029_conjugate_families.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Distribuzioni coniugate</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./030_balance_prior_post.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">L’influenza della distribuzione a priori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./036_posterior_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Approssimazione della distribuzione a posteriori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./040_beta_binomial_mod.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Il modello beta-binomiale in linguaggio Stan</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./041_mcmc_diagnostics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Diagnostica delle catene markoviane</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./045_summarize_posterior.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Sintesi a posteriori</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./046_bayesian_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">La predizione bayesiana</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./050_normal_normal_mod.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Inferenza sul parametro <span class="math inline">\(\mu\)</span> (media di una v.c. Normale)</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./regression.html" class="sidebar-item-text sidebar-link">Parte 5: Regressione lineare</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./regression.html" class="sidebar-item-text sidebar-link">Parte 5: Regressione lineare</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./051_reglin1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduzione</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare con un singolo predittore</span></a>
+  <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare bivariata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./053_reglin3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Modello di regressione in linguaggio Stan</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./054_reglin4.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Inferenza sul modello lineare</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./055_reglin5.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Confronto tra due gruppi indipendenti</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./056_pred_check.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Predictive checks</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./060_anova.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Confronto tra le medie di tre o più gruppi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./070_mod_hier.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Modello gerarchico</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./071_mod_hier_sim.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Modello gerarchico: simulazioni</span></a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./entropy.html" class="sidebar-item-text sidebar-link">Parte 6: Entropia</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a href="./entropy.html" class="sidebar-item-text sidebar-link">Parte 6: Entropia</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./090_entropy.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Entropia</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./091_kl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">La divergenza di Kullback-Leibler</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./092_info_criterion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Criterio di informazione e convalida incrociata</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
-    </ul>
+      </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">Appendici</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a01_math_symbols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Simbologia di base</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a02_number_sets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Numeri binari, interi, razionali, irrazionali e reali</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a03_set_theory.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Insiemi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a04_summation_notation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Simbolo di somma (sommatorie)</span></a>
   </div>
 </li>
-    </ul>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a10_markov_chains.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Le catene di Markov</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a15_stan_lang.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Programmare in Stan</span></a>
+  </div>
+</li>
+      </ul>
 </li>
     </ul>
 </div>
@@ -484,17 +489,17 @@ div.csl-indent {
   </div>
   
 
-</header><p>In questo Capitolo introdurremo un linguaggio di programmazione probabilistica chiamato <a href="http://mc-stan.org/">Stan</a> <span class="citation" data-cites="carpenter2017stan">(<a href="#ref-carpenter2017stan" role="doc-biblioref">Carpenter et al., 2017</a>)</span>. Stan consente di generare campioni da distribuzioni di probabilità basati sulla costruzione di una catena di Markov avente come distribuzione di equilibrio (o stazionaria) la distribuzione desiderata. Prende il nome da uno dei creatori del metodo Monte Carlo, Stanislaw Ulam <span class="citation" data-cites="Eckhardt1987stan">(<a href="#ref-Eckhardt1987stan" role="doc-biblioref">Eckhardt, 1987</a>)</span>. Un’introduzione al linguaggio Stan è fornita in Appendice. In questo Capitolo useremo Stan per fare inferenza su una proporzione.</p>
+</header><p>In questo Capitolo introdurremo un linguaggio di programmazione probabilistica chiamato <a href="http://mc-stan.org/">Stan</a> <span class="citation" data-cites="carpenter2017stan">(<a href="999_refs.html#ref-carpenter2017stan" role="doc-biblioref">Carpenter et al., 2017</a>)</span>. Stan consente di generare campioni da distribuzioni di probabilità basati sulla costruzione di una catena di Markov avente come distribuzione di equilibrio (o stazionaria) la distribuzione desiderata. Prende il nome da uno dei creatori del metodo Monte Carlo, Stanislaw Ulam <span class="citation" data-cites="Eckhardt1987stan">(<a href="999_refs.html#ref-Eckhardt1987stan" role="doc-biblioref">Eckhardt, 1987</a>)</span>. Un’introduzione al linguaggio Stan è fornita in Appendice. In questo Capitolo useremo Stan per fare inferenza su una proporzione.</p>
 <section id="il-presidente-trump-e-lidrossiclorochina" class="level2" data-number="20.1"><h2 data-number="20.1" class="anchored" data-anchor-id="il-presidente-trump-e-lidrossiclorochina">
 <span class="header-section-number">20.1</span> Il presidente Trump e l’idrossiclorochina</h2>
 <p>Per fare un esempio concreto, consideriamo un set di dati reali. Cito dal <em>Washington Post</em> del 7 aprile 2020:</p>
 <blockquote class="blockquote">
 <p>One of the most bizarre and disturbing aspects of President Trump’s nightly press briefings on the coronavirus pandemic is when he turns into a drug salesman. Like a cable TV pitchman hawking ‘male enhancement’ pills, Trump regularly extols the virtues of taking hydroxychloroquine, a drug used to treat malaria and lupus, as a potential ‘game changer’ that just might cure Covid-19.</p>
 </blockquote>
-<p>Tralasciamo qui il fatto che il Donald Trump non sia un esperto in questo campo. Esaminiamo invece le evidenze iniziali a supporto dell’ipotesi che l’idrossiclorochina possa essere utile per la cura del Covid-19, ovvero le evidenze che erano disponibili nel momento in cui il Donald Trump ha fatto le affermazioni riportate sopra (in seguito, quest’idea è stata screditata). Tali evidenze sono state fornite da uno studio di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>. Il disegno sperimentale di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> comprende, tra le altre cose, il confronto tra una condizione sperimentale e una condizione di controllo. Il confronto importante è tra la proporzione di paziente positivi al virus SARS-CoV-2 nel gruppo sperimentale (a cui è stata somministrata l’idrossiclorochina; 6 su 14) e la proporzione di paziente positivi nel gruppo di controllo (a cui non è stata somministrata l’idrossiclorochina; ovvero 14 su 16). Obiettivo di questo Capitolo è mostrare come si possa fare inferenza sui dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> usando il linguaggio Stan. Per semplicità, iniziamo considerando solo il gruppo di controllo.</p>
+<p>Tralasciamo qui il fatto che il Donald Trump non sia un esperto in questo campo. Esaminiamo invece le evidenze iniziali a supporto dell’ipotesi che l’idrossiclorochina possa essere utile per la cura del Covid-19, ovvero le evidenze che erano disponibili nel momento in cui il Donald Trump ha fatto le affermazioni riportate sopra (in seguito, quest’idea è stata screditata). Tali evidenze sono state fornite da uno studio di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>. Il disegno sperimentale di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> comprende, tra le altre cose, il confronto tra una condizione sperimentale e una condizione di controllo. Il confronto importante è tra la proporzione di paziente positivi al virus SARS-CoV-2 nel gruppo sperimentale (a cui è stata somministrata l’idrossiclorochina; 6 su 14) e la proporzione di paziente positivi nel gruppo di controllo (a cui non è stata somministrata l’idrossiclorochina; ovvero 14 su 16). Obiettivo di questo Capitolo è mostrare come si possa fare inferenza sui dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> usando il linguaggio Stan. Per semplicità, iniziamo considerando solo il gruppo di controllo.</p>
 </section><section id="una-proporzione" class="level2" data-number="20.2"><h2 data-number="20.2" class="anchored" data-anchor-id="una-proporzione">
 <span class="header-section-number">20.2</span> Una proporzione</h2>
-<p>Sulla base di ciò che è stato detto nel <a href="#sec-distr-coniugate"><span class="quarto-unresolved-ref">sec-distr-coniugate</span></a>, sappiamo che, quando i dati sono rappresentati da una proporzione <span class="math inline">\(\theta\)</span>, e quando utilizziamo una distribuzione a priori Beta per <span class="math inline">\(\theta\)</span>, la distribuzione a posteriori di <span class="math inline">\(\theta\)</span> è specificata dallo schema beta-binomiale. Se scegliamo, ad esempio, una <span class="math inline">\(\mbox{Beta}(2, 2)\)</span> quale distribuzione a priori per <span class="math inline">\(\theta\)</span>, il modello diventa:</p>
+<p>Sulla base di ciò che è stato detto nel <a href="029_conjugate_families.html"><span>Capitolo&nbsp;17</span></a>, sappiamo che, quando i dati sono rappresentati da una proporzione <span class="math inline">\(\theta\)</span>, e quando utilizziamo una distribuzione a priori Beta per <span class="math inline">\(\theta\)</span>, la distribuzione a posteriori di <span class="math inline">\(\theta\)</span> è specificata dallo schema beta-binomiale. Se scegliamo, ad esempio, una <span class="math inline">\(\mbox{Beta}(2, 2)\)</span> quale distribuzione a priori per <span class="math inline">\(\theta\)</span>, il modello diventa:</p>
 <!-- Si considerino $n$ variabili casuali Bernoulliane i.i.d.:  -->
 <!-- $$ -->
 <!-- y = (y_1, \dots, y_n) \stackrel{iid}{\sim} \mbox{Bernoulli}(\theta). -->
@@ -514,7 +519,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 </section><section id="cmdstanr-gautret" class="level2" data-number="20.3"><h2 data-number="20.3" class="anchored" data-anchor-id="cmdstanr-gautret">
 <span class="header-section-number">20.3</span> Interfaccia <code>cmdstanr</code>
 </h2>
-<p>I modelli presentati in questo capitolo sono discussi da <span class="citation" data-cites="gelman1995bayesian">Gelman et al. (<a href="#ref-gelman1995bayesian" role="doc-biblioref">1995</a>)</span> mentre il codice è stato ricavato dalla seguente <a href="http://avehtari.github.io/BDA_R_demos/demos_rstan/rstan_demo.html">pagina web</a>. In questo e nei successivi capitoli useremo Stan mediante l’interfaccia <code>cmdstanr</code> di CmdStan.</p>
+<p>I modelli presentati in questo capitolo sono discussi da <span class="citation" data-cites="gelman1995bayesian">Gelman et al. (<a href="999_refs.html#ref-gelman1995bayesian" role="doc-biblioref">1995</a>)</span> mentre il codice è stato ricavato dalla seguente <a href="http://avehtari.github.io/BDA_R_demos/demos_rstan/rstan_demo.html">pagina web</a>. In questo e nei successivi capitoli useremo Stan mediante l’interfaccia <code>cmdstanr</code> di CmdStan.</p>
 <p>Iniziamo con il caricare i pacchetti necessari.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://mc-stan.org/cmdstanr/">"cmdstanr"</a></span><span class="op">)</span></span>
@@ -654,13 +659,13 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 </details><div class="cell-output-display">
 <div id="fig-trace-plot-gautret" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="040_beta_binomial_mod_files/figure-html/fig-trace-plot-gautret-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 20.1: Trace-plot per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 20.1: Trace-plot per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-trace-plot-gautret">Figura&nbsp;<span class="quarto-unresolved-ref">fig-trace-plot-gautret</span></a> mostra che le catene esplorano uno spazio compreso approssimativamenre tra 0.5 e 0.95; questa figura descrive il comportamento <em>longitudinale</em> delle catene di Markov.</p>
-<p>Possiamo anche esaminare la distribuzione degli stati della catena di Markov, ovvero, dei valori che queste catene visitano lungo il loro percorso, ignorando l’ordine di queste visite. L’istogramma della <a href="#fig-hist-post-gautret">Figura&nbsp;<span class="quarto-unresolved-ref">fig-hist-post-gautret</span></a> fornisce una rappresentazione grafica di questa distribuzione per i 16000 valori complessivi delle quattro catene, ovvero per 4000 valori provienienti da ciascuna catena.</p>
+<p>La <a href="#fig-trace-plot-gautret">Figura&nbsp;<span>20.1</span></a> mostra che le catene esplorano uno spazio compreso approssimativamenre tra 0.5 e 0.95; questa figura descrive il comportamento <em>longitudinale</em> delle catene di Markov.</p>
+<p>Possiamo anche esaminare la distribuzione degli stati della catena di Markov, ovvero, dei valori che queste catene visitano lungo il loro percorso, ignorando l’ordine di queste visite. L’istogramma della <a href="#fig-hist-post-gautret">Figura&nbsp;<span>20.2</span></a> fornisce una rappresentazione grafica di questa distribuzione per i 16000 valori complessivi delle quattro catene, ovvero per 4000 valori provienienti da ciascuna catena.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mcmc_hist</span><span class="op">(</span><span class="va">stanfit1</span>, pars <span class="op">=</span> <span class="st">"theta"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">yaxis_text</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -668,12 +673,12 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 </details><div class="cell-output-display">
 <div id="fig-hist-post-gautret" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="040_beta_binomial_mod_files/figure-html/fig-hist-post-gautret-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 20.2: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 20.2: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Nello schema beta-binomiale in cui la verosimiglianza è binomiale con 14 successi su 16 prove e in cui assumiamo una distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 2)\)</span> sul parametro <span class="math inline">\(\theta\)</span>, la distribuzione a posteriori è una distribuzione Beta di parametri <span class="math inline">\(\alpha\)</span> = 2 + 14 e <span class="math inline">\(\beta\)</span> = 2 + 16 - 14. La <a href="#fig-hist-post-gautret-plus-correct">Figura&nbsp;<span class="quarto-unresolved-ref">fig-hist-post-gautret-plus-correct</span></a> riporta un kernel density plot per i valori delle quattro catene di Markov con sovrapposta in nero la densità <span class="math inline">\(\mbox{Beta}(16, 4)\)</span>. Si noti come la distribuzione dei valori delle catene di Markov produca un’eccellente approssimazione alla distribuzione bersaglio.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Nello schema beta-binomiale in cui la verosimiglianza è binomiale con 14 successi su 16 prove e in cui assumiamo una distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 2)\)</span> sul parametro <span class="math inline">\(\theta\)</span>, la distribuzione a posteriori è una distribuzione Beta di parametri <span class="math inline">\(\alpha\)</span> = 2 + 14 e <span class="math inline">\(\beta\)</span> = 2 + 16 - 14. La <a href="#fig-hist-post-gautret-plus-correct">Figura&nbsp;<span>20.3</span></a> riporta un kernel density plot per i valori delle quattro catene di Markov con sovrapposta in nero la densità <span class="math inline">\(\mbox{Beta}(16, 4)\)</span>. Si noti come la distribuzione dei valori delle catene di Markov produca un’eccellente approssimazione alla distribuzione bersaglio.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">mcmc_dens</span><span class="op">(</span><span class="va">stanfit1</span>, pars <span class="op">=</span> <span class="st">"theta"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">yaxis_text</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -682,7 +687,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 </details><div class="cell-output-display">
 <div id="fig-hist-post-gautret-plus-correct" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="040_beta_binomial_mod_files/figure-html/fig-hist-post-gautret-plus-correct-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 20.3: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale. La curva nera rappresenta la corretta distribuzione a posteriori Beta(16, 4).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura 20.3: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale. La curva nera rappresenta la corretta distribuzione a posteriori Beta(16, 4).</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -696,19 +701,19 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 <span><span class="co">#&gt; lp__  -12.5817650 -10.0086000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Svolgendo un’analisi bayesiana simile a questa, <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno trovato che gli intervalli di credibilità del gruppo di controllo e del gruppo sperimentale non si sovrappongono. Questo fatto viene interpretato dicendo che il parametro <span class="math inline">\(\theta\)</span> è diverso nei due gruppi. Sulla base di queste evidenza, <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno concluso, con un grado di certezza soggettiva del 95%, che nel gruppo sperimentale vi è una probabilità più bassa di risultare positivi al SARS-CoV-2 rispetto al gruppo di controllo. In altri termini, l’analisi statistica condotta da <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> suggerisce che l’idrossiclorochina è una terapia efficace per il Covid-19.</p>
+<p>Svolgendo un’analisi bayesiana simile a questa, <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno trovato che gli intervalli di credibilità del gruppo di controllo e del gruppo sperimentale non si sovrappongono. Questo fatto viene interpretato dicendo che il parametro <span class="math inline">\(\theta\)</span> è diverso nei due gruppi. Sulla base di queste evidenza, <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno concluso, con un grado di certezza soggettiva del 95%, che nel gruppo sperimentale vi è una probabilità più bassa di risultare positivi al SARS-CoV-2 rispetto al gruppo di controllo. In altri termini, l’analisi statistica condotta da <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> suggerisce che l’idrossiclorochina è una terapia efficace per il Covid-19.</p>
 </section></section><section id="la-critica-di-hulme_2020" class="level2" data-number="20.4"><h2 data-number="20.4" class="anchored" data-anchor-id="la-critica-di-hulme_2020">
-<span class="header-section-number">20.4</span> La critica di <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span>
+<span class="header-section-number">20.4</span> La critica di <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="999_refs.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span>
 </h2>
-<p>Un articolo pubblicato da <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> si è posto il problema di rianalizzare i dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Tra gli autori di questo articolo figura anche Eric-Jan Wagenmakers, uno psicologo molto conosciuto per i suoi contributi metodologici. <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> osservano che, nelle loro analisi statistiche, <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno escluso alcuni dati. Nel gruppo sperimentale, infatti, vi erano alcuni pazienti i quali, anziché migliorare, sono in realtà peggiorati. L’analisi statistica di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> ha escluso i dati di questi pazienti. Se consideriamo tutti i pazienti — non solo quelli selezionati da <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> — la situazione diventa la seguente:</p>
+<p>Un articolo pubblicato da <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="999_refs.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> si è posto il problema di rianalizzare i dati di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Tra gli autori di questo articolo figura anche Eric-Jan Wagenmakers, uno psicologo molto conosciuto per i suoi contributi metodologici. <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="999_refs.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> osservano che, nelle loro analisi statistiche, <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> hanno escluso alcuni dati. Nel gruppo sperimentale, infatti, vi erano alcuni pazienti i quali, anziché migliorare, sono in realtà peggiorati. L’analisi statistica di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> ha escluso i dati di questi pazienti. Se consideriamo tutti i pazienti — non solo quelli selezionati da <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> — la situazione diventa la seguente:</p>
 <ul>
 <li>gruppo sperimentale: 10 positivi su 18;</li>
 <li>gruppo di controllo: 14 positivi su 16.</li>
 </ul>
-<p>L’analisi dei dati proposta da <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> richiede l’uso di alcuni strumenti statistici che, in queste dispense, non verranno discussi. Ma possiamo giungere alle stesse conclusioni raggiunte da questi ricercatori anche usando le procedure statistiche descritte nel Paragrafo successivo.</p>
+<p>L’analisi dei dati proposta da <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="999_refs.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span> richiede l’uso di alcuni strumenti statistici che, in queste dispense, non verranno discussi. Ma possiamo giungere alle stesse conclusioni raggiunte da questi ricercatori anche usando le procedure statistiche descritte nel Paragrafo successivo.</p>
 </section><section id="due-proporzioni" class="level2" data-number="20.5"><h2 data-number="20.5" class="anchored" data-anchor-id="due-proporzioni">
 <span class="header-section-number">20.5</span> Due proporzioni</h2>
-<p>Svolgiamo ora l’analisi statistica considerando tutti i dati, come suggerito da <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span>. Per fare questo verrà creato un modello bayesiano per fare inferenza sulla differenza tra due proporzioni. Dopo avere generato le distribuzioni a posteriori per le proporzioni di “successi” nei due gruppi, calcoleremo la quantità</p>
+<p>Svolgiamo ora l’analisi statistica considerando tutti i dati, come suggerito da <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="999_refs.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span>. Per fare questo verrà creato un modello bayesiano per fare inferenza sulla differenza tra due proporzioni. Dopo avere generato le distribuzioni a posteriori per le proporzioni di “successi” nei due gruppi, calcoleremo la quantità</p>
 <p><span id="eq-odds-ratio"><span class="math display">\[
 \omega = \frac{\theta_2 / (1-\theta_2)}{\theta_1 / (1-\theta_1)},
 \tag{20.2}\]</span></span></p>
@@ -784,7 +789,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 <span>  pars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"theta1"</span>, <span class="st">"theta2"</span>, <span class="st">"oddsratio"</span><span class="op">)</span>,</span>
 <span>  digits_summary <span class="op">=</span> <span class="fl">3L</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Inference for Stan model: twoprop1-202207010844-1-5c95d1.</span></span>
+<span><span class="co">#&gt; Inference for Stan model: twoprop1-202208180631-1-5c14f4.</span></span>
 <span><span class="co">#&gt; 4 chains, each with iter=6000; warmup=2000; thin=1; </span></span>
 <span><span class="co">#&gt; post-warmup draws per chain=4000, total post-warmup draws=16000.</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -793,20 +798,20 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 <span><span class="co">#&gt; theta2    0.798   0.001 0.087 0.601 0.744 0.808 0.862  0.937 14193    1</span></span>
 <span><span class="co">#&gt; oddsratio 4.721   0.043 4.411 0.906 2.166 3.514 5.698 15.558 10400    1</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Ven Lug 01 08:44:52 2022.</span></span>
+<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Gio Ago 18 06:31:34 2022.</span></span>
 <span><span class="co">#&gt; For each parameter, n_eff is a crude measure of effective sample size,</span></span>
 <span><span class="co">#&gt; and Rhat is the potential scale reduction factor on split chains (at </span></span>
 <span><span class="co">#&gt; convergence, Rhat=1).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>L’intervallo di credibilità del 95% per l’OR include il valore di 1.0 (ovvero, il valore che indica che gli Odds di positività sono uguali nei due gruppi). In base agli standard correnti, un risultato di questo tipo non viene considerato come evidenza sufficiente per potere concludere che il parametro <span class="math inline">\(\theta\)</span> assume un valore diverso nei due gruppi. In conclusione, se consideriamo tutti i dati, e non solo quelli selezionati da <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, non vi sono evidenze sull’efficacia dell’idrossiclorochina come terapia per il Covid-19.</p>
+<p>L’intervallo di credibilità del 95% per l’OR include il valore di 1.0 (ovvero, il valore che indica che gli Odds di positività sono uguali nei due gruppi). In base agli standard correnti, un risultato di questo tipo non viene considerato come evidenza sufficiente per potere concludere che il parametro <span class="math inline">\(\theta\)</span> assume un valore diverso nei due gruppi. In conclusione, se consideriamo tutti i dati, e non solo quelli selezionati da <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span>, non vi sono evidenze sull’efficacia dell’idrossiclorochina come terapia per il Covid-19.</p>
 </section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
-<p>La ricerca di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> include altre informazioni e altre analisi statistiche che non sono state qui considerate. Tuttavia, notiamo che la semplice analisi statistica che abbiamo qui descritto è stata in grado di replicare le conclusioni a cui sono giunti (per altra via) <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>La ricerca di <span class="citation" data-cites="Gautret_2020">Gautret et al. (<a href="999_refs.html#ref-Gautret_2020" role="doc-biblioref">2020</a>)</span> include altre informazioni e altre analisi statistiche che non sono state qui considerate. Tuttavia, notiamo che la semplice analisi statistica che abbiamo qui descritto è stata in grado di replicare le conclusioni a cui sono giunti (per altra via) <span class="citation" data-cites="Hulme_2020">Hulme et al. (<a href="999_refs.html#ref-Hulme_2020" role="doc-biblioref">2020</a>)</span>.</p>
 
 
 <!-- -->
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
 <div id="ref-carpenter2017stan" class="csl-entry" role="doc-biblioentry">
 Carpenter, B., Gelman, A., Hoffman, M. D., Lee, D., Goodrich, B., Betancourt, M., Brubaker, M., Guo, J., Li, P., &amp; Riddell, A. (2017). Stan: A probabilistic programming language. <em>Journal of Statistical Software</em>, <em>76</em>(1), 1–32.
 </div>
@@ -829,6 +834,24 @@ Hulme, O. J., Wagenmakers, E. J., Damkier, P., Madelung, C. F., Siebner, H. R., 
 <li id="fn2" role="doc-endnote"><p>Si veda <a href="https://osf.io/5dgmx/" class="uri">https://osf.io/5dgmx/</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
