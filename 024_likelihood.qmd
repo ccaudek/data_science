@@ -128,7 +128,7 @@ $$
 \hat{\theta} = \mbox{argmax}_{\theta \in \Theta} \ell(\theta) = \mbox{argmax}_{\theta \in \Theta} \mathcal{L}(\theta).
 $$
 
-Per le proprietà del logaritmo, la funzione nucleo di log-verosimiglianza è
+Per le proprietà del logaritmo, la funzione nucleo di log-verosimiglianza della binomiale è
 
 $$
 \begin{aligned}
@@ -185,19 +185,19 @@ Esaminiamo prima il caso in cui i dati corrispondono ad una singola osservazione
 y <- 114
 ```
 
-L'@eq-gaussian-sim-like dipende dai parametri $\mu$ e $\sigma$ e dai dati $y$. Per semplicità, ipotizzeremo $\sigma$ noto e uguale a 15. Nella simulazione considereremo 1000 valori $\mu$ compresi tra 70 e 160.
+L'@eq-gaussian-sim-like dipende dai parametri $\mu$ e $\sigma$ e dai dati $y$. Per semplicità, ipotizziamo $\sigma$ noto e uguale a 15. Nella simulazione considereremo 1000 valori $\mu$ compresi tra 70 e 160.
 
 ```{r}
 mu <- seq(70, 160, length.out = 1e3)
 ```
 
-Dato che consideriamo 1000 possibili valori $\mu$, per costruire la funzione di verosimiglianza applicheremo l'@eq-gaussian-sim-like 1000 volte. In ciascun passo della simulazione inseriremo nell'@eq-gaussian-sim-like
+Dato che consideriamo 1000 possibili valori $\mu$, per costruire la funzione di verosimiglianza applicheremo l'@eq-gaussian-sim-like 1000 volte. In ciascun passo della simulazione, nell'@eq-gaussian-sim-like inseriremo
 
 -   il singolo valore $y$ considerato,
 -   il valore $\sigma$ assunto noto,
--   ciascuno dei valori $\mu$ che abbiamo considerato.
+-   uno alla volta dei valori $\mu$ che abbiamo considerato.
 
-La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione `dnorm()`. La funzione `dnorm()` ha tre argomenti: il valore $y$ (o il vettore $y$), la media, ovvero il parametro $\mu$ e la deviazione standard, ovvero il parametro $\sigma$.
+La distribuzione Gaussiana è implementata in $\mathsf{R}$ nella funzione `dnorm()`. La funzione `dnorm()` richiede tre argomenti: il valore $y$ (o il vettore $y$), la media, ovvero il parametro $\mu$, e la deviazione standard, ovvero il parametro $\sigma$.
 
 Usando la funzione `dnorm()` 1000 volte, una volta per ciascuno dei valori $\mu$ che abbiamo considerato (e tenendo fissi $y = 114$ e $\sigma = 15$) otteniamo 1000 valori $f(\mu)$.
 
@@ -220,7 +220,7 @@ tibble(mu, f_mu) %>%
     ) 
 ```
 
-Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione (ma solo in questo caso) ha un'area unitaria.
+Si noti che la funzione di verosimiglianza così trovata ha la forma della distribuzione Gaussiana. Nel caso di una singola osservazione, ma solo in questo caso, ha anche un'area unitaria.
 
 ```{r}
 integrand <- function(mu) {
@@ -302,7 +302,7 @@ log_likelihood <- function(y, mu, sigma = true_sigma) {
 }
 ```
 
-L'argomento `y` è un vettore di 30 elementi; gli argomenti `mu` e `sigma` sono scalari.
+L'argomento `y` è un vettore di 30 elementi; gli argomenti `mu` e `sigma` sono degli scalari.
 
 Per ciascuno valore `y`, la funzione `dnorm()` trova la densità Normale utilizzando il valore `mu` in input e `sigma = 6.61`. L'argomento `log = TRUE` specifica che deve essere preso il logaritmo. I 30 valori così ottenuti vengono poi sommati dalla funzione `sum()`.
 
