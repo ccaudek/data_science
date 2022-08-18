@@ -9,3 +9,4 @@ suppressPackageStartupMessages({
 
 rstan_options(auto_write = TRUE) # avoid recompilation of models
 # Sys.setenv(LOCAL_CPPFLAGS = "-march=native") # improve execution time
+stanc_options = list("O1")

@@ -241,7 +241,7 @@ Una sintesi della distribuzione a posteriori dei parametri si ottiene nel modo s
 fit$summary(c("mu"))
 ```
 
-Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero $\mu_p$ = 29.57 contro un valore teorico di 29.35 e $\tau_p$ = 0.96 contro un valore teorico di 1.03.
+Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero $\mu_p$ = 29.3527 contro un valore teorico di 29.35 e $\tau_p$ = 1.033 contro un valore teorico di 1.03.
 
 Qui sotto è fornita una rappresentazione grafica dell'intera distribuzione a posteriori del parametro $\mu$.
 
