@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.629">
+<meta name="generator" content="quarto-1.0.28">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Data Science per psicologi - 26&nbsp; Regressione lineare con un singolo predittore</title>
+<title>Data Science per psicologi - 26&nbsp; Regressione lineare bivariata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare con un singolo predittore</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare bivariata</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -325,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare con un singolo predittore</span></a>
+  <a href="./052_reglin2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare bivariata</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -390,11 +390,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./093_projpred.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Selezione di variabili</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./999_refs.html" class="sidebar-item-text sidebar-link">Riferimenti bibliografici</a>
   </div>
 </li>
@@ -428,6 +423,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./a04_summation_notation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Simbolo di somma (sommatorie)</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a10_markov_chains.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Le catene di Markov</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./a15_stan_lang.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Programmare in Stan</span></a>
+  </div>
+</li>
     </ul>
 </li>
     </ul>
@@ -455,7 +460,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span id="sec-regr-model-lm" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare con un singolo predittore</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Codice</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-regr-model-lm" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regressione lineare bivariata</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Codice</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -470,8 +475,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header><div class="cell">
 
 </div>
-<p>La regressione è un metodo statistico che consente di predire un esito <span class="math inline">\(y\)</span> sulla base della conoscenza delle variabili <span class="math inline">\(x_1, x_2, \dots\)</span>. In questo Capitolo verrà introdotto il modello di regressione che predice una variabile continua <span class="math inline">\(y\)</span> a partire da un unico predittore continuo <span class="math inline">\(x\)</span>. Ciò corrisponde ad adattare ai dati (<span class="math inline">\(x_i, y_i\)</span>) la retta di regressione <span class="math inline">\(y_i = a + bx_i + e_i\)</span>, con <span class="math inline">\(i=1, \dots, n\)</span>. Usando dei dati reali, vedremo come stimare i coefficienti di regressione <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> e come essi possano essere interpretati. Vedremo anche di descrivere la bontà di adattamento del modello ai dati.</p>
-<p>Nell’esempio che discuteremo in questo Capitolo verranno usati i dati <code>kidiq</code>. Riporto qui di seguito la descrizione delle variabili che sono state misurate in questo campione.</p>
+<p>In questo Capitolo verrà discusso il modello di regressione bivariata, ovvero il modello che, mediante una relazione lineare, predice una variabile continua <span class="math inline">\(y\)</span> a partire da un unico predittore continuo <span class="math inline">\(x\)</span>. Ciò corrisponde ad adattare ai dati (<span class="math inline">\(x_i, y_i\)</span>) la retta di regressione <span class="math inline">\(y_i = a + bx_i + e_i\)</span>, con <span class="math inline">\(i=1, \dots, n\)</span>. Usando dei dati reali, vedremo come stimare i coefficienti di regressione <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>, e come essi possono essere interpretati. Vedremo anche come si può descrivere la bontà di adattamento del modello ai dati.</p>
+<p>Nell’esempio che discuteremo in questo Capitolo verranno usati i dati <code>kidiq</code>:</p>
 <blockquote class="blockquote">
 <p>Data from a survey of adult American women and their children (a subsample from the National Longitudinal Survey of Youth).</p>
 </blockquote>
@@ -1108,16 +1113,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb36" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Regressione lineare con un singolo predittore {#sec-regr-model-lm}</span></span>
+<div class="sourceCode" id="cb36" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Regressione lineare bivariata {#sec-regr-model-lm}</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}</span></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_common.R"</span>)</span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"_stan_options.R"</span>)</span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>La regressione è un metodo statistico che consente di predire un esito $y$ sulla base della conoscenza delle variabili $x_1, x_2, \dots$. In questo Capitolo verrà introdotto il modello di regressione che predice una variabile continua $y$ a partire da un unico predittore continuo $x$. Ciò corrisponde ad adattare ai dati ($x_i, y_i$) la retta di regressione $y_i = a + bx_i + e_i$, con $i=1, \dots, n$. Usando dei dati reali, vedremo come stimare i coefficienti di regressione $a$ e $b$ e come essi possano essere interpretati. Vedremo anche di descrivere la bontà di adattamento del modello ai dati.</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>In questo Capitolo verrà discusso il modello di regressione bivariata, ovvero il modello che, mediante una relazione lineare, predice una variabile continua $y$ a partire da un unico predittore continuo $x$. Ciò corrisponde ad adattare ai dati ($x_i, y_i$) la retta di regressione $y_i = a + bx_i + e_i$, con $i=1, \dots, n$. Usando dei dati reali, vedremo come stimare i coefficienti di regressione $a$ e $b$, e come essi possono essere interpretati. Vedremo anche come si può descrivere la bontà di adattamento del modello ai dati.</span>
 <span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>Nell'esempio che discuteremo in questo Capitolo verranno usati i dati <span class="in">`kidiq`</span>. Riporto qui di seguito la descrizione delle variabili che sono state misurate in questo campione.</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>Nell'esempio che discuteremo in questo Capitolo verranno usati i dati <span class="in">`kidiq`</span>:</span>
 <span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Data from a survey of adult American women and their children (a subsample from the National Longitudinal Survey of Youth).</span></span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>

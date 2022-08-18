@@ -1,13 +1,13 @@
-# Regressione lineare con un singolo predittore {#sec-regr-model-lm}
+# Regressione lineare bivariata {#sec-regr-model-lm}
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 source("_common.R")
 source("_stan_options.R")
 ```
 
-La regressione è un metodo statistico che consente di predire un esito $y$ sulla base della conoscenza delle variabili $x_1, x_2, \dots$. In questo Capitolo verrà introdotto il modello di regressione che predice una variabile continua $y$ a partire da un unico predittore continuo $x$. Ciò corrisponde ad adattare ai dati ($x_i, y_i$) la retta di regressione $y_i = a + bx_i + e_i$, con $i=1, \dots, n$. Usando dei dati reali, vedremo come stimare i coefficienti di regressione $a$ e $b$ e come essi possano essere interpretati. Vedremo anche di descrivere la bontà di adattamento del modello ai dati.
+In questo Capitolo verrà discusso il modello di regressione bivariata, ovvero il modello che, mediante una relazione lineare, predice una variabile continua $y$ a partire da un unico predittore continuo $x$. Ciò corrisponde ad adattare ai dati ($x_i, y_i$) la retta di regressione $y_i = a + bx_i + e_i$, con $i=1, \dots, n$. Usando dei dati reali, vedremo come stimare i coefficienti di regressione $a$ e $b$, e come essi possono essere interpretati. Vedremo anche come si può descrivere la bontà di adattamento del modello ai dati.
 
-Nell'esempio che discuteremo in questo Capitolo verranno usati i dati `kidiq`. Riporto qui di seguito la descrizione delle variabili che sono state misurate in questo campione.
+Nell'esempio che discuteremo in questo Capitolo verranno usati i dati `kidiq`:
 
 > Data from a survey of adult American women and their children (a subsample from the National Longitudinal Survey of Youth).
 
@@ -20,9 +20,9 @@ Nell'esempio che discuteremo in questo Capitolo verranno usati i dati `kidiq`. R
 > -   mom_iq Mother's IQ score
 > -   mom_age Mother's age
 
-In questo esercizio sulla regressione lineare considererò la relazione tra l'intelligenza del bambino (`kid_score`) e l'intelligenza della madre (`mom_iq`). Mi chiederò se l'intelligenza della madre sia in grado di predire l'intelligenza del bambino e in che misura lo faccia.
+Nel presente Capitolo esaminerò la relazione tra l'intelligenza del bambino (`kid_score`) e l'intelligenza della madre (`mom_iq`). Mi chiederò se, e in che misura, l'intelligenza della madre sia in grado di predire l'intelligenza del bambino.
 
-Leggo i dati in $\mathsf{R}$.
+Per iniziare, leggo i dati in $\mathsf{R}$.
 
 ```{r}
 kidiq <- rio::import(here::here(
@@ -39,7 +39,7 @@ kidiq %>%
   geom_point()
 ```
 
-La regressione lineare descrive questa associazione mediante una retta.
+Il modello di regressione lineare descrive questa associazione mediante una retta.
 
 ```{r}
 kidiq %>% 
@@ -61,12 +61,12 @@ kidiq %>%
   )
 ```
 
-Una retta che passa per il punto $(\bar{x}, \bar{y})$ ha delle desiderabili proprietà statistiche che verranno descritte in seguito.
+Una retta che passa per il punto $(\bar{x}, \bar{y})$ (evidenziato in rosso nella figura precedente) ha delle desiderabili proprietà statistiche che verranno descritte in seguito.
 
 Il campione è costituito da $n$ coppie di osservazioni ($x, y$). Per ciascuna coppia di valori $x_i, y_i$, il modello di regressione si aspetta che il valore $y_i$ sia associato al corrispondente valore $x_i$ come indicato dalla seguente equazione:
 
 $$
-y_i = a + b x_i + e_i
+y_i = a + b x_i + e_i.
 $$
 
 I valori $y_i$ corrispondono, nell'esempio che stiamo discutendo, alla variabile `kid_score`. I primi 10 valori della variabile $y$ sono i seguenti:
@@ -81,7 +81,7 @@ Per fare riferimento a ciascuna osservazione usiamo l'indice $i$. Quindi, ad ese
 kidiq$kid_score[3]
 ```
 
-Nel caso presente, la variabile $x$ è `mom_iq`. I primi 10 valori di $x$ sono
+Nel caso presente, la variabile $x$ è `mom_iq`. I primi 10 valori di $x$ sono i seguenti:
 
 ```{r}
 kidiq$mom_iq[1:10]
@@ -93,7 +93,7 @@ In maniera corrispondente alla $y$, uso un indice per fare riferimento ai singol
 kidiq$mom_iq[3]
 ```
 
-L'equazione precedente ci dice che ciascun valore $y$ è dato dalla somma di due componenti: una componente deterministica e una componente aleatoria. Consideriamo il primo valore $y$ del campione. Per esso, il modello di regressione ci dice che
+Il modello di regressione bivariata, descritto dall'equazione precedente, ci dice che ciascun valore $y$ è dato dalla somma di due componenti: una componente deterministica e una componente aleatoria. Consideriamo il primo valore $y$ del campione. Per esso, il modello di regressione diventa
 
 $$
 y_1 = a + b x_1 + e_1,
@@ -101,14 +101,14 @@ $$
 
 laddove $a + b x_1$ è la componente deterministica, denotata con $\hat{y}$, e $e_1$ è la componente aleatoria.
 
-La componente deterministica è la *componente* di ciascun valore $y_i$ che è possibile prevedere conoscendo $x_i$. Tuttavia, non è possibile prevedere *perfettamente* i valori $y$ -- ciò si verificherebbe soltanto se tutti punti del diagramma a dispersione fossero disposti su una retta. Ma non lo sono mai nella pratica concreta: la retta è solo un'approssimazione della relazione (lineare) tra $x$ e $y$. Pertanto, conoscendo $x_i$ possiamo solo prevedere una "componente" del corrispondente valore $y_i$.
+La componente deterministica è la *componente* di ciascun valore $y_i$ che è possibile prevedere conoscendo $x_i$. Tuttavia, non è possibile prevedere *perfettamente* i valori $y$ -- ciò si verificherebbe soltanto se tutti punti del diagramma a dispersione fossero disposti su una retta. Ma non lo sono mai nella pratica concreta: la retta è solo un'approssimazione della relazione lineare tra $x$ e $y$. Pertanto, conoscendo $x_i$ possiamo solo prevedere una porzione (o "componente") del corrispondente valore $y_i$.
 
-Cosa significa che possiamo prevedere una componente di ciascuna osservazione $y_i$? Significa che il valore osservato $y_i$ sarà diverso dal valore $\hat{y}_i$ previsto dal modello. Ciascun valore $y_i$ sarà dunque dato dalla seguente somma: $y_i = \hat{y}_i + e_i$, laddove $e_i$, detto "residuo" è la componente di $y_i$ non predicibile dal modello lineare.
+Cosa significa che possiamo prevedere solo una componente di ciascuna osservazione $y_i$? Significa che il valore osservato $y_i$ sarà diverso dal valore $\hat{y}_i$ previsto dal modello. Ciascun valore osservato $y_i$ sarà dunque dato dalla seguente somma: $y_i = \hat{y}_i + e_i$, laddove $e_i$, detto "residuo" è la componente di $y_i$ non predicibile dal modello lineare.
 
 Ci possiamo dunque porre due domande:
 
--   come possiamo trovare i coefficienti $a$ e $b$ che consentono di predire una componente della $y$ conoscendo $x$?
--   quant'è grande la porzione della $y$ che può essere predetta conoscendo $x$? In altre parole, quant'è accurata la predizione della $y$ che può essere fornita dal modello di regressione lineare?
+-   come è possibile trovare i coefficienti $a$ e $b$ che consentono di predire una componente della $y$ conoscendo la $x$?
+-   quant'è grande la porzione della $y$ che può essere predetta conoscendo $x$? In altre parole, quant'è accurata la predizione della $y$ fornita dal modello di regressione lineare?
 
 Rispondere a tali due domanda definisce i primi due obiettivi del modello statistico della regressione lineare. Il terzo obiettivo è quello dell'inferenza, ovvero quello di capire che relazioni ci sono tra la relazione tra $x$ e $y$ osservata nel campione e la la relazione tra le due variabili nella popolazione.
 
