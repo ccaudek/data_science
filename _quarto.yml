@@ -80,6 +80,8 @@ format:
     theme: 
       - cosmo
       - r4ds.scss
+    callout-appearance: 
+      - simple
     # cover-image: cover.png
     code-link: true
     link-citations: yes
