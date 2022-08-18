@@ -5,7 +5,7 @@ source("_common.R")
 library("scales")
 ```
 
-La verosimiglianza viene utilizzata sia nell'inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti di un modello statistico.
+La verosimiglianza viene utilizzata sia nell'inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quello di quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti di un modello statistico.
 
 ::: {#def-likelihood}
 La *funzione di verosimiglianza* $\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,$ è la funzione di massa o di densità di probabilità dei dati $y$ vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) $\theta$.
@@ -13,16 +13,16 @@ La *funzione di verosimiglianza* $\mathcal{L}(\theta \mid y) = f(y \mid \theta),
 
 Detto in altre parole, la funzione di verosimiglianza e la funzione di (massa o densità di) probabilità sono formalmente identiche, ma è completamente diversa la loro interpretazione:
 
--   nel caso della funzione di massa o di densità di probabilità, la distribuzione del vettore casuale delle osservazioni campionarie $y$ dipende dai valori assunti dal parametro (o dai parametri) $\theta$;
--   nel caso della la funzione di verosimiglianza la credibilità assegnata a ciascun possibile valore $\theta$ viene determinata avendo acquisita l'informazione campionaria $y$ che rappresenta l'elemento condizionante.
+-   nel caso della funzione di massa o di densità di probabilità, la distribuzione del vettore casuale delle osservazioni campionarie $y$ dipende dai valori assunti dal parametro (o dai parametri) $\theta$ -- per esempio, nel caso della distribuzione binomiale, fissata $\theta$ (probabilità di successo) a 0.5, la probabilità di osservare $y = 0, \dots, 10$ successi in $n$ prove è determinata in maniera univoca (se il valore del parametro $\theta$ è noto, quello che resta da stabilire è la probabilità da assegnare a ciascuno degli esiti $y$ possibili);
+-   nel caso della la funzione di verosimiglianza la credibilità assegnata a ciascun possibile valore $\theta$ viene determinata avendo acquisita l'informazione campionaria $y$ che rappresenta l'elemento condizionante (in questo secondo caso, $y$ è noto, ma $\theta$ è ignoto; ci chiediamo quale sia la credibilità relativa di ciascuno dei possibili valori $\theta$, avendo osservato un determinato $y$).
 
-La funzione di verosimiglianza descrive in termini relativi il sostegno empirico che $\theta \in \Theta$ riceve da $y$. Infatti, la funzione di verosimiglianza assume forme diverse al variare di $y$. Possiamo dunque pensare alla funzione di verosimiglianza come alla risposta alla seguente domanda: avendo osservato i dati $y$, quanto risultano (relativamente) credibili i diversi valori del parametro $\theta$? In termini più formali possiamo dire: sulla base dei dati, $\theta_1 \in \Theta$ risulta più credibile di $\theta_2 \in \Theta$ quale indice del modello probabilistico generatore dei dati se $\mathcal{L}(\theta_1) > \mathcal{L}(\theta_1)$.
+La funzione di verosimiglianza descrive dunque in termini relativi il sostegno empirico che $\theta \in \Theta$ riceve da $y$. Infatti, la funzione di verosimiglianza assume forme diverse al variare di $y$. Possiamo dunque pensare alla funzione di verosimiglianza come alla risposta alla seguente domanda: avendo osservato i dati $y$, quanto risultano (relativamente) credibili i diversi valori del parametro $\theta$? In termini più formali possiamo dire che, sulla base dei dati, $\theta_1 \in \Theta$ risulta più credibile di $\theta_2 \in \Theta$ quale indice del modello probabilistico generatore dei dati se $\mathcal{L}(\theta_1) > \mathcal{L}(\theta_1)$.
 
 Si noti un punto importante: la funzione $\mathcal{L}(\theta \mid y)$ non è una funzione di densità. Infatti, essa non racchiude un'area unitaria.
 
 ## Modello binomiale
 
-Iniziamo a discutere la funzione di verosimiglianza considerando il caso più semplice, ovvero quello Binomiale.
+Per chiarire il concetto di verosimiglianza consideriamo innanzitutto il caso più semplice, ovvero quello Binomiale.
 
 Per $n$ prove Bernoulliane indipendenti, le quali producono $y$ successi e ($n-y$) insuccessi, la funzione nucleo di verosimiglianza (ovvero, la funzione di verosimiglianza da cui sono state escluse tutte le costanti moltiplicative che non hanno alcun effetto su $\hat{\theta}$) è
 
@@ -30,13 +30,13 @@ $$
 \mathcal{L}(p \mid y) = \theta^y (1-\theta)^{n - y}.\notag
 $$ {#eq-like-binomial-kernel}
 
-Per fare un esempio pratico, consideriamo la ricerca di @zetschefuture2019. Questi ricercatori hanno trovato che, su 30 pazienti clinicamente depressi, 23 manifestavano delle aspettative relative al loro umore futuro distorsione negativamente. Se i dati di @zetschefuture2019 vengono riassunti da una proporzione (ovvero, 23/30), allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:
+Per fare un esempio pratico, consideriamo la ricerca di @zetschefuture2019. Questi ricercatori hanno trovato che, su 30 pazienti clinicamente depressi, 23 manifestavano delle aspettative distorsione negativamente relativamente al loro umore futuro. Se i dati di @zetschefuture2019 vengono riassunti mediante una proporzione (ovvero, 23/30), allora è sensato adottare un modello probabilistico binomiale quale meccanismo generatore dei dati:
 
 $$
 y  \sim \mbox{Bin}(n, \theta),
 $$ {#eq-binomialmodel}
 
-laddove $\theta$ è la probabiltà che una prova Bernoulliana assuma il valore 1 e $n$ corrisponde al numero di prove Bernoulliane. Questo modello assume che le prove Bernoulliane $y_i$ che costituiscono il campione $y$ siano tra loro indipendenti e che ciascuna abbia la stessa probabilità $\theta \in [0, 1]$ di essere un "successo" (valore 1). In altre parole, il modello generatore dei dati avrà una funzione di massa di probabilità
+laddove $\theta$ è la probabiltà che una prova Bernoulliana assuma il valore 1 e $n$ corrisponde al numero di prove Bernoulliane. Questo modello assume che le prove Bernoulliane $y$ che costituiscono il campione siano tra loro indipendenti e che ciascuna abbia la stessa probabilità $\theta \in [0, 1]$ di essere un "successo" (valore 1). In altre parole, il modello generatore dei dati avrà la seguente funzione di massa di probabilità
 
 $$
 p(y \mid \theta)
@@ -46,7 +46,7 @@ $$
 
 Nei capitoli precedenti è stato mostrato come, sulla base del modello binomiale, sia possibile assegnare una probabilità a ciascun possibile valore $y \in \{0, 1, \dots, n\}$ *assumendo noto il valore del parametro* $\theta$. Ma ora abbiamo il problema inverso, ovvero quello di fare inferenza su $\theta$ alla luce dei dati campionari $y$. In altre parole, riteniamo di conoscere il modello probabilistico che ha generato i dati, ma di tale modello non conosciamo i parametri: vogliamo dunque ottenere informazioni su $\theta$ avendo osservato i dati $y$. Per fare questo, in un ottica bayesiana, è innanzitutto necessario definire la funzione di verosimiglianza.
 
-Per i dati di @zetschefuture2019 la funzione di verosimiglianza corrisponde alla funzione binomiale di parametro $\theta \in [0, 1]$ sconosciuto. Abbiamo osservato 23 successi, $y = 23$, in 30 prove, $n = 30$.
+Per i dati di @zetschefuture2019, la funzione di verosimiglianza corrisponde alla funzione binomiale di parametro $\theta \in [0, 1]$ sconosciuto. Abbiamo osservato $y$ = 23 successi, in $n$ = 30 prove.
 
 ```{r}
 n <- 30
@@ -59,14 +59,14 @@ $$
 \mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} \theta^{23} + (1-\theta)^7.
 $$ {#eq-likebino23}
 
-Per costruire la funzione di verosimiglianza dobbiamo applicare l'@eq-likebino23 tante volte, cambiando ogni volta il valore $\theta$, ma tenendo sempre costante il valore dei dati. Nella simulazione considereremo 100 possibili valori $\theta \in [0, 1]$.
+Per costruire la funzione di verosimiglianza dobbiamo applicare l'@eq-likebino23 tante volte, cambiando ogni volta il valore $\theta$, ma tenendo sempre costante il valore dei dati. Nella seguente simulazione considereremo 100 possibili valori $\theta \in [0, 1]$.
 
 ```{r}
 theta <- seq(0, 1, length.out = 100)
 theta
 ```
 
-Per esempio, ponendo $\theta = 0.1$ otteniamo un valore dell'ordinata della funzione di verosimiglianza
+Per esempio, ponendo $\theta = 0.1$ otteniamo il seguente valore dell'ordinata della funzione di verosimiglianza:
 
 $$
 \mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} 0.1^{23} + (1-0.1)^7.
@@ -76,7 +76,7 @@ $$
 dbinom(23, 30, 0.1)
 ```
 
-Ponendo $\theta = 0.2$ otteniamo un altro valore dell'ordinata della funzione di verosimiglianza
+Ponendo $\theta = 0.2$ otteniamo il seguente valore dell'ordinata della funzione di verosimiglianza:
 
 $$
 \mathcal{L}(\theta \mid y) = \frac{(23 + 7)!}{23!7!} 0.2^{23} + (1-0.2)^7.
@@ -98,7 +98,7 @@ La curva che interpola tali punti è la funzione di verosimiglianza. La @fig-lik
 tibble(theta, like) %>%
   ggplot(aes(x = theta, y = like)) +
   geom_line() +
-  vline_at(0.7676768, color = "lightgray", linetype="dashed") +
+  vline_at(23/30, color = "lightgray", linetype="dashed") +
   labs(
     y = expression(L(theta)),
     x = expression("Valori possibili di" ~ theta)
@@ -107,7 +107,7 @@ tibble(theta, like) %>%
 
 ### Interpretazione
 
-Come possiamo interpretare la curva che abbiamo ottenuto? Per alcuni valori $\theta$ la funzione di verosimiglianza assume valori piccoli; per altri valori $\theta$ la funzione di verosimiglianza assume valori più grandi. Questi ultimi sono i valori di $\theta$ più credibili e il valore 23/30 = 0.767 (la moda della funzione di verosimiglianza) è il valore più credibile di tutti.
+Come possiamo interpretare la curva che abbiamo ottenuto? Per alcuni valori $\theta$ la funzione di verosimiglianza assume valori piccoli; per altri valori $\theta$ la funzione di verosimiglianza assume valori più grandi. Questi ultimi sono i valori $\theta$ più credibili e il valore 23/30 = 0.767 (la moda della funzione di verosimiglianza) è il valore più credibile di tutti.
 
 ```{r}
 d <- tibble(theta, like)

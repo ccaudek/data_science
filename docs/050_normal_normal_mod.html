@@ -701,7 +701,7 @@ Y_i &amp;\sim \mathcal{N}(\mu, \sigma) \notag\\
 <span><span class="co">#&gt; 1 mu        29.4   29.4  1.04  1.04  27.6  31.1  1.00  153786.  188314.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero <span class="math inline">\(\mu_p\)</span> = 29.57 contro un valore teorico di 29.35 e <span class="math inline">\(\tau_p\)</span> = 0.96 contro un valore teorico di 1.03.</p>
+<p>Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero <span class="math inline">\(\mu_p\)</span> = 29.3527 contro un valore teorico di 29.35 e <span class="math inline">\(\tau_p\)</span> = 1.033 contro un valore teorico di 1.03.</p>
 <p>Qui sotto è fornita una rappresentazione grafica dell’intera distribuzione a posteriori del parametro <span class="math inline">\(\mu\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stanfit</span> <span class="op">&lt;-</span> <span class="fu">rstan</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/rstan/reference/stan_csv.html">read_stan_csv</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="fu">output_files</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -1285,7 +1285,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb27-267"><a href="#cb27-267" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span><span class="fu">summary</span>(<span class="fu">c</span>(<span class="st">"mu"</span>))</span>
 <span id="cb27-268"><a href="#cb27-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb27-269"><a href="#cb27-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-270"><a href="#cb27-270" aria-hidden="true" tabindex="-1"></a>Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero $\mu_p$ = 29.57 contro un valore teorico di 29.35 e $\tau_p$ = 0.96 contro un valore teorico di 1.03.</span>
+<span id="cb27-270"><a href="#cb27-270" aria-hidden="true" tabindex="-1"></a>Si noti che le stime ottenute sono molto vicine ai valori teorici attesi, ovvero $\mu_p$ = 29.3527 contro un valore teorico di 29.35 e $\tau_p$ = 1.033 contro un valore teorico di 1.03.</span>
 <span id="cb27-271"><a href="#cb27-271" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-272"><a href="#cb27-272" aria-hidden="true" tabindex="-1"></a>Qui sotto è fornita una rappresentazione grafica dell'intera distribuzione a posteriori del parametro $\mu$.</span>
 <span id="cb27-273"><a href="#cb27-273" aria-hidden="true" tabindex="-1"></a></span>
