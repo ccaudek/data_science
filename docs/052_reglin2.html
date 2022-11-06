@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 26&nbsp; Regressione lineare bivariata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -438,21 +443,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
 <li>
-<a href="#stima-dei-coefficienti-di-regressione" id="toc-stima-dei-coefficienti-di-regressione" class="nav-link active" data-scroll-target="#stima-dei-coefficienti-di-regressione"> <span class="header-section-number">26.1</span> Stima dei coefficienti di regressione</a>
+<a href="#stima-dei-coefficienti-di-regressione" id="toc-stima-dei-coefficienti-di-regressione" class="nav-link active" data-scroll-target="#stima-dei-coefficienti-di-regressione"><span class="toc-section-number">26.1</span>  Stima dei coefficienti di regressione</a>
   <ul class="collapse">
-<li><a href="#trasformazione-dei-dati" id="toc-trasformazione-dei-dati" class="nav-link" data-scroll-target="#trasformazione-dei-dati"> <span class="header-section-number">26.1.1</span> Trasformazione dei dati</a></li>
-  <li><a href="#il-metodo-dei-minimi-quadrati" id="toc-il-metodo-dei-minimi-quadrati" class="nav-link" data-scroll-target="#il-metodo-dei-minimi-quadrati"> <span class="header-section-number">26.1.2</span> Il metodo dei minimi quadrati</a></li>
-  <li><a href="#lerrore-standard-della-regressione" id="toc-lerrore-standard-della-regressione" class="nav-link" data-scroll-target="#lerrore-standard-della-regressione"> <span class="header-section-number">26.1.3</span> L’errore standard della regressione</a></li>
+<li><a href="#trasformazione-dei-dati" id="toc-trasformazione-dei-dati" class="nav-link" data-scroll-target="#trasformazione-dei-dati"><span class="toc-section-number">26.1.1</span>  Trasformazione dei dati</a></li>
+  <li><a href="#il-metodo-dei-minimi-quadrati" id="toc-il-metodo-dei-minimi-quadrati" class="nav-link" data-scroll-target="#il-metodo-dei-minimi-quadrati"><span class="toc-section-number">26.1.2</span>  Il metodo dei minimi quadrati</a></li>
+  <li><a href="#lerrore-standard-della-regressione" id="toc-lerrore-standard-della-regressione" class="nav-link" data-scroll-target="#lerrore-standard-della-regressione"><span class="toc-section-number">26.1.3</span>  L’errore standard della regressione</a></li>
   </ul>
 </li>
   <li>
-<a href="#indice-di-determinazione" id="toc-indice-di-determinazione" class="nav-link" data-scroll-target="#indice-di-determinazione"> <span class="header-section-number">26.2</span> Indice di determinazione</a>
+<a href="#indice-di-determinazione" id="toc-indice-di-determinazione" class="nav-link" data-scroll-target="#indice-di-determinazione"><span class="toc-section-number">26.2</span>  Indice di determinazione</a>
   <ul class="collapse">
-<li><a href="#inferenza-sul-modello-di-regressione" id="toc-inferenza-sul-modello-di-regressione" class="nav-link" data-scroll-target="#inferenza-sul-modello-di-regressione"> <span class="header-section-number">26.2.1</span> Inferenza sul modello di regressione</a></li>
+<li><a href="#inferenza-sul-modello-di-regressione" id="toc-inferenza-sul-modello-di-regressione" class="nav-link" data-scroll-target="#inferenza-sul-modello-di-regressione"><span class="toc-section-number">26.2.1</span>  Inferenza sul modello di regressione</a></li>
   </ul>
 </li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
@@ -468,6 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -623,23 +629,23 @@ a + b x_i
 <p>che consente di trovare <span class="math inline">\(\hat{y}_i\)</span> conoscendo <span class="math inline">\(x_i\)</span>. Questi due coefficienti sono detti <em>coefficienti di regressione</em>.</p>
 <p>Per trovare i coefficienti di regressione dobbiamo introdurre dei vincoli per limitare lo spazio delle possibili soluzioni. Il primo di tali vincoli è stato introdotto in precedenza: vogliamo che la retta <span class="math inline">\(\hat{y}_i = a + b x_i\)</span> passi per il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span>. Il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span> corrisponde al <em>baricentro</em> del diagramma a dispersione.</p>
 <p>Ci sono però infinite rette che passano per i punto <span class="math inline">\((\bar{x}, \bar{y})\)</span>. Tutte queste rette soddisfano la seguente proprietà:</p>
-<p>$$</p>
-<p>_{i=1}^n e_i = 0,</p>
-<p>$$</p>
+<p><span class="math display">\[
+\sum_{i=1}^n e_i = 0,
+\]</span></p>
 <p>ovvero, fanno in modo che la somma dei residui (positivi, per i punti che si trovano al di sopra della retta di regressione, negativi, per punti che si trovano al di sotto della retta di regressione) sia uguale a zero.</p>
 <p>Questo significa che non possiamo selezionare una tra le infinite rette che passano per il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span> usando il criterio che ci porta a scegliere la retta che rende la più piccola possibile (ovvero, minimizza) la somma dei residui. Infatti, tutte le rette passanti per il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span> soddisfano questo requisito (rendono uguale a zero la somma dei residui). Dunque, dobbiamo trovare qualche altri criterio per scegliere una tra le infinite rette che passano per il punto <span class="math inline">\((\bar{x}, \bar{y})\)</span>.</p>
 <p>Il criterio che viene normalmente scelto è quello di <em>minimizzare la somma dei quadrati dei residui</em> <span class="math inline">\((y_i - \hat{y}_i)^2\)</span>. In altri termini, vogliamo trovare i coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> tali per cui la quantità</p>
-<p>$$</p>
-<p>_{i=1}^{n}{(y_i - (a + b x_i))^2}</p>
-<p>$$</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n}{(y_i - (a + b x_i))^2}
+\]</span></p>
 <p>assume il suo valore minimo. I coefficienti <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> che soddisfano questa proprietà si chiamano <em>coefficienti dei minimi quadrati</em>.</p>
 <p>Questo problema ha una soluzione analitica. La soluzione analitica si trova riconoscendo il fatto che l’equazione precedente definisce una superficie e il problema diventa quello di trovare il punto di minimo di questa superficie. Per trovare la soluzione ci si deve rendere conto che il punto cercato è quello per cui il piano tangente alla superficie (nelle due direzioni <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>) è piatto (le tangenti nelle due direzioni sono uguali a zero). Rendere uguale a zero la tangente ad una curva significa porre uguali a zero la derivata della curva. Nel caso presente, abbiamo una superficie, dunque due tangenti ortogonali e quindi abbiamo il problema di rendere uguali a zero le derivate parziali rispetto ad <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. Così facendo si definisce un sistema di equazioni lineari con due incognite, <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span>. La soluzione di tali equazioni, che si chiamano <em>equazioni normali</em>, è la seguente:</p>
-<p>$$</p>
-<p>a = {y} - b {x},</p>
-<p>$$</p>
-<p>$$</p>
-<p>b = .</p>
-<p>$$</p>
+<p><span class="math display">\[
+a = \bar{y} - b \bar{x},
+\]</span></p>
+<p><span class="math display">\[
+b = \frac{\mbox{Cov}(x, y)}{\mbox{Var}(x)}.
+\]</span></p>
 <p>Le due precedenti equazioni corrispondono alla <em>stima dei minimi quadrati</em> dei coefficienti di regressione della retta che minimizza la somma dei quadrati dei residui.</p>
 <p>Nel caso dell’esempio presente, tali coefficienti sono uguali a:</p>
 <div class="cell" data-layout-align="center">
@@ -691,13 +697,13 @@ a + b x_i
 </div>
 <p>Il diagramma precedente presenta ciascun valore <span class="math inline">\(\hat{y}_i = a + b x_i\)</span> in funzione di <span class="math inline">\(x_i\)</span>. Si vede che i valori predetti dal modello di regressione sono i punti che stanno sulla retta di regressione.</p>
 <p>In precedenza abbiamo detto che il residuo, ovvero la componente di ciascuna osservazione <span class="math inline">\(y_i\)</span> che non viene predetta dal modello di regressione, corrisponde alla <em>distanza verticale</em> tra il valore <span class="math inline">\(y_i\)</span> osservato e il valore <span class="math inline">\(\hat{y}_i\)</span> predetto dal modello di regressione:</p>
-<p>$$</p>
-<p>e_i = y_i - (a + b x_i).</p>
-<p>$$</p>
+<p><span class="math display">\[
+e_i = y_i - (a + b x_i).
+\]</span></p>
 <p>Nel caso nella prima osservazione, ad esempio abbiamo:</p>
-<p>$$</p>
-<p>y_1 = (a + b x_1) + e_1</p>
-<p>$$</p>
+<p><span class="math display">\[
+y_1 = (a + b x_1) + e_1
+\]</span></p>
 <p>Abbiamo</p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kidiq</span><span class="op">$</span><span class="va">kid_score</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
@@ -705,9 +711,9 @@ a + b x_i
 </details>
 </div>
 <p>Dunque</p>
-<p>$$</p>
-<p>e_1 = (a + b x_1) - y_1</p>
-<p>$$</p>
+<p><span class="math display">\[
+e_1 = (a + b x_1) - y_1
+\]</span></p>
 <div class="cell" data-layout-align="center">
 <details><summary>Codice</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">e_1</span> <span class="op">&lt;-</span> <span class="va">kidiq</span><span class="op">$</span><span class="va">kid_score</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="op">(</span><span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="va">kidiq</span><span class="op">$</span><span class="va">mom_iq</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">e_1</span></span>
@@ -821,9 +827,9 @@ a + b x_i
 <span class="header-section-number">26.1.3</span> L’errore standard della regressione</h3>
 <p>Il secondo obiettivo del modello statistico di regressione lineare è quello di stabilire <em>quanto sia grande la componente</em> <span class="math inline">\(y\)</span> predicibile da <span class="math inline">\(x\)</span>, per ciascuna osservazione.</p>
 <p>Un indice assoluto della bontà di adattamento è fornito dalla deviazione standard dei residui, <span class="math inline">\(s_e\)</span>, chiamata anche <em>errore standard della stima</em>. Uno stimatore non distorto della varianza dei residui nella popolazione è dato da</p>
-<p>$$</p>
-<p>s^2_e = e_i^2</p>
-<p>$$</p>
+<p><span class="math display">\[
+s^2_e = \frac{1}{n-2}\sum e_i^2
+\]</span></p>
 <p>e quindi l’errore standard della stima sarà</p>
 <span class="math display">\[\begin{equation}
 s_e = \sqrt{\frac{1}{n-2}\sum e_i^2}.
@@ -888,9 +894,9 @@ s_e = \sqrt{\frac{1}{n-2}\sum e_i^2}.
 </section></section><section id="indice-di-determinazione" class="level2" data-number="26.2"><h2 data-number="26.2" class="anchored" data-anchor-id="indice-di-determinazione">
 <span class="header-section-number">26.2</span> Indice di determinazione</h2>
 <p>Un importante risultato dei minimi quadrati riguarda la cosiddetta <em>scomposizione della devianza</em> mediante la quale si definisce l’indice di determinazione, il quale fornisce una misura relativa della bontà di adattamento del modello di regressione ai dati del campione. Per una generica osservazione <span class="math inline">\(x_i, y_i\)</span>, la variazione di <span class="math inline">\(y_i\)</span> rispetto alla media <span class="math inline">\(\bar{y}\)</span> può essere descritta come la somma di due componenti: il residuo <span class="math inline">\(e_i=y_i- \hat{y}_i\)</span> e lo scarto di <span class="math inline">\(\hat{y}_i\)</span> rispetto alla media <span class="math inline">\(\bar{y}\)</span>:</p>
-<p>$$</p>
-<p>y_i - {y} = (y_i- _i) + (_i - {y}) = e_i + (_i - {y}).</p>
-<p>$$</p>
+<p><span class="math display">\[
+y_i - \bar{y} = (y_i- \hat{y}_i) + (\hat{y}_i - \bar{y}) = e_i + (\hat{y}_i - \bar{y}).
+\]</span></p>
 <p>Se consideriamo tutte le osservazioni, la devianza delle <span class="math inline">\(y\)</span> può essere scomposta nel seguente modo:</p>
 <span class="math display">\[\begin{align}
 \sum (y_i - \bar{y})^2 &amp;= \sum \left[ e_i + (\hat{y}_i - \bar{y})
@@ -1014,7 +1020,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1093,31 +1116,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

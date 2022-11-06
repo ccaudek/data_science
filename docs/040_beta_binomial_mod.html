@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 20&nbsp; Il modello beta-binomiale in linguaggio Stan</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -457,21 +462,21 @@ div.csl-indent {
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
-<li><a href="#il-presidente-trump-e-lidrossiclorochina" id="toc-il-presidente-trump-e-lidrossiclorochina" class="nav-link active" data-scroll-target="#il-presidente-trump-e-lidrossiclorochina"> <span class="header-section-number">20.1</span> Il presidente Trump e l’idrossiclorochina</a></li>
-  <li><a href="#una-proporzione" id="toc-una-proporzione" class="nav-link" data-scroll-target="#una-proporzione"> <span class="header-section-number">20.2</span> Una proporzione</a></li>
+<li><a href="#il-presidente-trump-e-lidrossiclorochina" id="toc-il-presidente-trump-e-lidrossiclorochina" class="nav-link active" data-scroll-target="#il-presidente-trump-e-lidrossiclorochina"><span class="toc-section-number">20.1</span>  Il presidente Trump e l’idrossiclorochina</a></li>
+  <li><a href="#una-proporzione" id="toc-una-proporzione" class="nav-link" data-scroll-target="#una-proporzione"><span class="toc-section-number">20.2</span>  Una proporzione</a></li>
   <li>
-<a href="#cmdstanr-gautret" id="toc-cmdstanr-gautret" class="nav-link" data-scroll-target="#cmdstanr-gautret"> <span class="header-section-number">20.3</span> Interfaccia <code>cmdstanr</code></a>
+<a href="#cmdstanr-gautret" id="toc-cmdstanr-gautret" class="nav-link" data-scroll-target="#cmdstanr-gautret"><span class="toc-section-number">20.3</span>  Interfaccia <code>cmdstanr</code></a>
   <ul class="collapse">
-<li><a href="#fase-1" id="toc-fase-1" class="nav-link" data-scroll-target="#fase-1"> <span class="header-section-number">20.3.1</span> Fase 1</a></li>
-  <li><a href="#fase-2" id="toc-fase-2" class="nav-link" data-scroll-target="#fase-2"> <span class="header-section-number">20.3.2</span> Fase 2</a></li>
-  <li><a href="#fase-3" id="toc-fase-3" class="nav-link" data-scroll-target="#fase-3"> <span class="header-section-number">20.3.3</span> Fase 3</a></li>
+<li><a href="#fase-1" id="toc-fase-1" class="nav-link" data-scroll-target="#fase-1"><span class="toc-section-number">20.3.1</span>  Fase 1</a></li>
+  <li><a href="#fase-2" id="toc-fase-2" class="nav-link" data-scroll-target="#fase-2"><span class="toc-section-number">20.3.2</span>  Fase 2</a></li>
+  <li><a href="#fase-3" id="toc-fase-3" class="nav-link" data-scroll-target="#fase-3"><span class="toc-section-number">20.3.3</span>  Fase 3</a></li>
   </ul>
 </li>
-  <li><a href="#la-critica-di-hulme_2020" id="toc-la-critica-di-hulme_2020" class="nav-link" data-scroll-target="#la-critica-di-hulme_2020"> <span class="header-section-number">20.4</span> La critica di <span class="citation" data-cites="Hulme_2020">Hulme et al. (<span>2020</span>)</span></a></li>
-  <li><a href="#due-proporzioni" id="toc-due-proporzioni" class="nav-link" data-scroll-target="#due-proporzioni"> <span class="header-section-number">20.5</span> Due proporzioni</a></li>
+  <li><a href="#la-critica-di-hulme_2020" id="toc-la-critica-di-hulme_2020" class="nav-link" data-scroll-target="#la-critica-di-hulme_2020"><span class="toc-section-number">20.4</span>  La critica di <span class="citation" data-cites="Hulme_2020">Hulme et al. (2020)</span></a></li>
+  <li><a href="#due-proporzioni" id="toc-due-proporzioni" class="nav-link" data-scroll-target="#due-proporzioni"><span class="toc-section-number">20.5</span>  Due proporzioni</a></li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
   </ul></nav>
     </div>
@@ -485,6 +490,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -659,7 +665,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 </details><div class="cell-output-display">
 <div id="fig-trace-plot-gautret" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="040_beta_binomial_mod_files/figure-html/fig-trace-plot-gautret-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 20.1: Trace-plot per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;20.1: Trace-plot per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -673,7 +679,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 </details><div class="cell-output-display">
 <div id="fig-hist-post-gautret" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="040_beta_binomial_mod_files/figure-html/fig-hist-post-gautret-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 20.2: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;20.2: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -687,7 +693,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 </details><div class="cell-output-display">
 <div id="fig-hist-post-gautret-plus-correct" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="040_beta_binomial_mod_files/figure-html/fig-hist-post-gautret-plus-correct-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 20.3: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale. La curva nera rappresenta la corretta distribuzione a posteriori Beta(16, 4).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;20.3: Istogramma che illustra l’approssimazione della distribuzione a posteriori per il parametro <span class="math inline">\(\theta\)</span> nel modello Beta-Binomiale. La curva nera rappresenta la corretta distribuzione a posteriori Beta(16, 4).</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -789,7 +795,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 <span>  pars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"theta1"</span>, <span class="st">"theta2"</span>, <span class="st">"oddsratio"</span><span class="op">)</span>,</span>
 <span>  digits_summary <span class="op">=</span> <span class="fl">3L</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Inference for Stan model: twoprop1-202208180631-1-5c14f4.</span></span>
+<span><span class="co">#&gt; Inference for Stan model: twoprop1-202211060519-1-5d1117.</span></span>
 <span><span class="co">#&gt; 4 chains, each with iter=6000; warmup=2000; thin=1; </span></span>
 <span><span class="co">#&gt; post-warmup draws per chain=4000, total post-warmup draws=16000.</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -798,7 +804,7 @@ y &amp;\sim \mbox{Bin}(n, \theta) \notag\\
 <span><span class="co">#&gt; theta2    0.798   0.001 0.087 0.601 0.744 0.808 0.862  0.937 14193    1</span></span>
 <span><span class="co">#&gt; oddsratio 4.721   0.043 4.411 0.906 2.166 3.514 5.698 15.558 10400    1</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Gio Ago 18 06:31:34 2022.</span></span>
+<span><span class="co">#&gt; Samples were drawn using NUTS(diag_e) at Dom Nov 06 05:19:44 2022.</span></span>
 <span><span class="co">#&gt; For each parameter, n_eff is a crude measure of effective sample size,</span></span>
 <span><span class="co">#&gt; and Rhat is the potential scale reduction factor on split chains (at </span></span>
 <span><span class="co">#&gt; convergence, Rhat=1).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -828,10 +834,10 @@ Gelman, A., Carlin, J. B., Stern, H. S., &amp; Rubin, D. B. (1995). <em>Bayesian
 Hulme, O. J., Wagenmakers, E. J., Damkier, P., Madelung, C. F., Siebner, H. R., Helweg-Larsen, J., &amp; Madsen, K. H. (2020). Reply to gautret et al. 2020: A bayesian reanalysis of the effects of hydroxychloroquine and azithromycin on viral carriage in patients with COVID-19. <em>medRxiv</em>.
 </div>
 </div>
-</section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Nel caso presente, il risultato è poco utile dato che è disponibile una soluzione analitica. Tuttavia, questo esercizio mette in evidenza il fatto cruciale che, nei casi in cui possiamo verificarne la soluzione, il campionamento MCMC è in grado di trovare la risposta corretta. Di conseguenza, possiamo essere sicuri che fornirà un’ottima approssimazione alla distribuzione a posteriori anche in quei casi in cui una soluzione analitica non è disponibile.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Si veda <a href="https://osf.io/5dgmx/" class="uri">https://osf.io/5dgmx/</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Nel caso presente, il risultato è poco utile dato che è disponibile una soluzione analitica. Tuttavia, questo esercizio mette in evidenza il fatto cruciale che, nei casi in cui possiamo verificarne la soluzione, il campionamento MCMC è in grado di trovare la risposta corretta. Di conseguenza, possiamo essere sicuri che fornirà un’ottima approssimazione alla distribuzione a posteriori anche in quei casi in cui una soluzione analitica non è disponibile.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Si veda <a href="https://osf.io/5dgmx/" class="uri">https://osf.io/5dgmx/</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -873,7 +879,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -952,31 +975,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

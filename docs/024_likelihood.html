@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 14&nbsp; La funzione di verosimiglianza</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -457,22 +462,22 @@ div.csl-indent {
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
 <li>
-<a href="#modello-binomiale" id="toc-modello-binomiale" class="nav-link active" data-scroll-target="#modello-binomiale"> <span class="header-section-number">14.1</span> Modello binomiale</a>
+<a href="#modello-binomiale" id="toc-modello-binomiale" class="nav-link active" data-scroll-target="#modello-binomiale"><span class="toc-section-number">14.1</span>  Modello binomiale</a>
   <ul class="collapse">
-<li><a href="#interpretazione" id="toc-interpretazione" class="nav-link" data-scroll-target="#interpretazione"> <span class="header-section-number">14.1.1</span> Interpretazione</a></li>
-  <li><a href="#la-log-verosimiglianza" id="toc-la-log-verosimiglianza" class="nav-link" data-scroll-target="#la-log-verosimiglianza"> <span class="header-section-number">14.1.2</span> La log-verosimiglianza</a></li>
+<li><a href="#interpretazione" id="toc-interpretazione" class="nav-link" data-scroll-target="#interpretazione"><span class="toc-section-number">14.1.1</span>  Interpretazione</a></li>
+  <li><a href="#la-log-verosimiglianza" id="toc-la-log-verosimiglianza" class="nav-link" data-scroll-target="#la-log-verosimiglianza"><span class="toc-section-number">14.1.2</span>  La log-verosimiglianza</a></li>
   </ul>
 </li>
   <li>
-<a href="#modello-gaussiano" id="toc-modello-gaussiano" class="nav-link" data-scroll-target="#modello-gaussiano"> <span class="header-section-number">14.2</span> Modello gaussiano</a>
+<a href="#modello-gaussiano" id="toc-modello-gaussiano" class="nav-link" data-scroll-target="#modello-gaussiano"><span class="toc-section-number">14.2</span>  Modello gaussiano</a>
   <ul class="collapse">
-<li><a href="#una-singola-osservazione" id="toc-una-singola-osservazione" class="nav-link" data-scroll-target="#una-singola-osservazione"> <span class="header-section-number">14.2.1</span> Una singola osservazione</a></li>
-  <li><a href="#un-campione-di-osservazioni" id="toc-un-campione-di-osservazioni" class="nav-link" data-scroll-target="#un-campione-di-osservazioni"> <span class="header-section-number">14.2.2</span> Un campione di osservazioni</a></li>
-  <li><a href="#massima-verosimiglianza" id="toc-massima-verosimiglianza" class="nav-link" data-scroll-target="#massima-verosimiglianza"> <span class="header-section-number">14.2.3</span> Massima verosimiglianza</a></li>
+<li><a href="#una-singola-osservazione" id="toc-una-singola-osservazione" class="nav-link" data-scroll-target="#una-singola-osservazione"><span class="toc-section-number">14.2.1</span>  Una singola osservazione</a></li>
+  <li><a href="#un-campione-di-osservazioni" id="toc-un-campione-di-osservazioni" class="nav-link" data-scroll-target="#un-campione-di-osservazioni"><span class="toc-section-number">14.2.2</span>  Un campione di osservazioni</a></li>
+  <li><a href="#massima-verosimiglianza" id="toc-massima-verosimiglianza" class="nav-link" data-scroll-target="#massima-verosimiglianza"><span class="toc-section-number">14.2.3</span>  Massima verosimiglianza</a></li>
   </ul>
 </li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
@@ -488,14 +493,14 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
 
 </header><p>La verosimiglianza viene utilizzata sia nell’inferenza bayesiana che in quella frequentista. In entrambi i paradigmi di inferenza, il suo ruolo è quello di quantificare la forza con la quale i dati osservati supportano i possibili valori dei parametri sconosciuti di un modello statistico.</p>
 <div id="def-likelihood" class="theorem definition">
-<p><span class="theorem-title"><strong>Definizione 14.1 </strong></span></p>
-<p>La <em>funzione di verosimiglianza</em> <span class="math inline">\(\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,\)</span> è la funzione di massa o di densità di probabilità dei dati <span class="math inline">\(y\)</span> vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) <span class="math inline">\(\theta\)</span>.</p>
+<p><span class="theorem-title"><strong>Definizione 14.1 </strong></span>La <em>funzione di verosimiglianza</em> <span class="math inline">\(\mathcal{L}(\theta \mid y) = f(y \mid \theta), \theta \in \Theta,\)</span> è la funzione di massa o di densità di probabilità dei dati <span class="math inline">\(y\)</span> vista come una funzione del parametro sconosciuto (o dei parametri sconosciuti) <span class="math inline">\(\theta\)</span>.</p>
 </div>
 <p>Detto in altre parole, la funzione di verosimiglianza e la funzione di (massa o densità di) probabilità sono formalmente identiche, ma è completamente diversa la loro interpretazione:</p>
 <ul>
@@ -591,7 +596,7 @@ p(y \mid \theta)
 </details><div class="cell-output-display">
 <div id="fig-likefutexpect" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="024_likelihood_files/figure-html/fig-likefutexpect-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 14.1: Funzione di verosimiglianza nel caso di 23 successi in 30 prove.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;14.1: Funzione di verosimiglianza nel caso di 23 successi in 30 prove.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -643,7 +648,7 @@ p(y \mid \theta)
 </details><div class="cell-output-display">
 <div id="fig-loglike-futureexp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="024_likelihood_files/figure-html/fig-loglike-futureexp-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 14.2: Funzione di log-verosimiglianza nel caso di 23 successi in 30 prove.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;14.2: Funzione di log-verosimiglianza nel caso di 23 successi in 30 prove.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -796,7 +801,7 @@ f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i -
 </details><div class="cell-output-display">
 <div id="fig-loglike-bdi2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="024_likelihood_files/figure-html/fig-loglike-bdi2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 14.3: Log-verosimiglianza del parametro <span class="math inline">\(\mu\)</span> per i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;14.3: Log-verosimiglianza del parametro <span class="math inline">\(\mu\)</span> per i dati di <span class="citation" data-cites="zetschefuture2019">Zetsche et al. (<a href="999_refs.html#ref-zetschefuture2019" role="doc-biblioref">2019</a>)</span>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -820,8 +825,7 @@ f(y_i \mid \mu, \sigma) = \frac{1}{{6.61 \sqrt {2\pi}}}\exp\left\{{-\frac{(y_i -
 \end{equation}\]</span>
 <p>In altri termini, la s.m.v. del parametro <span class="math inline">\(\mu\)</span> è la media del campione e la s.m.v. del parametro <span class="math inline">\(\sigma\)</span> è la deviazione standard del campione.</p>
 <div id="exr-loglike-bdi2-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 14.1 </strong></span></p>
-<p>Dalla <a href="#fig-loglike-bdi2">Figura&nbsp;<span>14.3</span></a> notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero 30.93, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</p>
+<p><span class="theorem-title"><strong>Esercizio 14.1 </strong></span>Dalla <a href="#fig-loglike-bdi2">Figura&nbsp;<span>14.3</span></a> notiamo che il massimo della funzione di log-verosimiglianza calcolata per via numerica, ovvero 30.93, è identico alla media dei dati campionari e corrisponde al risultato teorico atteso.</p>
 </div>
 </section></section><section id="commenti-e-considerazioni-finali" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="commenti-e-considerazioni-finali">Commenti e considerazioni finali</h2>
 <p>Nella funzione di verosimiglianza i dati (osservati) vengono trattati come fissi, mentre i valori del parametro (o dei parametri) <span class="math inline">\(\theta\)</span> vengono variati: la verosimiglianza è una funzione di <span class="math inline">\(\theta\)</span> per il dato fisso <span class="math inline">\(y\)</span>. Pertanto, la funzione di verosimiglianza riassume i seguenti elementi: un modello statistico che genera stocasticamente i dati (in questo capitolo abbiamo esaminato due modelli statistici: quello binomiale e quello Normale), un intervallo di valori possibili per <span class="math inline">\(\theta\)</span> e i dati osservati <span class="math inline">\(y\)</span>.</p>
@@ -877,7 +881,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -956,31 +977,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

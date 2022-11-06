@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 19&nbsp; Approssimazione della distribuzione a posteriori</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -457,29 +462,29 @@ div.csl-indent {
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
 <li>
-<a href="#metodo-basato-su-griglia" id="toc-metodo-basato-su-griglia" class="nav-link active" data-scroll-target="#metodo-basato-su-griglia"> <span class="header-section-number">19.1</span> Metodo basato su griglia</a>
+<a href="#metodo-basato-su-griglia" id="toc-metodo-basato-su-griglia" class="nav-link active" data-scroll-target="#metodo-basato-su-griglia"><span class="toc-section-number">19.1</span>  Metodo basato su griglia</a>
   <ul class="collapse">
-<li><a href="#modello-beta-binomiale" id="toc-modello-beta-binomiale" class="nav-link" data-scroll-target="#modello-beta-binomiale"> <span class="header-section-number">19.1.1</span> Modello Beta-Binomiale</a></li>
+<li><a href="#modello-beta-binomiale" id="toc-modello-beta-binomiale" class="nav-link" data-scroll-target="#modello-beta-binomiale"><span class="toc-section-number">19.1.1</span>  Modello Beta-Binomiale</a></li>
   </ul>
 </li>
   <li>
-<a href="#chapter-simulazioneMC" id="toc-chapter-simulazioneMC" class="nav-link" data-scroll-target="#chapter-simulazioneMC"> <span class="header-section-number">19.2</span> Metodo Monte Carlo</a>
+<a href="#chapter-simulazioneMC" id="toc-chapter-simulazioneMC" class="nav-link" data-scroll-target="#chapter-simulazioneMC"><span class="toc-section-number">19.2</span>  Metodo Monte Carlo</a>
   <ul class="collapse">
-<li><a href="#integration-mc" id="toc-integration-mc" class="nav-link" data-scroll-target="#integration-mc"> <span class="header-section-number">19.2.1</span> Integrazione di Monte Carlo</a></li>
-  <li><a href="#campionamento-dalla-distribuzione-a-posteriori" id="toc-campionamento-dalla-distribuzione-a-posteriori" class="nav-link" data-scroll-target="#campionamento-dalla-distribuzione-a-posteriori"> <span class="header-section-number">19.2.2</span> Campionamento dalla distribuzione a posteriori</a></li>
-  <li><a href="#lalgoritmo-di-metropolis" id="toc-lalgoritmo-di-metropolis" class="nav-link" data-scroll-target="#lalgoritmo-di-metropolis"> <span class="header-section-number">19.2.3</span> L’algoritmo di Metropolis</a></li>
-  <li><a href="#unapplicazione-empirica" id="toc-unapplicazione-empirica" class="nav-link" data-scroll-target="#unapplicazione-empirica"> <span class="header-section-number">19.2.4</span> Un’applicazione empirica</a></li>
+<li><a href="#integration-mc" id="toc-integration-mc" class="nav-link" data-scroll-target="#integration-mc"><span class="toc-section-number">19.2.1</span>  Integrazione di Monte Carlo</a></li>
+  <li><a href="#campionamento-dalla-distribuzione-a-posteriori" id="toc-campionamento-dalla-distribuzione-a-posteriori" class="nav-link" data-scroll-target="#campionamento-dalla-distribuzione-a-posteriori"><span class="toc-section-number">19.2.2</span>  Campionamento dalla distribuzione a posteriori</a></li>
+  <li><a href="#lalgoritmo-di-metropolis" id="toc-lalgoritmo-di-metropolis" class="nav-link" data-scroll-target="#lalgoritmo-di-metropolis"><span class="toc-section-number">19.2.3</span>  L’algoritmo di Metropolis</a></li>
+  <li><a href="#unapplicazione-empirica" id="toc-unapplicazione-empirica" class="nav-link" data-scroll-target="#unapplicazione-empirica"><span class="toc-section-number">19.2.4</span>  Un’applicazione empirica</a></li>
   </ul>
 </li>
   <li>
-<a href="#diagnostiche-della-soluzione-mcmc" id="toc-diagnostiche-della-soluzione-mcmc" class="nav-link" data-scroll-target="#diagnostiche-della-soluzione-mcmc"> <span class="header-section-number">19.3</span> Diagnostiche della soluzione MCMC</a>
+<a href="#diagnostiche-della-soluzione-mcmc" id="toc-diagnostiche-della-soluzione-mcmc" class="nav-link" data-scroll-target="#diagnostiche-della-soluzione-mcmc"><span class="toc-section-number">19.3</span>  Diagnostiche della soluzione MCMC</a>
   <ul class="collapse">
-<li><a href="#stazionariet%C3%A0" id="toc-stazionarietà" class="nav-link" data-scroll-target="#stazionariet%C3%A0"> <span class="header-section-number">19.3.1</span> Stazionarietà</a></li>
-  <li><a href="#test-di-convergenza" id="toc-test-di-convergenza" class="nav-link" data-scroll-target="#test-di-convergenza"> <span class="header-section-number">19.3.2</span> Test di convergenza</a></li>
+<li><a href="#stazionariet%C3%A0" id="toc-stazionarietà" class="nav-link" data-scroll-target="#stazionariet%C3%A0"><span class="toc-section-number">19.3.1</span>  Stazionarietà</a></li>
+  <li><a href="#test-di-convergenza" id="toc-test-di-convergenza" class="nav-link" data-scroll-target="#test-di-convergenza"><span class="toc-section-number">19.3.2</span>  Test di convergenza</a></li>
   </ul>
 </li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
@@ -495,6 +500,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -563,8 +569,7 @@ Y \mid \theta &amp; \sim \mbox{Bin}(n = 30, \theta), \notag\\
 <span><span class="co">#&gt; 6        0.5</span></span>
 <span><span class="co">#&gt; 7        0.6</span></span>
 <span><span class="co">#&gt; 8        0.7</span></span>
-<span><span class="co">#&gt; # … with 3 more rows</span></span>
-<span><span class="co">#&gt; # ℹ Use `print(n = ...)` to see more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; # … with 3 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>In corrispondenza di ciascun valore della griglia, valutiamo la distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span> e la verosimiglianza <span class="math inline">\(\mbox{Bin}(y = 23, n = 30)\)</span>.</p>
@@ -632,7 +637,7 @@ Y \mid \theta &amp; \sim \mbox{Bin}(n = 30, \theta), \notag\\
 </details><div class="cell-output-display">
 <div id="fig-grid-method-6points-posterior-plot" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="036_posterior_sim_files/figure-html/fig-grid-method-6points-posterior-plot-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 19.1: Distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di solo <span class="math inline">\(n\)</span> = 11 punti.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;19.1: Distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di solo <span class="math inline">\(n\)</span> = 11 punti.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -657,7 +662,7 @@ Y \mid \theta &amp; \sim \mbox{Bin}(n = 30, \theta), \notag\\
 </details><div class="cell-output-display">
 <div id="fig-grid-method-6points-posterior-plot-sampling" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="036_posterior_sim_files/figure-html/fig-grid-method-6points-posterior-plot-sampling-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 19.2: Campionamento dalla distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di solo <span class="math inline">\(n\)</span> = 11 punti.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;19.2: Campionamento dalla distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di solo <span class="math inline">\(n\)</span> = 11 punti.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -693,7 +698,7 @@ Y \mid \theta &amp; \sim \mbox{Bin}(n = 30, \theta), \notag\\
 </details><div class="cell-output-display">
 <div id="fig-grid-method-100points-posterior-plot-sampling" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="036_posterior_sim_files/figure-html/fig-grid-method-100points-posterior-plot-sampling-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 19.3: Distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di <span class="math inline">\(n\)</span> = 100 punti.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;19.3: Distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di <span class="math inline">\(n\)</span> = 100 punti.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -723,7 +728,7 @@ Y \mid \theta &amp; \sim \mbox{Bin}(n = 30, \theta), \notag\\
 </details><div class="cell-output-display">
 <div id="fig-grid-method-100points-posterior-plot-and-correct-posterior" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="036_posterior_sim_files/figure-html/fig-grid-method-100points-posterior-plot-and-correct-posterior-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 19.4: Campionamento dalla distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di <span class="math inline">\(n\)</span> = 100 punti. All’istogramma è stata sovrapposta la corretta distribuzione a posteriori, ovvero la densità <span class="math inline">\(\mbox{Beta}(25, 17)\)</span>.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;19.4: Campionamento dalla distribuzione a posteriori discretizzata ottenuta con il metodo grid-based per <span class="math inline">\(y\)</span> = 23 successi in 30 prove Bernoulliane, con distribuzione a priori <span class="math inline">\(\mbox{Beta}(2, 10)\)</span>. È stata utilizzata una griglia di <span class="math inline">\(n\)</span> = 100 punti. All’istogramma è stata sovrapposta la corretta distribuzione a posteriori, ovvero la densità <span class="math inline">\(\mbox{Beta}(25, 17)\)</span>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1083,7 +1088,7 @@ r = \frac{p(y \mid \theta') p(\theta')}{p(y \mid \theta^{(m)}) p(\theta^{(m)})}.
 </details><div class="cell-output-display">
 <div id="fig-sim-markov-chain-zetsche" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="036_posterior_sim_files/figure-html/fig-sim-markov-chain-zetsche-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 19.5: Sinistra. Stima della distribuzione a posteriori della probabilità di una aspettativa futura distorta negativamente per i dati di Zetsche et al.&nbsp;(2019). Destra. Trace plot dei valori della catena di Markov escludendo il periodo di burn-in.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;19.5: Sinistra. Stima della distribuzione a posteriori della probabilità di una aspettativa futura distorta negativamente per i dati di Zetsche et al.&nbsp;(2019). Destra. Trace plot dei valori della catena di Markov escludendo il periodo di burn-in.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1108,7 +1113,7 @@ r = \frac{p(y \mid \theta') p(\theta')}{p(y \mid \theta^{(m)}) p(\theta^{(m)})}.
 </details><div class="cell-output-display">
 <div id="fig-sim-markov-chain-zetsche-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="036_posterior_sim_files/figure-html/fig-sim-markov-chain-zetsche-2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 19.6: L’istogramma riporta i risultati della simulazione mentre la linea continua descrive la distribuzione a posteriori ottenuta per via analitica.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;19.6: L’istogramma riporta i risultati della simulazione mentre la linea continua descrive la distribuzione a posteriori ottenuta per via analitica.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1316,15 +1321,15 @@ Metropolis, N., Rosenbluth, A. W., Rosenbluth, M. N., Teller, A. H., &amp; Telle
 Zetsche, U., Bürkner, P.-C., &amp; Renneberg, B. (2019). Future expectations in clinical depression: <span>Biased</span> or realistic? <em>Journal of Abnormal Psychology</em>, <em>128</em>(7), 678–688.
 </div>
 </div>
-</section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Nel presente esempio useremo lo stesso codice <span class="math inline">\(\textsf{R}\)</span> utilizzato da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Per capire cosa sia la maledizione della dimensionalità, supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, è necessario calcolare 100 valori. Per due parametri devono essere calcolari <span class="math inline">\(100^2\)</span> valori. Ma già per 10 parametri è necessario calcolare <span class="math inline">\(10^{10}\)</span> valori – è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>L’integrazione Monte Carlo può essere utilizzata anche per la valutazione di integrali più complessi.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>In termini più formali, si può dire che i metodi MCMC consentono di costruire sequenze di punti (detti catene di Markov) nello spazio dei parametri le cui densità sono proporzionali alla distribuzione a posteriori. In altre parole, dopo aver simulato un grande numero di passi della catena si possono usare i valori così generati come se fossero un campione casuale della distribuzione a posteriori. Un’introduzione alle catene di Markov è fornita in Appendice.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>Un’illustrazione visiva di come si svolge il processo di “esplorazione” dell’algoritmo di Metropolis è fornita in questo post: https://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>L’accettanza dipende dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alta diventa l’accettanza.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>Si possono trovare implementazioni più eleganti di quella presentata qui. Il presente esercizio ha solo lo scopo di illustrare la logica soggiacente all’algoritmo di Metropolis; non ci preoccupiamo di trovare un’implementazione efficente dell’algoritmo.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Nel presente esempio useremo lo stesso codice <span class="math inline">\(\textsf{R}\)</span> utilizzato da <span class="citation" data-cites="Johnson2022bayesrules">Johnson et al. (<a href="999_refs.html#ref-Johnson2022bayesrules" role="doc-biblioref">2022</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Per capire cosa sia la maledizione della dimensionalità, supponiamo di utilizzare una griglia di 100 punti equispaziati. Nel caso di un solo parametro, è necessario calcolare 100 valori. Per due parametri devono essere calcolari <span class="math inline">\(100^2\)</span> valori. Ma già per 10 parametri è necessario calcolare <span class="math inline">\(10^{10}\)</span> valori – è facile capire che una tale quantità di calcoli è troppo grande anche per un computer molto potente. Per modelli che richiedono la stima di un numero non piccolo di parametri è dunque necessario procedere in un altro modo.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>L’integrazione Monte Carlo può essere utilizzata anche per la valutazione di integrali più complessi.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>In termini più formali, si può dire che i metodi MCMC consentono di costruire sequenze di punti (detti catene di Markov) nello spazio dei parametri le cui densità sono proporzionali alla distribuzione a posteriori. In altre parole, dopo aver simulato un grande numero di passi della catena si possono usare i valori così generati come se fossero un campione casuale della distribuzione a posteriori. Un’introduzione alle catene di Markov è fornita in Appendice.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Un’illustrazione visiva di come si svolge il processo di “esplorazione” dell’algoritmo di Metropolis è fornita in questo post: https://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>L’accettanza dipende dalla distribuzione proposta: in generale, tanto più la distribuzione proposta è simile alla distribuzione target, tanto più alta diventa l’accettanza.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Si possono trovare implementazioni più eleganti di quella presentata qui. Il presente esercizio ha solo lo scopo di illustrare la logica soggiacente all’algoritmo di Metropolis; non ci preoccupiamo di trovare un’implementazione efficente dell’algoritmo.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1366,7 +1371,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1445,31 +1467,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

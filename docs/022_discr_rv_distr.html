@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 12&nbsp; Distribuzioni di v.c. discrete</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -438,29 +443,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
-<li><a href="#una-prova-bernoulliana" id="toc-una-prova-bernoulliana" class="nav-link active" data-scroll-target="#una-prova-bernoulliana"> <span class="header-section-number">12.1</span> Una prova Bernoulliana</a></li>
+<li><a href="#una-prova-bernoulliana" id="toc-una-prova-bernoulliana" class="nav-link active" data-scroll-target="#una-prova-bernoulliana"><span class="toc-section-number">12.1</span>  Una prova Bernoulliana</a></li>
   <li>
-<a href="#una-sequenza-di-prove-bernoulliane" id="toc-una-sequenza-di-prove-bernoulliane" class="nav-link" data-scroll-target="#una-sequenza-di-prove-bernoulliane"> <span class="header-section-number">12.2</span> Una sequenza di prove Bernoulliane</a>
+<a href="#una-sequenza-di-prove-bernoulliane" id="toc-una-sequenza-di-prove-bernoulliane" class="nav-link" data-scroll-target="#una-sequenza-di-prove-bernoulliane"><span class="toc-section-number">12.2</span>  Una sequenza di prove Bernoulliane</a>
   <ul class="collapse">
-<li><a href="#valore-atteso-e-deviazione-standard" id="toc-valore-atteso-e-deviazione-standard" class="nav-link" data-scroll-target="#valore-atteso-e-deviazione-standard"> <span class="header-section-number">12.2.1</span> Valore atteso e deviazione standard</a></li>
+<li><a href="#valore-atteso-e-deviazione-standard" id="toc-valore-atteso-e-deviazione-standard" class="nav-link" data-scroll-target="#valore-atteso-e-deviazione-standard"><span class="toc-section-number">12.2.1</span>  Valore atteso e deviazione standard</a></li>
   </ul>
 </li>
   <li>
-<a href="#distribuzione-di-poisson" id="toc-distribuzione-di-poisson" class="nav-link" data-scroll-target="#distribuzione-di-poisson"> <span class="header-section-number">12.3</span> Distribuzione di Poisson</a>
+<a href="#distribuzione-di-poisson" id="toc-distribuzione-di-poisson" class="nav-link" data-scroll-target="#distribuzione-di-poisson"><span class="toc-section-number">12.3</span>  Distribuzione di Poisson</a>
   <ul class="collapse">
-<li><a href="#alcune-propriet%C3%A0-della-variabile-di-poisson" id="toc-alcune-proprietà-della-variabile-di-poisson" class="nav-link" data-scroll-target="#alcune-propriet%C3%A0-della-variabile-di-poisson"> <span class="header-section-number">12.3.1</span> Alcune proprietà della variabile di Poisson</a></li>
+<li><a href="#alcune-propriet%C3%A0-della-variabile-di-poisson" id="toc-alcune-proprietà-della-variabile-di-poisson" class="nav-link" data-scroll-target="#alcune-propriet%C3%A0-della-variabile-di-poisson"><span class="toc-section-number">12.3.1</span>  Alcune proprietà della variabile di Poisson</a></li>
   </ul>
 </li>
   <li>
-<a href="#distribuzione-discreta-uniforme" id="toc-distribuzione-discreta-uniforme" class="nav-link" data-scroll-target="#distribuzione-discreta-uniforme"> <span class="header-section-number">12.4</span> Distribuzione discreta uniforme</a>
+<a href="#distribuzione-discreta-uniforme" id="toc-distribuzione-discreta-uniforme" class="nav-link" data-scroll-target="#distribuzione-discreta-uniforme"><span class="toc-section-number">12.4</span>  Distribuzione discreta uniforme</a>
   <ul class="collapse">
-<li><a href="#distribuzione-discreta-uniforme-con-textsfr" id="toc-distribuzione-discreta-uniforme-con-textsfr" class="nav-link" data-scroll-target="#distribuzione-discreta-uniforme-con-textsfr"> <span class="header-section-number">12.4.1</span> Distribuzione discreta uniforme con <span class="math inline">\(\textsf{R}\)</span></a></li>
+<li><a href="#distribuzione-discreta-uniforme-con-textsfr" id="toc-distribuzione-discreta-uniforme-con-textsfr" class="nav-link" data-scroll-target="#distribuzione-discreta-uniforme-con-textsfr"><span class="toc-section-number">12.4.1</span>  Distribuzione discreta uniforme con <span class="math inline">\(\textsf{R}\)</span></a></li>
   </ul>
 </li>
-  <li><a href="#distribuzione-beta-binomiale" id="toc-distribuzione-beta-binomiale" class="nav-link" data-scroll-target="#distribuzione-beta-binomiale"> <span class="header-section-number">12.5</span> Distribuzione beta-binomiale</a></li>
+  <li><a href="#distribuzione-beta-binomiale" id="toc-distribuzione-beta-binomiale" class="nav-link" data-scroll-target="#distribuzione-beta-binomiale"><span class="toc-section-number">12.5</span>  Distribuzione beta-binomiale</a></li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
   </ul></nav>
     </div>
@@ -474,6 +479,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -502,8 +508,7 @@ P(Y \mid \theta) =
 \tag{12.1}\]</span></span></p>
 <p>Scriviamo <span class="math inline">\(Y \sim \mbox{Bernoulli}(\theta)\)</span> per indicare che la variabile casuale <span class="math inline">\(Y\)</span> ha una distribuzione Bernoulliana di parametro <span class="math inline">\(\theta\)</span>.</p>
 <div id="exr-bernoulli-var-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 12.1 </strong></span></p>
-<p>Nel caso del lancio di una moneta equilibrata la variabile casuale di Bernoulli assume i valori <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>. La distribuzione di massa di probabilità è pari a <span class="math inline">\(\frac{1}{2}\)</span> in corrispondenza di entrambi i valori. La funzione di distribuzione vale <span class="math inline">\(\frac{1}{2}\)</span> per <span class="math inline">\(Y = 0\)</span> e <span class="math inline">\(1\)</span> per <span class="math inline">\(Y = 1\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 12.1 </strong></span>Nel caso del lancio di una moneta equilibrata la variabile casuale di Bernoulli assume i valori <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>. La distribuzione di massa di probabilità è pari a <span class="math inline">\(\frac{1}{2}\)</span> in corrispondenza di entrambi i valori. La funzione di distribuzione vale <span class="math inline">\(\frac{1}{2}\)</span> per <span class="math inline">\(Y = 0\)</span> e <span class="math inline">\(1\)</span> per <span class="math inline">\(Y = 1\)</span>.</p>
 </div>
 </section><section id="una-sequenza-di-prove-bernoulliane" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="una-sequenza-di-prove-bernoulliane">
 <span class="header-section-number">12.2</span> Una sequenza di prove Bernoulliane</h2>
@@ -545,14 +550,13 @@ P(Y=y) &amp;= \binom{n}{y} \theta^{y} (1-\theta)^{n-y} \notag \\
 <div class="cell-output-display">
 <div id="fig-example-binomial-distr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="022_discr_rv_distr_files/figure-html/fig-example-binomial-distr-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 12.1: Alcune distribuzioni binomiali. Nella figura, il parametro <span class="math inline">\(\theta\)</span> è indicato con <span class="math inline">\(p\)</span>.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;12.1: Alcune distribuzioni binomiali. Nella figura, il parametro <span class="math inline">\(\theta\)</span> è indicato con <span class="math inline">\(p\)</span>.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="exr-binomial-distr-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 12.2 </strong></span></p>
-<p>Usando l’<a href="#eq-binomialdistribution">Equazione&nbsp;<span>12.2</span></a>, si trovi la probabilità di <span class="math inline">\(y = 2\)</span> successi in <span class="math inline">\(n = 4\)</span> prove Bernoulliane indipendenti con <span class="math inline">\(\theta = 0.2\)</span></p>
+<p><span class="theorem-title"><strong>Esercizio 12.2 </strong></span>Usando l’<a href="#eq-binomialdistribution">Equazione&nbsp;<span>12.2</span></a>, si trovi la probabilità di <span class="math inline">\(y = 2\)</span> successi in <span class="math inline">\(n = 4\)</span> prove Bernoulliane indipendenti con <span class="math inline">\(\theta = 0.2\)</span></p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Abbiamo</p>
@@ -604,8 +608,7 @@ P(Y=2) &amp;= \frac{4!}{2!(4-2)!} 0.2^{2} (1-0.2)^{4-2} \notag  \\
 </div>
 </div>
 <div id="exr-binomial-distr-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 12.3 </strong></span></p>
-<p>Lanciando <span class="math inline">\(5\)</span> volte una moneta onesta, qual è la probabilità che esca testa almeno tre volte?</p>
+<p><span class="theorem-title"><strong>Esercizio 12.3 </strong></span>Lanciando <span class="math inline">\(5\)</span> volte una moneta onesta, qual è la probabilità che esca testa almeno tre volte?</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>In R, la soluzione si trova con</p>
@@ -638,8 +641,7 @@ P(Y=2) &amp;= \frac{4!}{2!(4-2)!} 0.2^{2} (1-0.2)^{4-2} \notag  \\
 \end{align}\]</span>
 </div>
 <div id="exr-mean-var-binomial-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 12.4 </strong></span></p>
-<p>Si trovino il valore atteso e la varianza del lancio di quattro monete con probabilità di successo pari a <span class="math inline">\(\theta = 0.2\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 12.4 </strong></span>Si trovino il valore atteso e la varianza del lancio di quattro monete con probabilità di successo pari a <span class="math inline">\(\theta = 0.2\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Il valore atteso è <span class="math inline">\(\mu = n \theta = 4 \cdot 0.2 = 0.8.\)</span> Ciò significa che, se l’esperimento casuale venisse ripetuto infinite volte, l’esito testa verrebbe osservato un numero medio di volte pari a 0.8. La varianza è <span class="math inline">\(n \theta (1-\theta) = 4 \cdot 0.2 \cdot (1 - 0.2) = 0.64\)</span>.</p>
@@ -658,14 +660,13 @@ P(Y=2) &amp;= \frac{4!}{2!(4-2)!} 0.2^{2} (1-0.2)^{4-2} \notag  \\
 <div class="cell-output-display">
 <div id="fig-examples-poisson-distrib" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="022_discr_rv_distr_files/figure-html/fig-examples-poisson-distrib-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 12.2: Alcune distribuzioni di Poisson.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;12.2: Alcune distribuzioni di Poisson.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="exr-poisson-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 12.5 </strong></span></p>
-<p>Supponiamo che un evento accada 300 volte all’ora. Si vuole determinare la probabilità che in un minuto accadano esattamente 3 eventi.</p>
+<p><span class="theorem-title"><strong>Esercizio 12.5 </strong></span>Supponiamo che un evento accada 300 volte all’ora. Si vuole determinare la probabilità che in un minuto accadano esattamente 3 eventi.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Il numero medio di eventi in un minuto è pari a</p>
@@ -684,8 +685,7 @@ P(Y=2) &amp;= \frac{4!}{2!(4-2)!} 0.2^{2} (1-0.2)^{4-2} \notag  \\
 </div>
 </div>
 <div id="exr-poisson-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 12.6 </strong></span></p>
-<p>Per i dati dell’<a href="#exr-poisson-1">Esercizio&nbsp;<span>12.5</span></a>, si trovi la probabilità che un evento accada almeno 8 volte in un minuto.</p>
+<p><span class="theorem-title"><strong>Esercizio 12.6 </strong></span>Per i dati dell’<a href="#exr-poisson-1">Esercizio&nbsp;<span>12.5</span></a>, si trovi la probabilità che un evento accada almeno 8 volte in un minuto.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>La probabilità cercata è</p>
@@ -703,8 +703,7 @@ p(y \geq 8) = 1 - p (y \leq 7) = 1- \sum_{i = 0}^7 \frac{\lambda^7}{7!}e^{-\lamb
 </div>
 </div>
 <div id="exr-poisson-3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 12.7 </strong></span></p>
-<p>Sapendo che un evento avviene in media 6 volte al minuto, si calcoli (a) la probabilità di osservare un numero di eventi uguale o inferiore a 3 in un minuto, e (b) la probabilità di osservare esattamente 2 eventi in 30 secondi.</p>
+<p><span class="theorem-title"><strong>Esercizio 12.7 </strong></span>Sapendo che un evento avviene in media 6 volte al minuto, si calcoli (a) la probabilità di osservare un numero di eventi uguale o inferiore a 3 in un minuto, e (b) la probabilità di osservare esattamente 2 eventi in 30 secondi.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Per la domanda (a), <span class="math inline">\(\lambda = 6\)</span> e la probabilità richiesta è</p>
@@ -768,9 +767,9 @@ P(X = x) = \frac{1}{m}, \quad x = 1, \dots, m.
 
 <!-- -->
 
-</section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Viene detta <em>scambiabilità</em> la proprietà per cui l’ordine con cui compiamo le osservazioni è irrilevante per l’assegnazione delle probabilità.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Viene detta <em>scambiabilità</em> la proprietà per cui l’ordine con cui compiamo le osservazioni è irrilevante per l’assegnazione delle probabilità.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -812,7 +811,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -891,31 +907,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

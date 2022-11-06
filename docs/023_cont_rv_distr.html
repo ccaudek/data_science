@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 13&nbsp; Distribuzioni di v.c. continue</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -457,41 +462,41 @@ div.csl-indent {
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
 <li>
-<a href="#distribuzione-gaussiana" id="toc-distribuzione-gaussiana" class="nav-link active" data-scroll-target="#distribuzione-gaussiana"> <span class="header-section-number">13.1</span> Distribuzione Gaussiana</a>
+<a href="#distribuzione-gaussiana" id="toc-distribuzione-gaussiana" class="nav-link active" data-scroll-target="#distribuzione-gaussiana"><span class="toc-section-number">13.1</span>  Distribuzione Gaussiana</a>
   <ul class="collapse">
-<li><a href="#limite-delle-distribuzioni-binomiali" id="toc-limite-delle-distribuzioni-binomiali" class="nav-link" data-scroll-target="#limite-delle-distribuzioni-binomiali"> <span class="header-section-number">13.1.1</span> Limite delle distribuzioni binomiali</a></li>
+<li><a href="#limite-delle-distribuzioni-binomiali" id="toc-limite-delle-distribuzioni-binomiali" class="nav-link" data-scroll-target="#limite-delle-distribuzioni-binomiali"><span class="toc-section-number">13.1.1</span>  Limite delle distribuzioni binomiali</a></li>
   </ul>
 </li>
   <li>
-<a href="#normal-random-walk" id="toc-normal-random-walk" class="nav-link" data-scroll-target="#normal-random-walk"> <span class="header-section-number">13.2</span> La Normale prodotta con una simulazione</a>
+<a href="#normal-random-walk" id="toc-normal-random-walk" class="nav-link" data-scroll-target="#normal-random-walk"><span class="toc-section-number">13.2</span>  La Normale prodotta con una simulazione</a>
   <ul class="collapse">
-<li><a href="#concentrazione" id="toc-concentrazione" class="nav-link" data-scroll-target="#concentrazione"> <span class="header-section-number">13.2.1</span> Concentrazione</a></li>
-  <li><a href="#funzione-di-ripartizione" id="toc-funzione-di-ripartizione" class="nav-link" data-scroll-target="#funzione-di-ripartizione"> <span class="header-section-number">13.2.2</span> Funzione di ripartizione</a></li>
-  <li><a href="#distribuzione-normale-standard" id="toc-distribuzione-normale-standard" class="nav-link" data-scroll-target="#distribuzione-normale-standard"> <span class="header-section-number">13.2.3</span> Distribuzione Normale standard</a></li>
+<li><a href="#concentrazione" id="toc-concentrazione" class="nav-link" data-scroll-target="#concentrazione"><span class="toc-section-number">13.2.1</span>  Concentrazione</a></li>
+  <li><a href="#funzione-di-ripartizione" id="toc-funzione-di-ripartizione" class="nav-link" data-scroll-target="#funzione-di-ripartizione"><span class="toc-section-number">13.2.2</span>  Funzione di ripartizione</a></li>
+  <li><a href="#distribuzione-normale-standard" id="toc-distribuzione-normale-standard" class="nav-link" data-scroll-target="#distribuzione-normale-standard"><span class="toc-section-number">13.2.3</span>  Distribuzione Normale standard</a></li>
   </ul>
 </li>
-  <li><a href="#teorema-del-limite-centrale" id="toc-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#teorema-del-limite-centrale"> <span class="header-section-number">13.3</span> Teorema del limite centrale</a></li>
+  <li><a href="#teorema-del-limite-centrale" id="toc-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#teorema-del-limite-centrale"><span class="toc-section-number">13.3</span>  Teorema del limite centrale</a></li>
   <li>
-<a href="#distribuzione-chi-quadrato" id="toc-distribuzione-chi-quadrato" class="nav-link" data-scroll-target="#distribuzione-chi-quadrato"> <span class="header-section-number">13.4</span> Distribuzione Chi-quadrato</a>
+<a href="#distribuzione-chi-quadrato" id="toc-distribuzione-chi-quadrato" class="nav-link" data-scroll-target="#distribuzione-chi-quadrato"><span class="toc-section-number">13.4</span>  Distribuzione Chi-quadrato</a>
   <ul class="collapse">
-<li><a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"> <span class="header-section-number">13.4.1</span> Proprietà</a></li>
+<li><a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"><span class="toc-section-number">13.4.1</span>  Proprietà</a></li>
   </ul>
 </li>
   <li>
-<a href="#distribuzione-t-di-student" id="toc-distribuzione-t-di-student" class="nav-link" data-scroll-target="#distribuzione-t-di-student"> <span class="header-section-number">13.5</span> Distribuzione <span class="math inline">\(t\)</span> di Student</a>
+<a href="#distribuzione-t-di-student" id="toc-distribuzione-t-di-student" class="nav-link" data-scroll-target="#distribuzione-t-di-student"><span class="toc-section-number">13.5</span>  Distribuzione <span class="math inline">\(t\)</span> di Student</a>
   <ul class="collapse">
-<li><a href="#propriet%C3%A0-1" id="toc-proprietà-1" class="nav-link" data-scroll-target="#propriet%C3%A0-1"> <span class="header-section-number">13.5.1</span> Proprietà</a></li>
+<li><a href="#propriet%C3%A0-1" id="toc-proprietà-1" class="nav-link" data-scroll-target="#propriet%C3%A0-1"><span class="toc-section-number">13.5.1</span>  Proprietà</a></li>
   </ul>
 </li>
-  <li><a href="#funzione-beta" id="toc-funzione-beta" class="nav-link" data-scroll-target="#funzione-beta"> <span class="header-section-number">13.6</span> Funzione beta</a></li>
-  <li><a href="#distribuzione-beta" id="toc-distribuzione-beta" class="nav-link" data-scroll-target="#distribuzione-beta"> <span class="header-section-number">13.7</span> Distribuzione Beta</a></li>
-  <li><a href="#distribuzione-di-cauchy" id="toc-distribuzione-di-cauchy" class="nav-link" data-scroll-target="#distribuzione-di-cauchy"> <span class="header-section-number">13.8</span> Distribuzione di Cauchy</a></li>
-  <li><a href="#distribuzione-log-normale" id="toc-distribuzione-log-normale" class="nav-link" data-scroll-target="#distribuzione-log-normale"> <span class="header-section-number">13.9</span> Distribuzione log-normale</a></li>
-  <li><a href="#distribuzione-di-pareto" id="toc-distribuzione-di-pareto" class="nav-link" data-scroll-target="#distribuzione-di-pareto"> <span class="header-section-number">13.10</span> Distribuzione di Pareto</a></li>
+  <li><a href="#funzione-beta" id="toc-funzione-beta" class="nav-link" data-scroll-target="#funzione-beta"><span class="toc-section-number">13.6</span>  Funzione beta</a></li>
+  <li><a href="#distribuzione-beta" id="toc-distribuzione-beta" class="nav-link" data-scroll-target="#distribuzione-beta"><span class="toc-section-number">13.7</span>  Distribuzione Beta</a></li>
+  <li><a href="#distribuzione-di-cauchy" id="toc-distribuzione-di-cauchy" class="nav-link" data-scroll-target="#distribuzione-di-cauchy"><span class="toc-section-number">13.8</span>  Distribuzione di Cauchy</a></li>
+  <li><a href="#distribuzione-log-normale" id="toc-distribuzione-log-normale" class="nav-link" data-scroll-target="#distribuzione-log-normale"><span class="toc-section-number">13.9</span>  Distribuzione log-normale</a></li>
+  <li><a href="#distribuzione-di-pareto" id="toc-distribuzione-di-pareto" class="nav-link" data-scroll-target="#distribuzione-di-pareto"><span class="toc-section-number">13.10</span>  Distribuzione di Pareto</a></li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
   </ul></nav>
     </div>
@@ -505,6 +510,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -533,7 +539,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-demoivre-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-demoivre-1-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 13.1: Probabilità del numero di successi in <span class="math inline">\(N = 10\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 10, 0.9)\)</span>. Con solo dieci prove, la distribuzione è fortemente asimmetrica negativa.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;13.1: Probabilità del numero di successi in <span class="math inline">\(N = 10\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 10, 0.9)\)</span>. Con solo dieci prove, la distribuzione è fortemente asimmetrica negativa.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -554,7 +560,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-demoivre-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-demoivre-2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 13.2: Probabilità del numero di successi in <span class="math inline">\(N = 1000\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 1000, 0.9)\)</span>. Con mille prove, la distribuzione è quasi simmetrica a forma campanulare.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;13.2: Probabilità del numero di successi in <span class="math inline">\(N = 1000\)</span> prove bernoulliane indipendenti, ciascuna con una probabilità di successo di 0.90. Il risultato è una distribuzione <span class="math inline">\(\mbox{Bin}(y \mid 1000, 0.9)\)</span>. Con mille prove, la distribuzione è quasi simmetrica a forma campanulare.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -594,7 +600,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-rw-normal-4816" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-rw-normal-4816-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 13.3: Passeggiata casuale di 4, 8 e 16 passi. La spezzata nera indica la media delle distanze dall’origine come funzione del numero di passi.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;13.3: Passeggiata casuale di 4, 8 e 16 passi. La spezzata nera indica la media delle distanze dall’origine come funzione del numero di passi.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -640,7 +646,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-rw-normal-3panels" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-rw-normal-3panels-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 13.4: Kernel density plot dei risultati della passeggiata casuale riportata nella figura precente, dopo 4, 8 e 16 passi. Nel pannello di destra, una densità Normale di opportuni parametri è sovrapposta all’istogramma lisciato.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;13.4: Kernel density plot dei risultati della passeggiata casuale riportata nella figura precente, dopo 4, 8 e 16 passi. Nel pannello di destra, una densità Normale di opportuni parametri è sovrapposta all’istogramma lisciato.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -661,7 +667,7 @@ f(y; \mu, \sigma) = {1 \over {\sigma\sqrt{2\pi} }} \exp \left\{-\frac{(y -  \mu)
 <div class="cell-output-display">
 <div id="fig-gaussian-plot-demo" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-gaussian-plot-demo-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 13.5: Alcune distribuzioni Normali.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;13.5: Alcune distribuzioni Normali.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -715,8 +721,7 @@ X = a + b Y \sim \mathcal{N}(\mu_X = a+b \mu_Y, \sigma_X = \left|b\right|\sigma_
 <p>L’area sottesa alla curva di densità di <span class="math inline">\(\mathcal{N}(\mu, \sigma)\)</span> nella semiretta <span class="math inline">\((-\infty, y]\)</span> è uguale all’area sottesa alla densità Normale standard nella semiretta <span class="math inline">\((-\infty, z]\)</span>, in cui <span class="math inline">\(z = (y -\mu_Y )/\sigma_Y\)</span> è il punteggio standard di <span class="math inline">\(Y\)</span>. Per la simmetria della distribuzione, l’area sottesa nella semiretta <span class="math inline">\([1, \infty)\)</span> è uguale all’area sottesa nella semiretta <span class="math inline">\((-\infty, 1]\)</span> e quest’ultima coincide con <span class="math inline">\(F(-1)\)</span>. Analogamente, l’area sottesa nell’intervallo <span class="math inline">\([y_a, y_b]\)</span>, con <span class="math inline">\(y_a &lt; y_b\)</span>, è pari a <span class="math inline">\(F(z_b) - F(z_a)\)</span>, dove <span class="math inline">\(z_a\)</span> e <span class="math inline">\(z_b\)</span> sono i punteggi standard di <span class="math inline">\(y_a\)</span> e <span class="math inline">\(y_b\)</span>.</p>
 <p>Si ha anche il problema inverso rispetto a quello del calcolo delle aree: dato un numero <span class="math inline">\(0 \leq p \leq 1\)</span>, il problema è quello di determinare un numero <span class="math inline">\(z \in \mathbb{R}\)</span> tale che <span class="math inline">\(P(Z &lt; z) = p\)</span>. Il valore <span class="math inline">\(z\)</span> cercato è detto <em>quantile</em> di ordine <span class="math inline">\(p\)</span> della Normale standard e può essere trovato mediante un software.</p>
 <div id="exr-gauss-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 13.2 </strong></span></p>
-<p>Supponiamo che l’altezza degli individui adulti segua la distribuzione Normale di media <span class="math inline">\(\mu = 1.7\)</span> m e deviazione standard <span class="math inline">\(\sigma = 0.1\)</span> m. Vogliamo sapere la proporzione di individui adulti con un’altezza compresa tra <span class="math inline">\(1.7\)</span> e <span class="math inline">\(1.8\)</span> m.</p>
+<p><span class="theorem-title"><strong>Esercizio 13.2 </strong></span>Supponiamo che l’altezza degli individui adulti segua la distribuzione Normale di media <span class="math inline">\(\mu = 1.7\)</span> m e deviazione standard <span class="math inline">\(\sigma = 0.1\)</span> m. Vogliamo sapere la proporzione di individui adulti con un’altezza compresa tra <span class="math inline">\(1.7\)</span> e <span class="math inline">\(1.8\)</span> m.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Il problema ci chiede di trovare l’area sottesa alla distribuzione <span class="math inline">\(\mathcal{N}(\mu = 1.7, \sigma = 0.1)\)</span> nell’intervallo <span class="math inline">\([1.7, 1.8]\)</span>:</p>
@@ -805,7 +810,7 @@ f(x) = C_{\nu} x^{\nu/2-1} \exp (-x/2), \qquad \text{se } x &gt; 0,
 <div class="cell-output-display">
 <div id="fig-alcune-chi-quadrato" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-alcune-chi-quadrato-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 13.6: Alcune distribuzioni Chi-quadrato.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;13.6: Alcune distribuzioni Chi-quadrato.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -852,7 +857,7 @@ T = \frac{Z}{\Big( \frac{W}{\nu}\Big)^{\frac{1}{2}}}
 <div class="cell-output-display">
 <div id="fig-alcune-t-student" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="023_cont_rv_distr_files/figure-html/fig-alcune-t-student-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 13.7: Alcune distribuzioni <span class="math inline">\(t\)</span> di Student.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;13.7: Alcune distribuzioni <span class="math inline">\(t\)</span> di Student.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -977,8 +982,7 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 </ul>
 </div>
 <div id="exr-beta-binom-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 13.5 </strong></span></p>
-<p>Nel disturbo depressivo la recidiva è definita come la comparsa di un nuovo episodio depressivo che si manifesta dopo un prolungato periodo di recupero (6-12 mesi) con stato di eutimia (umore relativamente normale). Supponiamo che una serie di studi mostri una comparsa di recidiva in una proporzione che va dal 20% al 60% dei casi, con una media del 40% <span class="citation" data-cites="nuggerud2020analysis">(per una recente discussione, si veda <a href="999_refs.html#ref-nuggerud2020analysis" role="doc-biblioref">Nuggerud-Galeas et al., 2020</a>)</span>. Sulla base di queste informazioni, si usi la distribuzione Beta per rappresentare le credenze a priori relativamente alla probabilità di recidiva.</p>
+<p><span class="theorem-title"><strong>Esercizio 13.5 </strong></span>Nel disturbo depressivo la recidiva è definita come la comparsa di un nuovo episodio depressivo che si manifesta dopo un prolungato periodo di recupero (6-12 mesi) con stato di eutimia (umore relativamente normale). Supponiamo che una serie di studi mostri una comparsa di recidiva in una proporzione che va dal 20% al 60% dei casi, con una media del 40% <span class="citation" data-cites="nuggerud2020analysis">(per una recente discussione, si veda <a href="999_refs.html#ref-nuggerud2020analysis" role="doc-biblioref">Nuggerud-Galeas et al., 2020</a>)</span>. Sulla base di queste informazioni, si usi la distribuzione Beta per rappresentare le credenze a priori relativamente alla probabilità di recidiva.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Il problema richiede di trovare i parametri della distribuzione Beta tali per cui la massa della densità sia compresa tra 0.2 e 0.6, con la media in corrispondenza di 0.4. Procedendo per tentativi ed errori, ed usando la funzione <code><a href="https://bayes-rules.github.io/bayesrules/docs/reference/plot_beta.html">bayesrules::plot_beta()</a></code>, un risultato possibile è <span class="math inline">\(\mbox{Beta}(16, 24)\)</span>.</p>
@@ -1029,8 +1033,7 @@ B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}\,,
 <p>Possiamo concludere dicendo che, se utilizziamo la distribuzione <span class="math inline">\(\mbox{Beta}(16, 24)\)</span> per rappresentare le nostre credenze (a priori) rispetto la possibilità di recidiva, ciò significa che pensiamo che la nostra incertezza sia quantificabile nei termini di una deviazione standard di circa 8 punti percentuali rispetto a tutti i valori possibili di recidiva, per i quali il valore più verosimile (ovvero, la media della distribuzione) è 0.40.</p>
 </div>
 <div id="exr-beta-binom-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 13.6 </strong></span></p>
-<p>Poniamoci ora il problema di verificare la nostra comprensione delle funzioni <span class="math inline">\(\mathsf{R}\)</span> che possono essere usate per la funzione Beta. Si risolva l’<a href="029_conjugate_families.html#exr-beta-binom-1">Esercizio&nbsp;<span>17.1</span></a> usando <span class="math inline">\(\mathsf{R}\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 13.6 </strong></span>Poniamoci ora il problema di verificare la nostra comprensione delle funzioni <span class="math inline">\(\mathsf{R}\)</span> che possono essere usate per la funzione Beta. Si risolva l’<a href="029_conjugate_families.html#exr-beta-binom-1">Esercizio&nbsp;<span>17.1</span></a> usando <span class="math inline">\(\mathsf{R}\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Utilizziamo i seguenti parametri per la distribuzione Beta:</p>
@@ -1173,7 +1176,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1252,31 +1272,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

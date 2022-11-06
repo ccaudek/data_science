@@ -76,6 +76,119 @@ Nella ricerca scientifica la situazione è più complessa in quanto le relazioni
 
 Nella ricerca scientifica, le misurazioni sono fortemente contaminate da molteplici influenze estranee, nonostante gli enormi sforzi dei ricercatori per limitare la loro influenza. Per esempio, in uno studio sull'apprendimento della statistica da parte degli studenti di psicologia, un ricercatore potrebbe dividere gli studenti in due gruppi: un gruppo sperimentale (che affianca lo studio del materiale dell'esame con una serie di esercitazioni nelle quali viene utilizzato un software per l'analisi dei dati) e un gruppo di controllo (che studia il materiale dell'esame su un testo e si limita a svolgere degli esercizi scolastici carta-e-penna). Supponiamo che il ricercatore misuri la prestazione all'esame dei due gruppi. È chiaro che la prestazione all'esame per ogni singolo studente, al di là dell'effetto della manipolazione sperimentale, può variare notevolmente a seconda di molte altre influenze, come la motivazione, l'ansia, la possibilità di usare un computer, le conoscenze informatiche, la preparazione pregressa nelle materie quantitative, la quantità e qualità dello studio, ecc. I dati risultanti, quindi, saranno estremamente rumorosi, con un'enorme variabilità all'interno di ciascun gruppo e un'enorme sovrapposizione tra i gruppi. Pertanto, ci saranno molti studenti del gruppo sperimentale che faranno meglio all'esame della media gruppo di controllo e viceversa. Da queste due distribuzioni di voti all'esame, molto disperse e sovrapposte, vogliamo inferire qual è la differenza media tra i due gruppi e quanto possiamo essere certi che vi sia una differenza. Tutte le misurazioni scientifiche (i dati) includono un certo grado di "rumore". Le tecniche di analisi dei dati sono progettate per inferire le tendenze sottostanti presenti in dati rumorosi. A differenza di Sherlock Holmes, che sulla base di un'osservazione esclude completamente un sospettato, nella ricerca scientifica vengono raccolti dei dati che modificano solo incrementalmente la credibilità che può essere attribuita alle possibili tendenze suggerite dai dati. In questo insegnamento vedremo molti esempi realistici di questo processo. Uno dei maggiori vantaggi dell'analisi bayesiana è il fatto che essa consente di utilizzare la teoria delle probabilità per riallocare la credibilità tra le ipotesi, alla luce delle informazioni fornite dai dati, in un modo non arbitrario e automatico.
 
+#### Esempio: fake news nei post Twitter
+
+Per chiarire, consideriamo ora un esempio discusso da @Johnson2022bayesrules. Esaminiamo un insieme di post Twitter.
+
+```{r}
+library(bayesrules)
+library(tidyverse)
+library(janitor)
+
+# Import article data
+data(fake_news)
+```
+
+In questo data set la proporzione di notizie false è 60 / 150 = 0.4.
+
+```{r}
+fake_news %>% 
+  count(type) %>% 
+  adorn_totals("row")
+```
+
+Nei post Twitter esaminati, alcuni post contengono dei punti esclamativi, altri no. Consideriamo la distribuzione dei punti esclamativi rispetto al tipo di notizie (false, vere).
+
+```{r}
+fake_news %>% 
+  tabyl(title_has_excl, type) %>% 
+  adorn_totals("row")
+```
+
+Delle notizie false, i punti esclamativi sono presenti nel 16/60 = 0.2667 $\times 100$ dei casi; delle notizie vere, i punti esclamativi sono presenti solo nel 2/90 = 0.0222 $\times 100$ dei casi.
+
+Dal punto di vista di un'analisi Bayesiana, sappiamo che il 40% delle notizie sono false. Questa è la nostra informazione a priori. Ma abbiamo anche un'informazione sulla distribuzione dei punti esclamativi nelle notizie vere e false. Ci chiediamo: qual è la probabilità a posteriori che una notizia sia falsa se contiene un punto esclamativo?
+
+Le caratteristiche di vero/falso e di presenza/assenza di punti esclametivi variano in maniera casuale tra le varie notizie postate su Twitter. Per cui dobbiamo rapprensentare questa variazione casuale mediante un modello probabilistico.
+
+**Probabilità a priori**
+
+Sappiamo dai dati a disposizione che il 40% delle notizie sono false e il 60% sono vere. Se $F$ indica falso e $F^c$ indica vero, abbiamo
+
+$$
+P(F) = 0.40 \quad \text{e} \quad P(F^c) = 0.60.
+$$
+
+**Probabilità condizionata**
+
+La frequenza con cui si osservano i punti esclamativi dipende dal tipo di notizia (vera/falsa). Calcoliamo dunque la probabilità condizionata di un punto esclamativo ($E$) dato il tipo di notizia:
+
+$$
+P(E \mid F) = 0.267 \quad \text{e} \quad P(E \mid F^c) = 0.022.
+$$
+
+**Verosimiglianza**
+
+La verosimiglianza con consente di confrontare la plausibilità relativa dei dati $E$ in relazione agli eventi $F$ e $F^c$. In precedenza abbiamo presentato la verosimiglianza discutendo la distribuzione binomiale. Supponendo che i nostri dati $y$ siano il numero di successi in $n$ prove Bernoulliane, la distribuzione di probabilità del numero di successi in $n$ prove, $p(y \mid \theta)$, è data dalla distribuzione Binomiale nel caso di $n$ prove con probabilità di successo uguale a $\theta$. In tali circostanze, *fissato il numero di successi* $y$, la verosimiglianza si trova applicando la formula Binomiale per tutti i valori possibili di $\theta$. Quindi, abbiamo denotato la funzione di verosimiglianza come $p(\theta \mid y)$.
+
+Nel caso presente, @Johnson2022bayesrules fanno notare come la distribuzione di probabilità (condizionata) della presenza di un punto esclamativo sia data da $P(E\mid F)$ e $P(E\mid F^c)$. Quindi, la funzione di verosimiglianza diventa $P(F \mid E)$ e $P(F^c \mid E)$. Ovvero
+
+```{r}
+# Prior probability
+row_prior <- fake_news %>% 
+  count(type) %>% 
+  mutate(prop = n / sum(n)) %>% 
+  select(-n) %>% 
+  pivot_wider(names_from = type, values_from = prop)
+
+# Likelihood
+row_likelihood <- fake_news %>% 
+  count(type, title_has_excl) %>% 
+  pivot_wider(names_from = title_has_excl, values_from = n) %>% 
+  mutate(likelihood = `TRUE` / (`TRUE` + `FALSE`)) %>% 
+  select(-c(`FALSE`, `TRUE`)) %>%
+  pivot_wider(names_from = type, values_from = likelihood)
+
+bind_cols(Statistica = c("Probabilità a priori", "Verosimiglianza"),
+          bind_rows(row_prior, row_likelihood)) %>% 
+  mutate(Totale = fake + real) %>% 
+  rename(`Notizia Falsa ($F$)` = fake, 
+         `Notizia Vera ($F^c$)` = real) %>% 
+  knitr::kable(digits = 3)
+```
+
+**Costante di normalizzazione**
+
+L'ultima informazione di cui abbiamo bisogno è la probabilità marginale di osservare i punti esclamativi in tutti i post Twitter, o $P(E)$, che rappresenta la costante di normalizzazione, ovvero
+
+$$
+P(F)P(E \mid F) + P(F^c) P(E \mid F^c) = 0.12.
+$$
+
+```{r}
+fake_news %>% 
+  count(type, title_has_excl) %>% 
+  mutate(prop = n / sum(n)) %>% 
+  filter(title_has_excl == TRUE) %>% 
+  summarize(normalizing_constant = sum(prop))
+```
+
+**Probabilità a posteriori**
+
+La probabilità a posteriori $P(F \mid E)$ che una notizia sia falsa dato che il post Twitter contiene un punto esclamativo è data dalla regola di Bayes:
+
+$$
+\text{probabilità a posteriori} = \frac{\text{probabilità a priori} \times \text{verosimiglianza}}{\text{costante di normalizzazione}}
+$$
+
+ovvero
+
+$$
+P(F \mid E) = \frac{P(F) P(E | F)}{P(E)} = \frac{0.40 \cdot 0.267}{0.12} = 0.889.
+$$
+
+Si noti che la probabilità a priori che una notizia sia falsa era 0.40. Alla luce della conoscenza che il post Twitter contiene un punto esclamativo abbiamo trovato una probabilità a posteriori uguale a 0.889. Quindi, l'informazione relativa alla presenza di un punto esclamativo ha mutato drasticamente la credibilità del valore di verità della notizia.
+
 ### Seconda idea: le possibilità sono valori di parametri in un modello statistico
 
 BDI-II prima e dopo un intervento psicologico.

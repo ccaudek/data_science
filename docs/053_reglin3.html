@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 27&nbsp; Modello di regressione in linguaggio Stan</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -438,16 +443,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
-<li><a href="#specificazione-del-modello" id="toc-specificazione-del-modello" class="nav-link active" data-scroll-target="#specificazione-del-modello"> <span class="header-section-number">27.1</span> Specificazione del modello</a></li>
+<li><a href="#specificazione-del-modello" id="toc-specificazione-del-modello" class="nav-link active" data-scroll-target="#specificazione-del-modello"><span class="toc-section-number">27.1</span>  Specificazione del modello</a></li>
   <li>
-<a href="#stima-bayesiana-in-linguaggio-stan" id="toc-stima-bayesiana-in-linguaggio-stan" class="nav-link" data-scroll-target="#stima-bayesiana-in-linguaggio-stan"> <span class="header-section-number">27.2</span> Stima bayesiana in linguaggio Stan</a>
+<a href="#stima-bayesiana-in-linguaggio-stan" id="toc-stima-bayesiana-in-linguaggio-stan" class="nav-link" data-scroll-target="#stima-bayesiana-in-linguaggio-stan"><span class="toc-section-number">27.2</span>  Stima bayesiana in linguaggio Stan</a>
   <ul class="collapse">
-<li><a href="#standardizzare-i-dati" id="toc-standardizzare-i-dati" class="nav-link" data-scroll-target="#standardizzare-i-dati"> <span class="header-section-number">27.2.1</span> Standardizzare i dati</a></li>
-  <li><a href="#interpretazione-dei-parametri" id="toc-interpretazione-dei-parametri" class="nav-link" data-scroll-target="#interpretazione-dei-parametri"> <span class="header-section-number">27.2.2</span> Interpretazione dei parametri</a></li>
-  <li><a href="#centrare-i-predittori" id="toc-centrare-i-predittori" class="nav-link" data-scroll-target="#centrare-i-predittori"> <span class="header-section-number">27.2.3</span> Centrare i predittori</a></li>
+<li><a href="#standardizzare-i-dati" id="toc-standardizzare-i-dati" class="nav-link" data-scroll-target="#standardizzare-i-dati"><span class="toc-section-number">27.2.1</span>  Standardizzare i dati</a></li>
+  <li><a href="#interpretazione-dei-parametri" id="toc-interpretazione-dei-parametri" class="nav-link" data-scroll-target="#interpretazione-dei-parametri"><span class="toc-section-number">27.2.2</span>  Interpretazione dei parametri</a></li>
+  <li><a href="#centrare-i-predittori" id="toc-centrare-i-predittori" class="nav-link" data-scroll-target="#centrare-i-predittori"><span class="toc-section-number">27.2.3</span>  Centrare i predittori</a></li>
   </ul>
 </li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
@@ -463,6 +468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -843,9 +849,9 @@ y_n &amp;= \textrm{z}_y^{-1}(\textrm{z}_y(y_n)) \notag\\
 
 <!-- -->
 
-</section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Nella discussione che segue ripeto pari pari ciò che è riportato nel manuale del linguaggio <a href="https://mc-stan.org/docs/2_27/stan-users-guide/standardizing-predictors-and-outputs.html">Stan</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Nella discussione che segue ripeto pari pari ciò che è riportato nel manuale del linguaggio <a href="https://mc-stan.org/docs/2_27/stan-users-guide/standardizing-predictors-and-outputs.html">Stan</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -887,7 +893,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -966,31 +989,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

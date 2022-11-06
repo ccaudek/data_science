@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 6&nbsp; La logica dell’incerto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -457,25 +462,25 @@ div.csl-indent {
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
-<li><a href="#che-cos%C3%A8-la-probabilit%C3%A0" id="toc-che-cosè-la-probabilità" class="nav-link active" data-scroll-target="#che-cos%C3%A8-la-probabilit%C3%A0"> <span class="header-section-number">6.1</span> Che cos’è la probabilità?</a></li>
+<li><a href="#che-cos%C3%A8-la-probabilit%C3%A0" id="toc-che-cosè-la-probabilità" class="nav-link active" data-scroll-target="#che-cos%C3%A8-la-probabilit%C3%A0"><span class="toc-section-number">6.1</span>  Che cos’è la probabilità?</a></li>
   <li>
-<a href="#variabili-casuali-e-probabilit%C3%A0-di-un-evento" id="toc-variabili-casuali-e-probabilità-di-un-evento" class="nav-link" data-scroll-target="#variabili-casuali-e-probabilit%C3%A0-di-un-evento"> <span class="header-section-number">6.2</span> Variabili casuali e probabilità di un evento</a>
+<a href="#variabili-casuali-e-probabilit%C3%A0-di-un-evento" id="toc-variabili-casuali-e-probabilità-di-un-evento" class="nav-link" data-scroll-target="#variabili-casuali-e-probabilit%C3%A0-di-un-evento"><span class="toc-section-number">6.2</span>  Variabili casuali e probabilità di un evento</a>
   <ul class="collapse">
-<li><a href="#eventi-e-probabilit%C3%A0" id="toc-eventi-e-probabilità" class="nav-link" data-scroll-target="#eventi-e-probabilit%C3%A0"> <span class="header-section-number">6.2.1</span> Eventi e probabilità</a></li>
-  <li><a href="#spazio-campione-e-risultati-possibili" id="toc-spazio-campione-e-risultati-possibili" class="nav-link" data-scroll-target="#spazio-campione-e-risultati-possibili"> <span class="header-section-number">6.2.2</span> Spazio campione e risultati possibili</a></li>
+<li><a href="#eventi-e-probabilit%C3%A0" id="toc-eventi-e-probabilità" class="nav-link" data-scroll-target="#eventi-e-probabilit%C3%A0"><span class="toc-section-number">6.2.1</span>  Eventi e probabilità</a></li>
+  <li><a href="#spazio-campione-e-risultati-possibili" id="toc-spazio-campione-e-risultati-possibili" class="nav-link" data-scroll-target="#spazio-campione-e-risultati-possibili"><span class="toc-section-number">6.2.2</span>  Spazio campione e risultati possibili</a></li>
   </ul>
 </li>
-  <li><a href="#variabili-casuali" id="toc-variabili-casuali" class="nav-link" data-scroll-target="#variabili-casuali"> <span class="header-section-number">6.3</span> Variabili casuali</a></li>
-  <li><a href="#usare-la-simulazione-per-stimare-le-probabilit%C3%A0" id="toc-usare-la-simulazione-per-stimare-le-probabilità" class="nav-link" data-scroll-target="#usare-la-simulazione-per-stimare-le-probabilit%C3%A0"> <span class="header-section-number">6.4</span> Usare la simulazione per stimare le probabilità</a></li>
-  <li><a href="#la-legge-dei-grandi-numeri" id="toc-la-legge-dei-grandi-numeri" class="nav-link" data-scroll-target="#la-legge-dei-grandi-numeri"> <span class="header-section-number">6.5</span> La legge dei grandi numeri</a></li>
-  <li><a href="#variabili-casuali-multiple" id="toc-variabili-casuali-multiple" class="nav-link" data-scroll-target="#variabili-casuali-multiple"> <span class="header-section-number">6.6</span> Variabili casuali multiple</a></li>
+  <li><a href="#variabili-casuali" id="toc-variabili-casuali" class="nav-link" data-scroll-target="#variabili-casuali"><span class="toc-section-number">6.3</span>  Variabili casuali</a></li>
+  <li><a href="#usare-la-simulazione-per-stimare-le-probabilit%C3%A0" id="toc-usare-la-simulazione-per-stimare-le-probabilità" class="nav-link" data-scroll-target="#usare-la-simulazione-per-stimare-le-probabilit%C3%A0"><span class="toc-section-number">6.4</span>  Usare la simulazione per stimare le probabilità</a></li>
+  <li><a href="#la-legge-dei-grandi-numeri" id="toc-la-legge-dei-grandi-numeri" class="nav-link" data-scroll-target="#la-legge-dei-grandi-numeri"><span class="toc-section-number">6.5</span>  La legge dei grandi numeri</a></li>
+  <li><a href="#variabili-casuali-multiple" id="toc-variabili-casuali-multiple" class="nav-link" data-scroll-target="#variabili-casuali-multiple"><span class="toc-section-number">6.6</span>  Variabili casuali multiple</a></li>
   <li>
-<a href="#sec:fun-mass-prob" id="toc-sec:fun-mass-prob" class="nav-link" data-scroll-target="#sec\:fun-mass-prob"> <span class="header-section-number">6.7</span> Funzione di massa di probabilità</a>
+<a href="#sec:fun-mass-prob" id="toc-sec:fun-mass-prob" class="nav-link" data-scroll-target="#sec\:fun-mass-prob"><span class="toc-section-number">6.7</span>  Funzione di massa di probabilità</a>
   <ul class="collapse">
-<li><a href="#funzione-di-ripartizione" id="toc-funzione-di-ripartizione" class="nav-link" data-scroll-target="#funzione-di-ripartizione"> <span class="header-section-number">6.7.1</span> Funzione di ripartizione</a></li>
+<li><a href="#funzione-di-ripartizione" id="toc-funzione-di-ripartizione" class="nav-link" data-scroll-target="#funzione-di-ripartizione"><span class="toc-section-number">6.7.1</span>  Funzione di ripartizione</a></li>
   </ul>
 </li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
@@ -491,6 +496,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -679,7 +685,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-legge-grandi-n-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="015_prob_intro_files/figure-html/fig-legge-grandi-n-1-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 6.1: Stima della probabilità di successo in funzione del numero dei lanci di una moneta.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;6.1: Stima della probabilità di successo in funzione del numero dei lanci di una moneta.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -705,7 +711,7 @@ div.csl-indent {
 </details><div class="cell-output-display">
 <div id="fig-legge-grandi-n-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="015_prob_intro_files/figure-html/fig-legge-grandi-n-2-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 6.2: Stima della probabilità di successo in funzione del numero dei lanci di una moneta.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;6.2: Stima della probabilità di successo in funzione del numero dei lanci di una moneta.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -838,7 +844,7 @@ P_Z(z) = P(Z = z).
 </details><div class="cell-output-display">
 <div id="fig-barplot-mdf-4coins" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="015_prob_intro_files/figure-html/fig-barplot-mdf-4coins-1.png" class="img-fluid figure-img" width="576"></p>
-<p></p><figcaption class="figure-caption">Figura 6.3: Grafico di <span class="math inline">\(M = 100,000\)</span> simulazioni della funzione di massa di probabilità di una variabile casuale definita come il numero di teste in quattro lanci di una moneta equilibrata.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;6.3: Grafico di <span class="math inline">\(M = 100,000\)</span> simulazioni della funzione di massa di probabilità di una variabile casuale definita come il numero di teste in quattro lanci di una moneta equilibrata.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -877,9 +883,9 @@ F(x_k) = P(X \leq x_k) = \sum_{x \leq x_k} P(x).
 Finetti, B. de. (1931). Probabilismo. <em>Logos</em>, 163–219.
 </div>
 </div>
-</section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Per un ripasso delle nozioni di base della teoria degli insiemi, si veda l’Appendice @ref(insiemistica).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Per un ripasso delle nozioni di base della teoria degli insiemi, si veda l’Appendice @ref(insiemistica).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -921,7 +927,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1000,31 +1023,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

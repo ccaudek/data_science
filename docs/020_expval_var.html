@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 11&nbsp; Valore atteso e varianza</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -438,33 +443,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
 <li>
-<a href="#valore-atteso" id="toc-valore-atteso" class="nav-link active" data-scroll-target="#valore-atteso"> <span class="header-section-number">11.1</span> Valore atteso</a>
+<a href="#valore-atteso" id="toc-valore-atteso" class="nav-link active" data-scroll-target="#valore-atteso"><span class="toc-section-number">11.1</span>  Valore atteso</a>
   <ul class="collapse">
-<li><a href="#interpretazione" id="toc-interpretazione" class="nav-link" data-scroll-target="#interpretazione"> <span class="header-section-number">11.1.1</span> Interpretazione</a></li>
-  <li><a href="#propriet%C3%A0-del-valore-atteso" id="toc-proprietà-del-valore-atteso" class="nav-link" data-scroll-target="#propriet%C3%A0-del-valore-atteso"> <span class="header-section-number">11.1.2</span> Proprietà del valore atteso</a></li>
-  <li><a href="#variabili-casuali-continue" id="toc-variabili-casuali-continue" class="nav-link" data-scroll-target="#variabili-casuali-continue"> <span class="header-section-number">11.1.3</span> Variabili casuali continue</a></li>
+<li><a href="#interpretazione" id="toc-interpretazione" class="nav-link" data-scroll-target="#interpretazione"><span class="toc-section-number">11.1.1</span>  Interpretazione</a></li>
+  <li><a href="#propriet%C3%A0-del-valore-atteso" id="toc-proprietà-del-valore-atteso" class="nav-link" data-scroll-target="#propriet%C3%A0-del-valore-atteso"><span class="toc-section-number">11.1.2</span>  Proprietà del valore atteso</a></li>
+  <li><a href="#variabili-casuali-continue" id="toc-variabili-casuali-continue" class="nav-link" data-scroll-target="#variabili-casuali-continue"><span class="toc-section-number">11.1.3</span>  Variabili casuali continue</a></li>
   </ul>
 </li>
   <li>
-<a href="#varianza" id="toc-varianza" class="nav-link" data-scroll-target="#varianza"> <span class="header-section-number">11.2</span> Varianza</a>
+<a href="#varianza" id="toc-varianza" class="nav-link" data-scroll-target="#varianza"><span class="toc-section-number">11.2</span>  Varianza</a>
   <ul class="collapse">
-<li><a href="#formula-alternativa-per-la-varianza" id="toc-formula-alternativa-per-la-varianza" class="nav-link" data-scroll-target="#formula-alternativa-per-la-varianza"> <span class="header-section-number">11.2.1</span> Formula alternativa per la varianza</a></li>
-  <li><a href="#variabili-casuali-continue-1" id="toc-variabili-casuali-continue-1" class="nav-link" data-scroll-target="#variabili-casuali-continue-1"> <span class="header-section-number">11.2.2</span> Variabili casuali continue</a></li>
+<li><a href="#formula-alternativa-per-la-varianza" id="toc-formula-alternativa-per-la-varianza" class="nav-link" data-scroll-target="#formula-alternativa-per-la-varianza"><span class="toc-section-number">11.2.1</span>  Formula alternativa per la varianza</a></li>
+  <li><a href="#variabili-casuali-continue-1" id="toc-variabili-casuali-continue-1" class="nav-link" data-scroll-target="#variabili-casuali-continue-1"><span class="toc-section-number">11.2.2</span>  Variabili casuali continue</a></li>
   </ul>
 </li>
-  <li><a href="#deviazione-standard" id="toc-deviazione-standard" class="nav-link" data-scroll-target="#deviazione-standard"> <span class="header-section-number">11.3</span> Deviazione standard</a></li>
-  <li><a href="#standardizzazione" id="toc-standardizzazione" class="nav-link" data-scroll-target="#standardizzazione"> <span class="header-section-number">11.4</span> Standardizzazione</a></li>
-  <li><a href="#momenti-di-variabili-casuali" id="toc-momenti-di-variabili-casuali" class="nav-link" data-scroll-target="#momenti-di-variabili-casuali"> <span class="header-section-number">11.5</span> Momenti di variabili casuali</a></li>
-  <li><a href="#covarianza" id="toc-covarianza" class="nav-link" data-scroll-target="#covarianza"> <span class="header-section-number">11.6</span> Covarianza</a></li>
-  <li><a href="#correlazione" id="toc-correlazione" class="nav-link" data-scroll-target="#correlazione"> <span class="header-section-number">11.7</span> Correlazione</a></li>
+  <li><a href="#deviazione-standard" id="toc-deviazione-standard" class="nav-link" data-scroll-target="#deviazione-standard"><span class="toc-section-number">11.3</span>  Deviazione standard</a></li>
+  <li><a href="#standardizzazione" id="toc-standardizzazione" class="nav-link" data-scroll-target="#standardizzazione"><span class="toc-section-number">11.4</span>  Standardizzazione</a></li>
+  <li><a href="#momenti-di-variabili-casuali" id="toc-momenti-di-variabili-casuali" class="nav-link" data-scroll-target="#momenti-di-variabili-casuali"><span class="toc-section-number">11.5</span>  Momenti di variabili casuali</a></li>
+  <li><a href="#covarianza" id="toc-covarianza" class="nav-link" data-scroll-target="#covarianza"><span class="toc-section-number">11.6</span>  Covarianza</a></li>
+  <li><a href="#correlazione" id="toc-correlazione" class="nav-link" data-scroll-target="#correlazione"><span class="toc-section-number">11.7</span>  Correlazione</a></li>
   <li>
-<a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"> <span class="header-section-number">11.8</span> Proprietà</a>
+<a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"><span class="toc-section-number">11.8</span>  Proprietà</a>
   <ul class="collapse">
-<li><a href="#incorrelazione" id="toc-incorrelazione" class="nav-link" data-scroll-target="#incorrelazione"> <span class="header-section-number">11.8.1</span> Incorrelazione</a></li>
+<li><a href="#incorrelazione" id="toc-incorrelazione" class="nav-link" data-scroll-target="#incorrelazione"><span class="toc-section-number">11.8.1</span>  Incorrelazione</a></li>
   </ul>
 </li>
   <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni">Conclusioni</a></li>
@@ -480,6 +485,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -502,8 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>A parole: il valore atteso (o speranza matematica, o aspettazione, o valor medio) di una variabile casuale è definito come la somma di tutti i valori che la variabile casuale può prendere, ciascuno pesato dalla probabilità con cui il valore è preso.</p>
 <div id="exr-exp-val-discr" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.1 </strong></span></p>
-<p>Si calcoli il valore atteso della variabile casuale <span class="math inline">\(Y\)</span> corrispondente al lancio di una moneta equilibrata (testa: <em>Y</em> = 1; croce: <em>Y</em> = 0).</p>
+<p><span class="theorem-title"><strong>Esercizio 11.1 </strong></span>Si calcoli il valore atteso della variabile casuale <span class="math inline">\(Y\)</span> corrispondente al lancio di una moneta equilibrata (testa: <em>Y</em> = 1; croce: <em>Y</em> = 0).</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Abbiamo</p>
@@ -512,8 +517,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 </div>
 <div id="exr-exp-val-discr-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.2 </strong></span></p>
-<p>Si calcoli il valore atteso della variabile casuale <span class="math inline">\(Y\)</span> corrispondente ai punti ottenuti dal lancio di un dado equilibrato.</p>
+<p><span class="theorem-title"><strong>Esercizio 11.2 </strong></span>Si calcoli il valore atteso della variabile casuale <span class="math inline">\(Y\)</span> corrispondente ai punti ottenuti dal lancio di un dado equilibrato.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Il valore atteso di <span class="math inline">\(Y\)</span> è</p>
@@ -539,8 +543,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \mathbb{E}(X Y) = \mathbb{E}(X) \mathbb{E}(Y).
 \tag{11.4}\]</span></span></p>
 <div id="exr-exp-val-discr-3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.3 </strong></span></p>
-<p>Si considerino le seguenti variabili casuali: <span class="math inline">\(Y\)</span>, ovvero il numero che si ottiene dal lancio di un dado equilibrato, e <span class="math inline">\(Y\)</span>, il numero di teste prodotto dal lancio di una moneta equilibrata. Si trovi il valore atteso di <span class="math inline">\(X+Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 11.3 </strong></span>Si considerino le seguenti variabili casuali: <span class="math inline">\(Y\)</span>, ovvero il numero che si ottiene dal lancio di un dado equilibrato, e <span class="math inline">\(Y\)</span>, il numero di teste prodotto dal lancio di una moneta equilibrata. Si trovi il valore atteso di <span class="math inline">\(X+Y\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Per risolvere il problema iniziamo a costruire lo spazio campionario dell’esperimento casuale consistente nel lancio di un dado e di una moneta.</p>
@@ -626,8 +629,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 </div>
 <div id="exr-exp-val-discr-4" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.4 </strong></span></p>
-<p>Si considerino le variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> definite nel caso del lancio di tre monete equilibrate, dove <span class="math inline">\(X\)</span> conta il numero delle teste nei tre lanci e <span class="math inline">\(Y\)</span> conta il numero delle teste al primo lancio. Si calcoli il valore atteso del prodotto delle variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 11.4 </strong></span>Si considerino le variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> definite nel caso del lancio di tre monete equilibrate, dove <span class="math inline">\(X\)</span> conta il numero delle teste nei tre lanci e <span class="math inline">\(Y\)</span> conta il numero delle teste al primo lancio. Si calcoli il valore atteso del prodotto delle variabili casuali <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>La distribuzione di probabilità congiunta <span class="math inline">\(P(X, Y)\)</span> è fornita nella tabella seguente.</p>
@@ -710,8 +712,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>A parole: la varianza è la deviazione media quadratica della variabile dalla sua media.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Se denotiamo <span class="math inline">\(\mathbb{E}(Y) = \mu\)</span>, la varianza <span class="math inline">\(\mathbb{V}(Y)\)</span> diventa il valore atteso di <span class="math inline">\((Y - \mu)^2\)</span>.</p>
 <div id="exr-var-discr-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.5 </strong></span></p>
-<p>Posta <span class="math inline">\(S\)</span> uguale alla somma dei punti ottenuti nel lancio di due dadi equilibrati, si calcoli la varianza di <span class="math inline">\(S\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 11.5 </strong></span>Posta <span class="math inline">\(S\)</span> uguale alla somma dei punti ottenuti nel lancio di due dadi equilibrati, si calcoli la varianza di <span class="math inline">\(S\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>La variabile casuale <span class="math inline">\(S\)</span> ha la seguente distribuzione di probabilità:</p>
@@ -783,8 +784,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \tag{11.8}\]</span></span></p>
 <p>A parole: la varianza è la media dei quadrati meno il quadrato della media.</p>
 <div id="exr-var-discr-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.6 </strong></span></p>
-<p>Consideriamo la variabile casuale <span class="math inline">\(Y\)</span> che corrisponde al numero di teste che si osservano nel lancio di una moneta truccata con probabilità di testa uguale a 0.8. Si trovi la varianza di <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 11.6 </strong></span>Consideriamo la variabile casuale <span class="math inline">\(Y\)</span> che corrisponde al numero di teste che si osservano nel lancio di una moneta truccata con probabilità di testa uguale a 0.8. Si trovi la varianza di <span class="math inline">\(Y\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Il valore atteso di <span class="math inline">\(Y\)</span> è</p>
@@ -822,8 +822,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Interpretiamo la deviazione standard di una variabile casuale come nella statistica descrittiva: misura approssimativamente la distanza tipica o prevista dei possibili valori <span class="math inline">\(y\)</span> dalla loro media.</p>
 <div id="exr-sd-discr-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.7 </strong></span></p>
-<p>Per i dadi equilibrati dell’<a href="#exr-var-discr-1">Esercizio&nbsp;<span>11.5</span></a>, la deviazione standard della variabile casuale <span class="math inline">\(S\)</span> è uguale a <span class="math inline">\(\sqrt{5.833} = 2.415\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 11.7 </strong></span>Per i dadi equilibrati dell’<a href="#exr-var-discr-1">Esercizio&nbsp;<span>11.5</span></a>, la deviazione standard della variabile casuale <span class="math inline">\(S\)</span> è uguale a <span class="math inline">\(\sqrt{5.833} = 2.415\)</span>.</p>
 </div>
 </section><section id="standardizzazione" class="level2" data-number="11.4"><h2 data-number="11.4" class="anchored" data-anchor-id="standardizzazione">
 <span class="header-section-number">11.4</span> Standardizzazione</h2>
@@ -881,8 +880,7 @@ Z = \frac{Y - \mathbb{E}(Y)}{\sigma_Y}.
 \]</span></p>
 </div>
 <div id="exr-cov-rv-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 11.8 </strong></span></p>
-<p>Consideriamo le variabili casuali definite nell’Esercizio 2.4. Si calcoli la covarianza di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 11.8 </strong></span>Consideriamo le variabili casuali definite nell’Esercizio 2.4. Si calcoli la covarianza di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Abbiamo che <span class="math inline">\(\mu_X = 1.5\)</span> e <span class="math inline">\(\mu_Y = 0.5\)</span>. Ne segue che la covarianza di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> è:</p>
@@ -1018,9 +1016,9 @@ f_{XY} (x,y) = f_X(x) f_Y(y)
 
 <!-- -->
 
-</section><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>Data una variabile casuale <span class="math inline">\(Y\)</span> con valore atteso <span class="math inline">\(\mathbb{E}(Y)\)</span>, le “distanze” tra i valori di <span class="math inline">\(Y\)</span> e il valore atteso <span class="math inline">\(\mathbb{E}(Y)\)</span> definiscono la variabile casuale <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> chiamata <em>scarto</em>, oppure <em>deviazione</em> oppure <em>variabile casuale centrata</em>. La variabile <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> equivale ad una traslazione di sistema di riferimento che porta il valore atteso nell’origine degli assi. Si può dimostrare facilmente che il valore atteso della variabile scarto <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> vale zero, dunque la media di tale variabile non può essere usata per quantificare la “dispersione” dei valori di <span class="math inline">\(Y\)</span> relativamente al suo valore medio. Occorre rendere sempre positivi i valori di <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> e tale risultato viene ottenuto considerando la variabile casuale <span class="math inline">\(\left(Y - \mathbb{E}(Y)\right)^2\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Data una variabile casuale <span class="math inline">\(Y\)</span> con valore atteso <span class="math inline">\(\mathbb{E}(Y)\)</span>, le “distanze” tra i valori di <span class="math inline">\(Y\)</span> e il valore atteso <span class="math inline">\(\mathbb{E}(Y)\)</span> definiscono la variabile casuale <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> chiamata <em>scarto</em>, oppure <em>deviazione</em> oppure <em>variabile casuale centrata</em>. La variabile <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> equivale ad una traslazione di sistema di riferimento che porta il valore atteso nell’origine degli assi. Si può dimostrare facilmente che il valore atteso della variabile scarto <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> vale zero, dunque la media di tale variabile non può essere usata per quantificare la “dispersione” dei valori di <span class="math inline">\(Y\)</span> relativamente al suo valore medio. Occorre rendere sempre positivi i valori di <span class="math inline">\(Y - \mathbb{E}(Y)\)</span> e tale risultato viene ottenuto considerando la variabile casuale <span class="math inline">\(\left(Y - \mathbb{E}(Y)\right)^2\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1062,7 +1060,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1141,31 +1156,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">

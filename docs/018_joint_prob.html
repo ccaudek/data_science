@@ -2,16 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.242">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Science per psicologi - 9&nbsp; Probabilità congiunta</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -50,7 +55,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -63,7 +68,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -438,23 +443,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul>
 <li>
-<a href="#sec-fun-join-prob" id="toc-sec-fun-join-prob" class="nav-link active" data-scroll-target="#sec-fun-join-prob"> <span class="header-section-number">9.1</span> Funzione di probabilità congiunta</a>
+<a href="#sec-fun-join-prob" id="toc-sec-fun-join-prob" class="nav-link active" data-scroll-target="#sec-fun-join-prob"><span class="toc-section-number">9.1</span>  Funzione di probabilità congiunta</a>
   <ul class="collapse">
-<li><a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"> <span class="header-section-number">9.1.1</span> Proprietà</a></li>
-  <li><a href="#eventi" id="toc-eventi" class="nav-link" data-scroll-target="#eventi"> <span class="header-section-number">9.1.2</span> Eventi</a></li>
-  <li><a href="#sec-marg-distr-discr" id="toc-sec-marg-distr-discr" class="nav-link" data-scroll-target="#sec-marg-distr-discr"> <span class="header-section-number">9.1.3</span> Funzioni di probabilità marginali</a></li>
-  <li><a href="#sec-margin-vc-cont" id="toc-sec-margin-vc-cont" class="nav-link" data-scroll-target="#sec-margin-vc-cont"> <span class="header-section-number">9.1.4</span> Marginalizzazione di variabili casuali continue</a></li>
+<li><a href="#propriet%C3%A0" id="toc-proprietà" class="nav-link" data-scroll-target="#propriet%C3%A0"><span class="toc-section-number">9.1.1</span>  Proprietà</a></li>
+  <li><a href="#eventi" id="toc-eventi" class="nav-link" data-scroll-target="#eventi"><span class="toc-section-number">9.1.2</span>  Eventi</a></li>
+  <li><a href="#sec-marg-distr-discr" id="toc-sec-marg-distr-discr" class="nav-link" data-scroll-target="#sec-marg-distr-discr"><span class="toc-section-number">9.1.3</span>  Funzioni di probabilità marginali</a></li>
+  <li><a href="#sec-margin-vc-cont" id="toc-sec-margin-vc-cont" class="nav-link" data-scroll-target="#sec-margin-vc-cont"><span class="toc-section-number">9.1.4</span>  Marginalizzazione di variabili casuali continue</a></li>
   </ul>
 </li>
-  <li><a href="#valore-atteso-di-una-funzione-di-una-variabile-casuale" id="toc-valore-atteso-di-una-funzione-di-una-variabile-casuale" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-una-variabile-casuale"> <span class="header-section-number">9.2</span> Valore atteso di una funzione di una variabile casuale</a></li>
-  <li><a href="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" id="toc-valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali"> <span class="header-section-number">9.3</span> Valore atteso di una funzione di molteplici variabili casuali</a></li>
-  <li><a href="#distribuzioni-condizionali" id="toc-distribuzioni-condizionali" class="nav-link" data-scroll-target="#distribuzioni-condizionali"> <span class="header-section-number">9.4</span> Distribuzioni condizionali</a></li>
-  <li><a href="#valore-atteso-condizionato" id="toc-valore-atteso-condizionato" class="nav-link" data-scroll-target="#valore-atteso-condizionato"> <span class="header-section-number">9.5</span> Valore atteso condizionato</a></li>
-  <li><a href="#indipendenza" id="toc-indipendenza" class="nav-link" data-scroll-target="#indipendenza"> <span class="header-section-number">9.6</span> Indipendenza</a></li>
+  <li><a href="#valore-atteso-di-una-funzione-di-una-variabile-casuale" id="toc-valore-atteso-di-una-funzione-di-una-variabile-casuale" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-una-variabile-casuale"><span class="toc-section-number">9.2</span>  Valore atteso di una funzione di una variabile casuale</a></li>
+  <li><a href="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" id="toc-valore-atteso-di-una-funzione-di-molteplici-variabili-casuali" class="nav-link" data-scroll-target="#valore-atteso-di-una-funzione-di-molteplici-variabili-casuali"><span class="toc-section-number">9.3</span>  Valore atteso di una funzione di molteplici variabili casuali</a></li>
+  <li><a href="#distribuzioni-condizionali" id="toc-distribuzioni-condizionali" class="nav-link" data-scroll-target="#distribuzioni-condizionali"><span class="toc-section-number">9.4</span>  Distribuzioni condizionali</a></li>
+  <li><a href="#valore-atteso-condizionato" id="toc-valore-atteso-condizionato" class="nav-link" data-scroll-target="#valore-atteso-condizionato"><span class="toc-section-number">9.5</span>  Valore atteso condizionato</a></li>
+  <li><a href="#indipendenza" id="toc-indipendenza" class="nav-link" data-scroll-target="#indipendenza"><span class="toc-section-number">9.6</span>  Indipendenza</a></li>
   <li><a href="#commenti-e-considerazioni-finali" id="toc-commenti-e-considerazioni-finali" class="nav-link" data-scroll-target="#commenti-e-considerazioni-finali">Commenti e considerazioni finali</a></li>
   </ul></nav>
     </div>
@@ -468,6 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -490,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Indicando con T = ‘testa’ e C = ‘croce’, si ottiene la situazione riportata nella <a href="#tbl-tre-monete-distr-cong-1">Tabella&nbsp;<span>9.1</span></a>.</p>
 <div id="tbl-tre-monete-distr-cong-1" class="anchored">
 <table class="table">
-<caption>Tabella 9.1: Spazio campione dell’esperimento consistente nel lancio di tre monete equilibrate su cui sono state definite le variabili aleatorie <span class="math inline">\(X\)</span> = ‘numero di realizzazioni con il risultato testa nei tre lanci’ e <span class="math inline">\(Y\)</span> = ‘numero di realizzazioni con il risultato testa nel primo lancio’.</caption>
+<caption>Tabella&nbsp;9.1: Spazio campione dell’esperimento consistente nel lancio di tre monete equilibrate su cui sono state definite le variabili aleatorie <span class="math inline">\(X\)</span> = ‘numero di realizzazioni con il risultato testa nei tre lanci’ e <span class="math inline">\(Y\)</span> = ‘numero di realizzazioni con il risultato testa nel primo lancio’.</caption>
 <thead><tr class="header">
 <th style="text-align: center;"><span class="math inline">\(\omega\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(X\)</span></th>
@@ -579,7 +585,7 @@ P(X = 3, Y = 1) &amp;= P(\omega_1 = TTT) = 1/8; \notag
 <p>Le probabilità così trovate sono riportate nella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>9.2</span></a> che descrive la <em>distribuzione di probabilità congiunta</em> delle variabili casuali <span class="math inline">\(X\)</span> (“numero di realizzazioni con il risultato testa nei tre lanci”) e <span class="math inline">\(Y\)</span> (“numero di realizzazioni con il risultato testa nel primo lancio”) per l’esperimento casuale che consiste nel lancio di tre monete equilibrate.</p>
 <div id="tbl-distr-cong-biv-1" class="anchored">
 <table class="table">
-<caption>Tabella 9.2: Distribuzione di probabilità congiunta per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate.</caption>
+<caption>Tabella&nbsp;9.2: Distribuzione di probabilità congiunta per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate.</caption>
 <thead><tr class="header">
 <th style="text-align: center;"><span class="math inline">\(x \textbackslash y\)</span></th>
 <th style="text-align: center;">0</th>
@@ -629,8 +635,7 @@ P(x, y) = P(X = x, Y = y).
 <span class="header-section-number">9.1.2</span> Eventi</h3>
 <p>Si noti che dalla probabilità congiunta possiamo calcolare la probabilità di qualsiasi evento definito in base alle variabili aleatorie <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Per capire come questo possa essere fatto, consideriamo nuovamente l’esperimento casuale discusso in precedenza.</p>
 <div id="exr-join-prob-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 9.1 </strong></span></p>
-<p>Per la distribuzione di massa di probabilità congiunta riportata nella tabella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>9.2</span></a> si trovi la probabilità dell’evento <span class="math inline">\(X+Y \leq 1\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 9.1 </strong></span>Per la distribuzione di massa di probabilità congiunta riportata nella tabella <a href="#tbl-distr-cong-biv-1">Tabella&nbsp;<span>9.2</span></a> si trovi la probabilità dell’evento <span class="math inline">\(X+Y \leq 1\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Per trovare la probabilità richiesta dobbiamo sommare le probabilità associate a tutte le coppie <span class="math inline">\((x,y)\)</span> che soddisfano la condizione <span class="math inline">\(X+Y \leq 1\)</span>, ovvero</p>
@@ -652,14 +657,13 @@ P(X = x) = \sum_y P(X, Y = y) = \sum_y P(X \mid Y = y) P(Y = y),
 \]</span></p>
 <p>Nel caso continuo si sostituisce l’integrazione alla somma – si veda la <a href="#sec-margin-vc-cont"><span>Sezione&nbsp;9.1.4</span></a>.</p>
 <div id="exr-join-prob-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 9.2 </strong></span></p>
-<p>Per l’esperimento casuale descritto nella <a href="#sec-fun-join-prob"><span>Sezione&nbsp;9.1</span></a>, si calcolino le probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 9.2 </strong></span>Per l’esperimento casuale descritto nella <a href="#sec-fun-join-prob"><span>Sezione&nbsp;9.1</span></a>, si calcolino le probabilità marginali di <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Come indicato nella <a href="#tbl-ditr-cong-biv">Tabella&nbsp;<span>9.3</span></a>, <span class="math inline">\(P_X\)</span> si ottiene sommando su ciascuna riga fissata la colonna <span class="math inline">\(j\)</span>, <span class="math inline">\(P_X(X = j) = \sum_y p_{xy}(x = j, y)\)</span> e <span class="math inline">\(P_Y\)</span> si trova sommando su ciascuna colonna fissata la riga <span class="math inline">\(i,\)</span> <span class="math inline">\(P_Y (Y = i) = \sum_x p_{xy}(x, y = i)\)</span>.</p>
 <div id="tbl-ditr-cong-biv" class="anchored">
 <table class="table">
-<caption>Tabella 9.3: Distribuzione di probabilità congiunta <span class="math inline">\(P(X,Y)\)</span> per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate e probabilità marginali <span class="math inline">\(P(X)\)</span> e <span class="math inline">\(P(Y)\)</span>.</caption>
+<caption>Tabella&nbsp;9.3: Distribuzione di probabilità congiunta <span class="math inline">\(P(X,Y)\)</span> per i risultati dell’esperimento consistente nel lancio di tre monete equilibrate e probabilità marginali <span class="math inline">\(P(X)\)</span> e <span class="math inline">\(P(Y)\)</span>.</caption>
 <thead><tr class="header">
 <th style="text-align: center;"><span class="math inline">\(x \textbackslash y\)</span></th>
 <th style="text-align: center;">0</th>
@@ -712,8 +716,7 @@ p(y) = \int_{\theta} p(y, \theta) = \int_{\theta} p(y \mid \theta) p(\theta),
 <span class="header-section-number">9.2</span> Valore atteso di una funzione di una variabile casuale</h2>
 <p>A volte ci viene data una variabile casuale $ X$e dobbiamo lavorare con una funzione di <span class="math inline">\(X\)</span>. Se <span class="math inline">\(X\)</span> è una variabile casuale e <span class="math inline">\(h(X)\)</span> è una funzione di <span class="math inline">\(X\)</span>, allora anche <span class="math inline">\(h(X)\)</span> è una variabile casuale. Se si vuole calcolare il valore atteso di <span class="math inline">\(h(X)\)</span>, lo si può fare usando la funzione di massa di probabilità o la funzione di densità di probabilità di <span class="math inline">\(X\)</span>; non è necessario conoscere la funzione di massa di probabilità (o la funzione di densità di probabilità) di <span class="math inline">\(h(X)\)</span>.</p>
 <div id="exr-mean-fun-rv" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 9.3 </strong></span></p>
-<p>Sia <span class="math inline">\(X\)</span> una variabile casuale discreta. Si trovi <span class="math inline">\(\mathbb{E}(aX + b)\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 9.3 </strong></span>Sia <span class="math inline">\(X\)</span> una variabile casuale discreta. Si trovi <span class="math inline">\(\mathbb{E}(aX + b)\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span><span class="math inline">\(\mathbb{E}(aX + b) = a\mathbb{E}(X) + b = a \sum_{x \in \Omega} xP(x) + b.\)</span> Si noti che la soluzione ha richiesto l’uso <span class="math inline">\(P(x)\)</span>, e non di <span class="math inline">\(P(aX + b)\)</span>.</p>
@@ -746,8 +749,7 @@ P_{XY} (1,1) = 1/3; \quad P_{XY}  (1,2) = 1/8; \quad P_{XY} (2,1) = 1/2; \quad P
 \]</span></p>
 </div>
 <div id="exr-mean-fun-rv-3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 9.5 </strong></span></p>
-<p>Sia <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> una sequenza di variabili casuali i.i.d., ciascuna con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>. Si trovi il valore atteso di <span class="math inline">\(X = X_1 + X_2 + \dots + X_n\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 9.5 </strong></span>Sia <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> una sequenza di variabili casuali i.i.d., ciascuna con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>. Si trovi il valore atteso di <span class="math inline">\(X = X_1 + X_2 + \dots + X_n\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span><span class="math inline">\(\mathbb{E}(X) = \mathbb{E}(X_1) + \mathbb{E}(X_2) + \dots + \mathbb{E}(X_n) = \sum_{i=1}^n \mathbb{E}(X_i) = n \mu.\)</span></p>
@@ -868,8 +870,7 @@ P_{Y\mid X}(4 \mid 3) =  \frac{P_{XY}(3,4)}{P_X(3)} = \frac{(2/16)}{(3/16)} = \f
 \]</span></p>
 </div>
 <div id="exr-conditional-expectation" class="theorem exercise">
-<p><span class="theorem-title"><strong>Esercizio 9.8 </strong></span></p>
-<p>Si trovi il valore atteso condizionato dell’<a href="#exr-conditional-distribution">Esercizio&nbsp;<span>9.7</span></a> dato che <span class="math inline">\(X = 3\)</span>.</p>
+<p><span class="theorem-title"><strong>Esercizio 9.8 </strong></span>Si trovi il valore atteso condizionato dell’<a href="#exr-conditional-distribution">Esercizio&nbsp;<span>9.7</span></a> dato che <span class="math inline">\(X = 3\)</span>.</p>
 </div>
 <div class="solution proof">
 <p><span class="proof-title"><em>Soluzione</em>. </span>Abbiamo che</p>
@@ -941,7 +942,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1020,31 +1038,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
